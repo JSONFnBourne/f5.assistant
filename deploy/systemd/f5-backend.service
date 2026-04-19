@@ -1,0 +1,17 @@
+[Unit]
+Description=F5 QKView Analyzer (FastAPI backend on :8000)
+After=network-online.target
+PartOf=f5.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/jsonbourne/projects/f5.assistant/backend
+ExecStart=/home/jsonbourne/projects/f5.assistant/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=f5-backend
+
+[Install]
+WantedBy=f5.target

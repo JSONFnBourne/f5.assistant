@@ -1,0 +1,341 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-cluster",
+    "description": "Openshift cluster data model.",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2024-12-15"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-cluster:cluster/nodes/node={node-name}/config/f5-cluster-rate-limiting:rate-limiting": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Shows rate-limiting is enabled/disabled.",
+        "description": "Shows rate-limiting is enabled/disabled.",
+        "operationId": "data_f5_cluster_cluster_nodes_node_node_name_config_f5_cluster_rate_limiting_rate_limiting_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Shows rate-limiting is enabled/disabled.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-cluster_cluster_nodes_node_node-name_config_f5-cluster-rate-limiting_rate-limiting"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Shows rate-limiting is enabled/disabled.",
+        "description": "Shows rate-limiting is enabled/disabled.",
+        "operationId": "data_f5_cluster_cluster_nodes_node_node_name_config_f5_cluster_rate_limiting_rate_limiting_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          },
+          {
+            "$ref": "#/parameters/data_f5-cluster_cluster_nodes_node_node-name_config_f5-cluster-rate-limiting_rate-limiting"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf rate-limiting created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Shows rate-limiting is enabled/disabled.",
+        "description": "Shows rate-limiting is enabled/disabled.",
+        "operationId": "data_f5_cluster_cluster_nodes_node_node_name_config_f5_cluster_rate_limiting_rate_limiting_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          },
+          {
+            "$ref": "#/parameters/data_f5-cluster_cluster_nodes_node_node-name_config_f5-cluster-rate-limiting_rate-limiting"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf rate-limiting updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Shows rate-limiting is enabled/disabled.",
+        "description": "Shows rate-limiting is enabled/disabled.",
+        "operationId": "data_f5_cluster_cluster_nodes_node_node_name_config_f5_cluster_rate_limiting_rate_limiting_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "data_f5-cluster_cluster_nodes_node_node-name_config_f5-cluster-rate-limiting_rate-limiting": {
+      "name": "rate-limiting",
+      "in": "body",
+      "description": "Shows rate-limiting is enabled/disabled.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-cluster_cluster_nodes_node_node-name_config_f5-cluster-rate-limiting_rate-limiting"
+      }
+    },
+    "device-qat-device-name": {
+      "name": "device-qat-device-name",
+      "in": "path",
+      "description": "QAT Device Name",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "node-name": {
+      "name": "node-name",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "slots-id": {
+      "name": "slots-id",
+      "in": "path",
+      "description": "Indicates the list of slots used for this blade.",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    },
+    "tenant-tenant-name": {
+      "name": "tenant-tenant-name",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-cluster_cluster_nodes_node_node-name_config_f5-cluster-rate-limiting_rate-limiting": {
+      "type": "object",
+      "properties": {
+        "f5-cluster-rate-limiting:rate-limiting": {
+          "description": "Shows rate-limiting is enabled/disabled. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "enabled",
+          "enum": [
+            "enabled",
+            "disabled"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,154 @@
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# ============================================================
+# Node.js / Next.js
+# ============================================================
+node_modules/
+.next/
+out/
+.nuxt/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+.npm/
+.yarn/
+
+# ============================================================
+# Credentials & Secrets
+# ============================================================
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# ============================================================
+# Databases (large, auto-generated — rebuild from source)
+# ============================================================
+*.db
+*.sqlite
+*.sqlite3
+db/
+archive/
+
+# ============================================================
+# Logs
+# ============================================================
+logs/
+*.log
+*.log.*
+
+# ============================================================
+# Data directories (scraped / large / regeneratable)
+# ============================================================
+data/
+
+# ============================================================
+# Generated / build artifacts
+# ============================================================
+webapp/public/search-index.json
+*.tsbuildinfo
+
+# ============================================================
+# OS & Editor artifacts
+# ============================================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+.Spotlight-V100
+.Trashes
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code (keep workspace settings if team-shared, ignore personal)
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+# Uncomment to ignore all VS Code config:
+# .vscode/
+
+# Vim / Emacs swap files
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+
+# ============================================================
+# Session & local context files
+# ============================================================
+CLAUDE.md
+ExecutiveSummary.md
+SESSION_STATE.md
+QKVIEW_FORMATS.md
+HANDOFF.md
+TODO.md
+hardware-profile.txt
+project_scope.txt
+system_profile.txt
+.claude/
+
+# ============================================================
+# Pipeline training artifacts (regeneratable)
+# ============================================================
+pipeline/state/
+pipeline/models/
+pipeline/outputs/
+
+# ============================================================
+# Vendored / reference repos (not part of build)
+# ============================================================
+f5-corkscrew-main/
+
+# ============================================================
+# Miscellaneous
+# ============================================================
+*.bak
+*.tmp
+*.temp
+*.orig
+.scratch/
+scratch/
+tmp/

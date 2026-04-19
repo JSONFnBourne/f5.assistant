@@ -1,0 +1,2711 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Top-level container for RADIUS server data",
+        "description": "Top-level container for RADIUS server data",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top-level container for RADIUS server data",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Top-level container for RADIUS server data",
+        "description": "Top-level container for RADIUS server data",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container radius created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Top-level container for RADIUS server data",
+        "description": "Top-level container for RADIUS server data",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container radius created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Top-level container for RADIUS server data",
+        "description": "Top-level container for RADIUS server data",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container radius updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Top-level container for RADIUS server data",
+        "description": "Top-level container for RADIUS server data",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Configuration data for RADIUS servers",
+        "description": "Configuration data for RADIUS servers",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Configuration data for RADIUS servers",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Configuration data for RADIUS servers",
+        "description": "Configuration data for RADIUS servers",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Configuration data for RADIUS servers",
+        "description": "Configuration data for RADIUS servers",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Configuration data for RADIUS servers",
+        "description": "Configuration data for RADIUS servers",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Configuration data for RADIUS servers",
+        "description": "Configuration data for RADIUS servers",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/config/auth-port": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Port number for authentication requests",
+        "description": "Port number for authentication requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_auth_port_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Port number for authentication requests",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_auth-port"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Port number for authentication requests",
+        "description": "Port number for authentication requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_auth_port_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_auth-port"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf auth-port created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Port number for authentication requests",
+        "description": "Port number for authentication requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_auth_port_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_auth-port"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf auth-port updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Port number for authentication requests",
+        "description": "Port number for authentication requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_auth_port_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/config/acct-port": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Port number for accounting requests",
+        "description": "Port number for accounting requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_acct_port_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Port number for accounting requests",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_acct-port"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Port number for accounting requests",
+        "description": "Port number for accounting requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_acct_port_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_acct-port"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf acct-port created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Port number for accounting requests",
+        "description": "Port number for accounting requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_acct_port_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_acct-port"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf acct-port updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Port number for accounting requests",
+        "description": "Port number for accounting requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_acct_port_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/config/secret-key": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "description": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_secret_key_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The unencrypted shared key used between the authentication\nserver and the device.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_secret-key"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "description": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_secret_key_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_secret-key"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf secret-key created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "description": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_secret_key_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_secret-key"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf secret-key updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "description": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_secret_key_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/config/source-address": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Source IP address to use in messages to the RADIUS server",
+        "description": "Source IP address to use in messages to the RADIUS server",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_source_address_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Source IP address to use in messages to the RADIUS server",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_source-address"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Source IP address to use in messages to the RADIUS server",
+        "description": "Source IP address to use in messages to the RADIUS server",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_source_address_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_source-address"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf source-address created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Source IP address to use in messages to the RADIUS server",
+        "description": "Source IP address to use in messages to the RADIUS server",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_source_address_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_source-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf source-address updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Source IP address to use in messages to the RADIUS server",
+        "description": "Source IP address to use in messages to the RADIUS server",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_source_address_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/config/retransmit-attempts": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_retransmit_attempts_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_retransmit-attempts"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_retransmit_attempts_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_retransmit-attempts"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf retransmit-attempts created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_retransmit_attempts_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_retransmit-attempts"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf retransmit-attempts updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_retransmit_attempts_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/config/f5-openconfig-aaa-radius:timeout": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+        "description": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_f5_openconfig_aaa_radius_timeout_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_f5-openconfig-aaa-radius_timeout"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+        "description": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_f5_openconfig_aaa_radius_timeout_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_f5-openconfig-aaa-radius_timeout"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf timeout created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+        "description": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_f5_openconfig_aaa_radius_timeout_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_f5-openconfig-aaa-radius_timeout"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf timeout updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+        "description": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_config_f5_openconfig_aaa_radius_timeout_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Operational state data for RADIUS servers",
+        "description": "Operational state data for RADIUS servers",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operational state data for RADIUS servers",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/auth-port": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Port number for authentication requests",
+        "description": "Port number for authentication requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_auth_port_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Port number for authentication requests",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_auth-port"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/acct-port": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Port number for accounting requests",
+        "description": "Port number for accounting requests",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_acct_port_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Port number for accounting requests",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_acct-port"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/secret-key": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "description": "The unencrypted shared key used between the authentication\nserver and the device.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_secret_key_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The unencrypted shared key used between the authentication\nserver and the device.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_secret-key"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/source-address": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Source IP address to use in messages to the RADIUS server",
+        "description": "Source IP address to use in messages to the RADIUS server",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_source_address_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Source IP address to use in messages to the RADIUS server",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_source-address"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/retransmit-attempts": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_retransmit_attempts_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_retransmit-attempts"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/counters": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "A collection of RADIUS related state objects.",
+        "description": "A collection of RADIUS related state objects.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_counters_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of RADIUS related state objects.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/counters/retried-access-requests": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Retransmitted Access-Request messages.",
+        "description": "Retransmitted Access-Request messages.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_counters_retried_access_requests_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retransmitted Access-Request messages.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters_retried-access-requests"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/counters/access-accepts": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Received Access-Accept messages.",
+        "description": "Received Access-Accept messages.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_counters_access_accepts_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Received Access-Accept messages.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters_access-accepts"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/counters/access-rejects": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Received Access-Reject messages.",
+        "description": "Received Access-Reject messages.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_counters_access_rejects_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Received Access-Reject messages.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters_access-rejects"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/server-groups/server-group={server-group-name}/servers/server={server-address}/radius/state/counters/timeout-access-requests": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Access-Request messages that have timed-out,\nrequiring retransmission.",
+        "description": "Access-Request messages that have timed-out,\nrequiring retransmission.",
+        "operationId": "data_openconfig_system_system_aaa_server_groups_server_group_server_group_name_servers_server_server_address_radius_state_counters_timeout_access_requests_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/server-group-name"
+          },
+          {
+            "$ref": "#/parameters/server-address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Access-Request messages that have timed-out,\nrequiring retransmission.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters_timeout-access-requests"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius": {
+      "name": "radius",
+      "in": "body",
+      "description": "Top-level container for RADIUS server data",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius-post": {
+      "name": "radius",
+      "in": "body",
+      "description": "Top-level container for RADIUS server data",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius-post"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config": {
+      "name": "config",
+      "in": "body",
+      "description": "Configuration data for RADIUS servers",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "Configuration data for RADIUS servers",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config-post"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_acct-port": {
+      "name": "acct-port",
+      "in": "body",
+      "description": "Port number for accounting requests",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_acct-port"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_auth-port": {
+      "name": "auth-port",
+      "in": "body",
+      "description": "Port number for authentication requests",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_auth-port"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_f5-openconfig-aaa-radius_timeout": {
+      "name": "timeout",
+      "in": "body",
+      "description": "Specifies the RADIUS server timeout in seconds. The default value is 3.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_f5-openconfig-aaa-radius_timeout"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_retransmit-attempts": {
+      "name": "retransmit-attempts",
+      "in": "body",
+      "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_retransmit-attempts"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_secret-key": {
+      "name": "secret-key",
+      "in": "body",
+      "description": "The unencrypted shared key used between the authentication\nserver and the device.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_secret-key"
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_source-address": {
+      "name": "source-address",
+      "in": "body",
+      "description": "Source IP address to use in messages to the RADIUS server",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_source-address"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:radius": {
+          "description": "Top-level container for RADIUS server data (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "config": {
+              "description": "Configuration data for RADIUS servers (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "auth-port": {
+                  "description": "Port number for authentication requests (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint16"
+                },
+                "acct-port": {
+                  "description": "Port number for accounting requests (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint16"
+                },
+                "secret-key": {
+                  "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "source-address": {
+                  "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "union"
+                },
+                "retransmit-attempts": {
+                  "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "byte"
+                },
+                "f5-openconfig-aaa-radius:timeout": {
+                  "description": "Specifies the RADIUS server timeout in seconds. The default value is 3. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint16"
+                }
+              }
+            },
+            "state": {
+              "description": "Operational state data for RADIUS servers (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "auth-port": {
+                  "description": "Port number for authentication requests (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint16"
+                },
+                "acct-port": {
+                  "description": "Port number for accounting requests (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint16"
+                },
+                "secret-key": {
+                  "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "source-address": {
+                  "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "union"
+                },
+                "retransmit-attempts": {
+                  "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "byte"
+                },
+                "counters": {
+                  "description": "A collection of RADIUS related state objects. (non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "retried-access-requests": {
+                      "description": "Retransmitted Access-Request messages. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "uint64"
+                    },
+                    "access-accepts": {
+                      "description": "Received Access-Accept messages. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "uint64"
+                    },
+                    "access-rejects": {
+                      "description": "Received Access-Reject messages. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "uint64"
+                    },
+                    "timeout-access-requests": {
+                      "description": "Access-Request messages that have timed-out,\nrequiring retransmission. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "uint64"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius-post": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:config": {
+          "description": "Configuration data for RADIUS servers (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "auth-port": {
+              "description": "Port number for authentication requests (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "acct-port": {
+              "description": "Port number for accounting requests (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "secret-key": {
+              "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "source-address": {
+              "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "union"
+            },
+            "retransmit-attempts": {
+              "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "f5-openconfig-aaa-radius:timeout": {
+              "description": "Specifies the RADIUS server timeout in seconds. The default value is 3. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            }
+          }
+        },
+        "openconfig-system:state": {
+          "description": "Operational state data for RADIUS servers (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "auth-port": {
+              "description": "Port number for authentication requests (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "acct-port": {
+              "description": "Port number for accounting requests (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "secret-key": {
+              "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "source-address": {
+              "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "union"
+            },
+            "retransmit-attempts": {
+              "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "counters": {
+              "description": "A collection of RADIUS related state objects. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "retried-access-requests": {
+                  "description": "Retransmitted Access-Request messages. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "access-accepts": {
+                  "description": "Received Access-Accept messages. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "access-rejects": {
+                  "description": "Received Access-Reject messages. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "timeout-access-requests": {
+                  "description": "Access-Request messages that have timed-out,\nrequiring retransmission. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:config": {
+          "description": "Configuration data for RADIUS servers (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "auth-port": {
+              "description": "Port number for authentication requests (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "acct-port": {
+              "description": "Port number for accounting requests (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "secret-key": {
+              "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "source-address": {
+              "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "union"
+            },
+            "retransmit-attempts": {
+              "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "f5-openconfig-aaa-radius:timeout": {
+              "description": "Specifies the RADIUS server timeout in seconds. The default value is 3. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config-post": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:auth-port": {
+          "description": "Port number for authentication requests (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        },
+        "openconfig-system:acct-port": {
+          "description": "Port number for accounting requests (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        },
+        "openconfig-system:secret-key": {
+          "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "openconfig-system:source-address": {
+          "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        },
+        "openconfig-system:retransmit-attempts": {
+          "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        },
+        "f5-openconfig-aaa-radius:timeout": {
+          "description": "Specifies the RADIUS server timeout in seconds. The default value is 3. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_acct-port": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:acct-port": {
+          "description": "Port number for accounting requests (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_auth-port": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:auth-port": {
+          "description": "Port number for authentication requests (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_f5-openconfig-aaa-radius_timeout": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-radius:timeout": {
+          "description": "Specifies the RADIUS server timeout in seconds. The default value is 3. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_retransmit-attempts": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:retransmit-attempts": {
+          "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_secret-key": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:secret-key": {
+          "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_config_source-address": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:source-address": {
+          "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:state": {
+          "description": "Operational state data for RADIUS servers (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "auth-port": {
+              "description": "Port number for authentication requests (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "acct-port": {
+              "description": "Port number for accounting requests (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "secret-key": {
+              "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "source-address": {
+              "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "union"
+            },
+            "retransmit-attempts": {
+              "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "counters": {
+              "description": "A collection of RADIUS related state objects. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "retried-access-requests": {
+                  "description": "Retransmitted Access-Request messages. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "access-accepts": {
+                  "description": "Received Access-Accept messages. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "access-rejects": {
+                  "description": "Received Access-Reject messages. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "timeout-access-requests": {
+                  "description": "Access-Request messages that have timed-out,\nrequiring retransmission. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_acct-port": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:acct-port": {
+          "description": "Port number for accounting requests (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_auth-port": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:auth-port": {
+          "description": "Port number for authentication requests (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:counters": {
+          "description": "A collection of RADIUS related state objects. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "retried-access-requests": {
+              "description": "Retransmitted Access-Request messages. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            },
+            "access-accepts": {
+              "description": "Received Access-Accept messages. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            },
+            "access-rejects": {
+              "description": "Received Access-Reject messages. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            },
+            "timeout-access-requests": {
+              "description": "Access-Request messages that have timed-out,\nrequiring retransmission. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters_access-accepts": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:access-accepts": {
+          "description": "Received Access-Accept messages. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters_access-rejects": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:access-rejects": {
+          "description": "Received Access-Reject messages. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters_retried-access-requests": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:retried-access-requests": {
+          "description": "Retransmitted Access-Request messages. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_counters_timeout-access-requests": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:timeout-access-requests": {
+          "description": "Access-Request messages that have timed-out,\nrequiring retransmission. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_retransmit-attempts": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:retransmit-attempts": {
+          "description": "Number of times the system may resend a request to the\nRADIUS server when it is unresponsive (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_secret-key": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:secret-key": {
+          "description": "The unencrypted shared key used between the authentication\nserver and the device. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_server-groups_server-group_server-group-name_servers_server_server-address_radius_state_source-address": {
+      "type": "object",
+      "properties": {
+        "openconfig-system:source-address": {
+          "description": "Source IP address to use in messages to the RADIUS server (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        }
+      }
+    }
+  }
+}

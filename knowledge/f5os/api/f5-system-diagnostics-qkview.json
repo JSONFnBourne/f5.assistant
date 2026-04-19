@@ -1,0 +1,2734 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Diagnostics tools and settings.",
+        "description": "Diagnostics tools and settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Diagnostics tools and settings.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Diagnostics tools and settings.",
+        "description": "Diagnostics tools and settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container diagnostics created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Diagnostics tools and settings.",
+        "description": "Diagnostics tools and settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container diagnostics created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Diagnostics tools and settings.",
+        "description": "Diagnostics tools and settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container diagnostics updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Diagnostics tools and settings.",
+        "description": "Diagnostics tools and settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview - diagnostics package commands.",
+        "description": "qkview - diagnostics package commands.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview - diagnostics package commands.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "qkview - diagnostics package commands.",
+        "description": "qkview - diagnostics package commands.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container qkview created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "qkview - diagnostics package commands.",
+        "description": "qkview - diagnostics package commands.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container qkview created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "qkview - diagnostics package commands.",
+        "description": "qkview - diagnostics package commands.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container qkview updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "qkview - diagnostics package commands.",
+        "description": "qkview - diagnostics package commands.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Show qkview state commands.",
+        "description": "Show qkview state commands.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Show qkview state commands.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:files": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_files_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:files/f5-system-diagnostics-qkview:file": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "List qkview files.",
+        "description": "List qkview files.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_files_f5_system_diagnostics_qkview_file_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "List qkview files.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:files/f5-system-diagnostics-qkview:file={f5-system-diagnostics-qkview_file-filename}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "List qkview files.",
+        "description": "List qkview files.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_files_f5_system_diagnostics_qkview_file_f5_system_diagnostics_qkview_file_filename_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-qkview_file-filename"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List qkview files.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file_f5-system-diagnostics-qkview_file-filename"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:files/f5-system-diagnostics-qkview:file={f5-system-diagnostics-qkview_file-filename}/f5-system-diagnostics-qkview:filename": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview filename.",
+        "description": "qkview filename.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_files_f5_system_diagnostics_qkview_file_f5_system_diagnostics_qkview_file_filename_f5_system_diagnostics_qkview_filename_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-qkview_file-filename"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview filename.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file_f5-system-diagnostics-qkview_file-filename_f5-system-diagnostics-qkview_filename"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:files/f5-system-diagnostics-qkview:file={f5-system-diagnostics-qkview_file-filename}/f5-system-diagnostics-qkview:size": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview file size.",
+        "description": "qkview file size.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_files_f5_system_diagnostics_qkview_file_f5_system_diagnostics_qkview_file_filename_f5_system_diagnostics_qkview_size_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-qkview_file-filename"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview file size.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file_f5-system-diagnostics-qkview_file-filename_f5-system-diagnostics-qkview_size"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:files/f5-system-diagnostics-qkview:file={f5-system-diagnostics-qkview_file-filename}/f5-system-diagnostics-qkview:created-on": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview created date/time.",
+        "description": "qkview created date/time.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_files_f5_system_diagnostics_qkview_file_f5_system_diagnostics_qkview_file_filename_f5_system_diagnostics_qkview_created_on_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-qkview_file-filename"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview created date/time.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file_f5-system-diagnostics-qkview_file-filename_f5-system-diagnostics-qkview_created-on"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Get the status of a qkview in progress.  The result will indicate an error or percent complete.",
+        "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:status/f5-system-diagnostics-qkview:capture-in-progress": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview capture status.",
+        "description": "qkview capture status.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_status_f5_system_diagnostics_qkview_capture_in_progress_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview capture status.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status_f5-system-diagnostics-qkview_capture-in-progress"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:status/f5-system-diagnostics-qkview:percentage": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Percentage of capture.",
+        "description": "Percentage of capture.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_status_f5_system_diagnostics_qkview_percentage_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Percentage of capture.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status_f5-system-diagnostics-qkview_percentage"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:status/f5-system-diagnostics-qkview:status-msg": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "capture status of current or last capture.",
+        "description": "capture status of current or last capture.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_status_f5_system_diagnostics_qkview_status_msg_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "capture status of current or last capture.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status_f5-system-diagnostics-qkview_status-msg"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:state/f5-system-diagnostics-qkview:status/f5-system-diagnostics-qkview:filename": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "filename of current or last qkview.",
+        "description": "filename of current or last qkview.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_state_f5_system_diagnostics_qkview_status_f5_system_diagnostics_qkview_filename_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "filename of current or last qkview.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status_f5-system-diagnostics-qkview_filename"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Initiate a collection of system diagnostics data.",
+        "description": "Initiate a collection of system diagnostics data.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_capture_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_capture-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_capture-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:input/f5-system-diagnostics-qkview:filename": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:input/f5-system-diagnostics-qkview:timeout": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:input/f5-system-diagnostics-qkview:exclude-cores": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:input/f5-system-diagnostics-qkview:maxcoresize": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:input/f5-system-diagnostics-qkview:maxfilesize": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:result": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:capture/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:resultint": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:cancel": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "If a qkview operation is running, cancel it.  Only one qkview operation can execute at a time.",
+        "description": "If a qkview operation is running, cancel it.  Only one qkview operation can execute at a time.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_cancel_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_cancel-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_cancel-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:cancel/f5-system-diagnostics-qkview:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:cancel/f5-system-diagnostics-qkview:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:cancel/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:result": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:cancel/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:resultint": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:delete": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Delete an existing qkview file.  The result will indicate a success or failure.",
+        "description": "Delete an existing qkview file.  The result will indicate a success or failure.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_delete_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_delete-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_delete-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:delete/f5-system-diagnostics-qkview:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:delete/f5-system-diagnostics-qkview:input/f5-system-diagnostics-qkview:filename": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:delete/f5-system-diagnostics-qkview:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:delete/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:result": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:delete/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:resultint": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:status": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Get the status of a qkview in progress.  The result will indicate an error or percent complete.",
+        "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_status_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_status-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_status-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:status/f5-system-diagnostics-qkview:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:status/f5-system-diagnostics-qkview:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:status/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:result": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:status/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:resultint": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:list": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "List the qkview files that have been saved.  The result may indicate the number of files or an error.",
+        "description": "List the qkview files that have been saved.  The result may indicate the number of files or an error.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_qkview_f5_system_diagnostics_qkview_list_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_list-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_list-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:list/f5-system-diagnostics-qkview:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:list/f5-system-diagnostics-qkview:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:list/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:result": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:qkview/f5-system-diagnostics-qkview:list/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:resultint": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "core-files list/delete CLIs container.",
+        "description": "core-files list/delete CLIs container.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_core_files_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "core-files list/delete CLIs container.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "core-files list/delete CLIs container.",
+        "description": "core-files list/delete CLIs container.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_core_files_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container core-files created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "core-files list/delete CLIs container.",
+        "description": "core-files list/delete CLIs container.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_core_files_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container core-files created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "core-files list/delete CLIs container.",
+        "description": "core-files list/delete CLIs container.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_core_files_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container core-files updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "core-files list/delete CLIs container.",
+        "description": "core-files list/delete CLIs container.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_core_files_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files/f5-system-diagnostics-qkview:list": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "List core files.",
+        "description": "List core files.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_core_files_f5_system_diagnostics_qkview_list_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_list-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_list-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files/f5-system-diagnostics-qkview:list/f5-system-diagnostics-qkview:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files/f5-system-diagnostics-qkview:list/f5-system-diagnostics-qkview:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files/f5-system-diagnostics-qkview:list/f5-system-diagnostics-qkview:output/f5-system-diagnostics-qkview:files": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files/f5-system-diagnostics-qkview:delete": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Delete core files.",
+        "description": "Delete core files.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_qkview_core_files_f5_system_diagnostics_qkview_delete_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_delete-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_delete-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files/f5-system-diagnostics-qkview:delete/f5-system-diagnostics-qkview:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files/f5-system-diagnostics-qkview:delete/f5-system-diagnostics-qkview:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-qkview:core-files/f5-system-diagnostics-qkview:delete/f5-system-diagnostics-qkview:input/f5-system-diagnostics-qkview:files": {
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics": {
+      "name": "diagnostics",
+      "in": "body",
+      "description": "Diagnostics tools and settings.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics-post": {
+      "name": "diagnostics",
+      "in": "body",
+      "description": "Diagnostics tools and settings.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files": {
+      "name": "core-files",
+      "in": "body",
+      "description": "core-files list/delete CLIs container.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files-post": {
+      "name": "core-files",
+      "in": "body",
+      "description": "core-files list/delete CLIs container.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_delete-post-input": {
+      "name": "delete",
+      "in": "body",
+      "description": "Delete core files.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_delete-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_list-post-input": {
+      "name": "list",
+      "in": "body",
+      "description": "List core files.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_list-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview": {
+      "name": "qkview",
+      "in": "body",
+      "description": "qkview - diagnostics package commands.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview-post": {
+      "name": "qkview",
+      "in": "body",
+      "description": "qkview - diagnostics package commands.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_cancel-post-input": {
+      "name": "cancel",
+      "in": "body",
+      "description": "If a qkview operation is running, cancel it.  Only one qkview operation can execute at a time.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_cancel-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_capture-post-input": {
+      "name": "capture",
+      "in": "body",
+      "description": "Initiate a collection of system diagnostics data.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_capture-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_delete-post-input": {
+      "name": "delete",
+      "in": "body",
+      "description": "Delete an existing qkview file.  The result will indicate a success or failure.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_delete-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_list-post-input": {
+      "name": "list",
+      "in": "body",
+      "description": "List the qkview files that have been saved.  The result may indicate the number of files or an error.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_list-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_status-post-input": {
+      "name": "status",
+      "in": "body",
+      "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_status-post-input"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "f5-system-diagnostics-qkview_file-filename": {
+      "name": "f5-system-diagnostics-qkview_file-filename",
+      "in": "path",
+      "description": "qkview filename.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "f5-system-diagnostics-qkview_files-id": {
+      "name": "f5-system-diagnostics-qkview_files-id",
+      "in": "path",
+      "description": "core files.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:diagnostics": {
+          "description": "Diagnostics tools and settings. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-qkview:qkview": {
+              "description": "qkview - diagnostics package commands. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-qkview:state": {
+                  "description": "Show qkview state commands. (non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "f5-system-diagnostics-qkview:files": {
+                      "description": "(non-presence)",
+                      "type": "object",
+                      "x-yang": {
+                        "type": "container",
+                        "is_presence": "false"
+                      },
+                      "properties": {
+                        "f5-system-diagnostics-qkview:file": {
+                          "type": "array",
+                          "description": "List qkview files. (list)",
+                          "x-yang": {
+                            "type": "list"
+                          },
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "f5-system-diagnostics-qkview:filename": {
+                                "description": "qkview filename. (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "string",
+                                "format": "string"
+                              },
+                              "f5-system-diagnostics-qkview:size": {
+                                "description": "qkview file size. (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "string",
+                                "format": "int32"
+                              },
+                              "f5-system-diagnostics-qkview:created-on": {
+                                "description": "qkview created date/time. (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "string",
+                                "format": "int32"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "f5-system-diagnostics-qkview:status": {
+                      "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete. (non-presence)",
+                      "type": "object",
+                      "x-yang": {
+                        "type": "container",
+                        "is_presence": "false"
+                      },
+                      "properties": {
+                        "f5-system-diagnostics-qkview:capture-in-progress": {
+                          "description": "qkview capture status. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "boolean"
+                        },
+                        "f5-system-diagnostics-qkview:percentage": {
+                          "description": "Percentage of capture. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "int32"
+                        },
+                        "f5-system-diagnostics-qkview:status-msg": {
+                          "description": "capture status of current or last capture. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-diagnostics-qkview:filename": {
+                          "description": "filename of current or last qkview. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "f5-system-diagnostics-qkview:core-files": {
+              "description": "core-files list/delete CLIs container. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:qkview": {
+          "description": "qkview - diagnostics package commands. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-qkview:state": {
+              "description": "Show qkview state commands. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-qkview:files": {
+                  "description": "(non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "f5-system-diagnostics-qkview:file": {
+                      "type": "array",
+                      "description": "List qkview files. (list)",
+                      "x-yang": {
+                        "type": "list"
+                      },
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "f5-system-diagnostics-qkview:filename": {
+                            "description": "qkview filename. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "f5-system-diagnostics-qkview:size": {
+                            "description": "qkview file size. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "int32"
+                          },
+                          "f5-system-diagnostics-qkview:created-on": {
+                            "description": "qkview created date/time. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "int32"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "f5-system-diagnostics-qkview:status": {
+                  "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete. (non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "f5-system-diagnostics-qkview:capture-in-progress": {
+                      "description": "qkview capture status. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "boolean"
+                    },
+                    "f5-system-diagnostics-qkview:percentage": {
+                      "description": "Percentage of capture. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "int32"
+                    },
+                    "f5-system-diagnostics-qkview:status-msg": {
+                      "description": "capture status of current or last capture. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-diagnostics-qkview:filename": {
+                      "description": "filename of current or last qkview. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "f5-system-diagnostics-qkview:filename": {
+              "description": "Specifies the output qkview filename. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-qkview:timeout": {
+              "description": "The timeout argument specifies a limit in seconds for which the qkview application is permitted to execute.  The default is no limit. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "int32"
+            },
+            "f5-system-diagnostics-qkview:exclude-cores": {
+              "description": "If the exclude-cores argument is set to true, then qkview files collected will not include core files. The default is false. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-system-diagnostics-qkview:maxcoresize": {
+              "description": "The maximum core size in MB that will be allowed to be captured. The default is 25. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "int32"
+            },
+            "f5-system-diagnostics-qkview:maxfilesize": {
+              "description": "The maximum file size in MB that will be allowed to be captured. Value must be between 2 and 1000. The default is 500. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "int32"
+            },
+            "f5-system-diagnostics-qkview:filename": {
+              "description": "The qkview to delete from the disk. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        },
+        "f5-system-diagnostics-qkview:core-files": {
+          "description": "core-files list/delete CLIs container. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-qkview:files": {
+              "type": "array",
+              "x-yang": {
+                "type": "leaf-list"
+              },
+              "items": {
+                "description": "core files. (leaf-list)",
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:core-files": {
+          "description": "core-files list/delete CLIs container. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:files": {
+          "type": "array",
+          "x-yang": {
+            "type": "leaf-list"
+          },
+          "items": {
+            "description": "core files. (leaf-list)",
+            "type": "string",
+            "format": "string"
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_delete-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:files": {
+          "type": "array",
+          "x-yang": {
+            "type": "leaf-list"
+          },
+          "items": {
+            "description": "core files. (leaf-list)",
+            "type": "string",
+            "format": "string"
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_delete-post-output": {
+      "type": "object",
+      "properties": {
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_list-post-input": {
+      "type": "object",
+      "properties": {
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_core-files_f5-system-diagnostics-qkview_list-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:files": {
+          "type": "array",
+          "x-yang": {
+            "type": "leaf-list"
+          },
+          "items": {
+            "description": "core files. (leaf-list)",
+            "type": "string",
+            "format": "string"
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:qkview": {
+          "description": "qkview - diagnostics package commands. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-qkview:state": {
+              "description": "Show qkview state commands. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-qkview:files": {
+                  "description": "(non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "f5-system-diagnostics-qkview:file": {
+                      "type": "array",
+                      "description": "List qkview files. (list)",
+                      "x-yang": {
+                        "type": "list"
+                      },
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "f5-system-diagnostics-qkview:filename": {
+                            "description": "qkview filename. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "f5-system-diagnostics-qkview:size": {
+                            "description": "qkview file size. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "int32"
+                          },
+                          "f5-system-diagnostics-qkview:created-on": {
+                            "description": "qkview created date/time. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "int32"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "f5-system-diagnostics-qkview:status": {
+                  "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete. (non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "f5-system-diagnostics-qkview:capture-in-progress": {
+                      "description": "qkview capture status. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "boolean"
+                    },
+                    "f5-system-diagnostics-qkview:percentage": {
+                      "description": "Percentage of capture. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "int32"
+                    },
+                    "f5-system-diagnostics-qkview:status-msg": {
+                      "description": "capture status of current or last capture. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-diagnostics-qkview:filename": {
+                      "description": "filename of current or last qkview. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:state": {
+          "description": "Show qkview state commands. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-qkview:files": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-qkview:file": {
+                  "type": "array",
+                  "description": "List qkview files. (list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "f5-system-diagnostics-qkview:filename": {
+                        "description": "qkview filename. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "f5-system-diagnostics-qkview:size": {
+                        "description": "qkview file size. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "int32"
+                      },
+                      "f5-system-diagnostics-qkview:created-on": {
+                        "description": "qkview created date/time. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "int32"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "f5-system-diagnostics-qkview:status": {
+              "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-qkview:capture-in-progress": {
+                  "description": "qkview capture status. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "f5-system-diagnostics-qkview:percentage": {
+                  "description": "Percentage of capture. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "int32"
+                },
+                "f5-system-diagnostics-qkview:status-msg": {
+                  "description": "capture status of current or last capture. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-qkview:filename": {
+                  "description": "filename of current or last qkview. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        },
+        "f5-system-diagnostics-qkview:filename": {
+          "description": "Specifies the output qkview filename. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-qkview:timeout": {
+          "description": "The timeout argument specifies a limit in seconds for which the qkview application is permitted to execute.  The default is no limit. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        },
+        "f5-system-diagnostics-qkview:exclude-cores": {
+          "description": "If the exclude-cores argument is set to true, then qkview files collected will not include core files. The default is false. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-system-diagnostics-qkview:maxcoresize": {
+          "description": "The maximum core size in MB that will be allowed to be captured. The default is 25. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        },
+        "f5-system-diagnostics-qkview:maxfilesize": {
+          "description": "The maximum file size in MB that will be allowed to be captured. Value must be between 2 and 1000. The default is 500. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        },
+        "f5-system-diagnostics-qkview:filename": {
+          "description": "The qkview to delete from the disk. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_cancel-post-input": {
+      "type": "object",
+      "properties": {
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_cancel-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:result": {
+          "description": "A message indicating the result of the qkview action. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-qkview:resultint": {
+          "description": "An error indicator or percent complete if status is requested.  A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_capture-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:filename": {
+          "description": "Specifies the output qkview filename. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-qkview:timeout": {
+          "description": "The timeout argument specifies a limit in seconds for which the qkview application is permitted to execute.  The default is no limit. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        },
+        "f5-system-diagnostics-qkview:exclude-cores": {
+          "description": "If the exclude-cores argument is set to true, then qkview files collected will not include core files. The default is false. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-system-diagnostics-qkview:maxcoresize": {
+          "description": "The maximum core size in MB that will be allowed to be captured. The default is 25. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        },
+        "f5-system-diagnostics-qkview:maxfilesize": {
+          "description": "The maximum file size in MB that will be allowed to be captured. Value must be between 2 and 1000. The default is 500. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_capture-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:result": {
+          "description": "A message indicating the result of the qkview action. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-qkview:resultint": {
+          "description": "An error indicator or percent complete if status is requested.  A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_delete-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:filename": {
+          "description": "The qkview to delete from the disk. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_delete-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:result": {
+          "description": "A message indicating the result of the qkview action. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-qkview:resultint": {
+          "description": "An error indicator, or percent complete if status is requested.  A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_list-post-input": {
+      "type": "object",
+      "properties": {
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_list-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:result": {
+          "description": "A message indicating the result of the qkview action. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-qkview:resultint": {
+          "description": "An error indicator or percent complete if status is requested.  A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:state": {
+          "description": "Show qkview state commands. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-qkview:files": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-qkview:file": {
+                  "type": "array",
+                  "description": "List qkview files. (list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "f5-system-diagnostics-qkview:filename": {
+                        "description": "qkview filename. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "f5-system-diagnostics-qkview:size": {
+                        "description": "qkview file size. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "int32"
+                      },
+                      "f5-system-diagnostics-qkview:created-on": {
+                        "description": "qkview created date/time. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "int32"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "f5-system-diagnostics-qkview:status": {
+              "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-qkview:capture-in-progress": {
+                  "description": "qkview capture status. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "f5-system-diagnostics-qkview:percentage": {
+                  "description": "Percentage of capture. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "int32"
+                },
+                "f5-system-diagnostics-qkview:status-msg": {
+                  "description": "capture status of current or last capture. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-qkview:filename": {
+                  "description": "filename of current or last qkview. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:files": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-qkview:file": {
+              "type": "array",
+              "description": "List qkview files. (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "f5-system-diagnostics-qkview:filename": {
+                    "description": "qkview filename. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-diagnostics-qkview:size": {
+                    "description": "qkview file size. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "int32"
+                  },
+                  "f5-system-diagnostics-qkview:created-on": {
+                    "description": "qkview created date/time. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:file": {
+          "type": "array",
+          "description": "List qkview files. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-diagnostics-qkview:filename": {
+                "description": "qkview filename. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-qkview:size": {
+                "description": "qkview file size. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "int32"
+              },
+              "f5-system-diagnostics-qkview:created-on": {
+                "description": "qkview created date/time. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file_f5-system-diagnostics-qkview_file-filename": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:file": {
+          "type": "array",
+          "description": "List qkview files. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-diagnostics-qkview:filename": {
+                "description": "qkview filename. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-qkview:size": {
+                "description": "qkview file size. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "int32"
+              },
+              "f5-system-diagnostics-qkview:created-on": {
+                "description": "qkview created date/time. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file_f5-system-diagnostics-qkview_file-filename_f5-system-diagnostics-qkview_created-on": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:created-on": {
+          "description": "qkview created date/time. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file_f5-system-diagnostics-qkview_file-filename_f5-system-diagnostics-qkview_filename": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:filename": {
+          "description": "qkview filename. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_files_f5-system-diagnostics-qkview_file_f5-system-diagnostics-qkview_file-filename_f5-system-diagnostics-qkview_size": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:size": {
+          "description": "qkview file size. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:status": {
+          "description": "Get the status of a qkview in progress.  The result will indicate an error or percent complete. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-qkview:capture-in-progress": {
+              "description": "qkview capture status. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-system-diagnostics-qkview:percentage": {
+              "description": "Percentage of capture. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "int32"
+            },
+            "f5-system-diagnostics-qkview:status-msg": {
+              "description": "capture status of current or last capture. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-qkview:filename": {
+              "description": "filename of current or last qkview. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status_f5-system-diagnostics-qkview_capture-in-progress": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:capture-in-progress": {
+          "description": "qkview capture status. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status_f5-system-diagnostics-qkview_filename": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:filename": {
+          "description": "filename of current or last qkview. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status_f5-system-diagnostics-qkview_percentage": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:percentage": {
+          "description": "Percentage of capture. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_state_f5-system-diagnostics-qkview_status_f5-system-diagnostics-qkview_status-msg": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:status-msg": {
+          "description": "capture status of current or last capture. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_status-post-input": {
+      "type": "object",
+      "properties": {
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-qkview_qkview_f5-system-diagnostics-qkview_status-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-qkview:result": {
+          "description": "A message indicating the result of the qkview action. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-qkview:resultint": {
+          "description": "An error indicator or percent complete if status is requested.  A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

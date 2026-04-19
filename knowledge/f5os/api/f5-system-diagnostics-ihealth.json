@@ -1,0 +1,2822 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Top level of ihealth settings.",
+        "description": "Top level of ihealth settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Top level of ihealth settings.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Top level of ihealth settings.",
+        "description": "Top level of ihealth settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container ihealth created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Top level of ihealth settings.",
+        "description": "Top level of ihealth settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container ihealth created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Top level of ihealth settings.",
+        "description": "Top level of ihealth settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container ihealth updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Top level of ihealth settings.",
+        "description": "Top level of ihealth settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Initiate qkview-file upload to iHealth.",
+        "description": "Initiate qkview-file upload to iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload/f5-system-diagnostics-ihealth:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload/f5-system-diagnostics-ihealth:input/f5-system-diagnostics-ihealth:qkview-file": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload/f5-system-diagnostics-ihealth:input/f5-system-diagnostics-ihealth:description": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload/f5-system-diagnostics-ihealth:input/f5-system-diagnostics-ihealth:service-request-number": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload/f5-system-diagnostics-ihealth:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload/f5-system-diagnostics-ihealth:output/f5-system-diagnostics-ihealth:message": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload/f5-system-diagnostics-ihealth:output/f5-system-diagnostics-ihealth:errorcode": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:cancel": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Cancel a qkview upload in progress.",
+        "description": "Cancel a qkview upload in progress.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_cancel_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_cancel-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_cancel-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:cancel/f5-system-diagnostics-ihealth:input": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:cancel/f5-system-diagnostics-ihealth:input/f5-system-diagnostics-ihealth:upload-id": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:cancel/f5-system-diagnostics-ihealth:output": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:cancel/f5-system-diagnostics-ihealth:output/f5-system-diagnostics-ihealth:message": {
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload-status={f5-system-diagnostics-ihealth_upload-status-upload-id}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_status_f5_system_diagnostics_ihealth_upload_status_upload_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-ihealth_upload-status-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload-status={f5-system-diagnostics-ihealth_upload-status-upload-id}/f5-system-diagnostics-ihealth:upload-id": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview package upload Id generated locally.",
+        "description": "qkview package upload Id generated locally.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_status_f5_system_diagnostics_ihealth_upload_status_upload_id_f5_system_diagnostics_ihealth_upload_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-ihealth_upload-status-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview package upload Id generated locally.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_upload-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload-status={f5-system-diagnostics-ihealth_upload-status-upload-id}/f5-system-diagnostics-ihealth:service-request-number": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview package SR number.",
+        "description": "qkview package SR number.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_status_f5_system_diagnostics_ihealth_upload_status_upload_id_f5_system_diagnostics_ihealth_service_request_number_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-ihealth_upload-status-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview package SR number.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_service-request-number"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload-status={f5-system-diagnostics-ihealth_upload-status-upload-id}/f5-system-diagnostics-ihealth:status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview package upload status.",
+        "description": "qkview package upload status.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_status_f5_system_diagnostics_ihealth_upload_status_upload_id_f5_system_diagnostics_ihealth_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-ihealth_upload-status-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview package upload status.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload-status={f5-system-diagnostics-ihealth_upload-status-upload-id}/f5-system-diagnostics-ihealth:ihealth-link": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview package iHealth-link.",
+        "description": "qkview package iHealth-link.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_status_f5_system_diagnostics_ihealth_upload_status_upload_id_f5_system_diagnostics_ihealth_ihealth_link_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-ihealth_upload-status-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview package iHealth-link.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_ihealth-link"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload-status={f5-system-diagnostics-ihealth_upload-status-upload-id}/f5-system-diagnostics-ihealth:description": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "qkview package description.",
+        "description": "qkview package description.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_status_f5_system_diagnostics_ihealth_upload_status_upload_id_f5_system_diagnostics_ihealth_description_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-ihealth_upload-status-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "qkview package description.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_description"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:upload-status={f5-system-diagnostics-ihealth_upload-status-upload-id}/f5-system-diagnostics-ihealth:details": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Details on the outcome of the upload attempt.",
+        "description": "Details on the outcome of the upload attempt.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_upload_status_f5_system_diagnostics_ihealth_upload_status_upload_id_f5_system_diagnostics_ihealth_details_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-diagnostics-ihealth_upload-status-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details on the outcome of the upload attempt.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_details"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "iHealth configuration data",
+        "description": "iHealth configuration data",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "iHealth configuration data",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:state/f5-system-diagnostics-ihealth:username": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "OBSOLETE Specifies the username for iHealth access.",
+        "description": "OBSOLETE Specifies the username for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_state_f5_system_diagnostics_ihealth_username_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OBSOLETE Specifies the username for iHealth access.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state_f5-system-diagnostics-ihealth_username"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:state/f5-system-diagnostics-ihealth:server": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the server URL for iHealth.",
+        "description": "Specifies the server URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_state_f5_system_diagnostics_ihealth_server_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the server URL for iHealth.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state_f5-system-diagnostics-ihealth_server"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:state/f5-system-diagnostics-ihealth:authserver": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the Authentication URL for iHealth.",
+        "description": "Specifies the Authentication URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_state_f5_system_diagnostics_ihealth_authserver_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the Authentication URL for iHealth.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state_f5-system-diagnostics-ihealth_authserver"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:state/f5-system-diagnostics-ihealth:clientid": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the OKTA Client ID for iHealth access.",
+        "description": "Specifies the OKTA Client ID for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_state_f5_system_diagnostics_ihealth_clientid_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the OKTA Client ID for iHealth access.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state_f5-system-diagnostics-ihealth_clientid"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "iHealth username and password configuration data.",
+        "description": "iHealth username and password configuration data.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "iHealth username and password configuration data.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "iHealth username and password configuration data.",
+        "description": "iHealth username and password configuration data.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "iHealth username and password configuration data.",
+        "description": "iHealth username and password configuration data.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "iHealth username and password configuration data.",
+        "description": "iHealth username and password configuration data.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "iHealth username and password configuration data.",
+        "description": "iHealth username and password configuration data.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:config/f5-system-diagnostics-ihealth:username": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "OBSOLETE Specifies the username for iHealth access.",
+        "description": "OBSOLETE Specifies the username for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_username_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OBSOLETE Specifies the username for iHealth access.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_username"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "OBSOLETE Specifies the username for iHealth access.",
+        "description": "OBSOLETE Specifies the username for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_username_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_username"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf username created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "OBSOLETE Specifies the username for iHealth access.",
+        "description": "OBSOLETE Specifies the username for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_username_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_username"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf username updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "OBSOLETE Specifies the username for iHealth access.",
+        "description": "OBSOLETE Specifies the username for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_username_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:config/f5-system-diagnostics-ihealth:password": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "OBSOLETE password for iHealth access.",
+        "description": "OBSOLETE password for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_password_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OBSOLETE password for iHealth access.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_password"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "OBSOLETE password for iHealth access.",
+        "description": "OBSOLETE password for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_password_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_password"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf password created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "OBSOLETE password for iHealth access.",
+        "description": "OBSOLETE password for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_password_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_password"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf password updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "OBSOLETE password for iHealth access.",
+        "description": "OBSOLETE password for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_password_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:config/f5-system-diagnostics-ihealth:server": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the server URL for iHealth.",
+        "description": "Specifies the server URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_server_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the server URL for iHealth.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_server"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the server URL for iHealth.",
+        "description": "Specifies the server URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_server_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_server"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf server created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the server URL for iHealth.",
+        "description": "Specifies the server URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_server_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_server"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf server updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the server URL for iHealth.",
+        "description": "Specifies the server URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_server_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:config/f5-system-diagnostics-ihealth:authserver": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the Authentication URL for iHealth.",
+        "description": "Specifies the Authentication URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_authserver_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the Authentication URL for iHealth.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_authserver"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the Authentication URL for iHealth.",
+        "description": "Specifies the Authentication URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_authserver_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_authserver"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf authserver created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the Authentication URL for iHealth.",
+        "description": "Specifies the Authentication URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_authserver_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_authserver"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf authserver updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the Authentication URL for iHealth.",
+        "description": "Specifies the Authentication URL for iHealth.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_authserver_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:config/f5-system-diagnostics-ihealth:clientid": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the OKTA Client ID for iHealth access.",
+        "description": "Specifies the OKTA Client ID for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_clientid_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the OKTA Client ID for iHealth access.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientid"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the OKTA Client ID for iHealth access.",
+        "description": "Specifies the OKTA Client ID for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_clientid_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientid"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf clientid created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the OKTA Client ID for iHealth access.",
+        "description": "Specifies the OKTA Client ID for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_clientid_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientid"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf clientid updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the OKTA Client ID for iHealth access.",
+        "description": "Specifies the OKTA Client ID for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_clientid_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-ihealth:ihealth/f5-system-diagnostics-ihealth:config/f5-system-diagnostics-ihealth:clientsecret": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the OKTA Client Secret for iHealth access.",
+        "description": "Specifies the OKTA Client Secret for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_clientsecret_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the OKTA Client Secret for iHealth access.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientsecret"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the OKTA Client Secret for iHealth access.",
+        "description": "Specifies the OKTA Client Secret for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_clientsecret_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientsecret"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf clientsecret created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the OKTA Client Secret for iHealth access.",
+        "description": "Specifies the OKTA Client Secret for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_clientsecret_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientsecret"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf clientsecret updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the OKTA Client Secret for iHealth access.",
+        "description": "Specifies the OKTA Client Secret for iHealth access.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_ihealth_ihealth_f5_system_diagnostics_ihealth_config_f5_system_diagnostics_ihealth_clientsecret_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth": {
+      "name": "ihealth",
+      "in": "body",
+      "description": "Top level of ihealth settings.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth-post": {
+      "name": "ihealth",
+      "in": "body",
+      "description": "Top level of ihealth settings.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_cancel-post-input": {
+      "name": "cancel",
+      "in": "body",
+      "description": "Cancel a qkview upload in progress.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_cancel-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config": {
+      "name": "config",
+      "in": "body",
+      "description": "iHealth username and password configuration data.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "iHealth username and password configuration data.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_authserver": {
+      "name": "authserver",
+      "in": "body",
+      "description": "Specifies the Authentication URL for iHealth.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_authserver"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientid": {
+      "name": "clientid",
+      "in": "body",
+      "description": "Specifies the OKTA Client ID for iHealth access.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientid"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientsecret": {
+      "name": "clientsecret",
+      "in": "body",
+      "description": "Specifies the OKTA Client Secret for iHealth access.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientsecret"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_password": {
+      "name": "password",
+      "in": "body",
+      "description": "OBSOLETE password for iHealth access.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_password"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_server": {
+      "name": "server",
+      "in": "body",
+      "description": "Specifies the server URL for iHealth.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_server"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_username": {
+      "name": "username",
+      "in": "body",
+      "description": "OBSOLETE Specifies the username for iHealth access.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_username"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-post-input": {
+      "name": "upload",
+      "in": "body",
+      "description": "Initiate qkview-file upload to iHealth.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-post-input"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "f5-system-diagnostics-ihealth_upload-status-upload-id": {
+      "name": "f5-system-diagnostics-ihealth_upload-status-upload-id",
+      "in": "path",
+      "description": "qkview package upload Id generated locally.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "f5-system-diagnostics-qkview_file-filename": {
+      "name": "f5-system-diagnostics-qkview_file-filename",
+      "in": "path",
+      "description": "qkview filename.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "f5-system-diagnostics-qkview_files-id": {
+      "name": "f5-system-diagnostics-qkview_files-id",
+      "in": "path",
+      "description": "core files.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:ihealth": {
+          "description": "Top level of ihealth settings. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-ihealth:upload-status": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "f5-system-diagnostics-ihealth:upload-id": {
+                    "description": "qkview package upload Id generated locally. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-diagnostics-ihealth:service-request-number": {
+                    "description": "qkview package SR number. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-diagnostics-ihealth:status": {
+                    "description": "qkview package upload status. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-diagnostics-ihealth:ihealth-link": {
+                    "description": "qkview package iHealth-link. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-diagnostics-ihealth:description": {
+                    "description": "qkview package description. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-diagnostics-ihealth:details": {
+                    "description": "Details on the outcome of the upload attempt. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            },
+            "f5-system-diagnostics-ihealth:state": {
+              "description": "iHealth configuration data (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-ihealth:username": {
+                  "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-ihealth:server": {
+                  "description": "Specifies the server URL for iHealth. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-ihealth:authserver": {
+                  "description": "Specifies the Authentication URL for iHealth. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-ihealth:clientid": {
+                  "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            },
+            "f5-system-diagnostics-ihealth:config": {
+              "description": "iHealth username and password configuration data. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-ihealth:username": {
+                  "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-ihealth:password": {
+                  "description": "OBSOLETE password for iHealth access. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-ihealth:server": {
+                  "description": "Specifies the server URL for iHealth. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-ihealth:authserver": {
+                  "description": "Specifies the Authentication URL for iHealth. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-ihealth:clientid": {
+                  "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-ihealth:clientsecret": {
+                  "description": "Specifies the OKTA Client Secret for iHealth access. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:qkview-file": {
+          "description": "qkview-file name to be uploaded to iHealth. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:description": {
+          "description": "Description about qkview-file. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:service-request-number": {
+          "description": "F5 support service request number. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:upload-id": {
+          "description": "qkview package upload Id generated locally. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:upload-status": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-diagnostics-ihealth:upload-id": {
+                "description": "qkview package upload Id generated locally. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:service-request-number": {
+                "description": "qkview package SR number. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:status": {
+                "description": "qkview package upload status. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:ihealth-link": {
+                "description": "qkview package iHealth-link. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:description": {
+                "description": "qkview package description. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:details": {
+                "description": "Details on the outcome of the upload attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        },
+        "f5-system-diagnostics-ihealth:state": {
+          "description": "iHealth configuration data (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-ihealth:username": {
+              "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:server": {
+              "description": "Specifies the server URL for iHealth. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:authserver": {
+              "description": "Specifies the Authentication URL for iHealth. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:clientid": {
+              "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        },
+        "f5-system-diagnostics-ihealth:config": {
+          "description": "iHealth username and password configuration data. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-ihealth:username": {
+              "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:password": {
+              "description": "OBSOLETE password for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:server": {
+              "description": "Specifies the server URL for iHealth. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:authserver": {
+              "description": "Specifies the Authentication URL for iHealth. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:clientid": {
+              "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:clientsecret": {
+              "description": "Specifies the OKTA Client Secret for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_cancel-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:upload-id": {
+          "description": "qkview package upload Id generated locally. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_cancel-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:message": {
+          "description": "200 ok with Location header for successful cancellation or failure message for cancellation. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:config": {
+          "description": "iHealth username and password configuration data. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-ihealth:username": {
+              "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:password": {
+              "description": "OBSOLETE password for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:server": {
+              "description": "Specifies the server URL for iHealth. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:authserver": {
+              "description": "Specifies the Authentication URL for iHealth. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:clientid": {
+              "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:clientsecret": {
+              "description": "Specifies the OKTA Client Secret for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:username": {
+          "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:password": {
+          "description": "OBSOLETE password for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:server": {
+          "description": "Specifies the server URL for iHealth. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:authserver": {
+          "description": "Specifies the Authentication URL for iHealth. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:clientid": {
+          "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:clientsecret": {
+          "description": "Specifies the OKTA Client Secret for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_authserver": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:authserver": {
+          "description": "Specifies the Authentication URL for iHealth. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientid": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:clientid": {
+          "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_clientsecret": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:clientsecret": {
+          "description": "Specifies the OKTA Client Secret for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_password": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:password": {
+          "description": "OBSOLETE password for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_server": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:server": {
+          "description": "Specifies the server URL for iHealth. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_config_f5-system-diagnostics-ihealth_username": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:username": {
+          "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:state": {
+          "description": "iHealth configuration data (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-ihealth:username": {
+              "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:server": {
+              "description": "Specifies the server URL for iHealth. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:authserver": {
+              "description": "Specifies the Authentication URL for iHealth. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-ihealth:clientid": {
+              "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state_f5-system-diagnostics-ihealth_authserver": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:authserver": {
+          "description": "Specifies the Authentication URL for iHealth. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state_f5-system-diagnostics-ihealth_clientid": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:clientid": {
+          "description": "Specifies the OKTA Client ID for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state_f5-system-diagnostics-ihealth_server": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:server": {
+          "description": "Specifies the server URL for iHealth. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_state_f5-system-diagnostics-ihealth_username": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:username": {
+          "description": "OBSOLETE Specifies the username for iHealth access. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:qkview-file": {
+          "description": "qkview-file name to be uploaded to iHealth. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:description": {
+          "description": "Description about qkview-file. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:service-request-number": {
+          "description": "F5 support service request number. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:message": {
+          "description": "A message indicating http response and Location header for tracking status. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-ihealth:errorcode": {
+          "description": "Error codes with appropriate error messages are returned (file not found or Login failed). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:upload-status": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-diagnostics-ihealth:upload-id": {
+                "description": "qkview package upload Id generated locally. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:service-request-number": {
+                "description": "qkview package SR number. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:status": {
+                "description": "qkview package upload status. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:ihealth-link": {
+                "description": "qkview package iHealth-link. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:description": {
+                "description": "qkview package description. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:details": {
+                "description": "Details on the outcome of the upload attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:upload-status": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-diagnostics-ihealth:upload-id": {
+                "description": "qkview package upload Id generated locally. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:service-request-number": {
+                "description": "qkview package SR number. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:status": {
+                "description": "qkview package upload status. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:ihealth-link": {
+                "description": "qkview package iHealth-link. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:description": {
+                "description": "qkview package description. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-diagnostics-ihealth:details": {
+                "description": "Details on the outcome of the upload attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_description": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:description": {
+          "description": "qkview package description. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_details": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:details": {
+          "description": "Details on the outcome of the upload attempt. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_ihealth-link": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:ihealth-link": {
+          "description": "qkview package iHealth-link. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_service-request-number": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:service-request-number": {
+          "description": "qkview package SR number. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_status": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:status": {
+          "description": "qkview package upload status. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-ihealth_ihealth_f5-system-diagnostics-ihealth_upload-status_f5-system-diagnostics-ihealth_upload-status-upload-id_f5-system-diagnostics-ihealth_upload-id": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-ihealth:upload-id": {
+          "description": "qkview package upload Id generated locally. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

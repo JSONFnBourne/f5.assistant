@@ -1,0 +1,260 @@
+# F5 TMOS Known Issue Detection Rules
+# Each rule defines patterns to match against log entries.
+# Rules can use msg_code (F5 message ID) or regex patterns.
+# Paired correlation rules detect related events within a time window.
+
+platform: tmos
+
+rules:
+  # ============================================================
+  # LTM — Pool / Virtual Server Issues
+  # ============================================================
+
+  - name: pool_member_flap
+    description: "Pool member went down and came back up (flapping)"
+    severity: warning
+    category: ltm
+    patterns:
+      - msg_code: "01070638"   # Pool member monitor status down
+      - msg_code: "01070727"   # Pool member monitor status up
+    correlation:
+      type: paired
+      max_window_minutes: 30
+    recommendation: >
+      Pool member is flapping. Check backend server health, network path
+      stability, and monitor timings. Consider increasing monitor interval
+      or timeout to reduce false positives. Review K13132: Monitoring pool
+      member availability.
+
+  - name: pool_no_members
+    description: "Pool has no available members"
+    severity: critical
+    category: ltm
+    patterns:
+      - msg_code: "01010028"
+    recommendation: >
+      All pool members are down. This means the virtual server cannot serve
+      traffic. Check backend server health, network connectivity, and monitor
+      configuration. Review pool member status in tmsh: list ltm pool <name> members.
+
+  - name: virtual_server_unavailable
+    description: "Virtual server has become unavailable"
+    severity: critical
+    category: ltm
+    patterns:
+      - msg_code: "01071682"
+    recommendation: >
+      Virtual server went down — likely due to all pool members being unavailable
+      or a dependency failure. Check the associated pool and its members.
+
+  - name: virtual_address_status_change
+    description: "Virtual address status changed (UP/DOWN)"
+    severity: warning
+    category: ltm
+    patterns:
+      - msg_code: "010719e7"
+      - msg_code: "010719e8"
+    recommendation: >
+      Virtual address status changed. This typically follows pool member or
+      virtual server state changes. Check dependent objects.
+
+  # ============================================================
+  # System — TMM, Memory, Disk, Process
+  # ============================================================
+
+  - name: tmm_restart
+    description: "TMM process restarted"
+    severity: critical
+    category: system
+    patterns:
+      - regex: "tmm.*restart|01010005"
+    recommendation: >
+      TMM restart causes traffic disruption. Check /var/log/tmm for core
+      files and details. May indicate a software bug, memory exhaustion,
+      or hardware issue. Open F5 support case with qkview.
+
+  - name: tmm_core
+    description: "TMM core dump detected"
+    severity: critical
+    category: system
+    patterns:
+      - regex: "core dump|cored|01010206"
+    recommendation: >
+      A TMM core dump indicates a crash. Check /var/core/ for core files.
+      This is a high-priority issue — open F5 support case with the core
+      file and qkview.
+
+  - name: memory_pressure
+    description: "Memory allocation failure or low memory condition"
+    severity: critical
+    category: system
+    patterns:
+      - regex: "01010141|malloc.*fail|memory.*exhaust|out of memory|01010054"
+    recommendation: >
+      System is experiencing memory pressure. Check memory utilization with
+      tmsh show sys memory. Consider reducing connection table size, disabling
+      unused features, or upgrading to more memory.
+
+  - name: disk_space_warning
+    description: "Disk space usage warning or error"
+    severity: warning
+    category: system
+    patterns:
+      - regex: "01070344|disk.*full|no space left|01010025"
+    recommendation: >
+      Disk space issue detected. Check partition usage with df -h.
+      Common culprits: /var/log (log rotation), /var (core files),
+      /shared (iApps, UCS archives). Clean up with tmsh delete sys log.
+
+  - name: clock_skew
+    description: "NTP sync failure or clock skew detected"
+    severity: warning
+    category: system
+    patterns:
+      - regex: "clock.*skew|ntpd.*unreachable|time.*sync|time.*offset"
+    recommendation: >
+      Clock sync issue. NTP problems can cause cert validation failures,
+      HA sync issues, and log timestamp inaccuracies. Check ntpq -p output
+      and NTP server reachability.
+
+  # ============================================================
+  # HA — High Availability / Failover
+  # ============================================================
+
+  - name: ha_failover
+    description: "HA failover event detected"
+    severity: critical
+    category: ha
+    patterns:
+      - msg_code: "01140029"
+      - regex: "ACTIVE.*STANDBY|STANDBY.*ACTIVE|failover.*peer"
+    recommendation: >
+      A failover occurred. Review the timing and cause — check for network
+      failures, heartbeat loss, or manual failover. Verify both units are
+      synchronized after event.
+
+  - name: config_sync_failure
+    description: "Configuration sync failure between HA peers"
+    severity: warning
+    category: ha
+    patterns:
+      - regex: "01070734|config.*sync.*fail|sync.*status.*not.*insync|01020036|01020066"
+    recommendation: >
+      Config sync failure between HA peers. This can lead to inconsistent
+      configurations. Run tmsh show cm sync-status and resolve any conflicts.
+      Check network connectivity between units.
+
+  - name: ha_heartbeat_loss
+    description: "HA heartbeat lost with peer"
+    severity: critical
+    category: ha
+    patterns:
+      - regex: "01140100|heartbeat.*lost|peer.*unreachable|ha.*offline"
+    recommendation: >
+      Lost heartbeat with HA peer. Check failover network (VLAN, cabling),
+      peer device status, and mirroring connectivity. This will trigger
+      failover if the peer remains unreachable.
+
+  # ============================================================
+  # Authentication / Security
+  # ============================================================
+
+  - name: auth_failure
+    description: "Authentication failure detected"
+    severity: warning
+    category: security
+    patterns:
+      - regex: "01070417.*FAILED|auth.*fail|login.*fail|pam_authenticate.*fail|invalid.*password"
+    recommendation: >
+      Authentication failure detected. Could be a brute-force attempt or
+      misconfigured credentials. Check the source IP and user. Consider
+      enabling account lockout policy.
+
+  - name: ssl_handshake_failure
+    description: "SSL/TLS handshake failure"
+    severity: warning
+    category: security
+    patterns:
+      - regex: "01260009|01260013|ssl.*handshake.*fail|0107134b"
+    recommendation: >
+      SSL handshake failures can indicate client incompatibility, expired
+      certificates, or cipher mismatch. Check client SSL profile settings,
+      certificate expiry dates, and cipher suite configuration.
+
+  - name: certificate_expiry
+    description: "Certificate expiry warning"
+    severity: warning
+    category: security
+    patterns:
+      - regex: "01070821|cert.*expir|certificate.*expir"
+    recommendation: >
+      A certificate is expiring or has expired. Check certificate dates with
+      tmsh list sys crypto cert. Renew and redeploy before expiry to avoid
+      service disruption.
+
+  # ============================================================
+  # Network
+  # ============================================================
+
+  - name: interface_down
+    description: "Network interface went down"
+    severity: critical
+    category: network
+    patterns:
+      - regex: "01070640|link.*down|interface.*down|01160000"
+    recommendation: >
+      A network interface lost link. Check physical cabling, switch port
+      status, and LACP/trunk configuration. This affects traffic on the
+      associated VLANs.
+
+  - name: arp_conflict
+    description: "ARP conflict or gratuitous ARP issue"
+    severity: warning
+    category: network
+    patterns:
+      - regex: "0107089a|arp.*conflict|duplicate.*address|gratuitous.*arp.*fail"
+    recommendation: >
+      ARP conflict detected. Two devices may be using the same IP. Check
+      for IP conflicts on the network, floating IP misconfigurations, or
+      rogue devices.
+
+  # ============================================================
+  # MCP / Configuration
+  # ============================================================
+
+  - name: mcpd_restart
+    description: "MCP daemon restarted"
+    severity: critical
+    category: system
+    patterns:
+      - regex: "mcpd.*restart|01071431|mcpd.*started"
+    recommendation: >
+      MCPD restart can indicate configuration corruption or resource issues.
+      Check for concurrent config changes, memory pressure, or known bugs.
+      Verify configuration integrity: tmsh load sys config verify.
+
+  - name: config_load_error
+    description: "Configuration load or validation error"
+    severity: warning
+    category: system
+    patterns:
+      - regex: "01070712|01071472|config.*error|validation.*fail|01020066"
+    recommendation: >
+      Configuration error detected. Check bigip.conf syntax, object
+      references, and resource dependencies. Run tmsh load sys config verify
+      to identify specific issues.
+
+  # ============================================================
+  # Licensing
+  # ============================================================
+
+  - name: license_issue
+    description: "License problem detected"
+    severity: critical
+    category: system
+    patterns:
+      - regex: "0107014|license.*expir|license.*invalid|unlicensed|01070315"
+    recommendation: >
+      License issue detected. Check license status with tmsh show sys license.
+      An expired or missing license will prevent configuration changes and
+      may affect traffic processing.

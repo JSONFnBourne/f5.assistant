@@ -1,0 +1,1002 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-utils-file-transfer",
+    "description": "Provide support to do file transfer operations on the System.",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2024-04-30"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "upload file meta data",
+        "description": "upload file meta data",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "upload file meta data",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data={f5-file-upload-meta-data_meta-data-upload-id}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_f5_file_upload_meta_data_meta_data_upload_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-file-upload-meta-data_meta-data-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data={f5-file-upload-meta-data_meta-data-upload-id}/f5-file-upload-meta-data:file-path": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "file path",
+        "description": "file path",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_f5_file_upload_meta_data_meta_data_upload_id_f5_file_upload_meta_data_file_path_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-file-upload-meta-data_meta-data-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "file path",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_file-path"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data={f5-file-upload-meta-data_meta-data-upload-id}/f5-file-upload-meta-data:sha512sum": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "sha512sum of the file to verify the validity",
+        "description": "sha512sum of the file to verify the validity",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_f5_file_upload_meta_data_meta_data_upload_id_f5_file_upload_meta_data_sha512sum_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-file-upload-meta-data_meta-data-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sha512sum of the file to verify the validity",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_sha512sum"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data={f5-file-upload-meta-data_meta-data-upload-id}/f5-file-upload-meta-data:upload-id": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "identifier of the file upload job",
+        "description": "identifier of the file upload job",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_f5_file_upload_meta_data_meta_data_upload_id_f5_file_upload_meta_data_upload_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-file-upload-meta-data_meta-data-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "identifier of the file upload job",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_upload-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data={f5-file-upload-meta-data_meta-data-upload-id}/f5-file-upload-meta-data:name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "name of the file being uploaded",
+        "description": "name of the file being uploaded",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_f5_file_upload_meta_data_meta_data_upload_id_f5_file_upload_meta_data_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-file-upload-meta-data_meta-data-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "name of the file being uploaded",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data={f5-file-upload-meta-data_meta-data-upload-id}/f5-file-upload-meta-data:status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "upload status",
+        "description": "upload status",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_f5_file_upload_meta_data_meta_data_upload_id_f5_file_upload_meta_data_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-file-upload-meta-data_meta-data-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "upload status",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data={f5-file-upload-meta-data_meta-data-upload-id}/f5-file-upload-meta-data:size": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "size of the file being uploaded",
+        "description": "size of the file being uploaded",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_f5_file_upload_meta_data_meta_data_upload_id_f5_file_upload_meta_data_size_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-file-upload-meta-data_meta-data-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "size of the file being uploaded",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_size"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:meta-data={f5-file-upload-meta-data_meta-data-upload-id}/f5-file-upload-meta-data:percentage-uploaded": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "file upload progress percentage",
+        "description": "file upload progress percentage",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_meta_data_f5_file_upload_meta_data_meta_data_upload_id_f5_file_upload_meta_data_percentage_uploaded_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-file-upload-meta-data_meta-data-upload-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "file upload progress percentage",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_percentage-uploaded"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:start-upload": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "start file upload",
+        "description": "start file upload",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_upload_meta_data_upload_f5_file_upload_meta_data_start_upload_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_start-upload-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_start-upload-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:start-upload/f5-file-upload-meta-data:input": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:start-upload/f5-file-upload-meta-data:input/f5-file-upload-meta-data:file-path": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:start-upload/f5-file-upload-meta-data:input/f5-file-upload-meta-data:sha512sum": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:start-upload/f5-file-upload-meta-data:input/f5-file-upload-meta-data:name": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:start-upload/f5-file-upload-meta-data:input/f5-file-upload-meta-data:size": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:start-upload/f5-file-upload-meta-data:output": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-upload-meta-data:upload/f5-file-upload-meta-data:start-upload/f5-file-upload-meta-data:output/f5-file-upload-meta-data:upload-id": {
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_start-upload-post-input": {
+      "name": "start-upload",
+      "in": "body",
+      "description": "start file upload",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_start-upload-post-input"
+      }
+    },
+    "f5-file-upload-meta-data_meta-data-upload-id": {
+      "name": "f5-file-upload-meta-data_meta-data-upload-id",
+      "in": "path",
+      "description": "identifier of the file upload job",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "known-host-remote-host": {
+      "name": "known-host-remote-host",
+      "in": "path",
+      "description": "Remote System FQDN or IPv4/IPv6 address.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "transfer-operation-local-file-path": {
+      "name": "transfer-operation-local-file-path",
+      "in": "path",
+      "description": "local file path.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-operation": {
+      "name": "transfer-operation-operation",
+      "in": "path",
+      "description": "file transfer operation\n              such as file import, file export\n              file delete",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-protocol": {
+      "name": "transfer-operation-protocol",
+      "in": "path",
+      "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-remote-file-path": {
+      "name": "transfer-operation-remote-file-path",
+      "in": "path",
+      "description": "remote file path.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-remote-host": {
+      "name": "transfer-operation-remote-host",
+      "in": "path",
+      "description": "remote host.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:upload": {
+          "description": "upload file meta data (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-file-upload-meta-data:meta-data": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "f5-file-upload-meta-data:file-path": {
+                    "description": "file path (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-file-upload-meta-data:sha512sum": {
+                    "description": "sha512sum of the file to verify the validity (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-file-upload-meta-data:upload-id": {
+                    "description": "identifier of the file upload job (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-file-upload-meta-data:name": {
+                    "description": "name of the file being uploaded (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-file-upload-meta-data:status": {
+                    "description": "upload status (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "initialized",
+                    "enum": [
+                      "initialized",
+                      "in-progress",
+                      "completed",
+                      "sha512sum-checksum-failed",
+                      "file-size-mismatch-failed",
+                      "duplicate-failed",
+                      "copy-failed",
+                      "file-type-check-failed"
+                    ]
+                  },
+                  "f5-file-upload-meta-data:size": {
+                    "description": "size of the file being uploaded (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "f5-file-upload-meta-data:percentage-uploaded": {
+                    "description": "file upload progress percentage (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:meta-data": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-file-upload-meta-data:file-path": {
+                "description": "file path (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-file-upload-meta-data:sha512sum": {
+                "description": "sha512sum of the file to verify the validity (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-file-upload-meta-data:upload-id": {
+                "description": "identifier of the file upload job (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-file-upload-meta-data:name": {
+                "description": "name of the file being uploaded (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-file-upload-meta-data:status": {
+                "description": "upload status (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "initialized",
+                "enum": [
+                  "initialized",
+                  "in-progress",
+                  "completed",
+                  "sha512sum-checksum-failed",
+                  "file-size-mismatch-failed",
+                  "duplicate-failed",
+                  "copy-failed",
+                  "file-type-check-failed"
+                ]
+              },
+              "f5-file-upload-meta-data:size": {
+                "description": "size of the file being uploaded (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "f5-file-upload-meta-data:percentage-uploaded": {
+                "description": "file upload progress percentage (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:meta-data": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-file-upload-meta-data:file-path": {
+                "description": "file path (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-file-upload-meta-data:sha512sum": {
+                "description": "sha512sum of the file to verify the validity (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-file-upload-meta-data:upload-id": {
+                "description": "identifier of the file upload job (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-file-upload-meta-data:name": {
+                "description": "name of the file being uploaded (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-file-upload-meta-data:status": {
+                "description": "upload status (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "initialized",
+                "enum": [
+                  "initialized",
+                  "in-progress",
+                  "completed",
+                  "sha512sum-checksum-failed",
+                  "file-size-mismatch-failed",
+                  "duplicate-failed",
+                  "copy-failed",
+                  "file-type-check-failed"
+                ]
+              },
+              "f5-file-upload-meta-data:size": {
+                "description": "size of the file being uploaded (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "f5-file-upload-meta-data:percentage-uploaded": {
+                "description": "file upload progress percentage (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_file-path": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:file-path": {
+          "description": "file path (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_name": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:name": {
+          "description": "name of the file being uploaded (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_percentage-uploaded": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:percentage-uploaded": {
+          "description": "file upload progress percentage (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_sha512sum": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:sha512sum": {
+          "description": "sha512sum of the file to verify the validity (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_size": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:size": {
+          "description": "size of the file being uploaded (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_status": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:status": {
+          "description": "upload status (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "initialized",
+          "enum": [
+            "initialized",
+            "in-progress",
+            "completed",
+            "sha512sum-checksum-failed",
+            "file-size-mismatch-failed",
+            "duplicate-failed",
+            "copy-failed",
+            "file-type-check-failed"
+          ]
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_meta-data_f5-file-upload-meta-data_meta-data-upload-id_f5-file-upload-meta-data_upload-id": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:upload-id": {
+          "description": "identifier of the file upload job (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_start-upload-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:file-path": {
+          "description": "file path (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-file-upload-meta-data:sha512sum": {
+          "description": "sha512sum of the file to verify the validity (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-file-upload-meta-data:name": {
+          "description": "name of the file being uploaded (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-file-upload-meta-data:size": {
+          "description": "size of the file being uploaded (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-upload-meta-data_upload_f5-file-upload-meta-data_start-upload-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-file-upload-meta-data:upload-id": {
+          "description": "identifier of the file upload job (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

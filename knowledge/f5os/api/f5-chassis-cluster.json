@@ -1,0 +1,4628 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-chassis-cluster",
+    "description": "Model for storing and viewing OpenShift cluster health and installation progress",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2024-03-19"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-chassis-cluster:cluster": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Display status of OpenShift installation and cluster health",
+        "description": "Display status of OpenShift installation and cluster health",
+        "operationId": "data_f5_chassis_cluster_cluster_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Display status of OpenShift installation and cluster health",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/run-integrity-check": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Runs on-demand integrity check.",
+        "description": "Runs on-demand integrity check.",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_run_integrity_check_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          },
+          {
+            "$ref": "#/parameters/data_f5-chassis-cluster_cluster_nodes_node_node-name_run-integrity-check-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_run-integrity-check-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/run-integrity-check/input": {
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/run-integrity-check/input/proceed": {
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/run-integrity-check/output": {
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/run-integrity-check/output/response": {
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/set-extracted": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_set_extracted_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          },
+          {
+            "$ref": "#/parameters/data_f5-chassis-cluster_cluster_nodes_node_node-name_set-extracted-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_set-extracted-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/set-extracted/input": {
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/set-extracted/output": {
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/set-extracted/output/result": {
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Name of OpenShift node",
+        "description": "Name of OpenShift node",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Name of OpenShift node",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Node status [Ready | NotReady | SchedulingDisabled | Unknown]",
+        "description": "Node status [Ready | NotReady | SchedulingDisabled | Unknown]",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Node status [Ready | NotReady | SchedulingDisabled | Unknown]",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/time-created": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The time at which the node was created",
+        "description": "The time at which the node was created",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_time_created_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The time at which the node was created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_time-created"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/roles": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Roles this node serves",
+        "description": "Roles this node serves",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_roles_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Roles this node serves",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_roles"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/info": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_info_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_info"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/info/cpu": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Allocatable CPU cores availability",
+        "description": "Allocatable CPU cores availability",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_info_cpu_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Allocatable CPU cores availability",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_info_cpu"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/info/pods": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Allocatable Pods availability",
+        "description": "Allocatable Pods availability",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_info_pods_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Allocatable Pods availability",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_info_pods"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/info/memory": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Allocatable Memory availability",
+        "description": "Allocatable Memory availability",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_info_memory_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Allocatable Memory availability",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_info_memory"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/info/hugepages": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi]",
+        "description": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi]",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_info_hugepages_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi]",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_info_hugepages"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/info/memory-usage": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Percent of system memory in use.",
+        "description": "Percent of system memory in use.",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_info_memory_usage_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Percent of system memory in use.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_info_memory-usage"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/info/cpu-usage": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Percent of system cpu in use",
+        "description": "Percent of system cpu in use",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_info_cpu_usage_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Percent of system cpu in use",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_info_cpu-usage"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/integrity-check": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_integrity_check_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_integrity-check"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/integrity-check/run-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_integrity_check_run_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_integrity-check_run-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/integrity-check/run-status/os": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status of system OS integrity check.",
+        "description": "Status of system OS integrity check.",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_integrity_check_run_status_os_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of system OS integrity check.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_integrity-check_run-status_os"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/nodes/node={node-name}/integrity-check/run-status/last-triggered": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Integrity check triggered date/time",
+        "description": "Integrity check triggered date/time",
+        "operationId": "data_f5_chassis_cluster_cluster_nodes_node_node_name_integrity_check_run_status_last_triggered_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/node-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Integrity check triggered date/time",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_integrity-check_run-status_last-triggered"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/install-progress": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_install_progress_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_install-progress"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/install-progress/install-progress": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_install_progress_install_progress_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_install-progress_install-progress"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/install-progress/install-progress={install-progress-stage-name}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_install_progress_install_progress_install_progress_stage_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/install-progress-stage-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_install-progress_install-progress_install-progress-stage-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/install-progress/install-progress={install-progress-stage-name}/stage-name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "OpenShift Installation step name",
+        "description": "OpenShift Installation step name",
+        "operationId": "data_f5_chassis_cluster_cluster_install_progress_install_progress_install_progress_stage_name_stage_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/install-progress-stage-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OpenShift Installation step name",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_install-progress_install-progress_install-progress-stage-name_stage-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/install-progress/install-progress={install-progress-stage-name}/status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "OpenShift Installation status [Running | Failed | Success | Pending]",
+        "description": "OpenShift Installation status [Running | Failed | Success | Pending]",
+        "operationId": "data_f5_chassis_cluster_cluster_install_progress_install_progress_install_progress_stage_name_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/install-progress-stage-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OpenShift Installation status [Running | Failed | Success | Pending]",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_install-progress_install-progress_install-progress-stage-name_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/cluster-initialized": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Cluster has been initialized",
+        "description": "Cluster has been initialized",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_cluster_initialized_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Cluster has been initialized",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_cluster-initialized"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/cluster-ready": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Cluster is ready",
+        "description": "Cluster is ready",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_cluster_ready_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Cluster is ready",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_cluster-ready"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/active-node": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Name of active orchestration-manager node",
+        "description": "Name of active orchestration-manager node",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_active_node_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Name of active orchestration-manager node",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_active-node"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/etcd-ha-initialized": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "ETCd HA has been initialized",
+        "description": "ETCd HA has been initialized",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_etcd_ha_initialized_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "ETCd HA has been initialized",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_etcd-ha-initialized"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/etcd-ha-running": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "ETCd HA is running",
+        "description": "ETCd HA is running",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_etcd_ha_running_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "ETCd HA is running",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_etcd-ha-running"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/multus-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Multus status [healthy | unhealhy | installing | upgrading | one or more multus pods not available due to missing node | unknown].",
+        "description": "Multus status [healthy | unhealhy | installing | upgrading | one or more multus pods not available due to missing node | unknown].",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_multus_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Multus status [healthy | unhealhy | installing | upgrading | one or more multus pods not available due to missing node | unknown].",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_multus-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/kubevirt-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Kubevirt status [healthy | unhealhy | installing | one or more virt-handler pods are not found | unknown].",
+        "description": "Kubevirt status [healthy | unhealhy | installing | one or more virt-handler pods are not found | unknown].",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_kubevirt_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Kubevirt status [healthy | unhealhy | installing | one or more virt-handler pods are not found | unknown].",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_kubevirt-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status of controller instance",
+        "description": "Status of controller instance",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of controller instance",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status of controller instance",
+        "description": "Status of controller instance",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of controller instance",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}/index": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Controller ID",
+        "description": "Controller ID",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_index_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Controller ID",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_index"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}/name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Controller Name",
+        "description": "Controller Name",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Controller Name",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}/inserted": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Controller inserted in the chassis",
+        "description": "Controller inserted in the chassis",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_inserted_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Controller inserted in the chassis",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_inserted"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}/in-cluster": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Controller has been added to the cluster",
+        "description": "Controller has been added to the cluster",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_in_cluster_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Controller has been added to the cluster",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_in-cluster"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}/ready-cluster": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Controller is marked ready in the cluster",
+        "description": "Controller is marked ready in the cluster",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_ready_cluster_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Controller is marked ready in the cluster",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_ready-cluster"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}/able-to-ping": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Controller is pingable",
+        "description": "Controller is pingable",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_able_to_ping_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Controller is pingable",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_able-to-ping"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}/able-to-ssh": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Controller is reachable via ssh",
+        "description": "Controller is reachable via ssh",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_able_to_ssh_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Controller is reachable via ssh",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_able-to-ssh"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/controller-status={controller-status-index}/state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Current controller state",
+        "description": "Current controller state",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_controller_status_controller_status_index_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/controller-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current controller state",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status of blade instance",
+        "description": "Status of blade instance",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of blade instance",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status of blade instance",
+        "description": "Status of blade instance",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of blade instance",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/index": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade ID",
+        "description": "Blade ID",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_index_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade ID",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_index"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade Name",
+        "description": "Blade Name",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade Name",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/inserted": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade is inserted in the chassis",
+        "description": "Blade is inserted in the chassis",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_inserted_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade is inserted in the chassis",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_inserted"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/in-cluster": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade has been added to the cluster",
+        "description": "Blade has been added to the cluster",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_in_cluster_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade has been added to the cluster",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_in-cluster"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/ready-cluster": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade is marked ready in the cluster",
+        "description": "Blade is marked ready in the cluster",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_ready_cluster_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade is marked ready in the cluster",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_ready-cluster"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/able-to-ping": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade is pingable",
+        "description": "Blade is pingable",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_able_to_ping_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade is pingable",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_able-to-ping"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/able-to-ssh": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade is reachable via ssh",
+        "description": "Blade is reachable via ssh",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_able_to_ssh_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade is reachable via ssh",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_able-to-ssh"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Current blade state",
+        "description": "Current blade state",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current blade state",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/orchestration-manager/blade-status={blade-status-index}/partition-label": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Current partition label",
+        "description": "Current partition label",
+        "operationId": "data_f5_chassis_cluster_cluster_orchestration_manager_blade_status_blade_status_index_partition_label_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/blade-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current partition label",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_partition-label"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/cluster-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_chassis_cluster_cluster_cluster_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_cluster-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/cluster-status/summary-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Cluster Status",
+        "description": "Cluster Status",
+        "operationId": "data_f5_chassis_cluster_cluster_cluster_status_summary_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Cluster Status",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_cluster-status_summary-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/cluster-status/cluster-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status messages",
+        "description": "Status messages",
+        "operationId": "data_f5_chassis_cluster_cluster_cluster_status_cluster_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Status messages",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_cluster-status_cluster-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/cluster-status/cluster-status={cluster-status-index}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status messages",
+        "description": "Status messages",
+        "operationId": "data_f5_chassis_cluster_cluster_cluster_status_cluster_status_cluster_status_index_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/cluster-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status messages",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_cluster-status_cluster-status_cluster-status-index"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/cluster-status/cluster-status={cluster-status-index}/index": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status Index",
+        "description": "Status Index",
+        "operationId": "data_f5_chassis_cluster_cluster_cluster_status_cluster_status_cluster_status_index_index_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/cluster-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status Index",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_cluster-status_cluster-status_cluster-status-index_index"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-chassis-cluster:cluster/cluster-status/cluster-status={cluster-status-index}/status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status Message",
+        "description": "Status Message",
+        "operationId": "data_f5_chassis_cluster_cluster_cluster_status_cluster_status_cluster_status_index_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/cluster-status-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status Message",
+            "schema": {
+              "$ref": "#/definitions/data_f5-chassis-cluster_cluster_cluster-status_cluster-status_cluster-status-index_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "blade-status-index": {
+      "name": "blade-status-index",
+      "in": "path",
+      "description": "Blade ID",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    },
+    "cluster-status-index": {
+      "name": "cluster-status-index",
+      "in": "path",
+      "description": "Status Index",
+      "required": true,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "controller-status-index": {
+      "name": "controller-status-index",
+      "in": "path",
+      "description": "Controller ID",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_run-integrity-check-post-input": {
+      "name": "run-integrity-check",
+      "in": "body",
+      "description": "Runs on-demand integrity check.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_run-integrity-check-post-input"
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_set-extracted-post-input": {
+      "name": "set-extracted",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-chassis-cluster_cluster_nodes_node_node-name_set-extracted-post-input"
+      }
+    },
+    "install-progress-stage-name": {
+      "name": "install-progress-stage-name",
+      "in": "path",
+      "description": "OpenShift Installation step name",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "node-name": {
+      "name": "node-name",
+      "in": "path",
+      "description": "Name of OpenShift node",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-chassis-cluster_cluster": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:cluster": {
+          "description": "Display status of OpenShift installation and cluster health (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "nodes": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "node": {
+                  "type": "array",
+                  "description": "(list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "description": "Name of OpenShift node (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "status": {
+                        "description": "Node status [Ready | NotReady | SchedulingDisabled | Unknown] (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "time-created": {
+                        "description": "The time at which the node was created (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "roles": {
+                        "description": "Roles this node serves (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "info": {
+                        "description": "(non-presence)",
+                        "type": "object",
+                        "x-yang": {
+                          "type": "container",
+                          "is_presence": "false"
+                        },
+                        "properties": {
+                          "cpu": {
+                            "description": "Allocatable CPU cores availability (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint16"
+                          },
+                          "pods": {
+                            "description": "Allocatable Pods availability (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint16"
+                          },
+                          "memory": {
+                            "description": "Allocatable Memory availability (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "hugepages": {
+                            "description": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi] (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "memory-usage": {
+                            "description": "Percent of system memory in use. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "cpu-usage": {
+                            "description": "Percent of system cpu in use (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          }
+                        }
+                      },
+                      "integrity-check": {
+                        "description": "(non-presence)",
+                        "type": "object",
+                        "x-yang": {
+                          "type": "container",
+                          "is_presence": "false"
+                        },
+                        "properties": {
+                          "run-status": {
+                            "description": "(non-presence)",
+                            "type": "object",
+                            "x-yang": {
+                              "type": "container",
+                              "is_presence": "false"
+                            },
+                            "properties": {
+                              "os": {
+                                "description": "Status of system OS integrity check. (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "string",
+                                "format": "enumeration",
+                                "default": "passed",
+                                "enum": [
+                                  "passed",
+                                  "failed",
+                                  "not-triggered",
+                                  "in-progress",
+                                  "error",
+                                  "triggered"
+                                ]
+                              },
+                              "last-triggered": {
+                                "description": "Integrity check triggered date/time (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "string",
+                                "format": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "install-progress": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "install-progress": {
+                  "type": "array",
+                  "description": "(list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "stage-name": {
+                        "description": "OpenShift Installation step name (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "status": {
+                        "description": "OpenShift Installation status [Running | Failed | Success | Pending] (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "orchestration-manager": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "cluster-initialized": {
+                  "description": "Cluster has been initialized (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "cluster-ready": {
+                  "description": "Cluster is ready (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "active-node": {
+                  "description": "Name of active orchestration-manager node (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "etcd-ha-initialized": {
+                  "description": "ETCd HA has been initialized (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "etcd-ha-running": {
+                  "description": "ETCd HA is running (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "multus-status": {
+                  "description": "Multus status [healthy | unhealhy | installing | upgrading | one or more multus pods not available due to missing node | unknown]. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "kubevirt-status": {
+                  "description": "Kubevirt status [healthy | unhealhy | installing | one or more virt-handler pods are not found | unknown]. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "controller-status": {
+                  "type": "array",
+                  "description": "Status of controller instance (list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "index": {
+                        "description": "Controller ID (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "byte"
+                      },
+                      "name": {
+                        "description": "Controller Name (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "inserted": {
+                        "description": "Controller inserted in the chassis (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "in-cluster": {
+                        "description": "Controller has been added to the cluster (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "ready-cluster": {
+                        "description": "Controller is marked ready in the cluster (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "able-to-ping": {
+                        "description": "Controller is pingable (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "able-to-ssh": {
+                        "description": "Controller is reachable via ssh (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "state": {
+                        "description": "Current controller state (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                },
+                "blade-status": {
+                  "type": "array",
+                  "description": "Status of blade instance (list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "index": {
+                        "description": "Blade ID (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "byte"
+                      },
+                      "name": {
+                        "description": "Blade Name (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "inserted": {
+                        "description": "Blade is inserted in the chassis (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "in-cluster": {
+                        "description": "Blade has been added to the cluster (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "ready-cluster": {
+                        "description": "Blade is marked ready in the cluster (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "able-to-ping": {
+                        "description": "Blade is pingable (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "able-to-ssh": {
+                        "description": "Blade is reachable via ssh (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "state": {
+                        "description": "Current blade state (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "partition-label": {
+                        "description": "Current partition label (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "cluster-status": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "summary-status": {
+                  "description": "Cluster Status (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "cluster-status": {
+                  "type": "array",
+                  "description": "Status messages (list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "index": {
+                        "description": "Status Index (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint16"
+                      },
+                      "status": {
+                        "description": "Status Message (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_cluster-status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:cluster-status": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "summary-status": {
+              "description": "Cluster Status (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "cluster-status": {
+              "type": "array",
+              "description": "Status messages (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "index": {
+                    "description": "Status Index (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  },
+                  "status": {
+                    "description": "Status Message (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_cluster-status_cluster-status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:cluster-status": {
+          "type": "array",
+          "description": "Status messages (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "description": "Status Index (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint16"
+              },
+              "status": {
+                "description": "Status Message (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_cluster-status_cluster-status_cluster-status-index": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:cluster-status": {
+          "type": "array",
+          "description": "Status messages (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "description": "Status Index (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint16"
+              },
+              "status": {
+                "description": "Status Message (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_cluster-status_cluster-status_cluster-status-index_index": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:index": {
+          "description": "Status Index (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_cluster-status_cluster-status_cluster-status-index_status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:status": {
+          "description": "Status Message (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_cluster-status_summary-status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:summary-status": {
+          "description": "Cluster Status (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_install-progress": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:install-progress": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "install-progress": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "stage-name": {
+                    "description": "OpenShift Installation step name (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "status": {
+                    "description": "OpenShift Installation status [Running | Failed | Success | Pending] (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_install-progress_install-progress": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:install-progress": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "stage-name": {
+                "description": "OpenShift Installation step name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "status": {
+                "description": "OpenShift Installation status [Running | Failed | Success | Pending] (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_install-progress_install-progress_install-progress-stage-name": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:install-progress": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "stage-name": {
+                "description": "OpenShift Installation step name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "status": {
+                "description": "OpenShift Installation status [Running | Failed | Success | Pending] (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_install-progress_install-progress_install-progress-stage-name_stage-name": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:stage-name": {
+          "description": "OpenShift Installation step name (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_install-progress_install-progress_install-progress-stage-name_status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:status": {
+          "description": "OpenShift Installation status [Running | Failed | Success | Pending] (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:nodes": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "node": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Name of OpenShift node (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "status": {
+                    "description": "Node status [Ready | NotReady | SchedulingDisabled | Unknown] (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "time-created": {
+                    "description": "The time at which the node was created (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "roles": {
+                    "description": "Roles this node serves (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "info": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "cpu": {
+                        "description": "Allocatable CPU cores availability (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint16"
+                      },
+                      "pods": {
+                        "description": "Allocatable Pods availability (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint16"
+                      },
+                      "memory": {
+                        "description": "Allocatable Memory availability (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "hugepages": {
+                        "description": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi] (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "memory-usage": {
+                        "description": "Percent of system memory in use. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "cpu-usage": {
+                        "description": "Percent of system cpu in use (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  },
+                  "integrity-check": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "run-status": {
+                        "description": "(non-presence)",
+                        "type": "object",
+                        "x-yang": {
+                          "type": "container",
+                          "is_presence": "false"
+                        },
+                        "properties": {
+                          "os": {
+                            "description": "Status of system OS integrity check. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "enumeration",
+                            "default": "passed",
+                            "enum": [
+                              "passed",
+                              "failed",
+                              "not-triggered",
+                              "in-progress",
+                              "error",
+                              "triggered"
+                            ]
+                          },
+                          "last-triggered": {
+                            "description": "Integrity check triggered date/time (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:node": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Name of OpenShift node (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "status": {
+                "description": "Node status [Ready | NotReady | SchedulingDisabled | Unknown] (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "time-created": {
+                "description": "The time at which the node was created (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "roles": {
+                "description": "Roles this node serves (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "info": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "cpu": {
+                    "description": "Allocatable CPU cores availability (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  },
+                  "pods": {
+                    "description": "Allocatable Pods availability (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  },
+                  "memory": {
+                    "description": "Allocatable Memory availability (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "hugepages": {
+                    "description": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi] (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "memory-usage": {
+                    "description": "Percent of system memory in use. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "cpu-usage": {
+                    "description": "Percent of system cpu in use (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              },
+              "integrity-check": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "run-status": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "os": {
+                        "description": "Status of system OS integrity check. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "passed",
+                        "enum": [
+                          "passed",
+                          "failed",
+                          "not-triggered",
+                          "in-progress",
+                          "error",
+                          "triggered"
+                        ]
+                      },
+                      "last-triggered": {
+                        "description": "Integrity check triggered date/time (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:node": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Name of OpenShift node (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "status": {
+                "description": "Node status [Ready | NotReady | SchedulingDisabled | Unknown] (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "time-created": {
+                "description": "The time at which the node was created (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "roles": {
+                "description": "Roles this node serves (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "info": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "cpu": {
+                    "description": "Allocatable CPU cores availability (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  },
+                  "pods": {
+                    "description": "Allocatable Pods availability (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  },
+                  "memory": {
+                    "description": "Allocatable Memory availability (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "hugepages": {
+                    "description": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi] (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "memory-usage": {
+                    "description": "Percent of system memory in use. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "cpu-usage": {
+                    "description": "Percent of system cpu in use (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              },
+              "integrity-check": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "run-status": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "os": {
+                        "description": "Status of system OS integrity check. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "passed",
+                        "enum": [
+                          "passed",
+                          "failed",
+                          "not-triggered",
+                          "in-progress",
+                          "error",
+                          "triggered"
+                        ]
+                      },
+                      "last-triggered": {
+                        "description": "Integrity check triggered date/time (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_info": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:info": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "cpu": {
+              "description": "Allocatable CPU cores availability (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "pods": {
+              "description": "Allocatable Pods availability (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "memory": {
+              "description": "Allocatable Memory availability (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "hugepages": {
+              "description": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi] (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "memory-usage": {
+              "description": "Percent of system memory in use. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "cpu-usage": {
+              "description": "Percent of system cpu in use (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_info_cpu": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:cpu": {
+          "description": "Allocatable CPU cores availability (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_info_cpu-usage": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:cpu-usage": {
+          "description": "Percent of system cpu in use (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_info_hugepages": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:hugepages": {
+          "description": "Allocatable Hugepages availability [hugepages-1Gi | hugepages-2Mi] (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_info_memory": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:memory": {
+          "description": "Allocatable Memory availability (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_info_memory-usage": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:memory-usage": {
+          "description": "Percent of system memory in use. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_info_pods": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:pods": {
+          "description": "Allocatable Pods availability (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_integrity-check": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:integrity-check": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "run-status": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "os": {
+                  "description": "Status of system OS integrity check. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "enumeration",
+                  "default": "passed",
+                  "enum": [
+                    "passed",
+                    "failed",
+                    "not-triggered",
+                    "in-progress",
+                    "error",
+                    "triggered"
+                  ]
+                },
+                "last-triggered": {
+                  "description": "Integrity check triggered date/time (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_integrity-check_run-status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:run-status": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "os": {
+              "description": "Status of system OS integrity check. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "passed",
+              "enum": [
+                "passed",
+                "failed",
+                "not-triggered",
+                "in-progress",
+                "error",
+                "triggered"
+              ]
+            },
+            "last-triggered": {
+              "description": "Integrity check triggered date/time (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_integrity-check_run-status_last-triggered": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:last-triggered": {
+          "description": "Integrity check triggered date/time (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_integrity-check_run-status_os": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:os": {
+          "description": "Status of system OS integrity check. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "passed",
+          "enum": [
+            "passed",
+            "failed",
+            "not-triggered",
+            "in-progress",
+            "error",
+            "triggered"
+          ]
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_name": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:name": {
+          "description": "Name of OpenShift node (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_roles": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:roles": {
+          "description": "Roles this node serves (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_run-integrity-check-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:proceed": {
+          "description": "User confirmation to proceed to run the integrity check. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "no",
+          "enum": [
+            "no",
+            "yes"
+          ]
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_run-integrity-check-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:response": {
+          "description": "Output of run integrity check. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_set-extracted-post-input": {
+      "type": "object",
+      "properties": {
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_set-extracted-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:result": {
+          "description": "Result of the cluster node extracted command. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:status": {
+          "description": "Node status [Ready | NotReady | SchedulingDisabled | Unknown] (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_nodes_node_node-name_time-created": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:time-created": {
+          "description": "The time at which the node was created (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:orchestration-manager": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "cluster-initialized": {
+              "description": "Cluster has been initialized (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "cluster-ready": {
+              "description": "Cluster is ready (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "active-node": {
+              "description": "Name of active orchestration-manager node (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "etcd-ha-initialized": {
+              "description": "ETCd HA has been initialized (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "etcd-ha-running": {
+              "description": "ETCd HA is running (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "multus-status": {
+              "description": "Multus status [healthy | unhealhy | installing | upgrading | one or more multus pods not available due to missing node | unknown]. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "kubevirt-status": {
+              "description": "Kubevirt status [healthy | unhealhy | installing | one or more virt-handler pods are not found | unknown]. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "controller-status": {
+              "type": "array",
+              "description": "Status of controller instance (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "index": {
+                    "description": "Controller ID (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "name": {
+                    "description": "Controller Name (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "inserted": {
+                    "description": "Controller inserted in the chassis (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "in-cluster": {
+                    "description": "Controller has been added to the cluster (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "ready-cluster": {
+                    "description": "Controller is marked ready in the cluster (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "able-to-ping": {
+                    "description": "Controller is pingable (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "able-to-ssh": {
+                    "description": "Controller is reachable via ssh (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "state": {
+                    "description": "Current controller state (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            },
+            "blade-status": {
+              "type": "array",
+              "description": "Status of blade instance (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "index": {
+                    "description": "Blade ID (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "name": {
+                    "description": "Blade Name (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "inserted": {
+                    "description": "Blade is inserted in the chassis (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "in-cluster": {
+                    "description": "Blade has been added to the cluster (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "ready-cluster": {
+                    "description": "Blade is marked ready in the cluster (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "able-to-ping": {
+                    "description": "Blade is pingable (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "able-to-ssh": {
+                    "description": "Blade is reachable via ssh (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "state": {
+                    "description": "Current blade state (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "partition-label": {
+                    "description": "Current partition label (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_active-node": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:active-node": {
+          "description": "Name of active orchestration-manager node (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:blade-status": {
+          "type": "array",
+          "description": "Status of blade instance (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "description": "Blade ID (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "name": {
+                "description": "Blade Name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "inserted": {
+                "description": "Blade is inserted in the chassis (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "in-cluster": {
+                "description": "Blade has been added to the cluster (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "ready-cluster": {
+                "description": "Blade is marked ready in the cluster (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "able-to-ping": {
+                "description": "Blade is pingable (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "able-to-ssh": {
+                "description": "Blade is reachable via ssh (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "state": {
+                "description": "Current blade state (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "partition-label": {
+                "description": "Current partition label (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:blade-status": {
+          "type": "array",
+          "description": "Status of blade instance (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "description": "Blade ID (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "name": {
+                "description": "Blade Name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "inserted": {
+                "description": "Blade is inserted in the chassis (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "in-cluster": {
+                "description": "Blade has been added to the cluster (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "ready-cluster": {
+                "description": "Blade is marked ready in the cluster (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "able-to-ping": {
+                "description": "Blade is pingable (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "able-to-ssh": {
+                "description": "Blade is reachable via ssh (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "state": {
+                "description": "Current blade state (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "partition-label": {
+                "description": "Current partition label (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_able-to-ping": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:able-to-ping": {
+          "description": "Blade is pingable (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_able-to-ssh": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:able-to-ssh": {
+          "description": "Blade is reachable via ssh (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_in-cluster": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:in-cluster": {
+          "description": "Blade has been added to the cluster (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_index": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:index": {
+          "description": "Blade ID (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_inserted": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:inserted": {
+          "description": "Blade is inserted in the chassis (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_name": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:name": {
+          "description": "Blade Name (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_partition-label": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:partition-label": {
+          "description": "Current partition label (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_ready-cluster": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:ready-cluster": {
+          "description": "Blade is marked ready in the cluster (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_blade-status_blade-status-index_state": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:state": {
+          "description": "Current blade state (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_cluster-initialized": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:cluster-initialized": {
+          "description": "Cluster has been initialized (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_cluster-ready": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:cluster-ready": {
+          "description": "Cluster is ready (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:controller-status": {
+          "type": "array",
+          "description": "Status of controller instance (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "description": "Controller ID (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "name": {
+                "description": "Controller Name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "inserted": {
+                "description": "Controller inserted in the chassis (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "in-cluster": {
+                "description": "Controller has been added to the cluster (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "ready-cluster": {
+                "description": "Controller is marked ready in the cluster (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "able-to-ping": {
+                "description": "Controller is pingable (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "able-to-ssh": {
+                "description": "Controller is reachable via ssh (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "state": {
+                "description": "Current controller state (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:controller-status": {
+          "type": "array",
+          "description": "Status of controller instance (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "description": "Controller ID (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "name": {
+                "description": "Controller Name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "inserted": {
+                "description": "Controller inserted in the chassis (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "in-cluster": {
+                "description": "Controller has been added to the cluster (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "ready-cluster": {
+                "description": "Controller is marked ready in the cluster (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "able-to-ping": {
+                "description": "Controller is pingable (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "able-to-ssh": {
+                "description": "Controller is reachable via ssh (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "state": {
+                "description": "Current controller state (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_able-to-ping": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:able-to-ping": {
+          "description": "Controller is pingable (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_able-to-ssh": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:able-to-ssh": {
+          "description": "Controller is reachable via ssh (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_in-cluster": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:in-cluster": {
+          "description": "Controller has been added to the cluster (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_index": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:index": {
+          "description": "Controller ID (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_inserted": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:inserted": {
+          "description": "Controller inserted in the chassis (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_name": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:name": {
+          "description": "Controller Name (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_ready-cluster": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:ready-cluster": {
+          "description": "Controller is marked ready in the cluster (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_controller-status_controller-status-index_state": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:state": {
+          "description": "Current controller state (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_etcd-ha-initialized": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:etcd-ha-initialized": {
+          "description": "ETCd HA has been initialized (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_etcd-ha-running": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:etcd-ha-running": {
+          "description": "ETCd HA is running (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_kubevirt-status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:kubevirt-status": {
+          "description": "Kubevirt status [healthy | unhealhy | installing | one or more virt-handler pods are not found | unknown]. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-chassis-cluster_cluster_orchestration-manager_multus-status": {
+      "type": "object",
+      "properties": {
+        "f5-chassis-cluster:multus-status": {
+          "description": "Multus status [healthy | unhealhy | installing | upgrading | one or more multus pods not available due to missing node | unknown]. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

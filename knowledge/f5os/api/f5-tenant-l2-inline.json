@@ -1,0 +1,431 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-tenants",
+    "description": "Model for Configuring and Querying status of Tenants.",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2024-10-22"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-tenants:tenants/tenant={tenant-name}/config/mac-data/f5-tenant-l2-inline:mac-block-size": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Configuration data for MAC block size per tenant.",
+        "description": "Configuration data for MAC block size per tenant.",
+        "operationId": "data_f5_tenants_tenants_tenant_tenant_name_config_mac_data_f5_tenant_l2_inline_mac_block_size_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tenant-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Configuration data for MAC block size per tenant.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenants_tenants_tenant_tenant-name_config_mac-data_f5-tenant-l2-inline_mac-block-size"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Configuration data for MAC block size per tenant.",
+        "description": "Configuration data for MAC block size per tenant.",
+        "operationId": "data_f5_tenants_tenants_tenant_tenant_name_config_mac_data_f5_tenant_l2_inline_mac_block_size_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tenant-name"
+          },
+          {
+            "$ref": "#/parameters/data_f5-tenants_tenants_tenant_tenant-name_config_mac-data_f5-tenant-l2-inline_mac-block-size"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf mac-block-size created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Configuration data for MAC block size per tenant.",
+        "description": "Configuration data for MAC block size per tenant.",
+        "operationId": "data_f5_tenants_tenants_tenant_tenant_name_config_mac_data_f5_tenant_l2_inline_mac_block_size_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tenant-name"
+          },
+          {
+            "$ref": "#/parameters/data_f5-tenants_tenants_tenant_tenant-name_config_mac-data_f5-tenant-l2-inline_mac-block-size"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf mac-block-size updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Configuration data for MAC block size per tenant.",
+        "description": "Configuration data for MAC block size per tenant.",
+        "operationId": "data_f5_tenants_tenants_tenant_tenant_name_config_mac_data_f5_tenant_l2_inline_mac_block_size_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tenant-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "cpu-allocation-node": {
+      "name": "cpu-allocation-node",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "cpus-id": {
+      "name": "cpus-id",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "data_f5-tenants_tenants_tenant_tenant-name_config_mac-data_f5-tenant-l2-inline_mac-block-size": {
+      "name": "mac-block-size",
+      "in": "body",
+      "description": "Configuration data for MAC block size per tenant.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-tenants_tenants_tenant_tenant-name_config_mac-data_f5-tenant-l2-inline_mac-block-size"
+      }
+    },
+    "dp-hugepages-slot": {
+      "name": "dp-hugepages-slot",
+      "in": "path",
+      "description": "instance id (aka slot for now) associated with datapath huge page path.",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    },
+    "dynamic-service-ids-id": {
+      "name": "dynamic-service-ids-id",
+      "in": "path",
+      "description": "List of Service IDs dynamically assigned to this tenant.",
+      "required": true,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "f5-tenant-l2-inline_mac-block-mac": {
+      "name": "f5-tenant-l2-inline_mac-block-mac",
+      "in": "path",
+      "description": "The list of contigous MAC addresses allocated for the tenant consumption.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "hugepages-slot": {
+      "name": "hugepages-slot",
+      "in": "path",
+      "description": "instance id (aka slot for now) associated with huge page path.",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    },
+    "instance-node": {
+      "name": "instance-node",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    },
+    "instance-pod-name": {
+      "name": "instance-pod-name",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "mac-ndi-set-mac": {
+      "name": "mac-ndi-set-mac",
+      "in": "path",
+      "description": "mac-address per tenant-ndi. mac-address is generated by Network Manager per ndi\nand assigned to each tenant associated with vlan or ndi.vlan",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "mac-ndi-set-ndi": {
+      "name": "mac-ndi-set-ndi",
+      "in": "path",
+      "description": "ndi from vlan id reference from l2 vlan table.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "module-provisioning-module": {
+      "name": "module-provisioning-module",
+      "in": "path",
+      "description": "Next tenant module name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "nodes-id": {
+      "name": "nodes-id",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    },
+    "sub-module-sub-mod-id": {
+      "name": "sub-module-sub-mod-id",
+      "in": "path",
+      "description": "Unique ID per sub-module on this tenant.",
+      "required": true,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "tenant-name": {
+      "name": "tenant-name",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "vlans-id": {
+      "name": "vlans-id",
+      "in": "path",
+      "description": "VLAN ID from L2 VLAN table",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-tenants_tenants_tenant_tenant-name_config_mac-data_f5-tenant-l2-inline_mac-block-size": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-l2-inline:mac-block-size": {
+          "description": "Configuration data for MAC block size per tenant. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "one",
+          "enum": [
+            "one",
+            "small",
+            "medium",
+            "large"
+          ]
+        }
+      }
+    }
+  }
+}

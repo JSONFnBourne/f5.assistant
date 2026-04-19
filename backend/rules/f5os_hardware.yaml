@@ -1,0 +1,22 @@
+platform: f5os
+
+rules:
+  - name: tx_bias_low_alarm
+    description: Transmitter bias low alarm on portgroup lanes
+    severity: warning
+    category: hardware
+    patterns:
+      - regex: 'Transmitter bias low alarm'
+    recommendation: |
+      Check physical transceiver. Clear the alert on the controller via docker exec alert-service:
+      docker exec alert-service /confd/test/sendAlert -i 262402 -r clear -n txBias -s "Portgroup <ID>"
+
+  - name: tx_power_low_alarm
+    description: Transmitter power low alarm on portgroup lanes
+    severity: warning
+    category: hardware
+    patterns:
+      - regex: 'Transmitter power low alarm'
+    recommendation: |
+      Check physical transceiver power. Clear the alert on the partition via docker:
+      docker exec partition_alert_service /confd/test/sendAlert -i 262400 -r clear -n txPwr -s "Portgroup <ID>"

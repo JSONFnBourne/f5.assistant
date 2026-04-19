@@ -1,0 +1,494 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-utils-file-transfer",
+    "description": "Provide support to do file transfer operations on the System.",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2024-04-30"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-utils-file-transfer:file/f5-file-download:download-file": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "file download options.",
+        "description": "file download options.",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_download_download_file_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "file download options.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-download_download-file"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "file download options.",
+        "description": "file download options.",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_download_download_file_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_f5-file-download_download-file-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container download-file created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "file download options.",
+        "description": "file download options.",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_download_download_file_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_f5-file-download_download-file"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container download-file created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "file download options.",
+        "description": "file download options.",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_download_download_file_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_f5-file-download_download-file"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container download-file updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "file download options.",
+        "description": "file download options.",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_download_download_file_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-download:download-file/f5-file-download:start-download": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_f5_file_download_download_file_f5_file_download_start_download_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_f5-file-download_download-file_f5-file-download_start-download-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-download_download-file_f5-file-download_start-download-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-download:download-file/f5-file-download:start-download/f5-file-download:input": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-download:download-file/f5-file-download:start-download/f5-file-download:input/f5-file-download:file-name": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-download:download-file/f5-file-download:start-download/f5-file-download:input/f5-file-download:file-path": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-download:download-file/f5-file-download:start-download/f5-file-download:output": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-download:download-file/f5-file-download:start-download/f5-file-download:output/f5-file-download:response-message": {
+    },
+    "/data/f5-utils-file-transfer:file/f5-file-download:download-file/f5-file-download:start-download/f5-file-download:output/f5-file-download:response-code": {
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "data_f5-utils-file-transfer_file_f5-file-download_download-file": {
+      "name": "download-file",
+      "in": "body",
+      "description": "file download options.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-download_download-file"
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-download_download-file-post": {
+      "name": "download-file",
+      "in": "body",
+      "description": "file download options.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-download_download-file-post"
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-download_download-file_f5-file-download_start-download-post-input": {
+      "name": "start-download",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_f5-file-download_download-file_f5-file-download_start-download-post-input"
+      }
+    },
+    "known-host-remote-host": {
+      "name": "known-host-remote-host",
+      "in": "path",
+      "description": "Remote System FQDN or IPv4/IPv6 address.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "transfer-operation-local-file-path": {
+      "name": "transfer-operation-local-file-path",
+      "in": "path",
+      "description": "local file path.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-operation": {
+      "name": "transfer-operation-operation",
+      "in": "path",
+      "description": "file transfer operation\n              such as file import, file export\n              file delete",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-protocol": {
+      "name": "transfer-operation-protocol",
+      "in": "path",
+      "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-remote-file-path": {
+      "name": "transfer-operation-remote-file-path",
+      "in": "path",
+      "description": "remote file path.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-remote-host": {
+      "name": "transfer-operation-remote-host",
+      "in": "path",
+      "description": "remote host.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-utils-file-transfer_file_f5-file-download_download-file": {
+      "type": "object",
+      "properties": {
+        "f5-file-download:download-file": {
+          "description": "file download options. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-download_download-file-post": {
+      "type": "object",
+      "properties": {
+        "f5-file-download:file-name": {
+          "description": "file-name (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-file-download:file-path": {
+          "description": "file path (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-download_download-file_f5-file-download_start-download-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-file-download:file-name": {
+          "description": "file-name (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-file-download:file-path": {
+          "description": "file path (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_f5-file-download_download-file_f5-file-download_start-download-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-file-download:response-message": {
+          "description": "http response message (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-file-download:response-code": {
+          "description": "http response code (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    }
+  }
+}

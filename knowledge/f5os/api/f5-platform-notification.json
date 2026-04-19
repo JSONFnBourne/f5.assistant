@@ -1,0 +1,2783 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-platform-notification",
+    "description": "Yang for platform stat notification streams.",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2022-07-04"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/streams/f5-platform-notification:platform-stats": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_platform_notification_platform_stats_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Controller/Partition(Blade)/Appliance",
+        "description": "Controller/Partition(Blade)/Appliance",
+        "operationId": "data_f5_platform_notification_platform_stats_component_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Controller/Partition(Blade)/Appliance",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Platform name",
+        "description": "Platform name",
+        "operationId": "data_f5_platform_notification_platform_stats_component_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform name",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/cpu-stats": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Platform CPU stats",
+        "description": "Platform CPU stats",
+        "operationId": "data_f5_platform_notification_platform_stats_component_cpu_stats_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform CPU stats",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_cpu-stats"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/cpu-stats/cpu-threads": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_platform_notification_platform_stats_component_cpu_stats_cpu_threads_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/cpu-stats/cpu-threads/cpu-thread": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The CPU thread",
+        "description": "The CPU thread",
+        "operationId": "data_f5_platform_notification_platform_stats_component_cpu_stats_cpu_threads_cpu_thread_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "The CPU thread",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads_cpu-thread"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/cpu-stats/cpu-threads/cpu-thread=": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The CPU thread",
+        "description": "The CPU thread",
+        "operationId": "data_f5_platform_notification_platform_stats_component_cpu_stats_cpu_threads_cpu_thread__get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "The CPU thread",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads_cpu-thread_"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/cpu-stats/cpu-threads/cpu-thread=/thread-index": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "CPU thread number",
+        "description": "CPU thread number",
+        "operationId": "data_f5_platform_notification_platform_stats_component_cpu_stats_cpu_threads_cpu_thread__thread_index_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "CPU thread number",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads_cpu-thread__thread-index"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/cpu-stats/cpu-threads/cpu-thread=/busy-percent": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Per CPU thread utilization total",
+        "description": "Per CPU thread utilization total",
+        "operationId": "data_f5_platform_notification_platform_stats_component_cpu_stats_cpu_threads_cpu_thread__busy_percent_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Per CPU thread utilization total",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads_cpu-thread__busy-percent"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Platform disk stats",
+        "description": "Platform disk stats",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform disk stats",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/used-percent": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Disk used percent",
+        "description": "Disk used percent",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_used_percent_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Disk used percent",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_used-percent"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list/disk": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_disk_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list/disk=": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_disk__get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk_"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list/disk=/disk-name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Disk name",
+        "description": "Disk name",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_disk__disk_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Disk name",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__disk-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list/disk=/total-iops": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Total Read/Write IOPS",
+        "description": "Total Read/Write IOPS",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_disk__total_iops_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Total Read/Write IOPS",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__total-iops"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list/disk=/read-iops": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Total Read IOPS",
+        "description": "Total Read IOPS",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_disk__read_iops_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Total Read IOPS",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__read-iops"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list/disk=/read-bytes": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Total Read Bytes",
+        "description": "Total Read Bytes",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_disk__read_bytes_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Total Read Bytes",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__read-bytes"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list/disk=/write-iops": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Total Write IOPS",
+        "description": "Total Write IOPS",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_disk__write_iops_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Total Write IOPS",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__write-iops"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/disk-stats/disk-list/disk=/write-bytes": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Total Write Bytes",
+        "description": "Total Write Bytes",
+        "operationId": "data_f5_platform_notification_platform_stats_component_disk_stats_disk_list_disk__write_bytes_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Total Write Bytes",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__write-bytes"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/memory-stats": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Platform memory stats",
+        "description": "Platform memory stats",
+        "operationId": "data_f5_platform_notification_platform_stats_component_memory_stats_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform memory stats",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_memory-stats"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/memory-stats/available": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Memory available on platform, bytes",
+        "description": "Memory available on platform, bytes",
+        "operationId": "data_f5_platform_notification_platform_stats_component_memory_stats_available_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Memory available on platform, bytes",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_memory-stats_available"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/memory-stats/free": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Memory unused by the platform, in bytes",
+        "description": "Memory unused by the platform, in bytes",
+        "operationId": "data_f5_platform_notification_platform_stats_component_memory_stats_free_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Memory unused by the platform, in bytes",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_memory-stats_free"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/memory-stats/used-percent": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Memory used by the platform, as a percentage of total memory",
+        "description": "Memory used by the platform, as a percentage of total memory",
+        "operationId": "data_f5_platform_notification_platform_stats_component_memory_stats_used_percent_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Memory used by the platform, as a percentage of total memory",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_memory-stats_used-percent"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/memory-stats/platform-total": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Total usable memory for platform, in bytes",
+        "description": "Total usable memory for platform, in bytes",
+        "operationId": "data_f5_platform_notification_platform_stats_component_memory_stats_platform_total_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Total usable memory for platform, in bytes",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_memory-stats_platform-total"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/memory-stats/platform-used": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Memory used by platform, in bytes",
+        "description": "Memory used by platform, in bytes",
+        "operationId": "data_f5_platform_notification_platform_stats_component_memory_stats_platform_used_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Memory used by platform, in bytes",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_memory-stats_platform-used"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Platform interface counters",
+        "description": "Platform interface counters",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform interface counters",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters/interface-list": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_interface_list_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters_interface-list"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters/interface-list/interface": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_interface_list_interface_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters/interface-list/interface=": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_interface_list_interface__get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface_"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters/interface-list/interface=/interface-name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "interface name",
+        "description": "interface name",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_interface_list_interface__interface_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "interface name",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__interface-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters/interface-list/interface=/ifc-bytes-in": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Number of bytes in",
+        "description": "Number of bytes in",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_interface_list_interface__ifc_bytes_in_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Number of bytes in",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__ifc-bytes-in"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters/interface-list/interface=/ifc-packets-in": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Number of packets in",
+        "description": "Number of packets in",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_interface_list_interface__ifc_packets_in_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Number of packets in",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__ifc-packets-in"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters/interface-list/interface=/ifc-bytes-out": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Number of bytes out",
+        "description": "Number of bytes out",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_interface_list_interface__ifc_bytes_out_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Number of bytes out",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__ifc-bytes-out"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/streams/f5-platform-notification:platform-stats/component/interface-counters/interface-list/interface=/ifc-packets-out": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Number of packets out",
+        "description": "Number of packets out",
+        "operationId": "data_f5_platform_notification_platform_stats_component_interface_counters_interface_list_interface__ifc_packets_out_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Number of packets out",
+            "schema": {
+              "$ref": "#/definitions/data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__ifc-packets-out"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-platform-notification_platform-stats": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:platform-stats": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "component": {
+              "description": "Controller/Partition(Blade)/Appliance (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "name": {
+                  "description": "Platform name (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "cpu-stats": {
+                  "description": "Platform CPU stats (non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "cpu-threads": {
+                      "description": "(non-presence)",
+                      "type": "object",
+                      "x-yang": {
+                        "type": "container",
+                        "is_presence": "false"
+                      },
+                      "properties": {
+                        "cpu-thread": {
+                          "type": "array",
+                          "description": "The CPU thread (list)",
+                          "x-yang": {
+                            "type": "list"
+                          },
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "thread-index": {
+                                "description": "CPU thread number (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "byte"
+                              },
+                              "busy-percent": {
+                                "description": "Per CPU thread utilization total (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "byte"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "disk-stats": {
+                  "description": "Platform disk stats (non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "used-percent": {
+                      "description": "Disk used percent (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "byte"
+                    },
+                    "disk-list": {
+                      "description": "(non-presence)",
+                      "type": "object",
+                      "x-yang": {
+                        "type": "container",
+                        "is_presence": "false"
+                      },
+                      "properties": {
+                        "disk": {
+                          "type": "array",
+                          "description": "(list)",
+                          "x-yang": {
+                            "type": "list"
+                          },
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "disk-name": {
+                                "description": "Disk name (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "string",
+                                "format": "string"
+                              },
+                              "total-iops": {
+                                "description": "Total Read/Write IOPS (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              },
+                              "read-iops": {
+                                "description": "Total Read IOPS (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              },
+                              "read-bytes": {
+                                "description": "Total Read Bytes (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              },
+                              "write-iops": {
+                                "description": "Total Write IOPS (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              },
+                              "write-bytes": {
+                                "description": "Total Write Bytes (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "memory-stats": {
+                  "description": "Platform memory stats (non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "available": {
+                      "description": "Memory available on platform, bytes (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "uint64"
+                    },
+                    "free": {
+                      "description": "Memory unused by the platform, in bytes (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "uint64"
+                    },
+                    "used-percent": {
+                      "description": "Memory used by the platform, as a percentage of total memory (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "byte"
+                    },
+                    "platform-total": {
+                      "description": "Total usable memory for platform, in bytes (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "uint64"
+                    },
+                    "platform-used": {
+                      "description": "Memory used by platform, in bytes (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "integer",
+                      "format": "uint64"
+                    }
+                  }
+                },
+                "interface-counters": {
+                  "description": "Platform interface counters (non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "interface-list": {
+                      "description": "(non-presence)",
+                      "type": "object",
+                      "x-yang": {
+                        "type": "container",
+                        "is_presence": "false"
+                      },
+                      "properties": {
+                        "interface": {
+                          "type": "array",
+                          "description": "(list)",
+                          "x-yang": {
+                            "type": "list"
+                          },
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "interface-name": {
+                                "description": "interface name (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "string",
+                                "format": "string"
+                              },
+                              "ifc-bytes-in": {
+                                "description": "Number of bytes in (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              },
+                              "ifc-packets-in": {
+                                "description": "Number of packets in (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              },
+                              "ifc-bytes-out": {
+                                "description": "Number of bytes out (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              },
+                              "ifc-packets-out": {
+                                "description": "Number of packets out (leaf)",
+                                "x-yang": {
+                                  "type": "leaf"
+                                },
+                                "type": "integer",
+                                "format": "uint64"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:component": {
+          "description": "Controller/Partition(Blade)/Appliance (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "name": {
+              "description": "Platform name (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "cpu-stats": {
+              "description": "Platform CPU stats (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "cpu-threads": {
+                  "description": "(non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "cpu-thread": {
+                      "type": "array",
+                      "description": "The CPU thread (list)",
+                      "x-yang": {
+                        "type": "list"
+                      },
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "thread-index": {
+                            "description": "CPU thread number (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "byte"
+                          },
+                          "busy-percent": {
+                            "description": "Per CPU thread utilization total (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "byte"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "disk-stats": {
+              "description": "Platform disk stats (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "used-percent": {
+                  "description": "Disk used percent (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "byte"
+                },
+                "disk-list": {
+                  "description": "(non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "disk": {
+                      "type": "array",
+                      "description": "(list)",
+                      "x-yang": {
+                        "type": "list"
+                      },
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "disk-name": {
+                            "description": "Disk name (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "total-iops": {
+                            "description": "Total Read/Write IOPS (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          },
+                          "read-iops": {
+                            "description": "Total Read IOPS (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          },
+                          "read-bytes": {
+                            "description": "Total Read Bytes (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          },
+                          "write-iops": {
+                            "description": "Total Write IOPS (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          },
+                          "write-bytes": {
+                            "description": "Total Write Bytes (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "memory-stats": {
+              "description": "Platform memory stats (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "available": {
+                  "description": "Memory available on platform, bytes (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "free": {
+                  "description": "Memory unused by the platform, in bytes (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "used-percent": {
+                  "description": "Memory used by the platform, as a percentage of total memory (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "byte"
+                },
+                "platform-total": {
+                  "description": "Total usable memory for platform, in bytes (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                },
+                "platform-used": {
+                  "description": "Memory used by platform, in bytes (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "uint64"
+                }
+              }
+            },
+            "interface-counters": {
+              "description": "Platform interface counters (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "interface-list": {
+                  "description": "(non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "interface": {
+                      "type": "array",
+                      "description": "(list)",
+                      "x-yang": {
+                        "type": "list"
+                      },
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "interface-name": {
+                            "description": "interface name (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "ifc-bytes-in": {
+                            "description": "Number of bytes in (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          },
+                          "ifc-packets-in": {
+                            "description": "Number of packets in (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          },
+                          "ifc-bytes-out": {
+                            "description": "Number of bytes out (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          },
+                          "ifc-packets-out": {
+                            "description": "Number of packets out (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "integer",
+                            "format": "uint64"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_cpu-stats": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:cpu-stats": {
+          "description": "Platform CPU stats (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "cpu-threads": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "cpu-thread": {
+                  "type": "array",
+                  "description": "The CPU thread (list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "thread-index": {
+                        "description": "CPU thread number (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "byte"
+                      },
+                      "busy-percent": {
+                        "description": "Per CPU thread utilization total (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "byte"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:cpu-threads": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "cpu-thread": {
+              "type": "array",
+              "description": "The CPU thread (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "thread-index": {
+                    "description": "CPU thread number (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "busy-percent": {
+                    "description": "Per CPU thread utilization total (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads_cpu-thread": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:cpu-thread": {
+          "type": "array",
+          "description": "The CPU thread (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "thread-index": {
+                "description": "CPU thread number (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "busy-percent": {
+                "description": "Per CPU thread utilization total (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads_cpu-thread_": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:cpu-thread": {
+          "type": "array",
+          "description": "The CPU thread (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "thread-index": {
+                "description": "CPU thread number (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "busy-percent": {
+                "description": "Per CPU thread utilization total (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads_cpu-thread__busy-percent": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:busy-percent": {
+          "description": "Per CPU thread utilization total (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_cpu-stats_cpu-threads_cpu-thread__thread-index": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:thread-index": {
+          "description": "CPU thread number (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:disk-stats": {
+          "description": "Platform disk stats (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "used-percent": {
+              "description": "Disk used percent (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "disk-list": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "disk": {
+                  "type": "array",
+                  "description": "(list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "disk-name": {
+                        "description": "Disk name (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "total-iops": {
+                        "description": "Total Read/Write IOPS (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "read-iops": {
+                        "description": "Total Read IOPS (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "read-bytes": {
+                        "description": "Total Read Bytes (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "write-iops": {
+                        "description": "Total Write IOPS (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "write-bytes": {
+                        "description": "Total Write Bytes (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:disk-list": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "disk": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "disk-name": {
+                    "description": "Disk name (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "total-iops": {
+                    "description": "Total Read/Write IOPS (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "read-iops": {
+                    "description": "Total Read IOPS (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "read-bytes": {
+                    "description": "Total Read Bytes (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "write-iops": {
+                    "description": "Total Write IOPS (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "write-bytes": {
+                    "description": "Total Write Bytes (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:disk": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "disk-name": {
+                "description": "Disk name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "total-iops": {
+                "description": "Total Read/Write IOPS (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "read-iops": {
+                "description": "Total Read IOPS (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "read-bytes": {
+                "description": "Total Read Bytes (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "write-iops": {
+                "description": "Total Write IOPS (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "write-bytes": {
+                "description": "Total Write Bytes (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk_": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:disk": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "disk-name": {
+                "description": "Disk name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "total-iops": {
+                "description": "Total Read/Write IOPS (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "read-iops": {
+                "description": "Total Read IOPS (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "read-bytes": {
+                "description": "Total Read Bytes (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "write-iops": {
+                "description": "Total Write IOPS (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "write-bytes": {
+                "description": "Total Write Bytes (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__disk-name": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:disk-name": {
+          "description": "Disk name (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__read-bytes": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:read-bytes": {
+          "description": "Total Read Bytes (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__read-iops": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:read-iops": {
+          "description": "Total Read IOPS (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__total-iops": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:total-iops": {
+          "description": "Total Read/Write IOPS (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__write-bytes": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:write-bytes": {
+          "description": "Total Write Bytes (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_disk-list_disk__write-iops": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:write-iops": {
+          "description": "Total Write IOPS (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_disk-stats_used-percent": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:used-percent": {
+          "description": "Disk used percent (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:interface-counters": {
+          "description": "Platform interface counters (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "interface-list": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "interface": {
+                  "type": "array",
+                  "description": "(list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "interface-name": {
+                        "description": "interface name (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "ifc-bytes-in": {
+                        "description": "Number of bytes in (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "ifc-packets-in": {
+                        "description": "Number of packets in (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "ifc-bytes-out": {
+                        "description": "Number of bytes out (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "ifc-packets-out": {
+                        "description": "Number of packets out (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters_interface-list": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:interface-list": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "interface": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "interface-name": {
+                    "description": "interface name (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "ifc-bytes-in": {
+                    "description": "Number of bytes in (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "ifc-packets-in": {
+                    "description": "Number of packets in (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "ifc-bytes-out": {
+                    "description": "Number of bytes out (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "ifc-packets-out": {
+                    "description": "Number of packets out (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:interface": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "interface-name": {
+                "description": "interface name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "ifc-bytes-in": {
+                "description": "Number of bytes in (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "ifc-packets-in": {
+                "description": "Number of packets in (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "ifc-bytes-out": {
+                "description": "Number of bytes out (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "ifc-packets-out": {
+                "description": "Number of packets out (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface_": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:interface": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "interface-name": {
+                "description": "interface name (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "ifc-bytes-in": {
+                "description": "Number of bytes in (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "ifc-packets-in": {
+                "description": "Number of packets in (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "ifc-bytes-out": {
+                "description": "Number of bytes out (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              },
+              "ifc-packets-out": {
+                "description": "Number of packets out (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "uint64"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__ifc-bytes-in": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:ifc-bytes-in": {
+          "description": "Number of bytes in (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__ifc-bytes-out": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:ifc-bytes-out": {
+          "description": "Number of bytes out (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__ifc-packets-in": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:ifc-packets-in": {
+          "description": "Number of packets in (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__ifc-packets-out": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:ifc-packets-out": {
+          "description": "Number of packets out (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_interface-counters_interface-list_interface__interface-name": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:interface-name": {
+          "description": "interface name (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_memory-stats": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:memory-stats": {
+          "description": "Platform memory stats (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "available": {
+              "description": "Memory available on platform, bytes (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            },
+            "free": {
+              "description": "Memory unused by the platform, in bytes (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            },
+            "used-percent": {
+              "description": "Memory used by the platform, as a percentage of total memory (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "platform-total": {
+              "description": "Total usable memory for platform, in bytes (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            },
+            "platform-used": {
+              "description": "Memory used by platform, in bytes (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_memory-stats_available": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:available": {
+          "description": "Memory available on platform, bytes (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_memory-stats_free": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:free": {
+          "description": "Memory unused by the platform, in bytes (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_memory-stats_platform-total": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:platform-total": {
+          "description": "Total usable memory for platform, in bytes (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_memory-stats_platform-used": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:platform-used": {
+          "description": "Memory used by platform, in bytes (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_memory-stats_used-percent": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:used-percent": {
+          "description": "Memory used by the platform, as a percentage of total memory (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-platform-notification_platform-stats_component_name": {
+      "type": "object",
+      "properties": {
+        "f5-platform-notification:name": {
+          "description": "Platform name (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-interfaces",
+    "description": "Model for managing network interfaces and subinterfaces.  This\nmodule also defines convenience types / groupings for other\nmodels to create references to interfaces:\n\n base-interface-ref (type) -  reference to a base interface\n interface-ref (grouping) -  container for reference to a\n   interface + subinterface\n interface-ref-state (grouping) - container for read-only\n   (opstate) reference to interface + subinterface\n\nThis model reuses data items defined in the IETF YANG model for\ninterfaces described by RFC 7223 with an alternate structure\n(particularly for operational state data) and with\nadditional configuration items.\n\nPortions of this code were derived from IETF RFC 7223.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2019-11-19"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "interface-name": {
+      "name": "interface-name",
+      "in": "path",
+      "description": "References the name of the interface",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "subinterface-index": {
+      "name": "subinterface-index",
+      "in": "path",
+      "description": "The index number of the subinterface -- used to address\nthe logical interface",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+  }
+}

@@ -1,0 +1,4467 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-utils-file-transfer",
+    "description": "Provide support to do file transfer operations on the System.",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2024-04-30"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-utils-file-transfer:file": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "File utility commands.",
+        "description": "File utility commands.",
+        "operationId": "data_f5_utils_file_transfer_file_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "File utility commands.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "File utility commands.",
+        "description": "File utility commands.",
+        "operationId": "data_f5_utils_file_transfer_file_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container file created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "File utility commands.",
+        "description": "File utility commands.",
+        "operationId": "data_f5_utils_file_transfer_file_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container file created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "File utility commands.",
+        "description": "File utility commands.",
+        "operationId": "data_f5_utils_file_transfer_file_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container file updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "File utility commands.",
+        "description": "File utility commands.",
+        "operationId": "data_f5_utils_file_transfer_file_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/import": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Initiate an import of the remote file to the System.",
+        "description": "Initiate an import of the remote file to the System.",
+        "operationId": "data_f5_utils_file_transfer_file_import_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_import-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_import-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/import/input": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/insecure": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/username": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/web-token": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/password": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/remote-url": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/remote-host": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/remote-port": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/remote-file": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/protocol": {
+    },
+    "/data/f5-utils-file-transfer:file/import/input/local-file": {
+    },
+    "/data/f5-utils-file-transfer:file/import/output": {
+    },
+    "/data/f5-utils-file-transfer:file/import/output/result": {
+    },
+    "/data/f5-utils-file-transfer:file/import/output/resultint": {
+    },
+    "/data/f5-utils-file-transfer:file/import/output/operation-id": {
+    },
+    "/data/f5-utils-file-transfer:file/export": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Initiate an export of the file to the remote system.",
+        "description": "Initiate an export of the file to the remote system.",
+        "operationId": "data_f5_utils_file_transfer_file_export_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_export-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_export-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/export/input": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/insecure": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/username": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/web-token": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/password": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/local-file": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/remote-url": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/remote-host": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/remote-port": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/remote-file": {
+    },
+    "/data/f5-utils-file-transfer:file/export/input/protocol": {
+    },
+    "/data/f5-utils-file-transfer:file/export/output": {
+    },
+    "/data/f5-utils-file-transfer:file/export/output/result": {
+    },
+    "/data/f5-utils-file-transfer:file/export/output/resultint": {
+    },
+    "/data/f5-utils-file-transfer:file/export/output/operation-id": {
+    },
+    "/data/f5-utils-file-transfer:file/abort-transfer": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Abort the file transfer operation",
+        "description": "Abort the file transfer operation",
+        "operationId": "data_f5_utils_file_transfer_file_abort_transfer_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_abort-transfer-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_abort-transfer-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/abort-transfer/input": {
+    },
+    "/data/f5-utils-file-transfer:file/abort-transfer/input/operation-id": {
+    },
+    "/data/f5-utils-file-transfer:file/abort-transfer/output": {
+    },
+    "/data/f5-utils-file-transfer:file/abort-transfer/output/result": {
+    },
+    "/data/f5-utils-file-transfer:file/delete": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Delete an existing file. The result will indicate a success or failure.",
+        "description": "Delete an existing file. The result will indicate a success or failure.",
+        "operationId": "data_f5_utils_file_transfer_file_delete_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_delete-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_delete-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/delete/input": {
+    },
+    "/data/f5-utils-file-transfer:file/delete/input/file-name": {
+    },
+    "/data/f5-utils-file-transfer:file/delete/output": {
+    },
+    "/data/f5-utils-file-transfer:file/delete/output/result": {
+    },
+    "/data/f5-utils-file-transfer:file/delete/output/resultint": {
+    },
+    "/data/f5-utils-file-transfer:file/list": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Display list of directories/files in the given path.",
+        "description": "Display list of directories/files in the given path.",
+        "operationId": "data_f5_utils_file_transfer_file_list_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_list-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_list-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/list/input": {
+    },
+    "/data/f5-utils-file-transfer:file/list/input/path": {
+    },
+    "/data/f5-utils-file-transfer:file/list/output": {
+    },
+    "/data/f5-utils-file-transfer:file/list/output/entries": {
+    },
+    "/data/f5-utils-file-transfer:file/list/output/entries=/name": {
+    },
+    "/data/f5-utils-file-transfer:file/list/output/entries=/date": {
+    },
+    "/data/f5-utils-file-transfer:file/list/output/entries=/size": {
+    },
+    "/data/f5-utils-file-transfer:file/transfer-status": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Display the status of file operation.\nThe result will indicate an error, or percent complete.",
+        "description": "Display the status of file operation.\nThe result will indicate an error, or percent complete.",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_status_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_transfer-status-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-status-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-status/input": {
+    },
+    "/data/f5-utils-file-transfer:file/transfer-status/input/file-name": {
+    },
+    "/data/f5-utils-file-transfer:file/transfer-status/output": {
+    },
+    "/data/f5-utils-file-transfer:file/transfer-status/output/result": {
+    },
+    "/data/f5-utils-file-transfer:file/transfer-status/output/resultint": {
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Configure known hosts for file transfer using scp/sftp.",
+        "description": "Configure known hosts for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Configure known hosts for file transfer using scp/sftp.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Configure known hosts for file transfer using scp/sftp.",
+        "description": "Configure known hosts for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container known-hosts created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Configure known hosts for file transfer using scp/sftp.",
+        "description": "Configure known hosts for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container known-hosts created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Configure known hosts for file transfer using scp/sftp.",
+        "description": "Configure known hosts for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container known-hosts updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Configure known hosts for file transfer using scp/sftp.",
+        "description": "Configure known hosts for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host": {
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Add remote-host to known_hosts.",
+        "description": "Add remote-host to known_hosts.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Add remote-host to known_hosts.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Add remote-host to known_hosts.",
+        "description": "Add remote-host to known_hosts.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "list known-host created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Add remote-host to known_hosts.",
+        "description": "Add remote-host to known_hosts.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "list known-host updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Add remote-host to known_hosts.",
+        "description": "Add remote-host to known_hosts.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/remote-host": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_remote_host_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Remote System FQDN or IPv4/IPv6 address.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_remote-host"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_remote_host_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_remote-host"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf remote-host created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_remote_host_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf remote-host updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_remote_host_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/config/remote-host": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_remote_host_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Remote System FQDN or IPv4/IPv6 address.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_remote-host"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_remote_host_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_remote-host"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf remote-host created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_remote_host_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf remote-host updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_remote_host_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/config/key-type": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Key type to be used to obtain fingerprint.",
+        "description": "Key type to be used to obtain fingerprint.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_key_type_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Key type to be used to obtain fingerprint.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_key-type"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Key type to be used to obtain fingerprint.",
+        "description": "Key type to be used to obtain fingerprint.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_key_type_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_key-type"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf key-type created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Key type to be used to obtain fingerprint.",
+        "description": "Key type to be used to obtain fingerprint.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_key_type_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_key-type"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf key-type updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Key type to be used to obtain fingerprint.",
+        "description": "Key type to be used to obtain fingerprint.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_key_type_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/config/fingerprint": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Fingerprint received from remote-host.",
+        "description": "Fingerprint received from remote-host.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_fingerprint_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fingerprint received from remote-host.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_fingerprint"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Fingerprint received from remote-host.",
+        "description": "Fingerprint received from remote-host.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_fingerprint_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_fingerprint"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf fingerprint created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Fingerprint received from remote-host.",
+        "description": "Fingerprint received from remote-host.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_fingerprint_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          },
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_fingerprint"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf fingerprint updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Fingerprint received from remote-host.",
+        "description": "Fingerprint received from remote-host.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_config_fingerprint_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Operational stat data from known hosts.",
+        "description": "Operational stat data from known hosts.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operational stat data from known hosts.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/state/remote-host": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Remote System FQDN or IPv4/IPv6 address.",
+        "description": "Remote System FQDN or IPv4/IPv6 address.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_state_remote_host_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Remote System FQDN or IPv4/IPv6 address.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_state_remote-host"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/state/key-type": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Key type to be used to obtain fingerprint.",
+        "description": "Key type to be used to obtain fingerprint.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_state_key_type_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Key type to be used to obtain fingerprint.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_state_key-type"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/known-hosts/known-host={known-host-remote-host}/state/fingerprint": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Fingerprint received from remote-host.",
+        "description": "Fingerprint received from remote-host.",
+        "operationId": "data_f5_utils_file_transfer_file_known_hosts_known_host_known_host_remote_host_state_fingerprint_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/known-host-remote-host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fingerprint received from remote-host.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_state_fingerprint"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "file transfer operation Status",
+        "description": "file transfer operation Status",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "file transfer operation Status",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}/operation-id": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "An unique id for file transfer operation",
+        "description": "An unique id for file transfer operation",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_operation_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An unique id for file transfer operation",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_operation-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}/operation": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "file transfer operation\n              such as file import, file export\n              file delete",
+        "description": "file transfer operation\n              such as file import, file export\n              file delete",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_operation_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "file transfer operation\n              such as file import, file export\n              file delete",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_operation"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}/protocol": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP",
+        "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_protocol_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_protocol"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}/local-file-path": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "local file path.",
+        "description": "local file path.",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_local_file_path_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "local file path.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_local-file-path"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}/remote-host": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "remote host.",
+        "description": "remote host.",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_remote_host_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "remote host.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_remote-host"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}/remote-file-path": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "remote file path.",
+        "description": "remote file path.",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_remote_file_path_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "remote file path.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_remote-file-path"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}/status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "transfer status.",
+        "description": "transfer status.",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "transfer status.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/transfer-operations/transfer-operation={transfer-operation-local-file-path},{transfer-operation-remote-host},{transfer-operation-remote-file-path},{transfer-operation-operation},{transfer-operation-protocol}/timestamp": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "transfer progress on any timestamp.",
+        "description": "transfer progress on any timestamp.",
+        "operationId": "data_f5_utils_file_transfer_file_transfer_operations_transfer_operation_transfer_operation_local_file_path_transfer_operation_remote_host_transfer_operation_remote_file_path_transfer_operation_operation_transfer_operation_protocol_timestamp_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/transfer-operation-local-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-host"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-remote-file-path"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-operation"
+          },
+          {
+            "$ref": "#/parameters/transfer-operation-protocol"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "transfer progress on any timestamp.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_timestamp"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/config/concurrent-operations-limit": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "operationId": "data_f5_utils_file_transfer_file_config_concurrent_operations_limit_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_config_concurrent-operations-limit"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "operationId": "data_f5_utils_file_transfer_file_config_concurrent_operations_limit_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_config_concurrent-operations-limit"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf concurrent-operations-limit created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "operationId": "data_f5_utils_file_transfer_file_config_concurrent_operations_limit_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-utils-file-transfer_file_config_concurrent-operations-limit"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf concurrent-operations-limit updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "operationId": "data_f5_utils_file_transfer_file_config_concurrent_operations_limit_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_utils_file_transfer_file_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-utils-file-transfer:file/state/concurrent-operations-limit": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+        "operationId": "data_f5_utils_file_transfer_file_state_concurrent_operations_limit_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-utils-file-transfer_file_state_concurrent-operations-limit"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "data_f5-utils-file-transfer_file": {
+      "name": "file",
+      "in": "body",
+      "description": "File utility commands.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file"
+      }
+    },
+    "data_f5-utils-file-transfer_file-post": {
+      "name": "file",
+      "in": "body",
+      "description": "File utility commands.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file-post"
+      }
+    },
+    "data_f5-utils-file-transfer_file_abort-transfer-post-input": {
+      "name": "abort-transfer",
+      "in": "body",
+      "description": "Abort the file transfer operation",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_abort-transfer-post-input"
+      }
+    },
+    "data_f5-utils-file-transfer_file_config": {
+      "name": "config",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_config"
+      }
+    },
+    "data_f5-utils-file-transfer_file_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_config-post"
+      }
+    },
+    "data_f5-utils-file-transfer_file_config_concurrent-operations-limit": {
+      "name": "concurrent-operations-limit",
+      "in": "body",
+      "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_config_concurrent-operations-limit"
+      }
+    },
+    "data_f5-utils-file-transfer_file_delete-post-input": {
+      "name": "delete",
+      "in": "body",
+      "description": "Delete an existing file. The result will indicate a success or failure.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_delete-post-input"
+      }
+    },
+    "data_f5-utils-file-transfer_file_export-post-input": {
+      "name": "export",
+      "in": "body",
+      "description": "Initiate an export of the file to the remote system.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_export-post-input"
+      }
+    },
+    "data_f5-utils-file-transfer_file_import-post-input": {
+      "name": "import",
+      "in": "body",
+      "description": "Initiate an import of the remote file to the System.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_import-post-input"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts": {
+      "name": "known-hosts",
+      "in": "body",
+      "description": "Configure known hosts for file transfer using scp/sftp.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts-post": {
+      "name": "known-hosts",
+      "in": "body",
+      "description": "Configure known hosts for file transfer using scp/sftp.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts-post"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host": {
+      "name": "known-host",
+      "in": "body",
+      "description": "Add remote-host to known_hosts.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config": {
+      "name": "config",
+      "in": "body",
+      "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config-post"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_fingerprint": {
+      "name": "fingerprint",
+      "in": "body",
+      "description": "Fingerprint received from remote-host.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_fingerprint"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_key-type": {
+      "name": "key-type",
+      "in": "body",
+      "description": "Key type to be used to obtain fingerprint.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_key-type"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_remote-host": {
+      "name": "remote-host",
+      "in": "body",
+      "description": "Remote System FQDN or IPv4/IPv6 address.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_remote-host"
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_remote-host": {
+      "name": "remote-host",
+      "in": "body",
+      "description": "Remote System FQDN or IPv4/IPv6 address.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_remote-host"
+      }
+    },
+    "data_f5-utils-file-transfer_file_list-post-input": {
+      "name": "list",
+      "in": "body",
+      "description": "Display list of directories/files in the given path.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_list-post-input"
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-status-post-input": {
+      "name": "transfer-status",
+      "in": "body",
+      "description": "Display the status of file operation.\nThe result will indicate an error, or percent complete.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-utils-file-transfer_file_transfer-status-post-input"
+      }
+    },
+    "known-host-remote-host": {
+      "name": "known-host-remote-host",
+      "in": "path",
+      "description": "Remote System FQDN or IPv4/IPv6 address.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "transfer-operation-local-file-path": {
+      "name": "transfer-operation-local-file-path",
+      "in": "path",
+      "description": "local file path.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-operation": {
+      "name": "transfer-operation-operation",
+      "in": "path",
+      "description": "file transfer operation\n              such as file import, file export\n              file delete",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-protocol": {
+      "name": "transfer-operation-protocol",
+      "in": "path",
+      "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-remote-file-path": {
+      "name": "transfer-operation-remote-file-path",
+      "in": "path",
+      "description": "remote file path.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "transfer-operation-remote-host": {
+      "name": "transfer-operation-remote-host",
+      "in": "path",
+      "description": "remote host.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-utils-file-transfer_file": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:file": {
+          "description": "File utility commands. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "known-hosts": {
+              "description": "Configure known hosts for file transfer using scp/sftp. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "known-host": {
+                  "type": "array",
+                  "description": "Add remote-host to known_hosts. (list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "remote-host": {
+                        "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "leafref"
+                      },
+                      "config": {
+                        "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp. (non-presence)",
+                        "type": "object",
+                        "x-yang": {
+                          "type": "container",
+                          "is_presence": "false"
+                        },
+                        "properties": {
+                          "remote-host": {
+                            "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "union"
+                          },
+                          "key-type": {
+                            "description": "Key type to be used to obtain fingerprint. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "enumeration",
+                            "default": "rsa",
+                            "enum": [
+                              "rsa",
+                              "ecdsa",
+                              "ed25519"
+                            ]
+                          },
+                          "fingerprint": {
+                            "description": "Fingerprint received from remote-host. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          }
+                        }
+                      },
+                      "state": {
+                        "description": "Operational stat data from known hosts. (non-presence)",
+                        "type": "object",
+                        "x-yang": {
+                          "type": "container",
+                          "is_presence": "false"
+                        },
+                        "properties": {
+                          "remote-host": {
+                            "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "union"
+                          },
+                          "key-type": {
+                            "description": "Key type to be used to obtain fingerprint. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "enumeration",
+                            "default": "rsa",
+                            "enum": [
+                              "rsa",
+                              "ecdsa",
+                              "ed25519"
+                            ]
+                          },
+                          "fingerprint": {
+                            "description": "Fingerprint received from remote-host. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "transfer-operations": {
+              "description": "file transfer operation Status (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "transfer-operation": {
+                  "type": "array",
+                  "description": "(list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "operation-id": {
+                        "description": "An unique id for file transfer operation (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "operation": {
+                        "description": "file transfer operation\n              such as file import, file export\n              file delete (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "protocol": {
+                        "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "local-file-path": {
+                        "description": "local file path. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "remote-host": {
+                        "description": "remote host. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "remote-file-path": {
+                        "description": "remote file path. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "status": {
+                        "description": "transfer status. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "timestamp": {
+                        "description": "transfer progress on any timestamp. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "config": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "concurrent-operations-limit": {
+                  "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "byte"
+                }
+              }
+            },
+            "state": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "concurrent-operations-limit": {
+                  "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "integer",
+                  "format": "byte"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file-post": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:insecure": {
+          "description": "Disable remote system identity verification (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "[null]"
+        },
+        "f5-utils-file-transfer:username": {
+          "description": "Provide the remote system username. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:password": {
+          "description": "Provide the remote system password in simple text. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:remote-url": {
+          "description": "Provide remote system Uniform Resource Locator(URL). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:local-file": {
+          "description": "Local file path. Accepts either absolute or relative path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:insecure": {
+          "description": "Disable remote system identity verification (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "[null]"
+        },
+        "f5-utils-file-transfer:username": {
+          "description": "Provide the remote system username. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:password": {
+          "description": "Provide the remote system password in simple text. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:local-file": {
+          "description": "Local file path. Accepts either absolute or relative path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:remote-url": {
+          "description": "Provide remote system Uniform Resource Locator(URL). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:operation-id": {
+          "description": "An unique id for file transfer operation (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:file-name": {
+          "description": "Provide the file name to be deleted. Accepts either\nabsolute or relative path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:path": {
+          "description": "Provide the directory/file path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:file-name": {
+          "description": "Local file path. Accepts either absolute or relative path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:known-hosts": {
+          "description": "Configure known hosts for file transfer using scp/sftp. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "known-host": {
+              "type": "array",
+              "description": "Add remote-host to known_hosts. (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "remote-host": {
+                    "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "leafref"
+                  },
+                  "config": {
+                    "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp. (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "remote-host": {
+                        "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "union"
+                      },
+                      "key-type": {
+                        "description": "Key type to be used to obtain fingerprint. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "rsa",
+                        "enum": [
+                          "rsa",
+                          "ecdsa",
+                          "ed25519"
+                        ]
+                      },
+                      "fingerprint": {
+                        "description": "Fingerprint received from remote-host. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  },
+                  "state": {
+                    "description": "Operational stat data from known hosts. (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "remote-host": {
+                        "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "union"
+                      },
+                      "key-type": {
+                        "description": "Key type to be used to obtain fingerprint. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "rsa",
+                        "enum": [
+                          "rsa",
+                          "ecdsa",
+                          "ed25519"
+                        ]
+                      },
+                      "fingerprint": {
+                        "description": "Fingerprint received from remote-host. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "f5-utils-file-transfer:transfer-operations": {
+          "description": "file transfer operation Status (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "transfer-operation": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "operation-id": {
+                    "description": "An unique id for file transfer operation (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "operation": {
+                    "description": "file transfer operation\n              such as file import, file export\n              file delete (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "protocol": {
+                    "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "local-file-path": {
+                    "description": "local file path. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "remote-host": {
+                    "description": "remote host. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "remote-file-path": {
+                    "description": "remote file path. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "status": {
+                    "description": "transfer status. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "timestamp": {
+                    "description": "transfer progress on any timestamp. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "f5-utils-file-transfer:config": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "concurrent-operations-limit": {
+              "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            }
+          }
+        },
+        "f5-utils-file-transfer:state": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "concurrent-operations-limit": {
+              "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_abort-transfer-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:operation-id": {
+          "description": "An unique id for file transfer operation (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_abort-transfer-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:result": {
+          "description": "A message indicating the result of the file abort. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_config": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:config": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "concurrent-operations-limit": {
+              "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:concurrent-operations-limit": {
+          "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_config_concurrent-operations-limit": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:concurrent-operations-limit": {
+          "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_delete-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:file-name": {
+          "description": "Provide the file name to be deleted. Accepts either\nabsolute or relative path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_delete-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:result": {
+          "description": "A message indicating the result of the delete file action. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:resultint": {
+          "description": "An error indicator. A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_export-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:insecure": {
+          "description": "Disable remote system identity verification (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "[null]"
+        },
+        "f5-utils-file-transfer:username": {
+          "description": "Provide the remote system username. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:password": {
+          "description": "Provide the remote system password in simple text. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:local-file": {
+          "description": "Local file path. Accepts either absolute or relative path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:remote-url": {
+          "description": "Provide remote system Uniform Resource Locator(URL). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_export-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:result": {
+          "description": "A message indicating the result of export file transfer action. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:resultint": {
+          "description": "An error indicator. A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        },
+        "f5-utils-file-transfer:operation-id": {
+          "description": "An unique id for file transfer operation (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_import-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:insecure": {
+          "description": "Disable remote system identity verification (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "[null]"
+        },
+        "f5-utils-file-transfer:username": {
+          "description": "Provide the remote system username. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:password": {
+          "description": "Provide the remote system password in simple text. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:remote-url": {
+          "description": "Provide remote system Uniform Resource Locator(URL). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:local-file": {
+          "description": "Local file path. Accepts either absolute or relative path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_import-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:result": {
+          "description": "A message indicating the result of import file transfer action. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:resultint": {
+          "description": "An error indicator. A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        },
+        "f5-utils-file-transfer:operation-id": {
+          "description": "An unique id for file transfer operation (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:known-hosts": {
+          "description": "Configure known hosts for file transfer using scp/sftp. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "known-host": {
+              "type": "array",
+              "description": "Add remote-host to known_hosts. (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "remote-host": {
+                    "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "leafref"
+                  },
+                  "config": {
+                    "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp. (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "remote-host": {
+                        "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "union"
+                      },
+                      "key-type": {
+                        "description": "Key type to be used to obtain fingerprint. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "rsa",
+                        "enum": [
+                          "rsa",
+                          "ecdsa",
+                          "ed25519"
+                        ]
+                      },
+                      "fingerprint": {
+                        "description": "Fingerprint received from remote-host. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  },
+                  "state": {
+                    "description": "Operational stat data from known hosts. (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "remote-host": {
+                        "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "union"
+                      },
+                      "key-type": {
+                        "description": "Key type to be used to obtain fingerprint. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "rsa",
+                        "enum": [
+                          "rsa",
+                          "ecdsa",
+                          "ed25519"
+                        ]
+                      },
+                      "fingerprint": {
+                        "description": "Fingerprint received from remote-host. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts-post": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:known-host": {
+          "type": "array",
+          "description": "Add remote-host to known_hosts. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "remote-host": {
+                "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "config": {
+                "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp. (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "remote-host": {
+                    "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "union"
+                  },
+                  "key-type": {
+                    "description": "Key type to be used to obtain fingerprint. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "rsa",
+                    "enum": [
+                      "rsa",
+                      "ecdsa",
+                      "ed25519"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Fingerprint received from remote-host. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              },
+              "state": {
+                "description": "Operational stat data from known hosts. (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "remote-host": {
+                    "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "union"
+                  },
+                  "key-type": {
+                    "description": "Key type to be used to obtain fingerprint. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "rsa",
+                    "enum": [
+                      "rsa",
+                      "ecdsa",
+                      "ed25519"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Fingerprint received from remote-host. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:known-host": {
+          "type": "array",
+          "description": "Add remote-host to known_hosts. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "remote-host": {
+                "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "config": {
+                "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp. (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "remote-host": {
+                    "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "union"
+                  },
+                  "key-type": {
+                    "description": "Key type to be used to obtain fingerprint. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "rsa",
+                    "enum": [
+                      "rsa",
+                      "ecdsa",
+                      "ed25519"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Fingerprint received from remote-host. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              },
+              "state": {
+                "description": "Operational stat data from known hosts. (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "remote-host": {
+                    "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "union"
+                  },
+                  "key-type": {
+                    "description": "Key type to be used to obtain fingerprint. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "rsa",
+                    "enum": [
+                      "rsa",
+                      "ecdsa",
+                      "ed25519"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Fingerprint received from remote-host. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:config": {
+          "description": "Add/delete/list remote-hosts in known_hosts, for file transfer using scp/sftp. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "remote-host": {
+              "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "union"
+            },
+            "key-type": {
+              "description": "Key type to be used to obtain fingerprint. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "rsa",
+              "enum": [
+                "rsa",
+                "ecdsa",
+                "ed25519"
+              ]
+            },
+            "fingerprint": {
+              "description": "Fingerprint received from remote-host. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:remote-host": {
+          "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        },
+        "f5-utils-file-transfer:key-type": {
+          "description": "Key type to be used to obtain fingerprint. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "rsa",
+          "enum": [
+            "rsa",
+            "ecdsa",
+            "ed25519"
+          ]
+        },
+        "f5-utils-file-transfer:fingerprint": {
+          "description": "Fingerprint received from remote-host. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_fingerprint": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:fingerprint": {
+          "description": "Fingerprint received from remote-host. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_key-type": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:key-type": {
+          "description": "Key type to be used to obtain fingerprint. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "rsa",
+          "enum": [
+            "rsa",
+            "ecdsa",
+            "ed25519"
+          ]
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_config_remote-host": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:remote-host": {
+          "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_remote-host": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:remote-host": {
+          "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_state": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:state": {
+          "description": "Operational stat data from known hosts. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "remote-host": {
+              "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "union"
+            },
+            "key-type": {
+              "description": "Key type to be used to obtain fingerprint. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "rsa",
+              "enum": [
+                "rsa",
+                "ecdsa",
+                "ed25519"
+              ]
+            },
+            "fingerprint": {
+              "description": "Fingerprint received from remote-host. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_state_fingerprint": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:fingerprint": {
+          "description": "Fingerprint received from remote-host. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_state_key-type": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:key-type": {
+          "description": "Key type to be used to obtain fingerprint. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "rsa",
+          "enum": [
+            "rsa",
+            "ecdsa",
+            "ed25519"
+          ]
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_known-hosts_known-host_known-host-remote-host_state_remote-host": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:remote-host": {
+          "description": "Remote System FQDN or IPv4/IPv6 address. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_list-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:path": {
+          "description": "Provide the directory/file path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_list-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:entries": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "File/directory name from\nresult of file list action. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "date": {
+                "description": "Date and time of file/directory last modified/created. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "size": {
+                "description": "Size of file/directory. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_state": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:state": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "concurrent-operations-limit": {
+              "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_state_concurrent-operations-limit": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:concurrent-operations-limit": {
+          "description": "Concurrent file operations allowed at a time.Max value is 127 with default setting of 5. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:transfer-operations": {
+          "description": "file transfer operation Status (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "transfer-operation": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "operation-id": {
+                    "description": "An unique id for file transfer operation (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "operation": {
+                    "description": "file transfer operation\n              such as file import, file export\n              file delete (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "protocol": {
+                    "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "local-file-path": {
+                    "description": "local file path. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "remote-host": {
+                    "description": "remote host. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "remote-file-path": {
+                    "description": "remote file path. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "status": {
+                    "description": "transfer status. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "timestamp": {
+                    "description": "transfer progress on any timestamp. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:transfer-operation": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "operation-id": {
+                "description": "An unique id for file transfer operation (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "operation": {
+                "description": "file transfer operation\n              such as file import, file export\n              file delete (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "protocol": {
+                "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "local-file-path": {
+                "description": "local file path. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "remote-host": {
+                "description": "remote host. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "remote-file-path": {
+                "description": "remote file path. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "status": {
+                "description": "transfer status. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "timestamp": {
+                "description": "transfer progress on any timestamp. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:transfer-operation": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "operation-id": {
+                "description": "An unique id for file transfer operation (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "operation": {
+                "description": "file transfer operation\n              such as file import, file export\n              file delete (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "protocol": {
+                "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "local-file-path": {
+                "description": "local file path. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "remote-host": {
+                "description": "remote host. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "remote-file-path": {
+                "description": "remote file path. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "status": {
+                "description": "transfer status. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "timestamp": {
+                "description": "transfer progress on any timestamp. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_local-file-path": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:local-file-path": {
+          "description": "local file path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_operation": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:operation": {
+          "description": "file transfer operation\n              such as file import, file export\n              file delete (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_operation-id": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:operation-id": {
+          "description": "An unique id for file transfer operation (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_protocol": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:protocol": {
+          "description": "file transfer protocol\nsupported protocol are\nSCP, HTTPS, SFTP (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_remote-file-path": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:remote-file-path": {
+          "description": "remote file path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_remote-host": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:remote-host": {
+          "description": "remote host. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_status": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:status": {
+          "description": "transfer status. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-operations_transfer-operation_transfer-operation-local-file-path_transfer-operation-remote-host_transfer-operation-remote-file-path_transfer-operation-operation_transfer-operation-protocol_timestamp": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:timestamp": {
+          "description": "transfer progress on any timestamp. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-status-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:file-name": {
+          "description": "Local file path. Accepts either absolute or relative path. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-utils-file-transfer_file_transfer-status-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-utils-file-transfer:result": {
+          "description": "A message indicating the result of the file transfer status. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-utils-file-transfer:resultint": {
+          "description": "An error indicator. A Zero value (0) indicates success. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

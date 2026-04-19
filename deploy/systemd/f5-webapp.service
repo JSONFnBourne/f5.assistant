@@ -1,0 +1,21 @@
+[Unit]
+Description=F5 Assistant Webapp (Next.js on :3000)
+After=network-online.target f5-backend.service
+PartOf=f5.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/jsonbourne/projects/f5.assistant/webapp
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=127.0.0.1
+Environment=PATH=/home/jsonbourne/.nvm/versions/node/v20.20.2/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/jsonbourne/projects/f5.assistant/webapp/node_modules/.bin/next start -H 127.0.0.1 -p 3000
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=f5-webapp
+
+[Install]
+WantedBy=f5.target

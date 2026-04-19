@@ -1,0 +1,173 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { searchDocuments } from '@/lib/db';
+import { classifyQuery, type QueryMode } from '@/lib/knowledgeClassifier';
+
+export const maxDuration = 300;
+
+const OLLAMA_URL = process.env.OLLAMA_URL || 'http://127.0.0.1:11434';
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'llama3.2:latest';
+
+// ── Mode-aware system prompts ─────────────────────────────────────────────
+
+function buildSystemPrompt(mode: QueryMode, context: string): string {
+    const sharedRules = `
+Rules:
+1. STRICT GROUNDING: Answer ONLY from the provided Context below. Do NOT use your general training data to supplement, expand, or invent information not present in the Context.
+2. SCOPE: Answer ONLY what the user asked. Do not volunteer information about related topics, adjacent codes, other error classes, or additional categories that were not part of the question.
+3. Cite sources (titles and URLs) only from the provided context.
+4. All processing is LOCAL. Do not reference external internet sources.
+5. Use Markdown code blocks only for real, verified syntax from the context — never write pseudo-code or invent configuration examples.
+`;
+
+    const modeIntro: Record<QueryMode, string> = {
+        f5: `You are an expert F5 BIG-IP engineer and solutions architect.
+Answer this question strictly in the context of F5 product configuration, behavior, and best practices.
+Use only the F5 CloudDocs and iRules documentation context provided below.
+Do NOT include generic protocol theory or RFC explanations unless they appear verbatim in the context.`,
+        rfc: `You are an expert network engineer specializing in open protocol standards.
+Answer this question strictly in the context of RFC standards and protocol mechanics.
+Use only the RFC documentation context provided below.
+Do NOT include any vendor-specific content (F5, Cisco, Juniper, or any other vendor), product configuration examples, or pseudo-code.
+If the context contains vendor material, ignore it entirely.`,
+        general: `You are an expert F5 BIG-IP engineer and network protocols specialist.
+Draw from both F5 product documentation and RFC standards as relevant to exactly what was asked.
+Use the documentation context provided below.
+Do NOT include vendor-specific configuration examples unless they appear verbatim in the context.`,
+    };
+
+    return `${modeIntro[mode]}
+${sharedRules}
+Context:
+${context}`;
+}
+
+// ── Sources per mode ──────────────────────────────────────────────────────
+
+const MODE_SOURCES: Record<QueryMode, string[] | undefined> = {
+    f5:      ['irules', 'clouddocs', 'f5_kb', 'f5_security', 'xc_techdocs', 'techdocs', 'community'],
+    rfc:     ['rfc'],
+    general: undefined,   // no filter — search all sources
+};
+
+// ── Route handler ─────────────────────────────────────────────────────────
+
+export async function POST(req: NextRequest) {
+    try {
+        const { message } = await req.json();
+
+        if (!message || typeof message !== 'string') {
+            return NextResponse.json({ error: 'Message is required' }, { status: 400 });
+        }
+        if (message.length > 4_000) {
+            return NextResponse.json({ error: 'Message exceeds 4,000 character limit' }, { status: 400 });
+        }
+
+        const mode = classifyQuery(message);
+        const sources = MODE_SOURCES[mode];
+
+        const resultLimit = mode === 'general' ? 8 : 5;
+        const results = await searchDocuments(message, resultLimit, sources);
+
+        const finalResults = results.length > 0
+            ? results
+            : await searchDocuments(message, 5);
+
+        const context = finalResults
+            .map((r) => `[Source: ${r.title}] (${r.url})\n${r.content.substring(0, 1000)}...`)
+            .join('\n\n---\n\n');
+
+        let systemPrompt = buildSystemPrompt(mode, context);
+
+        // When the user explicitly cites a K-article, prepend an authority note
+        // so the LLM anchors its answer to that document rather than blending sources.
+        const citedKNumbers = message.match(/\bk\d{4,}\b/gi);
+        if (citedKNumbers && citedKNumbers.length > 0) {
+            const kList = citedKNumbers.map((k: string) => k.toUpperCase()).join(', ');
+            systemPrompt = `AUTHORITY NOTE: The user explicitly referenced ${kList}. If this document is present in the Context below, base your answer primarily on its content and cite it as the principal source. Do not draw from other context sources unless the cited document is silent on the specific point asked.\n\n` + systemPrompt;
+        }
+
+        const ollamaRes = await fetch(`${OLLAMA_URL}/api/chat`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                model: OLLAMA_MODEL,
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: message }
+                ],
+                stream: true,
+                options: {
+                    num_ctx: 8192,
+                    temperature: 0.3,
+                    top_k: 40,
+                    top_p: 0.9
+                }
+            })
+        });
+
+        if (!ollamaRes.ok) {
+            const isConnectionError = ollamaRes.status === 0 || ollamaRes.status >= 500;
+            return NextResponse.json({
+                error: isConnectionError
+                    ? 'Cannot connect to Ollama. Ensure "ollama serve" is running.'
+                    : `Local LLM error: ${ollamaRes.statusText}`
+            }, { status: 503 });
+        }
+
+        if (!ollamaRes.body) {
+            return NextResponse.json({ error: 'No response body from Ollama.' }, { status: 503 });
+        }
+
+        const enc = new TextEncoder();
+
+        // Stream protocol:
+        //   Line 1: JSON metadata  {"__meta":true,"mode":"f5","sources":[...]}
+        //   Lines 2+: raw LLM text chunks (no framing)
+        const stream = new ReadableStream({
+            async start(controller) {
+                const meta = { __meta: true, mode, sources: finalResults.map(r => ({ title: r.title, url: r.url })) };
+                controller.enqueue(enc.encode(JSON.stringify(meta) + '\n'));
+
+                const reader = ollamaRes.body!.getReader();
+                const decoder = new TextDecoder();
+                try {
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        const chunk = decoder.decode(value, { stream: true });
+                        for (const line of chunk.split('\n')) {
+                            if (!line.trim()) continue;
+                            try {
+                                const parsed = JSON.parse(line);
+                                if (parsed.message?.content) {
+                                    controller.enqueue(enc.encode(parsed.message.content));
+                                }
+                            } catch { /* partial JSON line — skip */ }
+                        }
+                    }
+                } catch (e) {
+                    console.error('Knowledge stream error:', e);
+                } finally {
+                    controller.close();
+                }
+            }
+        });
+
+        return new Response(stream, {
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Cache-Control': 'no-cache, no-transform',
+            }
+        });
+
+    } catch (error) {
+        console.error('Knowledge route error:', error);
+        const msg = error instanceof Error ? error.message : 'Unknown error';
+        const isConnErr = msg.includes('fetch failed') || msg.includes('ECONNREFUSED');
+        return NextResponse.json({
+            error: isConnErr
+                ? 'Cannot connect to Ollama. Ensure "ollama serve" is running in a terminal.'
+                : `Local LLM issue: ${msg}`
+        }, { status: 503 });
+    }
+}

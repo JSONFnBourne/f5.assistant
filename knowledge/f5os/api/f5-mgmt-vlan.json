@@ -1,0 +1,1747 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-mgmt-vlan",
+    "description": "",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2023-03-11"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-mgmt-vlan:mgmt-vlans": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Container for mgmt VLAN configuration and state\nvariables",
+        "description": "Container for mgmt VLAN configuration and state\nvariables",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Container for mgmt VLAN configuration and state\nvariables",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Container for mgmt VLAN configuration and state\nvariables",
+        "description": "Container for mgmt VLAN configuration and state\nvariables",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container mgmt-vlans created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Container for mgmt VLAN configuration and state\nvariables",
+        "description": "Container for mgmt VLAN configuration and state\nvariables",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container mgmt-vlans created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Container for mgmt VLAN configuration and state\nvariables",
+        "description": "Container for mgmt VLAN configuration and state\nvariables",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container mgmt-vlans updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Container for mgmt VLAN configuration and state\nvariables",
+        "description": "Container for mgmt VLAN configuration and state\nvariables",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan": {
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Configured mgmt VLANs keyed by id",
+        "description": "Configured mgmt VLANs keyed by id",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Configured mgmt VLANs keyed by id",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Configured mgmt VLANs keyed by id",
+        "description": "Configured mgmt VLANs keyed by id",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "list mgmt-vlan created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Configured mgmt VLANs keyed by id",
+        "description": "Configured mgmt VLANs keyed by id",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "list mgmt-vlan updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Configured mgmt VLANs keyed by id",
+        "description": "Configured mgmt VLANs keyed by id",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/mgmt-vlan-tag": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "references the configured mgmt-vlan-tag.",
+        "description": "references the configured mgmt-vlan-tag.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_mgmt_vlan_tag_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "references the configured mgmt-vlan-tag.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_mgmt-vlan-tag"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "references the configured mgmt-vlan-tag.",
+        "description": "references the configured mgmt-vlan-tag.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_mgmt_vlan_tag_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf mgmt-vlan-tag created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "references the configured mgmt-vlan-tag.",
+        "description": "references the configured mgmt-vlan-tag.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_mgmt_vlan_tag_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf mgmt-vlan-tag updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "references the configured mgmt-vlan-tag.",
+        "description": "references the configured mgmt-vlan-tag.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_mgmt_vlan_tag_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Configuration parameters for mgmt VLANs",
+        "description": "Configuration parameters for mgmt VLANs",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Configuration parameters for mgmt VLANs",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Configuration parameters for mgmt VLANs",
+        "description": "Configuration parameters for mgmt VLANs",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Configuration parameters for mgmt VLANs",
+        "description": "Configuration parameters for mgmt VLANs",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Configuration parameters for mgmt VLANs",
+        "description": "Configuration parameters for mgmt VLANs",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Configuration parameters for mgmt VLANs",
+        "description": "Configuration parameters for mgmt VLANs",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/config/mgmt-vlan-tag": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Mgmt VLAN id.",
+        "description": "Mgmt VLAN id.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_mgmt_vlan_tag_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mgmt VLAN id.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-tag"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Mgmt VLAN id.",
+        "description": "Mgmt VLAN id.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_mgmt_vlan_tag_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf mgmt-vlan-tag created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Mgmt VLAN id.",
+        "description": "Mgmt VLAN id.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_mgmt_vlan_tag_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf mgmt-vlan-tag updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Mgmt VLAN id.",
+        "description": "Mgmt VLAN id.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_mgmt_vlan_tag_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/config/name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Mgmt VLAN name.",
+        "description": "Mgmt VLAN name.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mgmt VLAN name.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Mgmt VLAN name.",
+        "description": "Mgmt VLAN name.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_name_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_name"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf name created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Mgmt VLAN name.",
+        "description": "Mgmt VLAN name.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_name_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf name updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Mgmt VLAN name.",
+        "description": "Mgmt VLAN name.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_name_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/config/mgmt-vlan-internal-id": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Type definition representing a single-tagged VLAN",
+        "description": "Type definition representing a single-tagged VLAN",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_mgmt_vlan_internal_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Type definition representing a single-tagged VLAN",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-internal-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Type definition representing a single-tagged VLAN",
+        "description": "Type definition representing a single-tagged VLAN",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_mgmt_vlan_internal_id_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-internal-id"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf mgmt-vlan-internal-id created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Type definition representing a single-tagged VLAN",
+        "description": "Type definition representing a single-tagged VLAN",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_mgmt_vlan_internal_id_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          },
+          {
+            "$ref": "#/parameters/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-internal-id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf mgmt-vlan-internal-id updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Type definition representing a single-tagged VLAN",
+        "description": "Type definition representing a single-tagged VLAN",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_config_mgmt_vlan_internal_id_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "State variables for mgmt VLANs",
+        "description": "State variables for mgmt VLANs",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "State variables for mgmt VLANs",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/state/mgmt-vlan-tag": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Mgmt VLAN id.",
+        "description": "Mgmt VLAN id.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_state_mgmt_vlan_tag_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mgmt VLAN id.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_state_mgmt-vlan-tag"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/state/name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Mgmt VLAN name.",
+        "description": "Mgmt VLAN name.",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_state_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mgmt VLAN name.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_state_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-mgmt-vlan:mgmt-vlans/mgmt-vlan={mgmt-vlan-mgmt-vlan-tag}/state/mgmt-vlan-internal-id": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Type definition representing a single-tagged VLAN",
+        "description": "Type definition representing a single-tagged VLAN",
+        "operationId": "data_f5_mgmt_vlan_mgmt_vlans_mgmt_vlan_mgmt_vlan_mgmt_vlan_tag_state_mgmt_vlan_internal_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/mgmt-vlan-mgmt-vlan-tag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Type definition representing a single-tagged VLAN",
+            "schema": {
+              "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_state_mgmt-vlan-internal-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans": {
+      "name": "mgmt-vlans",
+      "in": "body",
+      "description": "Container for mgmt VLAN configuration and state\nvariables",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans"
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans-post": {
+      "name": "mgmt-vlans",
+      "in": "body",
+      "description": "Container for mgmt VLAN configuration and state\nvariables",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans-post"
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag": {
+      "name": "mgmt-vlan",
+      "in": "body",
+      "description": "Configured mgmt VLANs keyed by id",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag"
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config": {
+      "name": "config",
+      "in": "body",
+      "description": "Configuration parameters for mgmt VLANs",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config"
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "Configuration parameters for mgmt VLANs",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config-post"
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-internal-id": {
+      "name": "mgmt-vlan-internal-id",
+      "in": "body",
+      "description": "Type definition representing a single-tagged VLAN",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-internal-id"
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-tag": {
+      "name": "mgmt-vlan-tag",
+      "in": "body",
+      "description": "Mgmt VLAN id.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-tag"
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_name": {
+      "name": "name",
+      "in": "body",
+      "description": "Mgmt VLAN name.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_name"
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_mgmt-vlan-tag": {
+      "name": "mgmt-vlan-tag",
+      "in": "body",
+      "description": "references the configured mgmt-vlan-tag.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_mgmt-vlan-tag"
+      }
+    },
+    "mgmt-vlan-mgmt-vlan-tag": {
+      "name": "mgmt-vlan-mgmt-vlan-tag",
+      "in": "path",
+      "description": "references the configured mgmt-vlan-tag.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-mgmt-vlan_mgmt-vlans": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlans": {
+          "description": "Container for mgmt VLAN configuration and state\nvariables (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "mgmt-vlan": {
+              "type": "array",
+              "description": "Configured mgmt VLANs keyed by id (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "mgmt-vlan-tag": {
+                    "description": "references the configured mgmt-vlan-tag. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "leafref"
+                  },
+                  "config": {
+                    "description": "Configuration parameters for mgmt VLANs (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "mgmt-vlan-tag": {
+                        "description": "Mgmt VLAN id. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "union"
+                      },
+                      "name": {
+                        "description": "Mgmt VLAN name. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "mgmt-vlan-internal-id": {
+                        "description": "Type definition representing a single-tagged VLAN (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint16"
+                      }
+                    }
+                  },
+                  "state": {
+                    "description": "State variables for mgmt VLANs (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "mgmt-vlan-tag": {
+                        "description": "Mgmt VLAN id. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "union"
+                      },
+                      "name": {
+                        "description": "Mgmt VLAN name. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "mgmt-vlan-internal-id": {
+                        "description": "Type definition representing a single-tagged VLAN (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint16"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans-post": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlan": {
+          "type": "array",
+          "description": "Configured mgmt VLANs keyed by id (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "mgmt-vlan-tag": {
+                "description": "references the configured mgmt-vlan-tag. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "config": {
+                "description": "Configuration parameters for mgmt VLANs (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "mgmt-vlan-tag": {
+                    "description": "Mgmt VLAN id. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "union"
+                  },
+                  "name": {
+                    "description": "Mgmt VLAN name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "mgmt-vlan-internal-id": {
+                    "description": "Type definition representing a single-tagged VLAN (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  }
+                }
+              },
+              "state": {
+                "description": "State variables for mgmt VLANs (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "mgmt-vlan-tag": {
+                    "description": "Mgmt VLAN id. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "union"
+                  },
+                  "name": {
+                    "description": "Mgmt VLAN name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "mgmt-vlan-internal-id": {
+                    "description": "Type definition representing a single-tagged VLAN (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlan": {
+          "type": "array",
+          "description": "Configured mgmt VLANs keyed by id (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "mgmt-vlan-tag": {
+                "description": "references the configured mgmt-vlan-tag. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "config": {
+                "description": "Configuration parameters for mgmt VLANs (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "mgmt-vlan-tag": {
+                    "description": "Mgmt VLAN id. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "union"
+                  },
+                  "name": {
+                    "description": "Mgmt VLAN name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "mgmt-vlan-internal-id": {
+                    "description": "Type definition representing a single-tagged VLAN (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  }
+                }
+              },
+              "state": {
+                "description": "State variables for mgmt VLANs (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "mgmt-vlan-tag": {
+                    "description": "Mgmt VLAN id. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "union"
+                  },
+                  "name": {
+                    "description": "Mgmt VLAN name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "mgmt-vlan-internal-id": {
+                    "description": "Type definition representing a single-tagged VLAN (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:config": {
+          "description": "Configuration parameters for mgmt VLANs (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "mgmt-vlan-tag": {
+              "description": "Mgmt VLAN id. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "union"
+            },
+            "name": {
+              "description": "Mgmt VLAN name. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "mgmt-vlan-internal-id": {
+              "description": "Type definition representing a single-tagged VLAN (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlan-tag": {
+          "description": "Mgmt VLAN id. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        },
+        "f5-mgmt-vlan:name": {
+          "description": "Mgmt VLAN name. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-mgmt-vlan:mgmt-vlan-internal-id": {
+          "description": "Type definition representing a single-tagged VLAN (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-internal-id": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlan-internal-id": {
+          "description": "Type definition representing a single-tagged VLAN (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_mgmt-vlan-tag": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlan-tag": {
+          "description": "Mgmt VLAN id. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_config_name": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:name": {
+          "description": "Mgmt VLAN name. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_mgmt-vlan-tag": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlan-tag": {
+          "description": "references the configured mgmt-vlan-tag. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_state": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:state": {
+          "description": "State variables for mgmt VLANs (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "mgmt-vlan-tag": {
+              "description": "Mgmt VLAN id. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "union"
+            },
+            "name": {
+              "description": "Mgmt VLAN name. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "mgmt-vlan-internal-id": {
+              "description": "Type definition representing a single-tagged VLAN (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_state_mgmt-vlan-internal-id": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlan-internal-id": {
+          "description": "Type definition representing a single-tagged VLAN (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_state_mgmt-vlan-tag": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:mgmt-vlan-tag": {
+          "description": "Mgmt VLAN id. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "union"
+        }
+      }
+    },
+    "data_f5-mgmt-vlan_mgmt-vlans_mgmt-vlan_mgmt-vlan-mgmt-vlan-tag_state_name": {
+      "type": "object",
+      "properties": {
+        "f5-mgmt-vlan:name": {
+          "description": "Mgmt VLAN name. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

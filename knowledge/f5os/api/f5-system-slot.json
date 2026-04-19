@@ -1,0 +1,1845 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-system-slot",
+    "description": "",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2024-06-16"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-system-slot:slots": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container slots created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container slots created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container slots updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot": {
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "list slot created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "list slot updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/slot-num": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_slot_num_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_slot-num"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_slot_num_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num_slot-num"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf slot-num created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_slot_num_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num_slot-num"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf slot-num updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_slot_num_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/enabled": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_enabled_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_enabled"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_enabled_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num_enabled"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf enabled created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_enabled_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num_enabled"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf enabled updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_enabled_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/partition": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_partition_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_partition"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_partition_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num_partition"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf partition created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_partition_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num_partition"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf partition updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_partition_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/auxiliary": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Slot marked as auxiliary because of blade type detection.",
+        "description": "Slot marked as auxiliary because of blade type detection.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_auxiliary_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Slot marked as auxiliary because of blade type detection.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_auxiliary"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Slot marked as auxiliary because of blade type detection.",
+        "description": "Slot marked as auxiliary because of blade type detection.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_auxiliary_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num_auxiliary"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf auxiliary created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Slot marked as auxiliary because of blade type detection.",
+        "description": "Slot marked as auxiliary because of blade type detection.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_auxiliary_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          },
+          {
+            "$ref": "#/parameters/data_f5-system-slot_slots_slot_slot-slot-num_auxiliary"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf auxiliary updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Slot marked as auxiliary because of blade type detection.",
+        "description": "Slot marked as auxiliary because of blade type detection.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_auxiliary_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/state/enabled": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Configuration enabled state unless it is an auxiliary slot.",
+        "description": "Configuration enabled state unless it is an auxiliary slot.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_state_enabled_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Configuration enabled state unless it is an auxiliary slot.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_state_enabled"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/state/partition": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Partition to which this slot belongs to unless it is an auxiliary slot.",
+        "description": "Partition to which this slot belongs to unless it is an auxiliary slot.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_state_partition_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Partition to which this slot belongs to unless it is an auxiliary slot.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_state_partition"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/state/blade-present": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "true if blade is present. aux if it is the second slot of a dual blade. false otherwise.",
+        "description": "true if blade is present. aux if it is the second slot of a dual blade. false otherwise.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_state_blade_present_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "true if blade is present. aux if it is the second slot of a dual blade. false otherwise.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_state_blade-present"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/state/blade-power": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "blade power state.",
+        "description": "blade power state.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_state_blade_power_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "blade power state.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_state_blade-power"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/state/blade-width": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade width in number of slots it takes if present.",
+        "description": "Blade width in number of slots it takes if present.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_state_blade_width_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade width in number of slots it takes if present.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_state_blade-width"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/state/blade-platform-id": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Blade marketing platform ID if present.",
+        "description": "Blade marketing platform ID if present.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_state_blade_platform_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blade marketing platform ID if present.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_state_blade-platform-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-system-slot:slots/slot={slot-slot-num}/state/blade-type": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Type of blade if present.",
+        "description": "Type of blade if present.",
+        "operationId": "data_f5_system_slot_slots_slot_slot_slot_num_state_blade_type_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/slot-slot-num"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Type of blade if present.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_state_blade-type"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "data_f5-system-slot_slots": {
+      "name": "slots",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-system-slot_slots"
+      }
+    },
+    "data_f5-system-slot_slots-post": {
+      "name": "slots",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-system-slot_slots-post"
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num": {
+      "name": "slot",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num"
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_auxiliary": {
+      "name": "auxiliary",
+      "in": "body",
+      "description": "Slot marked as auxiliary because of blade type detection.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_auxiliary"
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_enabled": {
+      "name": "enabled",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_enabled"
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_partition": {
+      "name": "partition",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_partition"
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_slot-num": {
+      "name": "slot-num",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-system-slot_slots_slot_slot-slot-num_slot-num"
+      }
+    },
+    "slot-slot-num": {
+      "name": "slot-slot-num",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-system-slot_slots": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:slots": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "slot": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slot-num": {
+                    "description": "(leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "enabled": {
+                    "description": "(leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "partition": {
+                    "description": "(leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "leafref"
+                  },
+                  "auxiliary": {
+                    "description": "Slot marked as auxiliary because of blade type detection. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "state": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "enabled": {
+                        "description": "Configuration enabled state unless it is an auxiliary slot. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      },
+                      "partition": {
+                        "description": "Partition to which this slot belongs to unless it is an auxiliary slot. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "blade-present": {
+                        "description": "true if blade is present. aux if it is the second slot of a dual blade. false otherwise. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "false",
+                        "enum": [
+                          "false",
+                          "true",
+                          "aux"
+                        ]
+                      },
+                      "blade-power": {
+                        "description": "blade power state. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "off",
+                        "enum": [
+                          "off",
+                          "on"
+                        ]
+                      },
+                      "blade-width": {
+                        "description": "Blade width in number of slots it takes if present. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "byte"
+                      },
+                      "blade-platform-id": {
+                        "description": "Blade marketing platform ID if present. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "blade-type": {
+                        "description": "Type of blade if present. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-system-slot_slots-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:slot": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "slot-num": {
+                "description": "(leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "enabled": {
+                "description": "(leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "partition": {
+                "description": "(leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "auxiliary": {
+                "description": "Slot marked as auxiliary because of blade type detection. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "state": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "enabled": {
+                    "description": "Configuration enabled state unless it is an auxiliary slot. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "partition": {
+                    "description": "Partition to which this slot belongs to unless it is an auxiliary slot. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "blade-present": {
+                    "description": "true if blade is present. aux if it is the second slot of a dual blade. false otherwise. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "false",
+                    "enum": [
+                      "false",
+                      "true",
+                      "aux"
+                    ]
+                  },
+                  "blade-power": {
+                    "description": "blade power state. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "off",
+                    "enum": [
+                      "off",
+                      "on"
+                    ]
+                  },
+                  "blade-width": {
+                    "description": "Blade width in number of slots it takes if present. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "blade-platform-id": {
+                    "description": "Blade marketing platform ID if present. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "blade-type": {
+                    "description": "Type of blade if present. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:slot": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "slot-num": {
+                "description": "(leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "enabled": {
+                "description": "(leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "partition": {
+                "description": "(leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "auxiliary": {
+                "description": "Slot marked as auxiliary because of blade type detection. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "state": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "enabled": {
+                    "description": "Configuration enabled state unless it is an auxiliary slot. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "partition": {
+                    "description": "Partition to which this slot belongs to unless it is an auxiliary slot. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "blade-present": {
+                    "description": "true if blade is present. aux if it is the second slot of a dual blade. false otherwise. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "false",
+                    "enum": [
+                      "false",
+                      "true",
+                      "aux"
+                    ]
+                  },
+                  "blade-power": {
+                    "description": "blade power state. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "off",
+                    "enum": [
+                      "off",
+                      "on"
+                    ]
+                  },
+                  "blade-width": {
+                    "description": "Blade width in number of slots it takes if present. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "blade-platform-id": {
+                    "description": "Blade marketing platform ID if present. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "blade-type": {
+                    "description": "Type of blade if present. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_auxiliary": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:auxiliary": {
+          "description": "Slot marked as auxiliary because of blade type detection. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_enabled": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:enabled": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_partition": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:partition": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_slot-num": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:slot-num": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_state": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:state": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "enabled": {
+              "description": "Configuration enabled state unless it is an auxiliary slot. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "partition": {
+              "description": "Partition to which this slot belongs to unless it is an auxiliary slot. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "blade-present": {
+              "description": "true if blade is present. aux if it is the second slot of a dual blade. false otherwise. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "false",
+              "enum": [
+                "false",
+                "true",
+                "aux"
+              ]
+            },
+            "blade-power": {
+              "description": "blade power state. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "off",
+              "enum": [
+                "off",
+                "on"
+              ]
+            },
+            "blade-width": {
+              "description": "Blade width in number of slots it takes if present. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "blade-platform-id": {
+              "description": "Blade marketing platform ID if present. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "blade-type": {
+              "description": "Type of blade if present. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_state_blade-platform-id": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:blade-platform-id": {
+          "description": "Blade marketing platform ID if present. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_state_blade-power": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:blade-power": {
+          "description": "blade power state. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "off",
+          "enum": [
+            "off",
+            "on"
+          ]
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_state_blade-present": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:blade-present": {
+          "description": "true if blade is present. aux if it is the second slot of a dual blade. false otherwise. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "false",
+          "enum": [
+            "false",
+            "true",
+            "aux"
+          ]
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_state_blade-type": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:blade-type": {
+          "description": "Type of blade if present. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_state_blade-width": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:blade-width": {
+          "description": "Blade width in number of slots it takes if present. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_state_enabled": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:enabled": {
+          "description": "Configuration enabled state unless it is an auxiliary slot. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-system-slot_slots_slot_slot-slot-num_state_partition": {
+      "type": "object",
+      "properties": {
+        "f5-system-slot:partition": {
+          "description": "Partition to which this slot belongs to unless it is an auxiliary slot. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

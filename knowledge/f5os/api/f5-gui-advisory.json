@@ -1,0 +1,1888 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "GUI setting",
+        "description": "GUI setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "GUI setting",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "GUI setting",
+        "description": "GUI setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container gui created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "GUI setting",
+        "description": "GUI setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container gui created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "GUI setting",
+        "description": "GUI setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container gui updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "GUI setting",
+        "description": "GUI setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "advisory setting",
+        "description": "advisory setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "advisory setting",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "advisory setting",
+        "description": "advisory setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container advisory created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "advisory setting",
+        "description": "advisory setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container advisory created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "advisory setting",
+        "description": "advisory setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container advisory updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "advisory setting",
+        "description": "advisory setting",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory/f5-gui-advisory:config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory/f5-gui-advisory:config/f5-gui-advisory:enabled": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "GUI advisory banner enable/disable",
+        "description": "GUI advisory banner enable/disable",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_enabled_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "GUI advisory banner enable/disable",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_enabled"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "GUI advisory banner enable/disable",
+        "description": "GUI advisory banner enable/disable",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_enabled_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_enabled"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf enabled created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "GUI advisory banner enable/disable",
+        "description": "GUI advisory banner enable/disable",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_enabled_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_enabled"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf enabled updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "GUI advisory banner enable/disable",
+        "description": "GUI advisory banner enable/disable",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_enabled_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory/f5-gui-advisory:config/f5-gui-advisory:color": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Banner color",
+        "description": "Banner color",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_color_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Banner color",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_color"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Banner color",
+        "description": "Banner color",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_color_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_color"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf color created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Banner color",
+        "description": "Banner color",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_color_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_color"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf color updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Banner color",
+        "description": "Banner color",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_color_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory/f5-gui-advisory:config/f5-gui-advisory:text": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Banner classification",
+        "description": "Banner classification",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_text_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Banner classification",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_text"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Banner classification",
+        "description": "Banner classification",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_text_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_text"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf text created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Banner classification",
+        "description": "Banner classification",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_text_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_text"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf text updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Banner classification",
+        "description": "Banner classification",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_config_f5_gui_advisory_text_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory/f5-gui-advisory:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory/f5-gui-advisory:state/f5-gui-advisory:enabled": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "GUI advisory banner enable/disable",
+        "description": "GUI advisory banner enable/disable",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_state_f5_gui_advisory_enabled_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "GUI advisory banner enable/disable",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_state_f5-gui-advisory_enabled"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory/f5-gui-advisory:state/f5-gui-advisory:color": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Banner color",
+        "description": "Banner color",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_state_f5_gui_advisory_color_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Banner color",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_state_f5-gui-advisory_color"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-settings:settings/f5-gui-advisory:gui/f5-gui-advisory:advisory/f5-gui-advisory:state/f5-gui-advisory:text": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Banner classification",
+        "description": "Banner classification",
+        "operationId": "data_openconfig_system_system_f5_system_settings_settings_f5_gui_advisory_gui_f5_gui_advisory_advisory_f5_gui_advisory_state_f5_gui_advisory_text_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Banner classification",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_state_f5-gui-advisory_text"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui": {
+      "name": "gui",
+      "in": "body",
+      "description": "GUI setting",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui"
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui-post": {
+      "name": "gui",
+      "in": "body",
+      "description": "GUI setting",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory": {
+      "name": "advisory",
+      "in": "body",
+      "description": "advisory setting",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory"
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory-post": {
+      "name": "advisory",
+      "in": "body",
+      "description": "advisory setting",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config": {
+      "name": "config",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config"
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_color": {
+      "name": "color",
+      "in": "body",
+      "description": "Banner color",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_color"
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_enabled": {
+      "name": "enabled",
+      "in": "body",
+      "description": "GUI advisory banner enable/disable",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_enabled"
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_text": {
+      "name": "text",
+      "in": "body",
+      "description": "Banner classification",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_text"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:gui": {
+          "description": "GUI setting (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-gui-advisory:advisory": {
+              "description": "advisory setting (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-gui-advisory:config": {
+                  "description": "(non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "f5-gui-advisory:enabled": {
+                      "description": "GUI advisory banner enable/disable (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "boolean"
+                    },
+                    "f5-gui-advisory:color": {
+                      "description": "Banner color (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "enumeration",
+                      "default": "blue",
+                      "enum": [
+                        "blue",
+                        "green",
+                        "orange",
+                        "red",
+                        "yellow"
+                      ]
+                    },
+                    "f5-gui-advisory:text": {
+                      "description": "Banner classification (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    }
+                  }
+                },
+                "f5-gui-advisory:state": {
+                  "description": "(non-presence)",
+                  "type": "object",
+                  "x-yang": {
+                    "type": "container",
+                    "is_presence": "false"
+                  },
+                  "properties": {
+                    "f5-gui-advisory:enabled": {
+                      "description": "GUI advisory banner enable/disable (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "boolean"
+                    },
+                    "f5-gui-advisory:color": {
+                      "description": "Banner color (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "enumeration",
+                      "default": "blue",
+                      "enum": [
+                        "blue",
+                        "green",
+                        "orange",
+                        "red",
+                        "yellow"
+                      ]
+                    },
+                    "f5-gui-advisory:text": {
+                      "description": "Banner classification (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui-post": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:advisory": {
+          "description": "advisory setting (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-gui-advisory:config": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-gui-advisory:enabled": {
+                  "description": "GUI advisory banner enable/disable (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "f5-gui-advisory:color": {
+                  "description": "Banner color (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "enumeration",
+                  "default": "blue",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "yellow"
+                  ]
+                },
+                "f5-gui-advisory:text": {
+                  "description": "Banner classification (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            },
+            "f5-gui-advisory:state": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-gui-advisory:enabled": {
+                  "description": "GUI advisory banner enable/disable (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "f5-gui-advisory:color": {
+                  "description": "Banner color (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "enumeration",
+                  "default": "blue",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "yellow"
+                  ]
+                },
+                "f5-gui-advisory:text": {
+                  "description": "Banner classification (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:advisory": {
+          "description": "advisory setting (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-gui-advisory:config": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-gui-advisory:enabled": {
+                  "description": "GUI advisory banner enable/disable (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "f5-gui-advisory:color": {
+                  "description": "Banner color (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "enumeration",
+                  "default": "blue",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "yellow"
+                  ]
+                },
+                "f5-gui-advisory:text": {
+                  "description": "Banner classification (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            },
+            "f5-gui-advisory:state": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-gui-advisory:enabled": {
+                  "description": "GUI advisory banner enable/disable (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "f5-gui-advisory:color": {
+                  "description": "Banner color (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "enumeration",
+                  "default": "blue",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "yellow"
+                  ]
+                },
+                "f5-gui-advisory:text": {
+                  "description": "Banner classification (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory-post": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:config": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-gui-advisory:enabled": {
+              "description": "GUI advisory banner enable/disable (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-gui-advisory:color": {
+              "description": "Banner color (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "blue",
+              "enum": [
+                "blue",
+                "green",
+                "orange",
+                "red",
+                "yellow"
+              ]
+            },
+            "f5-gui-advisory:text": {
+              "description": "Banner classification (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        },
+        "f5-gui-advisory:state": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-gui-advisory:enabled": {
+              "description": "GUI advisory banner enable/disable (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-gui-advisory:color": {
+              "description": "Banner color (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "blue",
+              "enum": [
+                "blue",
+                "green",
+                "orange",
+                "red",
+                "yellow"
+              ]
+            },
+            "f5-gui-advisory:text": {
+              "description": "Banner classification (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:config": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-gui-advisory:enabled": {
+              "description": "GUI advisory banner enable/disable (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-gui-advisory:color": {
+              "description": "Banner color (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "blue",
+              "enum": [
+                "blue",
+                "green",
+                "orange",
+                "red",
+                "yellow"
+              ]
+            },
+            "f5-gui-advisory:text": {
+              "description": "Banner classification (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:enabled": {
+          "description": "GUI advisory banner enable/disable (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-gui-advisory:color": {
+          "description": "Banner color (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "blue",
+          "enum": [
+            "blue",
+            "green",
+            "orange",
+            "red",
+            "yellow"
+          ]
+        },
+        "f5-gui-advisory:text": {
+          "description": "Banner classification (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_color": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:color": {
+          "description": "Banner color (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "blue",
+          "enum": [
+            "blue",
+            "green",
+            "orange",
+            "red",
+            "yellow"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_enabled": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:enabled": {
+          "description": "GUI advisory banner enable/disable (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_config_f5-gui-advisory_text": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:text": {
+          "description": "Banner classification (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_state": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:state": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-gui-advisory:enabled": {
+              "description": "GUI advisory banner enable/disable (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-gui-advisory:color": {
+              "description": "Banner color (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "blue",
+              "enum": [
+                "blue",
+                "green",
+                "orange",
+                "red",
+                "yellow"
+              ]
+            },
+            "f5-gui-advisory:text": {
+              "description": "Banner classification (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_state_f5-gui-advisory_color": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:color": {
+          "description": "Banner color (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "blue",
+          "enum": [
+            "blue",
+            "green",
+            "orange",
+            "red",
+            "yellow"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_state_f5-gui-advisory_enabled": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:enabled": {
+          "description": "GUI advisory banner enable/disable (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-settings_settings_f5-gui-advisory_gui_f5-gui-advisory_advisory_f5-gui-advisory_state_f5-gui-advisory_text": {
+      "type": "object",
+      "properties": {
+        "f5-gui-advisory:text": {
+          "description": "Banner classification (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

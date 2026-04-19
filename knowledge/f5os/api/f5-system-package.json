@@ -1,0 +1,4037 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/f5-system-package:packages": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container packages created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container packages created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container packages updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Loadable Service Package.",
+        "description": "Loadable Service Package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Loadable Service Package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Loadable Service Package.",
+        "description": "Loadable Service Package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "list package created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Loadable Service Package.",
+        "description": "Loadable Service Package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "list package updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Loadable Service Package.",
+        "description": "Loadable Service Package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:package-name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "References to the package type.",
+        "description": "References to the package type.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_package_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "References to the package type.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_package-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "References to the package type.",
+        "description": "References to the package type.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_package_name_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_package-name"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf package-name created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "References to the package type.",
+        "description": "References to the package type.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_package_name_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_package-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf package-name updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "References to the package type.",
+        "description": "References to the package type.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_package_name_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "State data of packages.",
+        "description": "State data of packages.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "State data of packages.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:packages-info": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_packages_info_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:packages-info={f5-system-package_packages-info-version}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_packages_info_f5_system_package_packages_info_version_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:version": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "System package version.",
+        "description": "System package version.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_version_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "System package version.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_version"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status of the package.",
+        "description": "Status of the package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of the package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:date": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Date of the package.",
+        "description": "Date of the package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_date_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Date of the package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_date"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:size": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Size of the package.",
+        "description": "Size of the package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_size_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Size of the package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_size"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:in-use": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "in-use status of the package.",
+        "description": "in-use status of the package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_in_use_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "in-use status of the package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_in-use"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:install": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "System installed software package versions.",
+        "description": "System installed software package versions.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_install_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "System installed software package versions.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_install"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:install/f5-system-package:package-installed": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "System installed Package version.",
+        "description": "System installed Package version.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_install_f5_system_package_package_installed_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "System installed Package version.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_install_f5-system-package_package-installed"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:install/f5-system-package:install-stage": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_install_f5_system_package_install_stage_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_install_f5-system-package_install-stage"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:install/f5-system-package:install-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "controller package install status.",
+        "description": "controller package install status.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_install_f5_system_package_install_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "controller package install status.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_install_f5-system-package_install-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:number": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_number_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_number"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:packages-info": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_packages_info_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:packages-info={f5-system-package_packages-info-version}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_packages_info_f5_system_package_packages_info_version_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:version": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "System package version.",
+        "description": "System package version.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_version_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "System package version.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_version"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status of the package.",
+        "description": "Status of the package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of the package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:date": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Date of the package.",
+        "description": "Date of the package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_date_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Date of the package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_date"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:size": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Size of the package.",
+        "description": "Size of the package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_size_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Size of the package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_size"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:packages-info={f5-system-package_packages-info-version}/f5-system-package:in-use": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "in-use status of the package.",
+        "description": "in-use status of the package.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_packages_info_f5_system_package_packages_info_version_f5_system_package_in_use_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_packages-info-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "in-use status of the package.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_in-use"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:install": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "System installed software package versions.",
+        "description": "System installed software package versions.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_install_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "System installed software package versions.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_install"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:install/f5-system-package:package-installed": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "System installed Package version.",
+        "description": "System installed Package version.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_install_f5_system_package_package_installed_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "System installed Package version.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_install_f5-system-package_package-installed"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:install/f5-system-package:install-stage": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_install_f5_system_package_install_stage_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_install_f5-system-package_install-stage"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:state/f5-system-package:controllers/f5-system-package:controller={f5-system-package_controller-number}/f5-system-package:install/f5-system-package:install-status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "controller package install status.",
+        "description": "controller package install status.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_state_f5_system_package_controllers_f5_system_package_controller_f5_system_package_controller_number_f5_system_package_install_f5_system_package_install_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-package_controller-number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "controller package install status.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_install_f5-system-package_install-status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:remove": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_remove_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_remove-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_remove-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:remove/f5-system-package:input": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:remove/f5-system-package:input/f5-system-package:version": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:remove/f5-system-package:output": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:remove/f5-system-package:output/f5-system-package:response": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:check-version": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Dry-run of install for determining package and schema compatibility.",
+        "description": "Dry-run of install for determining package and schema compatibility.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_check_version_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_check-version-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_check-version-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:check-version/f5-system-package:input": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:check-version/f5-system-package:input/f5-system-package:version": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:check-version/f5-system-package:output": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:check-version/f5-system-package:output/f5-system-package:response": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:set-version": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "\nTrigger an install after a successful check-version operation.  A failing\ncheck-version will abort the operation.",
+        "description": "\nTrigger an install after a successful check-version operation.  A failing\ncheck-version will abort the operation.",
+        "operationId": "data_openconfig_system_system_f5_system_package_packages_f5_system_package_package_f5_system_package_package_package_name_f5_system_package_set_version_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-package_package-package-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_set-version-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_set-version-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:set-version/f5-system-package:input": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:set-version/f5-system-package:input/f5-system-package:version": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:set-version/f5-system-package:input/f5-system-package:proceed": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:set-version/f5-system-package:output": {
+    },
+    "/data/openconfig-system:system/f5-system-package:packages/f5-system-package:package={f5-system-package_package-package-name}/f5-system-package:set-version/f5-system-package:output/f5-system-package:response": {
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_f5-system-package_packages": {
+      "name": "packages",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages"
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages-post": {
+      "name": "packages",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name": {
+      "name": "package",
+      "in": "body",
+      "description": "Loadable Service Package.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name"
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_check-version-post-input": {
+      "name": "check-version",
+      "in": "body",
+      "description": "Dry-run of install for determining package and schema compatibility.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_check-version-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_package-name": {
+      "name": "package-name",
+      "in": "body",
+      "description": "References to the package type.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_package-name"
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_remove-post-input": {
+      "name": "remove",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_remove-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_set-version-post-input": {
+      "name": "set-version",
+      "in": "body",
+      "description": "\nTrigger an install after a successful check-version operation.  A failing\ncheck-version will abort the operation.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_set-version-post-input"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "f5-system-package_controller-number": {
+      "name": "f5-system-package_controller-number",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "integer",
+      "format": "byte"
+    },
+    "f5-system-package_package-package-name": {
+      "name": "f5-system-package_package-package-name",
+      "in": "path",
+      "description": "References to the package type.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "f5-system-package_packages-info-version": {
+      "name": "f5-system-package_packages-info-version",
+      "in": "path",
+      "description": "System package version.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_f5-system-package_packages": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:packages": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-package:package": {
+              "type": "array",
+              "description": "Loadable Service Package. (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "f5-system-package:package-name": {
+                    "description": "References to the package type. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-package:state": {
+                    "description": "State data of packages. (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "f5-system-package:packages-info": {
+                        "type": "array",
+                        "description": "(list)",
+                        "x-yang": {
+                          "type": "list"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "f5-system-package:version": {
+                              "description": "System package version. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "f5-system-package:status": {
+                              "description": "Status of the package. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "f5-system-package:date": {
+                              "description": "Date of the package. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "f5-system-package:size": {
+                              "description": "Size of the package. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "f5-system-package:in-use": {
+                              "description": "in-use status of the package. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "f5-system-package:install": {
+                        "description": "System installed software package versions. (non-presence)",
+                        "type": "object",
+                        "x-yang": {
+                          "type": "container",
+                          "is_presence": "false"
+                        },
+                        "properties": {
+                          "f5-system-package:package-installed": {
+                            "description": "System installed Package version. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "f5-system-package:install-stage": {
+                            "description": "(leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "enumeration",
+                            "default": "IDLE",
+                            "enum": [
+                              "IDLE",
+                              "STARTING",
+                              "COMPLETE",
+                              "FAILED"
+                            ]
+                          },
+                          "f5-system-package:install-status": {
+                            "description": "controller package install status. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "enumeration",
+                            "default": "success",
+                            "enum": [
+                              "success",
+                              "failed",
+                              "none",
+                              "in-progress"
+                            ]
+                          }
+                        }
+                      },
+                      "f5-system-package:controllers": {
+                        "description": "(non-presence)",
+                        "type": "object",
+                        "x-yang": {
+                          "type": "container",
+                          "is_presence": "false"
+                        },
+                        "properties": {
+                          "f5-system-package:controller": {
+                            "type": "array",
+                            "description": "(list)",
+                            "x-yang": {
+                              "type": "list"
+                            },
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "f5-system-package:number": {
+                                  "description": "(leaf)",
+                                  "x-yang": {
+                                    "type": "leaf"
+                                  },
+                                  "type": "integer",
+                                  "format": "byte"
+                                },
+                                "f5-system-package:packages-info": {
+                                  "type": "array",
+                                  "description": "(list)",
+                                  "x-yang": {
+                                    "type": "list"
+                                  },
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "f5-system-package:version": {
+                                        "description": "System package version. (leaf)",
+                                        "x-yang": {
+                                          "type": "leaf"
+                                        },
+                                        "type": "string",
+                                        "format": "string"
+                                      },
+                                      "f5-system-package:status": {
+                                        "description": "Status of the package. (leaf)",
+                                        "x-yang": {
+                                          "type": "leaf"
+                                        },
+                                        "type": "string",
+                                        "format": "string"
+                                      },
+                                      "f5-system-package:date": {
+                                        "description": "Date of the package. (leaf)",
+                                        "x-yang": {
+                                          "type": "leaf"
+                                        },
+                                        "type": "string",
+                                        "format": "string"
+                                      },
+                                      "f5-system-package:size": {
+                                        "description": "Size of the package. (leaf)",
+                                        "x-yang": {
+                                          "type": "leaf"
+                                        },
+                                        "type": "string",
+                                        "format": "string"
+                                      },
+                                      "f5-system-package:in-use": {
+                                        "description": "in-use status of the package. (leaf)",
+                                        "x-yang": {
+                                          "type": "leaf"
+                                        },
+                                        "type": "string",
+                                        "format": "boolean"
+                                      }
+                                    }
+                                  }
+                                },
+                                "f5-system-package:install": {
+                                  "description": "System installed software package versions. (non-presence)",
+                                  "type": "object",
+                                  "x-yang": {
+                                    "type": "container",
+                                    "is_presence": "false"
+                                  },
+                                  "properties": {
+                                    "f5-system-package:package-installed": {
+                                      "description": "System installed Package version. (leaf)",
+                                      "x-yang": {
+                                        "type": "leaf"
+                                      },
+                                      "type": "string",
+                                      "format": "string"
+                                    },
+                                    "f5-system-package:install-stage": {
+                                      "description": "(leaf)",
+                                      "x-yang": {
+                                        "type": "leaf"
+                                      },
+                                      "type": "string",
+                                      "format": "enumeration",
+                                      "default": "IDLE",
+                                      "enum": [
+                                        "IDLE",
+                                        "STARTING",
+                                        "COMPLETE",
+                                        "FAILED"
+                                      ]
+                                    },
+                                    "f5-system-package:install-status": {
+                                      "description": "controller package install status. (leaf)",
+                                      "x-yang": {
+                                        "type": "leaf"
+                                      },
+                                      "type": "string",
+                                      "format": "enumeration",
+                                      "default": "success",
+                                      "enum": [
+                                        "success",
+                                        "failed",
+                                        "none",
+                                        "in-progress"
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:package": {
+          "type": "array",
+          "description": "Loadable Service Package. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-package:package-name": {
+                "description": "References to the package type. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:state": {
+                "description": "State data of packages. (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "f5-system-package:packages-info": {
+                    "type": "array",
+                    "description": "(list)",
+                    "x-yang": {
+                      "type": "list"
+                    },
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "f5-system-package:version": {
+                          "description": "System package version. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:status": {
+                          "description": "Status of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:date": {
+                          "description": "Date of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:size": {
+                          "description": "Size of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:in-use": {
+                          "description": "in-use status of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "f5-system-package:install": {
+                    "description": "System installed software package versions. (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "f5-system-package:package-installed": {
+                        "description": "System installed Package version. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "f5-system-package:install-stage": {
+                        "description": "(leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "IDLE",
+                        "enum": [
+                          "IDLE",
+                          "STARTING",
+                          "COMPLETE",
+                          "FAILED"
+                        ]
+                      },
+                      "f5-system-package:install-status": {
+                        "description": "controller package install status. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "success",
+                        "enum": [
+                          "success",
+                          "failed",
+                          "none",
+                          "in-progress"
+                        ]
+                      }
+                    }
+                  },
+                  "f5-system-package:controllers": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "f5-system-package:controller": {
+                        "type": "array",
+                        "description": "(list)",
+                        "x-yang": {
+                          "type": "list"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "f5-system-package:number": {
+                              "description": "(leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "integer",
+                              "format": "byte"
+                            },
+                            "f5-system-package:packages-info": {
+                              "type": "array",
+                              "description": "(list)",
+                              "x-yang": {
+                                "type": "list"
+                              },
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "f5-system-package:version": {
+                                    "description": "System package version. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "string"
+                                  },
+                                  "f5-system-package:status": {
+                                    "description": "Status of the package. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "string"
+                                  },
+                                  "f5-system-package:date": {
+                                    "description": "Date of the package. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "string"
+                                  },
+                                  "f5-system-package:size": {
+                                    "description": "Size of the package. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "string"
+                                  },
+                                  "f5-system-package:in-use": {
+                                    "description": "in-use status of the package. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "boolean"
+                                  }
+                                }
+                              }
+                            },
+                            "f5-system-package:install": {
+                              "description": "System installed software package versions. (non-presence)",
+                              "type": "object",
+                              "x-yang": {
+                                "type": "container",
+                                "is_presence": "false"
+                              },
+                              "properties": {
+                                "f5-system-package:package-installed": {
+                                  "description": "System installed Package version. (leaf)",
+                                  "x-yang": {
+                                    "type": "leaf"
+                                  },
+                                  "type": "string",
+                                  "format": "string"
+                                },
+                                "f5-system-package:install-stage": {
+                                  "description": "(leaf)",
+                                  "x-yang": {
+                                    "type": "leaf"
+                                  },
+                                  "type": "string",
+                                  "format": "enumeration",
+                                  "default": "IDLE",
+                                  "enum": [
+                                    "IDLE",
+                                    "STARTING",
+                                    "COMPLETE",
+                                    "FAILED"
+                                  ]
+                                },
+                                "f5-system-package:install-status": {
+                                  "description": "controller package install status. (leaf)",
+                                  "x-yang": {
+                                    "type": "leaf"
+                                  },
+                                  "type": "string",
+                                  "format": "enumeration",
+                                  "default": "success",
+                                  "enum": [
+                                    "success",
+                                    "failed",
+                                    "none",
+                                    "in-progress"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "f5-system-package:version": {
+                "description": "Name of the package, to remove from the controller. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "f5-system-package:version": {
+                "description": "Package version to determine the compatibility with controller. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "f5-system-package:version": {
+                "description": "Package version to be upgraded. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "f5-system-package:proceed": {
+                "description": "User confirmation to proceed or abort the package install process. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "no",
+                "enum": [
+                  "no",
+                  "yes"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:package": {
+          "type": "array",
+          "description": "Loadable Service Package. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-package:package-name": {
+                "description": "References to the package type. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:state": {
+                "description": "State data of packages. (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "f5-system-package:packages-info": {
+                    "type": "array",
+                    "description": "(list)",
+                    "x-yang": {
+                      "type": "list"
+                    },
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "f5-system-package:version": {
+                          "description": "System package version. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:status": {
+                          "description": "Status of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:date": {
+                          "description": "Date of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:size": {
+                          "description": "Size of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:in-use": {
+                          "description": "in-use status of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "f5-system-package:install": {
+                    "description": "System installed software package versions. (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "f5-system-package:package-installed": {
+                        "description": "System installed Package version. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "f5-system-package:install-stage": {
+                        "description": "(leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "IDLE",
+                        "enum": [
+                          "IDLE",
+                          "STARTING",
+                          "COMPLETE",
+                          "FAILED"
+                        ]
+                      },
+                      "f5-system-package:install-status": {
+                        "description": "controller package install status. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "success",
+                        "enum": [
+                          "success",
+                          "failed",
+                          "none",
+                          "in-progress"
+                        ]
+                      }
+                    }
+                  },
+                  "f5-system-package:controllers": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "f5-system-package:controller": {
+                        "type": "array",
+                        "description": "(list)",
+                        "x-yang": {
+                          "type": "list"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "f5-system-package:number": {
+                              "description": "(leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "integer",
+                              "format": "byte"
+                            },
+                            "f5-system-package:packages-info": {
+                              "type": "array",
+                              "description": "(list)",
+                              "x-yang": {
+                                "type": "list"
+                              },
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "f5-system-package:version": {
+                                    "description": "System package version. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "string"
+                                  },
+                                  "f5-system-package:status": {
+                                    "description": "Status of the package. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "string"
+                                  },
+                                  "f5-system-package:date": {
+                                    "description": "Date of the package. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "string"
+                                  },
+                                  "f5-system-package:size": {
+                                    "description": "Size of the package. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "string"
+                                  },
+                                  "f5-system-package:in-use": {
+                                    "description": "in-use status of the package. (leaf)",
+                                    "x-yang": {
+                                      "type": "leaf"
+                                    },
+                                    "type": "string",
+                                    "format": "boolean"
+                                  }
+                                }
+                              }
+                            },
+                            "f5-system-package:install": {
+                              "description": "System installed software package versions. (non-presence)",
+                              "type": "object",
+                              "x-yang": {
+                                "type": "container",
+                                "is_presence": "false"
+                              },
+                              "properties": {
+                                "f5-system-package:package-installed": {
+                                  "description": "System installed Package version. (leaf)",
+                                  "x-yang": {
+                                    "type": "leaf"
+                                  },
+                                  "type": "string",
+                                  "format": "string"
+                                },
+                                "f5-system-package:install-stage": {
+                                  "description": "(leaf)",
+                                  "x-yang": {
+                                    "type": "leaf"
+                                  },
+                                  "type": "string",
+                                  "format": "enumeration",
+                                  "default": "IDLE",
+                                  "enum": [
+                                    "IDLE",
+                                    "STARTING",
+                                    "COMPLETE",
+                                    "FAILED"
+                                  ]
+                                },
+                                "f5-system-package:install-status": {
+                                  "description": "controller package install status. (leaf)",
+                                  "x-yang": {
+                                    "type": "leaf"
+                                  },
+                                  "type": "string",
+                                  "format": "enumeration",
+                                  "default": "success",
+                                  "enum": [
+                                    "success",
+                                    "failed",
+                                    "none",
+                                    "in-progress"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_check-version-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:version": {
+          "description": "Package version to determine the compatibility with controller. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_check-version-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:response": {
+          "description": "Database compatibility check result. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_package-name": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:package-name": {
+          "description": "References to the package type. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_remove-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:version": {
+          "description": "Name of the package, to remove from the controller. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_remove-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:response": {
+          "description": "Result of the remove image from controller. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_set-version-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:version": {
+          "description": "Package version to be upgraded. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        },
+        "f5-system-package:proceed": {
+          "description": "User confirmation to proceed or abort the package install process. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "no",
+          "enum": [
+            "no",
+            "yes"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_set-version-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:response": {
+          "description": "Upgrade operation result. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:state": {
+          "description": "State data of packages. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-package:packages-info": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "f5-system-package:version": {
+                    "description": "System package version. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-package:status": {
+                    "description": "Status of the package. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-package:date": {
+                    "description": "Date of the package. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-package:size": {
+                    "description": "Size of the package. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-package:in-use": {
+                    "description": "in-use status of the package. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  }
+                }
+              }
+            },
+            "f5-system-package:install": {
+              "description": "System installed software package versions. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-package:package-installed": {
+                  "description": "System installed Package version. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-package:install-stage": {
+                  "description": "(leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "enumeration",
+                  "default": "IDLE",
+                  "enum": [
+                    "IDLE",
+                    "STARTING",
+                    "COMPLETE",
+                    "FAILED"
+                  ]
+                },
+                "f5-system-package:install-status": {
+                  "description": "controller package install status. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "enumeration",
+                  "default": "success",
+                  "enum": [
+                    "success",
+                    "failed",
+                    "none",
+                    "in-progress"
+                  ]
+                }
+              }
+            },
+            "f5-system-package:controllers": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-package:controller": {
+                  "type": "array",
+                  "description": "(list)",
+                  "x-yang": {
+                    "type": "list"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "f5-system-package:number": {
+                        "description": "(leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "byte"
+                      },
+                      "f5-system-package:packages-info": {
+                        "type": "array",
+                        "description": "(list)",
+                        "x-yang": {
+                          "type": "list"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "f5-system-package:version": {
+                              "description": "System package version. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "f5-system-package:status": {
+                              "description": "Status of the package. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "f5-system-package:date": {
+                              "description": "Date of the package. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "f5-system-package:size": {
+                              "description": "Size of the package. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "f5-system-package:in-use": {
+                              "description": "in-use status of the package. (leaf)",
+                              "x-yang": {
+                                "type": "leaf"
+                              },
+                              "type": "string",
+                              "format": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "f5-system-package:install": {
+                        "description": "System installed software package versions. (non-presence)",
+                        "type": "object",
+                        "x-yang": {
+                          "type": "container",
+                          "is_presence": "false"
+                        },
+                        "properties": {
+                          "f5-system-package:package-installed": {
+                            "description": "System installed Package version. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "string"
+                          },
+                          "f5-system-package:install-stage": {
+                            "description": "(leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "enumeration",
+                            "default": "IDLE",
+                            "enum": [
+                              "IDLE",
+                              "STARTING",
+                              "COMPLETE",
+                              "FAILED"
+                            ]
+                          },
+                          "f5-system-package:install-status": {
+                            "description": "controller package install status. (leaf)",
+                            "x-yang": {
+                              "type": "leaf"
+                            },
+                            "type": "string",
+                            "format": "enumeration",
+                            "default": "success",
+                            "enum": [
+                              "success",
+                              "failed",
+                              "none",
+                              "in-progress"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:controllers": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-package:controller": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "f5-system-package:number": {
+                    "description": "(leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "f5-system-package:packages-info": {
+                    "type": "array",
+                    "description": "(list)",
+                    "x-yang": {
+                      "type": "list"
+                    },
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "f5-system-package:version": {
+                          "description": "System package version. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:status": {
+                          "description": "Status of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:date": {
+                          "description": "Date of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:size": {
+                          "description": "Size of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-package:in-use": {
+                          "description": "in-use status of the package. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "f5-system-package:install": {
+                    "description": "System installed software package versions. (non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "f5-system-package:package-installed": {
+                        "description": "System installed Package version. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "f5-system-package:install-stage": {
+                        "description": "(leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "IDLE",
+                        "enum": [
+                          "IDLE",
+                          "STARTING",
+                          "COMPLETE",
+                          "FAILED"
+                        ]
+                      },
+                      "f5-system-package:install-status": {
+                        "description": "controller package install status. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "enumeration",
+                        "default": "success",
+                        "enum": [
+                          "success",
+                          "failed",
+                          "none",
+                          "in-progress"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:controller": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-package:number": {
+                "description": "(leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "f5-system-package:packages-info": {
+                "type": "array",
+                "description": "(list)",
+                "x-yang": {
+                  "type": "list"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "f5-system-package:version": {
+                      "description": "System package version. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-package:status": {
+                      "description": "Status of the package. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-package:date": {
+                      "description": "Date of the package. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-package:size": {
+                      "description": "Size of the package. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-package:in-use": {
+                      "description": "in-use status of the package. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "boolean"
+                    }
+                  }
+                }
+              },
+              "f5-system-package:install": {
+                "description": "System installed software package versions. (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "f5-system-package:package-installed": {
+                    "description": "System installed Package version. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-package:install-stage": {
+                    "description": "(leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "IDLE",
+                    "enum": [
+                      "IDLE",
+                      "STARTING",
+                      "COMPLETE",
+                      "FAILED"
+                    ]
+                  },
+                  "f5-system-package:install-status": {
+                    "description": "controller package install status. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "success",
+                    "enum": [
+                      "success",
+                      "failed",
+                      "none",
+                      "in-progress"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:controller": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-package:number": {
+                "description": "(leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "integer",
+                "format": "byte"
+              },
+              "f5-system-package:packages-info": {
+                "type": "array",
+                "description": "(list)",
+                "x-yang": {
+                  "type": "list"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "f5-system-package:version": {
+                      "description": "System package version. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-package:status": {
+                      "description": "Status of the package. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-package:date": {
+                      "description": "Date of the package. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-package:size": {
+                      "description": "Size of the package. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-package:in-use": {
+                      "description": "in-use status of the package. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "boolean"
+                    }
+                  }
+                }
+              },
+              "f5-system-package:install": {
+                "description": "System installed software package versions. (non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "f5-system-package:package-installed": {
+                    "description": "System installed Package version. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-package:install-stage": {
+                    "description": "(leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "IDLE",
+                    "enum": [
+                      "IDLE",
+                      "STARTING",
+                      "COMPLETE",
+                      "FAILED"
+                    ]
+                  },
+                  "f5-system-package:install-status": {
+                    "description": "controller package install status. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "success",
+                    "enum": [
+                      "success",
+                      "failed",
+                      "none",
+                      "in-progress"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_install": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:install": {
+          "description": "System installed software package versions. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-package:package-installed": {
+              "description": "System installed Package version. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-package:install-stage": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "IDLE",
+              "enum": [
+                "IDLE",
+                "STARTING",
+                "COMPLETE",
+                "FAILED"
+              ]
+            },
+            "f5-system-package:install-status": {
+              "description": "controller package install status. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "success",
+              "enum": [
+                "success",
+                "failed",
+                "none",
+                "in-progress"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_install_f5-system-package_install-stage": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:install-stage": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "IDLE",
+          "enum": [
+            "IDLE",
+            "STARTING",
+            "COMPLETE",
+            "FAILED"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_install_f5-system-package_install-status": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:install-status": {
+          "description": "controller package install status. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "success",
+          "enum": [
+            "success",
+            "failed",
+            "none",
+            "in-progress"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_install_f5-system-package_package-installed": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:package-installed": {
+          "description": "System installed Package version. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_number": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:number": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:packages-info": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-package:version": {
+                "description": "System package version. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:status": {
+                "description": "Status of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:date": {
+                "description": "Date of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:size": {
+                "description": "Size of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:in-use": {
+                "description": "in-use status of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:packages-info": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-package:version": {
+                "description": "System package version. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:status": {
+                "description": "Status of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:date": {
+                "description": "Date of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:size": {
+                "description": "Size of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:in-use": {
+                "description": "in-use status of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_date": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:date": {
+          "description": "Date of the package. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_in-use": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:in-use": {
+          "description": "in-use status of the package. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_size": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:size": {
+          "description": "Size of the package. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_status": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:status": {
+          "description": "Status of the package. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_controllers_f5-system-package_controller_f5-system-package_controller-number_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_version": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:version": {
+          "description": "System package version. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_install": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:install": {
+          "description": "System installed software package versions. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-package:package-installed": {
+              "description": "System installed Package version. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-package:install-stage": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "IDLE",
+              "enum": [
+                "IDLE",
+                "STARTING",
+                "COMPLETE",
+                "FAILED"
+              ]
+            },
+            "f5-system-package:install-status": {
+              "description": "controller package install status. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "success",
+              "enum": [
+                "success",
+                "failed",
+                "none",
+                "in-progress"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_install_f5-system-package_install-stage": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:install-stage": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "IDLE",
+          "enum": [
+            "IDLE",
+            "STARTING",
+            "COMPLETE",
+            "FAILED"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_install_f5-system-package_install-status": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:install-status": {
+          "description": "controller package install status. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "success",
+          "enum": [
+            "success",
+            "failed",
+            "none",
+            "in-progress"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_install_f5-system-package_package-installed": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:package-installed": {
+          "description": "System installed Package version. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:packages-info": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-package:version": {
+                "description": "System package version. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:status": {
+                "description": "Status of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:date": {
+                "description": "Date of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:size": {
+                "description": "Size of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:in-use": {
+                "description": "in-use status of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:packages-info": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-package:version": {
+                "description": "System package version. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:status": {
+                "description": "Status of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:date": {
+                "description": "Date of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:size": {
+                "description": "Size of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-package:in-use": {
+                "description": "in-use status of the package. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_date": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:date": {
+          "description": "Date of the package. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_in-use": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:in-use": {
+          "description": "in-use status of the package. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_size": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:size": {
+          "description": "Size of the package. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_status": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:status": {
+          "description": "Status of the package. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-package_packages_f5-system-package_package_f5-system-package_package-package-name_f5-system-package_state_f5-system-package_packages-info_f5-system-package_packages-info-version_f5-system-package_version": {
+      "type": "object",
+      "properties": {
+        "f5-system-package:version": {
+          "description": "System package version. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

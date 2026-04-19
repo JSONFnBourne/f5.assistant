@@ -1,0 +1,7 @@
+[Unit]
+Description=F5 Platform (backend + webapp)
+Wants=f5-backend.service f5-webapp.service
+After=f5-backend.service f5-webapp.service
+
+[Install]
+WantedBy=default.target

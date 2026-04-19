@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F5OS/F5OS-C OpenAPI Documentation </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            body {
+                margin: 0;
+                padding-top: 40px;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                height: 40px;
+                width: 100%;
+                z-index: 100;
+            }
+
+            #links_container {
+                margin: 0;
+                padding: 0;
+                height: 40px;
+                background-color: #fafafa;
+            }
+
+            .main-menu {
+                display: inline-block;
+                padding: 10px;
+                font-family: Montserrat, sans-serif;
+                font-weight: 300;
+                font-size: 14px;
+                color: rgba(38, 50, 56, 0.99);
+                text-transform: uppercase;
+            }
+
+            #api_links {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Top navigation placeholder -->
+        <nav>
+            <ul id="links_container">
+                <li class="main-menu">F5OS/F5OS-C API Documentation </li>
+                <select class="main-menu" onchange="onChangeApi(this)" id="api_links"> </select>
+            </ul>
+        </nav>
+
+        <redoc scroll-y-offset="body > nav"></redoc>
+
+        <script src="https://rebilly.github.io/ReDoc/releases/v1.x.x/redoc.min.js"></script>
+        <script>
+            // list of APIS
+            var apis = [
+    {
+        "component": "System Controller",
+        "name": "f5-if-aggregate",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/cc/L2-Networking/f5-if-aggregate.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-if-ethernet",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/cc/L2-Networking/f5-if-ethernet.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-lacp",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/cc/L2-Networking/f5-lacp.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "openconfig-interfaces",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/cc/L2-Networking/openconfig-interfaces.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "openconfig-lacp",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/cc/L2-Networking/openconfig-lacp.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-chassis-cluster",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/cc/Others/f5-chassis-cluster.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-file-download",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/cc/Others/f5-file-download.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-file-upload-meta-data",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/cc/Others/f5-file-upload-meta-data.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-utils-file-transfer",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/cc/Others/f5-utils-file-transfer.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "velocity_ctrlr",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/cc/Others/velocity_ctrlr.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-platform-notification",
+        "section": "Platform",
+        "url": "f5os-c-apis/2025.04.21/cc/Platform/f5-platform-notification.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-platform",
+        "section": "Platform",
+        "url": "f5os-c-apis/2025.04.21/cc/Platform/f5-platform.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "openconfig-platform",
+        "section": "Platform",
+        "url": "f5os-c-apis/2025.04.21/cc/Platform/openconfig-platform.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-aaa-confd-restconf-token",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-aaa-confd-restconf-token.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-allowed-ips",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-allowed-ips.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-database",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-database.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-event-log",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-event-log.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-gui-advisory",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-gui-advisory.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-mgmt-ip",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-mgmt-ip.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-mgmt-vlan",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-mgmt-vlan.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-alarms",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-openconfig-alarms.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-system-logging",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-openconfig-system-logging.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-system-ntp",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-openconfig-system-ntp.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-security-appliance-mode",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-security-appliance-mode.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-security-ciphers",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-security-ciphers.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-security-fips-module",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-security-fips-module.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-security-integrity-check",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-security-integrity-check.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-blade-power",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-blade-power.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-chassis-macs",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-chassis-macs.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-clock",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-clock.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-console",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-console.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-controller-image",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-controller-image.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-datetime",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-datetime.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-dbvars",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-dbvars.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-diagnostics-docker",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-diagnostics-docker.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-diagnostics-ihealth",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-diagnostics-ihealth.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-diagnostics-proxy",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-diagnostics-proxy.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-diagnostics-qkview",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-diagnostics-qkview.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-diagnostics-telemetry",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-diagnostics-telemetry.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-foo",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-foo.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-health",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-health.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-image",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-image.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-licensing-install",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-licensing-install.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-licensing",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-licensing.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-locator",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-locator.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-logging-controller",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-logging-controller.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-login-activity",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-login-activity.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-mac-allocation",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-mac-allocation.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-network",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-network.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-package",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-package.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-partition",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-partition.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-reboot",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-reboot.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-redundancy-details",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-redundancy-details.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-redundancy",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-redundancy.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-rollback",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-rollback.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-settings",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-settings.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-slot",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-slot.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-snmp",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-snmp.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-telemetry",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-telemetry.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-uptime",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-uptime.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-version",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/f5-system-version.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "openconfig-system",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/cc/System/openconfig-system.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-aaa-clientcert",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/cc/User-Authentication-and-Authorization/f5-openconfig-aaa-clientcert.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-aaa-ldap",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/cc/User-Authentication-and-Authorization/f5-openconfig-aaa-ldap.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-aaa-ocsp",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/cc/User-Authentication-and-Authorization/f5-openconfig-aaa-ocsp.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-aaa-password-policy",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/cc/User-Authentication-and-Authorization/f5-openconfig-aaa-password-policy.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-aaa-radius",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/cc/User-Authentication-and-Authorization/f5-openconfig-aaa-radius.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-openconfig-aaa-tls",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/cc/User-Authentication-and-Authorization/f5-openconfig-aaa-tls.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "f5-system-aaa",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/cc/User-Authentication-and-Authorization/f5-system-aaa.json"
+    },
+    {
+        "component": "System Controller",
+        "name": "openconfig-aaa",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/cc/User-Authentication-and-Authorization/openconfig-aaa.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-fpga-table-nse-ldp",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-fpga-table-nse-ldp.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-fpga-table-nse-port",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-fpga-table-nse-port.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-fpga-table-vqf-cc-links",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-fpga-table-vqf-cc-links.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-fpga-table-vqf-global",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-fpga-table-vqf-global.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-fpga-table-vqf-obuff",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-fpga-table-vqf-obuff.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-fpga-tables",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-fpga-tables.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-if-aggregate",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-if-aggregate.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-if-ethernet",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-if-ethernet.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-interface",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-interface.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-lacp-reset-counters",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-lacp-reset-counters.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-lacp",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-lacp.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-port-listeners",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-port-listeners.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-portgroup",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-portgroup.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-qos",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-qos.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-reset-counters",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-reset-counters.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-virtual-network",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-virtual-network.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-virtual-wire",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-virtual-wire.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-vlan-listeners",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/f5-vlan-listeners.json"
+    },
+    {
+        "component": "Partition",
+        "name": "openconfig-interfaces",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/openconfig-interfaces.json"
+    },
+    {
+        "component": "Partition",
+        "name": "openconfig-lacp",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/openconfig-lacp.json"
+    },
+    {
+        "component": "Partition",
+        "name": "openconfig-lldp",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/openconfig-lldp.json"
+    },
+    {
+        "component": "Partition",
+        "name": "openconfig-spanning-tree",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/openconfig-spanning-tree.json"
+    },
+    {
+        "component": "Partition",
+        "name": "openconfig-vlan",
+        "section": "L2-Networking",
+        "url": "f5os-c-apis/2025.04.21/partition/L2-Networking/openconfig-vlan.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-dag",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-dag.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-ddm",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-ddm.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-dma-states",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-dma-states.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-file-download",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-file-download.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-file-upload-meta-data",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-file-upload-meta-data.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-l2fdb",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-l2fdb.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-service-instances",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-service-instances.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-service-pod",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-service-pod.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-services",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-services.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-utils-file-transfer",
+        "section": "Others",
+        "url": "f5os-c-apis/2025.04.21/partition/Others/f5-utils-file-transfer.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-host-endpoint",
+        "section": "Platform",
+        "url": "f5os-c-apis/2025.04.21/partition/Platform/f5-host-endpoint.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-platform-notification",
+        "section": "Platform",
+        "url": "f5os-c-apis/2025.04.21/partition/Platform/f5-platform-notification.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-platform",
+        "section": "Platform",
+        "url": "f5os-c-apis/2025.04.21/partition/Platform/f5-platform.json"
+    },
+    {
+        "component": "Partition",
+        "name": "openconfig-platform",
+        "section": "Platform",
+        "url": "f5os-c-apis/2025.04.21/partition/Platform/openconfig-platform.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-allowed-ips",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-allowed-ips.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-database",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-database.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-disk-usage-threshold",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-disk-usage-threshold.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-event-log",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-event-log.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-gui-advisory",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-gui-advisory.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-mgmt-vlan",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-mgmt-vlan.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-openconfig-alarms",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-openconfig-alarms.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-openconfig-system-logging",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-openconfig-system-logging.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-partition-clock",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-partition-clock.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-security-appliance-mode",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-security-appliance-mode.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-security-ciphers",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-security-ciphers.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-security-fips-module",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-security-fips-module.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-security-integrity-check",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-security-integrity-check.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-diagnostics-docker",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-diagnostics-docker.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-diagnostics-ihealth",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-diagnostics-ihealth.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-diagnostics-qkview",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-diagnostics-qkview.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-health",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-health.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-licensing",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-licensing.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-login-activity",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-login-activity.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-mac-allocation",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-mac-allocation.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-partition",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-partition.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-redundancy",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-redundancy.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-settings-dag",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-settings-dag.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-settings-pgwarn",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-settings-pgwarn.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-snmp",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-snmp.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-telemetry",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-telemetry.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-uptime",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-uptime.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-version",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/f5-system-version.json"
+    },
+    {
+        "component": "Partition",
+        "name": "openconfig-system",
+        "section": "System",
+        "url": "f5os-c-apis/2025.04.21/partition/System/openconfig-system.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-cluster-rate-limiting",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-cluster-rate-limiting.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-cluster-reboot",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-cluster-reboot.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-cluster",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-cluster.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-partition",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-partition.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-tenant-images",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-tenant-images.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-tenant-l2-inline",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-tenant-l2-inline.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-tenant-mgmt-vlan",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-tenant-mgmt-vlan.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-tenants-notification",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-tenants-notification.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-tenants",
+        "section": "Tenant-Deployment",
+        "url": "f5os-c-apis/2025.04.21/partition/Tenant-Deployment/f5-tenants.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-openconfig-aaa-clientcert",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/partition/User-Authentication-and-Authorization/f5-openconfig-aaa-clientcert.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-openconfig-aaa-ldap",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/partition/User-Authentication-and-Authorization/f5-openconfig-aaa-ldap.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-openconfig-aaa-ocsp",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/partition/User-Authentication-and-Authorization/f5-openconfig-aaa-ocsp.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-openconfig-aaa-password-policy",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/partition/User-Authentication-and-Authorization/f5-openconfig-aaa-password-policy.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-openconfig-aaa-radius",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/partition/User-Authentication-and-Authorization/f5-openconfig-aaa-radius.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-openconfig-aaa-tls",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/partition/User-Authentication-and-Authorization/f5-openconfig-aaa-tls.json"
+    },
+    {
+        "component": "Partition",
+        "name": "f5-system-aaa",
+        "section": "User-Authentication-and-Authorization",
+        "url": "f5os-c-apis/2025.04.21/partition/User-Authentication-and-Authorization/f5-system-aaa.json"
+    }
+];
+
+            // Event handler when selected api doc changes
+            function onChangeApi(obj) {
+                var url = obj.value;
+
+                var selected = obj.options[obj.selectedIndex];
+                var section = selected.innerText;
+                var component = selected.dataset.component;
+
+                var location = new URL(window.location);
+                if (location.searchParams.get("section") != section ||
+                        location.searchParams.get("component") != component) {
+                    location.searchParams.set("section", section);
+                    if (component) {
+                        location.searchParams.set("component", component);
+                    }
+                    location.hash = "";
+                    window.history.pushState(
+                        {idx: obj.selectedIndex, url: url},
+                        document.title,
+                        location.href
+                    );
+                }
+
+                Redoc.init(url);
+            }
+
+            window.addEventListener("popstate", function (event) {
+                if (!event.state) {
+                    return;
+                }
+
+                var $select = document.getElementById("api_links");
+                $select.selectedIndex = event.state.idx;
+                Redoc.init(event.state.url);
+            });
+
+            //Finds the desired parent. if it doesn't exist, creates it
+            function getParent(rootElement, component, section) {
+                if (!component) {
+                    return rootElement;
+                }
+                else {
+                    var label;
+                    if (component !== null) {
+                        label = component + " - " + section;
+                    } else {
+                        label = section;
+                    }
+                    var id = "f5_api_links_" + label;
+                    var $optionGroup = document.getElementById(id);
+
+                    if (!$optionGroup) {
+                        $optionGroup = document.createElement("optgroup");
+                        $optionGroup.setAttribute("id", id);
+                        $optionGroup.setAttribute("label", label);
+                        rootElement.appendChild($optionGroup);
+                    }
+
+                    return $optionGroup;
+                }
+            }
+
+            // Apis added to select box
+            function initializePage (apiList) {
+                var searchParams = (new URL(window.location)).searchParams;
+                var initialPage = searchParams.get("section");
+                var initialComponent = searchParams.get("component");
+                var initialSpec;
+                var fallbackSpec;
+
+                // Get the select element
+                var $select = document.getElementById("api_links");
+
+                for (var i = 0; i < apiList.length; i++) {
+                    var $option = document.createElement("option");
+                    $option.setAttribute("value", apiList[i].url);
+                    $option.innerText = apiList[i].name;
+                    if (apiList[i].component) {
+                        $option.dataset.component = apiList[i].component;
+                    }
+
+                    $parent = getParent($select, apiList[i].component, apiList[i].section);
+                    $parent.appendChild($option);
+
+                    if (apiList[i].name == initialPage &&
+                            (apiList[i].component == null || apiList[i].component == initialComponent)) {
+                        initialSpec = $option;
+                    } else if ((apiList[i].name == "f5-partition") || apiList[i].name == "f5-disk-usage-threshold") {
+                        // load a small api doc first
+                        fallbackSpec = $option;
+                    }
+                }
+
+                var spec = initialSpec ? initialSpec : fallbackSpec;
+                $select.selectedIndex = spec.index;
+                window.history.replaceState(
+                    {idx: spec.index, url: spec.value},
+                    document.title,
+                    window.location.href
+                );
+                Redoc.init(spec.value);
+            }
+
+            initializePage(apis);
+
+        </script>
+    </body>
+</html>

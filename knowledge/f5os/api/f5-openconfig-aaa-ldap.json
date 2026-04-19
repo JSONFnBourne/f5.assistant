@@ -1,0 +1,3187 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Top-level container for LDAP search settings.",
+        "description": "Top-level container for LDAP search settings.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Top-level container for LDAP search settings.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Top-level container for LDAP search settings.",
+        "description": "Top-level container for LDAP search settings.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container ldap created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Top-level container for LDAP search settings.",
+        "description": "Top-level container for LDAP search settings.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container ldap created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Top-level container for LDAP search settings.",
+        "description": "Top-level container for LDAP search settings.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container ldap updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Top-level container for LDAP search settings.",
+        "description": "Top-level container for LDAP search settings.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:binddn": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The distinguished name with which to bind to the directory server for lookups.",
+        "description": "The distinguished name with which to bind to the directory server for lookups.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_binddn_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "The distinguished name with which to bind to the directory server for lookups.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_binddn"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "The distinguished name with which to bind to the directory server for lookups.",
+        "description": "The distinguished name with which to bind to the directory server for lookups.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_binddn_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_binddn"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf binddn created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "The distinguished name with which to bind to the directory server for lookups.",
+        "description": "The distinguished name with which to bind to the directory server for lookups.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_binddn_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_binddn"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf binddn updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "The distinguished name with which to bind to the directory server for lookups.",
+        "description": "The distinguished name with which to bind to the directory server for lookups.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_binddn_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:bindpw": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The credentials with which to bind when using binddn.",
+        "description": "The credentials with which to bind when using binddn.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_bindpw_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "The credentials with which to bind when using binddn.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bindpw"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "The credentials with which to bind when using binddn.",
+        "description": "The credentials with which to bind when using binddn.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_bindpw_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bindpw"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf bindpw created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "The credentials with which to bind when using binddn.",
+        "description": "The credentials with which to bind when using binddn.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_bindpw_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bindpw"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf bindpw updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "The credentials with which to bind when using binddn.",
+        "description": "The credentials with which to bind when using binddn.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_bindpw_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:base": {
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:base={f5-openconfig-aaa-ldap_base-id}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The distinguished name (DN) to use as search base.",
+        "description": "The distinguished name (DN) to use as search base.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_base_f5_openconfig_aaa_ldap_base_id_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-openconfig-aaa-ldap_base-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The distinguished name (DN) to use as search base.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_base_f5-openconfig-aaa-ldap_base-id"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "The distinguished name (DN) to use as search base.",
+        "description": "The distinguished name (DN) to use as search base.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_base_f5_openconfig_aaa_ldap_base_id_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-openconfig-aaa-ldap_base-id"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_base_f5-openconfig-aaa-ldap_base-id"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf-list base created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "The distinguished name (DN) to use as search base.",
+        "description": "The distinguished name (DN) to use as search base.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_base_f5_openconfig_aaa_ldap_base_id_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-openconfig-aaa-ldap_base-id"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_base_f5-openconfig-aaa-ldap_base-id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf-list base updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "The distinguished name (DN) to use as search base.",
+        "description": "The distinguished name (DN) to use as search base.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_base_f5_openconfig_aaa_ldap_base_id_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-openconfig-aaa-ldap_base-id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:bind_timelimit": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+        "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_bind_timelimit_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bind_timelimit"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+        "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_bind_timelimit_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bind_timelimit"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf bind_timelimit created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+        "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_bind_timelimit_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bind_timelimit"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf bind_timelimit updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+        "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_bind_timelimit_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:timelimit": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+        "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_timelimit_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_timelimit"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+        "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_timelimit_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_timelimit"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf timelimit created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+        "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_timelimit_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_timelimit"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf timelimit updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+        "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_timelimit_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:idle_timelimit": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+        "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_idle_timelimit_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_idle_timelimit"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+        "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_idle_timelimit_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_idle_timelimit"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf idle_timelimit created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+        "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_idle_timelimit_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_idle_timelimit"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf idle_timelimit updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+        "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_idle_timelimit_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:ldap_version": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the version number of the LDAP application. The default value is 3.",
+        "description": "Specifies the version number of the LDAP application. The default value is 3.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ldap_version_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the version number of the LDAP application. The default value is 3.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ldap_version"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the version number of the LDAP application. The default value is 3.",
+        "description": "Specifies the version number of the LDAP application. The default value is 3.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ldap_version_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ldap_version"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf ldap_version created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the version number of the LDAP application. The default value is 3.",
+        "description": "Specifies the version number of the LDAP application. The default value is 3.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ldap_version_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ldap_version"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf ldap_version updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the version number of the LDAP application. The default value is 3.",
+        "description": "Specifies the version number of the LDAP application. The default value is 3.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ldap_version_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:ssl": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+        "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ssl_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ssl"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+        "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ssl_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ssl"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf ssl created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+        "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ssl_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ssl"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf ssl updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+        "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ssl_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:active_directory": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+        "description": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_active_directory_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_active_directory"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+        "description": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_active_directory_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_active_directory"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf active_directory created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+        "description": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_active_directory_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_active_directory"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf active_directory updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+        "description": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_active_directory_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:unix_attributes": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+        "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_unix_attributes_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_unix_attributes"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+        "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_unix_attributes_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_unix_attributes"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf unix_attributes created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+        "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_unix_attributes_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_unix_attributes"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf unix_attributes updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+        "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_unix_attributes_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:tls_reqcert": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+        "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_reqcert_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_reqcert"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+        "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_reqcert_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_reqcert"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf tls_reqcert created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+        "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_reqcert_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_reqcert"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf tls_reqcert updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+        "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_reqcert_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:tls_cacert": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+        "description": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_cacert_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cacert"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+        "description": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_cacert_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cacert"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf tls_cacert created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+        "description": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_cacert_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cacert"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf tls_cacert updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+        "description": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_cacert_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:tls_ciphers": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+        "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_ciphers_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_ciphers"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+        "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_ciphers_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_ciphers"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf tls_ciphers created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+        "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_ciphers_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_ciphers"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf tls_ciphers updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+        "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_ciphers_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:tls_cert": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the PEM-encoded certificate for client TLS authentication.",
+        "description": "Specifies the PEM-encoded certificate for client TLS authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_cert_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the PEM-encoded certificate for client TLS authentication.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cert"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the PEM-encoded certificate for client TLS authentication.",
+        "description": "Specifies the PEM-encoded certificate for client TLS authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_cert_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cert"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf tls_cert created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the PEM-encoded certificate for client TLS authentication.",
+        "description": "Specifies the PEM-encoded certificate for client TLS authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_cert_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cert"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf tls_cert updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the PEM-encoded certificate for client TLS authentication.",
+        "description": "Specifies the PEM-encoded certificate for client TLS authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_cert_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:tls_key": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the PEM-encoded private key for client TLS authentication.",
+        "description": "Specifies the PEM-encoded private key for client TLS authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_key_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the PEM-encoded private key for client TLS authentication.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_key"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the PEM-encoded private key for client TLS authentication.",
+        "description": "Specifies the PEM-encoded private key for client TLS authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_key_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_key"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf tls_key created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the PEM-encoded private key for client TLS authentication.",
+        "description": "Specifies the PEM-encoded private key for client TLS authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_key_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_key"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf tls_key updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the PEM-encoded private key for client TLS authentication.",
+        "description": "Specifies the PEM-encoded private key for client TLS authentication.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_tls_key_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:chase-referrals": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+        "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_chase_referrals_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_chase-referrals"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+        "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_chase_referrals_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_chase-referrals"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf chase-referrals created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+        "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_chase_referrals_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_chase-referrals"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf chase-referrals updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+        "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_chase_referrals_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:ignore-case": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+        "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ignore_case_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ignore-case"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+        "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ignore_case_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ignore-case"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf ignore-case created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+        "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ignore_case_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ignore-case"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf ignore-case updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+        "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_ignore_case_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Top-level container for LDAP state.",
+        "description": "Top-level container for LDAP state.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Top-level container for LDAP state.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/aaa/authentication/f5-openconfig-aaa-ldap:ldap/f5-openconfig-aaa-ldap:state/f5-openconfig-aaa-ldap:domain_sid": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "The root ObjectSID of the Active Directory domain. Only relevant for Active Directory configurations with unix_attributes false.",
+        "description": "The root ObjectSID of the Active Directory domain. Only relevant for Active Directory configurations with unix_attributes false.",
+        "operationId": "data_openconfig_system_system_aaa_authentication_f5_openconfig_aaa_ldap_ldap_f5_openconfig_aaa_ldap_state_f5_openconfig_aaa_ldap_domain_sid_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "The root ObjectSID of the Active Directory domain. Only relevant for Active Directory configurations with unix_attributes false.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_state_f5-openconfig-aaa-ldap_domain_sid"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap": {
+      "name": "ldap",
+      "in": "body",
+      "description": "Top-level container for LDAP search settings.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap-post": {
+      "name": "ldap",
+      "in": "body",
+      "description": "Top-level container for LDAP search settings.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap-post"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_active_directory": {
+      "name": "active_directory",
+      "in": "body",
+      "description": "Specifies whether this LDAP server is an Active Directory server (false by default).",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_active_directory"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_base_f5-openconfig-aaa-ldap_base-id": {
+      "name": "base",
+      "in": "body",
+      "description": "The distinguished name (DN) to use as search base.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_base_f5-openconfig-aaa-ldap_base-id"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bind_timelimit": {
+      "name": "bind_timelimit",
+      "in": "body",
+      "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bind_timelimit"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_binddn": {
+      "name": "binddn",
+      "in": "body",
+      "description": "The distinguished name with which to bind to the directory server for lookups.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_binddn"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bindpw": {
+      "name": "bindpw",
+      "in": "body",
+      "description": "The credentials with which to bind when using binddn.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bindpw"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_chase-referrals": {
+      "name": "chase-referrals",
+      "in": "body",
+      "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_chase-referrals"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_idle_timelimit": {
+      "name": "idle_timelimit",
+      "in": "body",
+      "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_idle_timelimit"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ignore-case": {
+      "name": "ignore-case",
+      "in": "body",
+      "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ignore-case"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ldap_version": {
+      "name": "ldap_version",
+      "in": "body",
+      "description": "Specifies the version number of the LDAP application. The default value is 3.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ldap_version"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ssl": {
+      "name": "ssl",
+      "in": "body",
+      "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS).",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ssl"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_timelimit": {
+      "name": "timelimit",
+      "in": "body",
+      "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_timelimit"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cacert": {
+      "name": "tls_cacert",
+      "in": "body",
+      "description": "Specifies the PEM-encoded X.509 certificate for peer authentication.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cacert"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cert": {
+      "name": "tls_cert",
+      "in": "body",
+      "description": "Specifies the PEM-encoded certificate for client TLS authentication.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cert"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_ciphers": {
+      "name": "tls_ciphers",
+      "in": "body",
+      "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_ciphers"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_key": {
+      "name": "tls_key",
+      "in": "body",
+      "description": "Specifies the PEM-encoded private key for client TLS authentication.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_key"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_reqcert": {
+      "name": "tls_reqcert",
+      "in": "body",
+      "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_reqcert"
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_unix_attributes": {
+      "name": "unix_attributes",
+      "in": "body",
+      "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_unix_attributes"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "f5-openconfig-aaa-ldap_base-id": {
+      "name": "f5-openconfig-aaa-ldap_base-id",
+      "in": "path",
+      "description": "The distinguished name (DN) to use as search base.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:ldap": {
+          "description": "Top-level container for LDAP search settings. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-openconfig-aaa-ldap:binddn": {
+              "description": "The distinguished name with which to bind to the directory server for lookups. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-openconfig-aaa-ldap:bindpw": {
+              "description": "The credentials with which to bind when using binddn. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-openconfig-aaa-ldap:base": {
+              "type": "array",
+              "x-yang": {
+                "type": "leaf-list"
+              },
+              "items": {
+                "description": "The distinguished name (DN) to use as search base. (leaf-list)",
+                "type": "string",
+                "format": "string"
+              }
+            },
+            "f5-openconfig-aaa-ldap:bind_timelimit": {
+              "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "f5-openconfig-aaa-ldap:timelimit": {
+              "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "f5-openconfig-aaa-ldap:idle_timelimit": {
+              "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "f5-openconfig-aaa-ldap:ldap_version": {
+              "description": "Specifies the version number of the LDAP application. The default value is 3. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "f5-openconfig-aaa-ldap:ssl": {
+              "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS). (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "on",
+              "enum": [
+                "on",
+                "off",
+                "start_tls"
+              ]
+            },
+            "f5-openconfig-aaa-ldap:active_directory": {
+              "description": "Specifies whether this LDAP server is an Active Directory server (false by default). (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-openconfig-aaa-ldap:unix_attributes": {
+              "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-openconfig-aaa-ldap:tls_reqcert": {
+              "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "enumeration",
+              "default": "never",
+              "enum": [
+                "never",
+                "allow",
+                "try",
+                "demand",
+                "hard"
+              ]
+            },
+            "f5-openconfig-aaa-ldap:tls_cacert": {
+              "description": "Specifies the PEM-encoded X.509 certificate for peer authentication. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-openconfig-aaa-ldap:tls_ciphers": {
+              "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-openconfig-aaa-ldap:tls_cert": {
+              "description": "Specifies the PEM-encoded certificate for client TLS authentication. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-openconfig-aaa-ldap:tls_key": {
+              "description": "Specifies the PEM-encoded private key for client TLS authentication. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-openconfig-aaa-ldap:chase-referrals": {
+              "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-openconfig-aaa-ldap:ignore-case": {
+              "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-openconfig-aaa-ldap:state": {
+              "description": "Top-level container for LDAP state. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-openconfig-aaa-ldap:domain_sid": {
+                  "description": "The root ObjectSID of the Active Directory domain. Only relevant for Active Directory configurations with unix_attributes false. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap-post": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:binddn": {
+          "description": "The distinguished name with which to bind to the directory server for lookups. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-openconfig-aaa-ldap:bindpw": {
+          "description": "The credentials with which to bind when using binddn. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-openconfig-aaa-ldap:base": {
+          "type": "array",
+          "x-yang": {
+            "type": "leaf-list"
+          },
+          "items": {
+            "description": "The distinguished name (DN) to use as search base. (leaf-list)",
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "f5-openconfig-aaa-ldap:bind_timelimit": {
+          "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        },
+        "f5-openconfig-aaa-ldap:timelimit": {
+          "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        },
+        "f5-openconfig-aaa-ldap:idle_timelimit": {
+          "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        },
+        "f5-openconfig-aaa-ldap:ldap_version": {
+          "description": "Specifies the version number of the LDAP application. The default value is 3. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        },
+        "f5-openconfig-aaa-ldap:ssl": {
+          "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "on",
+          "enum": [
+            "on",
+            "off",
+            "start_tls"
+          ]
+        },
+        "f5-openconfig-aaa-ldap:active_directory": {
+          "description": "Specifies whether this LDAP server is an Active Directory server (false by default). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-openconfig-aaa-ldap:unix_attributes": {
+          "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-openconfig-aaa-ldap:tls_reqcert": {
+          "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "never",
+          "enum": [
+            "never",
+            "allow",
+            "try",
+            "demand",
+            "hard"
+          ]
+        },
+        "f5-openconfig-aaa-ldap:tls_cacert": {
+          "description": "Specifies the PEM-encoded X.509 certificate for peer authentication. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-openconfig-aaa-ldap:tls_ciphers": {
+          "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-openconfig-aaa-ldap:tls_cert": {
+          "description": "Specifies the PEM-encoded certificate for client TLS authentication. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-openconfig-aaa-ldap:tls_key": {
+          "description": "Specifies the PEM-encoded private key for client TLS authentication. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-openconfig-aaa-ldap:chase-referrals": {
+          "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-openconfig-aaa-ldap:ignore-case": {
+          "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-openconfig-aaa-ldap:state": {
+          "description": "Top-level container for LDAP state. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-openconfig-aaa-ldap:domain_sid": {
+              "description": "The root ObjectSID of the Active Directory domain. Only relevant for Active Directory configurations with unix_attributes false. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_active_directory": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:active_directory": {
+          "description": "Specifies whether this LDAP server is an Active Directory server (false by default). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_base_f5-openconfig-aaa-ldap_base-id": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:base": {
+          "type": "array",
+          "x-yang": {
+            "type": "leaf-list"
+          },
+          "items": {
+            "description": "The distinguished name (DN) to use as search base. (leaf-list)",
+            "type": "string",
+            "format": "string"
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bind_timelimit": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:bind_timelimit": {
+          "description": "The time limit (in seconds) to use when connecting to the directory server.\nThis is distinct from the time limit specified in timelimit and affects\nthe setup of the connection only. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_binddn": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:binddn": {
+          "description": "The distinguished name with which to bind to the directory server for lookups. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_bindpw": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:bindpw": {
+          "description": "The credentials with which to bind when using binddn. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_chase-referrals": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:chase-referrals": {
+          "description": "Specifies whether automatic referral chasing should be enabled. The default behaviour is to chase referrals. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_idle_timelimit": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:idle_timelimit": {
+          "description": "The period of inactivity (in seconds) after which the connection to\nthe LDAP server will be closed. The default is not to time out connections. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ignore-case": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:ignore-case": {
+          "description": "Specifies whether or not to perform searches for group, netgroup, passwd, protocols,\nrpc, services and shadow maps using case-insensitive matching. By default, lookups\nare case-sensitive. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ldap_version": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:ldap_version": {
+          "description": "Specifies the version number of the LDAP application. The default value is 3. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_ssl": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:ssl": {
+          "description": "Specifies whether to use SSL/TLS (the default is not to use SSL/TLS). (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "on",
+          "enum": [
+            "on",
+            "off",
+            "start_tls"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_state": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:state": {
+          "description": "Top-level container for LDAP state. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-openconfig-aaa-ldap:domain_sid": {
+              "description": "The root ObjectSID of the Active Directory domain. Only relevant for Active Directory configurations with unix_attributes false. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_state_f5-openconfig-aaa-ldap_domain_sid": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:domain_sid": {
+          "description": "The root ObjectSID of the Active Directory domain. Only relevant for Active Directory configurations with unix_attributes false. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_timelimit": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:timelimit": {
+          "description": "Ihe time limit (in seconds) to wait for a response from the LDAP server.\nA value of zero is to wait indefinitely for searches to be completed. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cacert": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:tls_cacert": {
+          "description": "Specifies the PEM-encoded X.509 certificate for peer authentication. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_cert": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:tls_cert": {
+          "description": "Specifies the PEM-encoded certificate for client TLS authentication. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_ciphers": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:tls_ciphers": {
+          "description": "Specifies the ciphers to use for TLS. See your TLS implementation's documentation\nfor further information. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_key": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:tls_key": {
+          "description": "Specifies the PEM-encoded private key for client TLS authentication. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_tls_reqcert": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:tls_reqcert": {
+          "description": "Specifies what checks to perform on server certificates in a TLS session.\nThe <level> can be specified as one of never, allow, try, demand, or hard.\nA tls_cacert is required if peer verification is enabled. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "never",
+          "enum": [
+            "never",
+            "allow",
+            "try",
+            "demand",
+            "hard"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_aaa_authentication_f5-openconfig-aaa-ldap_ldap_f5-openconfig-aaa-ldap_unix_attributes": {
+      "type": "object",
+      "properties": {
+        "f5-openconfig-aaa-ldap:unix_attributes": {
+          "description": "Specifies whether Unix Attributes have been enabled for Active Directory users,\nwhich provide the uidNumber and gidNumber attributes from the directory. In a\ngeneric AD environment without additional capabilities installed, these attributes\nmay need to be derived from the objectSid. This attribute has no effect for non-AD\nservers. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    }
+  }
+}

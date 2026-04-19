@@ -1,0 +1,1988 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/f5-database:database": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Top-level container ",
+        "description": "Top-level container ",
+        "operationId": "data_openconfig_system_system_f5_database_database_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Top-level container ",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Top-level container ",
+        "description": "Top-level container ",
+        "operationId": "data_openconfig_system_system_f5_database_database_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container database created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Top-level container ",
+        "description": "Top-level container ",
+        "operationId": "data_openconfig_system_system_f5_database_database_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container database created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Top-level container ",
+        "description": "Top-level container ",
+        "operationId": "data_openconfig_system_system_f5_database_database_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container database updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Top-level container ",
+        "description": "Top-level container ",
+        "operationId": "data_openconfig_system_system_f5_database_database_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Configuration data ",
+        "description": "Configuration data ",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Configuration data ",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Configuration data ",
+        "description": "Configuration data ",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Configuration data ",
+        "description": "Configuration data ",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Configuration data ",
+        "description": "Configuration data ",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Configuration data ",
+        "description": "Configuration data ",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config/f5-database:reset-default-config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Trigger config factory restore. Causes ConfD restart.",
+        "description": "Trigger config factory restore. Causes ConfD restart.",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_reset_default_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Trigger config factory restore. Causes ConfD restart.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_reset-default-config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Trigger config factory restore. Causes ConfD restart.",
+        "description": "Trigger config factory restore. Causes ConfD restart.",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_reset_default_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_reset-default-config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf reset-default-config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Trigger config factory restore. Causes ConfD restart.",
+        "description": "Trigger config factory restore. Causes ConfD restart.",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_reset_default_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_reset-default-config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf reset-default-config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Trigger config factory restore. Causes ConfD restart.",
+        "description": "Trigger config factory restore. Causes ConfD restart.",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_reset_default_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config/f5-database:services-type": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_services_type_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-type"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_services_type_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-type"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf services-type created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_services_type_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-type"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf services-type updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_services_type_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config/f5-database:services-version": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_services_version_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-version"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_services_version_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-version"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf services-version created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_services_version_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-version"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf services-version updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_services_version_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config/f5-database:schema-fingerprint": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_schema_fingerprint_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_schema-fingerprint"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_schema_fingerprint_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_schema-fingerprint"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf schema-fingerprint created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_schema_fingerprint_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_schema-fingerprint"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf schema-fingerprint updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_f5_database_schema_fingerprint_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Operational state data ",
+        "description": "Operational state data ",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Operational state data ",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:state/f5-database:reset-default-config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Trigger config factory restore. Causes ConfD restart.",
+        "description": "Trigger config factory restore. Causes ConfD restart.",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_state_f5_database_reset_default_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Trigger config factory restore. Causes ConfD restart.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_state_f5-database_reset-default-config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:state/f5-database:services-type": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_state_f5_database_services_type_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_state_f5-database_services-type"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:state/f5-database:services-version": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_state_f5_database_services_version_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_state_f5-database_services-version"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:state/f5-database:schema-fingerprint": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_state_f5_database_schema_fingerprint_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_state_f5-database_schema-fingerprint"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-backup": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_backup_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config-backup-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config-backup-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-backup/f5-database:input": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-backup/f5-database:input/f5-database:name": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-backup/f5-database:input/f5-database:proceed": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-backup/f5-database:input/f5-database:overwrite": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-backup/f5-database:output": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-backup/f5-database:output/f5-database:response": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-restore": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_config_restore_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_config-restore-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config-restore-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-restore/f5-database:input": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-restore/f5-database:input/f5-database:name": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-restore/f5-database:input/f5-database:proceed": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-restore/f5-database:output": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:config-restore/f5-database:output/f5-database:response": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:reset-to-default": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_database_database_f5_database_reset_to_default_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-database_database_f5-database_reset-to-default-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_reset-to-default-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:reset-to-default/f5-database:input": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:reset-to-default/f5-database:output": {
+    },
+    "/data/openconfig-system:system/f5-database:database/f5-database:reset-to-default/f5-database:output/f5-database:response": {
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_f5-database_database": {
+      "name": "database",
+      "in": "body",
+      "description": "Top-level container ",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database-post": {
+      "name": "database",
+      "in": "body",
+      "description": "Top-level container ",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database-post"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config": {
+      "name": "config",
+      "in": "body",
+      "description": "Configuration data ",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config-backup-post-input": {
+      "name": "config-backup",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config-backup-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "Configuration data ",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config-post"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config-restore-post-input": {
+      "name": "config-restore",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config-restore-post-input"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_reset-default-config": {
+      "name": "reset-default-config",
+      "in": "body",
+      "description": "Trigger config factory restore. Causes ConfD restart.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_reset-default-config"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_schema-fingerprint": {
+      "name": "schema-fingerprint",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_schema-fingerprint"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-type": {
+      "name": "services-type",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-type"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-version": {
+      "name": "services-version",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-version"
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_reset-to-default-post-input": {
+      "name": "reset-to-default",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-database_database_f5-database_reset-to-default-post-input"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_f5-database_database": {
+      "type": "object",
+      "properties": {
+        "f5-database:database": {
+          "description": "Top-level container  (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-database:config": {
+              "description": "Configuration data  (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-database:reset-default-config": {
+                  "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "f5-database:services-type": {
+                  "description": "(leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-database:services-version": {
+                  "description": "(leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-database:schema-fingerprint": {
+                  "description": "(leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            },
+            "f5-database:state": {
+              "description": "Operational state data  (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-database:reset-default-config": {
+                  "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "boolean"
+                },
+                "f5-database:services-type": {
+                  "description": "(leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-database:services-version": {
+                  "description": "(leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-database:schema-fingerprint": {
+                  "description": "(leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database-post": {
+      "type": "object",
+      "properties": {
+        "f5-database:config": {
+          "description": "Configuration data  (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-database:reset-default-config": {
+              "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-database:services-type": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-database:services-version": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-database:schema-fingerprint": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        },
+        "f5-database:state": {
+          "description": "Operational state data  (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-database:reset-default-config": {
+              "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-database:services-type": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-database:services-version": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-database:schema-fingerprint": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        },
+        "f5-database:name": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-database:proceed": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "no",
+          "enum": [
+            "no",
+            "yes"
+          ]
+        },
+        "f5-database:overwrite": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-database:name": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-database:proceed": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "no",
+          "enum": [
+            "no",
+            "yes"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config": {
+      "type": "object",
+      "properties": {
+        "f5-database:config": {
+          "description": "Configuration data  (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-database:reset-default-config": {
+              "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-database:services-type": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-database:services-version": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-database:schema-fingerprint": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config-backup-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-database:name": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-database:proceed": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "no",
+          "enum": [
+            "no",
+            "yes"
+          ]
+        },
+        "f5-database:overwrite": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config-backup-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-database:response": {
+          "description": "Result of config-backup command (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-database:reset-default-config": {
+          "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        },
+        "f5-database:services-type": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-database:services-version": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-database:schema-fingerprint": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config-restore-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-database:name": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-database:proceed": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "no",
+          "enum": [
+            "no",
+            "yes"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config-restore-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-database:response": {
+          "description": "Result of config-restore command (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_reset-default-config": {
+      "type": "object",
+      "properties": {
+        "f5-database:reset-default-config": {
+          "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_schema-fingerprint": {
+      "type": "object",
+      "properties": {
+        "f5-database:schema-fingerprint": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-type": {
+      "type": "object",
+      "properties": {
+        "f5-database:services-type": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_config_f5-database_services-version": {
+      "type": "object",
+      "properties": {
+        "f5-database:services-version": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_reset-to-default-post-input": {
+      "type": "object",
+      "properties": {
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_reset-to-default-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-database:response": {
+          "description": "Result of the reset-to-default response. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_state": {
+      "type": "object",
+      "properties": {
+        "f5-database:state": {
+          "description": "Operational state data  (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-database:reset-default-config": {
+              "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            },
+            "f5-database:services-type": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-database:services-version": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-database:schema-fingerprint": {
+              "description": "(leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_state_f5-database_reset-default-config": {
+      "type": "object",
+      "properties": {
+        "f5-database:reset-default-config": {
+          "description": "Trigger config factory restore. Causes ConfD restart. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_state_f5-database_schema-fingerprint": {
+      "type": "object",
+      "properties": {
+        "f5-database:schema-fingerprint": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_state_f5-database_services-type": {
+      "type": "object",
+      "properties": {
+        "f5-database:services-type": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-database_database_f5-database_state_f5-database_services-version": {
+      "type": "object",
+      "properties": {
+        "f5-database:services-version": {
+          "description": "(leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

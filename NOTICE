@@ -1,0 +1,34 @@
+F5 Platform
+Copyright 2026 F5 Platform contributors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+================================================================================
+Third-party attributions
+================================================================================
+
+This product includes software developed by third parties. The following
+components are used or derived from, with their respective licenses retained:
+
+--------------------------------------------------------------------------------
+f5-corkscrew
+--------------------------------------------------------------------------------
+  Upstream : https://github.com/f5devcentral/f5-corkscrew
+  License  : Apache License, Version 2.0
+  Copyright: Copyright 2014-2025 F5 Networks, Inc.
+
+  Portions of `backend/qkview_analyzer/tmos_config.py` and
+  `backend/qkview_analyzer/xml_stats.py` are derived from (or adapted
+  from) the following files in f5-corkscrew:
+
+    src/universalParse.ts  -> tmos_config.py (recursive TMOS parser)
+    src/digConfigs.ts      -> tmos_config.py (virtual-server dependency walk)
+    src/xmlStats.ts        -> xml_stats.py   (qkview XML stats taxonomy)
+    src/regex.ts           -> tmos_config.py (TMOS regex constants)
+
+  Modifications: ported from TypeScript to Python; extended to support F5OS
+  (rSeries, VELOS partition, VELOS controller) subpackage archives; XML parsing
+  switched to streaming lxml.iterparse for memory efficiency on large qkviews.
+
+  The original Apache-2.0 copyright notice is preserved in each ported file's
+  header.

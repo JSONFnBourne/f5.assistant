@@ -1,0 +1,1406 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-proxy:proxy": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Top level of proxy settings.",
+        "description": "Top level of proxy settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Top level of proxy settings.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Top level of proxy settings.",
+        "description": "Top level of proxy settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container proxy created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Top level of proxy settings.",
+        "description": "Top level of proxy settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container proxy created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Top level of proxy settings.",
+        "description": "Top level of proxy settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container proxy updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Top level of proxy settings.",
+        "description": "Top level of proxy settings.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-proxy:proxy/f5-system-diagnostics-proxy:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Proxy configuration data",
+        "description": "Proxy configuration data",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Proxy configuration data",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-proxy:proxy/f5-system-diagnostics-proxy:state/f5-system-diagnostics-proxy:proxy-username": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the username for web proxy server credentials.",
+        "description": "Specifies the username for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_state_f5_system_diagnostics_proxy_proxy_username_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the username for web proxy server credentials.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_state_f5-system-diagnostics-proxy_proxy-username"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-proxy:proxy/f5-system-diagnostics-proxy:state/f5-system-diagnostics-proxy:proxy-server": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the web proxy Server endpoint for the device.",
+        "description": "Specifies the web proxy Server endpoint for the device.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_state_f5_system_diagnostics_proxy_proxy_server_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the web proxy Server endpoint for the device.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_state_f5-system-diagnostics-proxy_proxy-server"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-proxy:proxy/f5-system-diagnostics-proxy:config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Configure Proxy server, username and password.",
+        "description": "Configure Proxy server, username and password.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Configure Proxy server, username and password.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Configure Proxy server, username and password.",
+        "description": "Configure Proxy server, username and password.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Configure Proxy server, username and password.",
+        "description": "Configure Proxy server, username and password.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Configure Proxy server, username and password.",
+        "description": "Configure Proxy server, username and password.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Configure Proxy server, username and password.",
+        "description": "Configure Proxy server, username and password.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-proxy:proxy/f5-system-diagnostics-proxy:config/f5-system-diagnostics-proxy:proxy-username": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the username for web proxy server credentials.",
+        "description": "Specifies the username for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_username_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the username for web proxy server credentials.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-username"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the username for web proxy server credentials.",
+        "description": "Specifies the username for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_username_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-username"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf proxy-username created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the username for web proxy server credentials.",
+        "description": "Specifies the username for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_username_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-username"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf proxy-username updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the username for web proxy server credentials.",
+        "description": "Specifies the username for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_username_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-proxy:proxy/f5-system-diagnostics-proxy:config/f5-system-diagnostics-proxy:proxy-password": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the password for web proxy server credentials.",
+        "description": "Specifies the password for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_password_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the password for web proxy server credentials.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-password"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the password for web proxy server credentials.",
+        "description": "Specifies the password for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_password_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-password"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf proxy-password created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the password for web proxy server credentials.",
+        "description": "Specifies the password for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_password_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-password"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf proxy-password updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the password for web proxy server credentials.",
+        "description": "Specifies the password for web proxy server credentials.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_password_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-diagnostics-qkview:diagnostics/f5-system-diagnostics-proxy:proxy/f5-system-diagnostics-proxy:config/f5-system-diagnostics-proxy:proxy-server": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Specifies the web proxy Server endpoint for the device.",
+        "description": "Specifies the web proxy Server endpoint for the device.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_server_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Specifies the web proxy Server endpoint for the device.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-server"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Specifies the web proxy Server endpoint for the device.",
+        "description": "Specifies the web proxy Server endpoint for the device.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_server_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-server"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf proxy-server created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Specifies the web proxy Server endpoint for the device.",
+        "description": "Specifies the web proxy Server endpoint for the device.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_server_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-server"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf proxy-server updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Specifies the web proxy Server endpoint for the device.",
+        "description": "Specifies the web proxy Server endpoint for the device.",
+        "operationId": "data_openconfig_system_system_f5_system_diagnostics_qkview_diagnostics_f5_system_diagnostics_proxy_proxy_f5_system_diagnostics_proxy_config_f5_system_diagnostics_proxy_proxy_server_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy": {
+      "name": "proxy",
+      "in": "body",
+      "description": "Top level of proxy settings.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy-post": {
+      "name": "proxy",
+      "in": "body",
+      "description": "Top level of proxy settings.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config": {
+      "name": "config",
+      "in": "body",
+      "description": "Configure Proxy server, username and password.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "Configure Proxy server, username and password.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-password": {
+      "name": "proxy-password",
+      "in": "body",
+      "description": "Specifies the password for web proxy server credentials.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-password"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-server": {
+      "name": "proxy-server",
+      "in": "body",
+      "description": "Specifies the web proxy Server endpoint for the device.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-server"
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-username": {
+      "name": "proxy-username",
+      "in": "body",
+      "description": "Specifies the username for web proxy server credentials.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-username"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "f5-system-diagnostics-qkview_file-filename": {
+      "name": "f5-system-diagnostics-qkview_file-filename",
+      "in": "path",
+      "description": "qkview filename.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "f5-system-diagnostics-qkview_files-id": {
+      "name": "f5-system-diagnostics-qkview_files-id",
+      "in": "path",
+      "description": "core files.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:proxy": {
+          "description": "Top level of proxy settings. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-proxy:state": {
+              "description": "Proxy configuration data (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-proxy:proxy-username": {
+                  "description": "Specifies the username for web proxy server credentials. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-proxy:proxy-server": {
+                  "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            },
+            "f5-system-diagnostics-proxy:config": {
+              "description": "Configure Proxy server, username and password. (non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-diagnostics-proxy:proxy-username": {
+                  "description": "Specifies the username for web proxy server credentials. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-proxy:proxy-password": {
+                  "description": "Specifies the password for web proxy server credentials. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                },
+                "f5-system-diagnostics-proxy:proxy-server": {
+                  "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:state": {
+          "description": "Proxy configuration data (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-proxy:proxy-username": {
+              "description": "Specifies the username for web proxy server credentials. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-proxy:proxy-server": {
+              "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        },
+        "f5-system-diagnostics-proxy:config": {
+          "description": "Configure Proxy server, username and password. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-proxy:proxy-username": {
+              "description": "Specifies the username for web proxy server credentials. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-proxy:proxy-password": {
+              "description": "Specifies the password for web proxy server credentials. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-proxy:proxy-server": {
+              "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:config": {
+          "description": "Configure Proxy server, username and password. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-proxy:proxy-username": {
+              "description": "Specifies the username for web proxy server credentials. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-proxy:proxy-password": {
+              "description": "Specifies the password for web proxy server credentials. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-proxy:proxy-server": {
+              "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:proxy-username": {
+          "description": "Specifies the username for web proxy server credentials. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-proxy:proxy-password": {
+          "description": "Specifies the password for web proxy server credentials. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-diagnostics-proxy:proxy-server": {
+          "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-password": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:proxy-password": {
+          "description": "Specifies the password for web proxy server credentials. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-server": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:proxy-server": {
+          "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_config_f5-system-diagnostics-proxy_proxy-username": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:proxy-username": {
+          "description": "Specifies the username for web proxy server credentials. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_state": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:state": {
+          "description": "Proxy configuration data (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-diagnostics-proxy:proxy-username": {
+              "description": "Specifies the username for web proxy server credentials. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-diagnostics-proxy:proxy-server": {
+              "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_state_f5-system-diagnostics-proxy_proxy-server": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:proxy-server": {
+          "description": "Specifies the web proxy Server endpoint for the device. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-diagnostics-qkview_diagnostics_f5-system-diagnostics-proxy_proxy_f5-system-diagnostics-proxy_state_f5-system-diagnostics-proxy_proxy-username": {
+      "type": "object",
+      "properties": {
+        "f5-system-diagnostics-proxy:proxy-username": {
+          "description": "Specifies the username for web proxy server credentials. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

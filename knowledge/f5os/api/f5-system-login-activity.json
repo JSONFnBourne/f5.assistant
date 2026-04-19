@@ -1,0 +1,1102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Users login activity toggle.",
+        "description": "Users login activity toggle.",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Users login activity toggle.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user={f5-system-login-activity_user-name}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_f5_system_login_activity_user_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-login-activity_user-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user={f5-system-login-activity_user-name}/f5-system-login-activity:name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Username of login request.",
+        "description": "Username of login request.",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_f5_system_login_activity_user_name_f5_system_login_activity_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-login-activity_user-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Username of login request.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user={f5-system-login-activity_user-name}/f5-system-login-activity:logins": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "display login information for system users.",
+        "description": "display login information for system users.",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_f5_system_login_activity_user_name_f5_system_login_activity_logins_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-login-activity_user-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "display login information for system users.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user={f5-system-login-activity_user-name}/f5-system-login-activity:logins={f5-system-login-activity_logins-login-time}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "display login information for system users.",
+        "description": "display login information for system users.",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_f5_system_login_activity_user_name_f5_system_login_activity_logins_f5_system_login_activity_logins_login_time_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-login-activity_user-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-login-activity_logins-login-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "display login information for system users.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user={f5-system-login-activity_user-name}/f5-system-login-activity:logins={f5-system-login-activity_logins-login-time}/f5-system-login-activity:login-time": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Timestamp when login was attempted.",
+        "description": "Timestamp when login was attempted.",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_f5_system_login_activity_user_name_f5_system_login_activity_logins_f5_system_login_activity_logins_login_time_f5_system_login_activity_login_time_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-login-activity_user-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-login-activity_logins-login-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Timestamp when login was attempted.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time_f5-system-login-activity_login-time"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user={f5-system-login-activity_user-name}/f5-system-login-activity:logins={f5-system-login-activity_logins-login-time}/f5-system-login-activity:method": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Method of login attempt.",
+        "description": "Method of login attempt.",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_f5_system_login_activity_user_name_f5_system_login_activity_logins_f5_system_login_activity_logins_login_time_f5_system_login_activity_method_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-login-activity_user-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-login-activity_logins-login-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Method of login attempt.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time_f5-system-login-activity_method"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user={f5-system-login-activity_user-name}/f5-system-login-activity:logins={f5-system-login-activity_logins-login-time}/f5-system-login-activity:host": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Host name of login attempt.",
+        "description": "Host name of login attempt.",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_f5_system_login_activity_user_name_f5_system_login_activity_logins_f5_system_login_activity_logins_login_time_f5_system_login_activity_host_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-login-activity_user-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-login-activity_logins-login-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Host name of login attempt.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time_f5-system-login-activity_host"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-login-activity:login-activity/f5-system-login-activity:user={f5-system-login-activity_user-name}/f5-system-login-activity:logins={f5-system-login-activity_logins-login-time}/f5-system-login-activity:status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Status of login attempt.",
+        "description": "Status of login attempt.",
+        "operationId": "data_openconfig_system_system_f5_system_login_activity_login_activity_f5_system_login_activity_user_f5_system_login_activity_user_name_f5_system_login_activity_logins_f5_system_login_activity_logins_login_time_f5_system_login_activity_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-login-activity_user-name"
+          },
+          {
+            "$ref": "#/parameters/f5-system-login-activity_logins-login-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of login attempt.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time_f5-system-login-activity_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "f5-system-login-activity_logins-login-time": {
+      "name": "f5-system-login-activity_logins-login-time",
+      "in": "path",
+      "description": "Timestamp when login was attempted.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "f5-system-login-activity_user-name": {
+      "name": "f5-system-login-activity_user-name",
+      "in": "path",
+      "description": "Username of login request.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_f5-system-login-activity_login-activity": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:login-activity": {
+          "description": "Users login activity toggle. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-login-activity:user": {
+              "type": "array",
+              "description": "(list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "f5-system-login-activity:name": {
+                    "description": "Username of login request. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-login-activity:logins": {
+                    "type": "array",
+                    "description": "display login information for system users. (list)",
+                    "x-yang": {
+                      "type": "list"
+                    },
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "f5-system-login-activity:login-time": {
+                          "description": "Timestamp when login was attempted. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-login-activity:method": {
+                          "description": "Method of login attempt. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-login-activity:host": {
+                          "description": "Host name of login attempt. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "string"
+                        },
+                        "f5-system-login-activity:status": {
+                          "description": "Status of login attempt. (leaf)",
+                          "x-yang": {
+                            "type": "leaf"
+                          },
+                          "type": "string",
+                          "format": "enumeration",
+                          "default": "success",
+                          "enum": [
+                            "success",
+                            "failed"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:user": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-login-activity:name": {
+                "description": "Username of login request. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-login-activity:logins": {
+                "type": "array",
+                "description": "display login information for system users. (list)",
+                "x-yang": {
+                  "type": "list"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "f5-system-login-activity:login-time": {
+                      "description": "Timestamp when login was attempted. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-login-activity:method": {
+                      "description": "Method of login attempt. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-login-activity:host": {
+                      "description": "Host name of login attempt. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-login-activity:status": {
+                      "description": "Status of login attempt. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "enumeration",
+                      "default": "success",
+                      "enum": [
+                        "success",
+                        "failed"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:user": {
+          "type": "array",
+          "description": "(list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-login-activity:name": {
+                "description": "Username of login request. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-login-activity:logins": {
+                "type": "array",
+                "description": "display login information for system users. (list)",
+                "x-yang": {
+                  "type": "list"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "f5-system-login-activity:login-time": {
+                      "description": "Timestamp when login was attempted. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-login-activity:method": {
+                      "description": "Method of login attempt. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-login-activity:host": {
+                      "description": "Host name of login attempt. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "string"
+                    },
+                    "f5-system-login-activity:status": {
+                      "description": "Status of login attempt. (leaf)",
+                      "x-yang": {
+                        "type": "leaf"
+                      },
+                      "type": "string",
+                      "format": "enumeration",
+                      "default": "success",
+                      "enum": [
+                        "success",
+                        "failed"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:logins": {
+          "type": "array",
+          "description": "display login information for system users. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-login-activity:login-time": {
+                "description": "Timestamp when login was attempted. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-login-activity:method": {
+                "description": "Method of login attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-login-activity:host": {
+                "description": "Host name of login attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-login-activity:status": {
+                "description": "Status of login attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "success",
+                "enum": [
+                  "success",
+                  "failed"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:logins": {
+          "type": "array",
+          "description": "display login information for system users. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-login-activity:login-time": {
+                "description": "Timestamp when login was attempted. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-login-activity:method": {
+                "description": "Method of login attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-login-activity:host": {
+                "description": "Host name of login attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "f5-system-login-activity:status": {
+                "description": "Status of login attempt. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "success",
+                "enum": [
+                  "success",
+                  "failed"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time_f5-system-login-activity_host": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:host": {
+          "description": "Host name of login attempt. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time_f5-system-login-activity_login-time": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:login-time": {
+          "description": "Timestamp when login was attempted. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time_f5-system-login-activity_method": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:method": {
+          "description": "Method of login attempt. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_logins_f5-system-login-activity_logins-login-time_f5-system-login-activity_status": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:status": {
+          "description": "Status of login attempt. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "success",
+          "enum": [
+            "success",
+            "failed"
+          ]
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-login-activity_login-activity_f5-system-login-activity_user_f5-system-login-activity_user-name_f5-system-login-activity_name": {
+      "type": "object",
+      "properties": {
+        "f5-system-login-activity:name": {
+          "description": "Username of login request. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

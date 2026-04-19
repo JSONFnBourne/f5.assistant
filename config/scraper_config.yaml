@@ -1,0 +1,61 @@
+# =============================================================================
+# Scraper Configuration
+# F5 BIG-IP & RFC Knowledge Base
+# =============================================================================
+
+cache:
+  ttl_days: 90                  # Re-fetch documents older than this
+
+f5:
+  base_url: "https://clouddocs.f5.com"
+  crawl_delay: 1.5              # Seconds between requests (polite crawl)
+  max_depth: 10
+  respect_robots: true
+  user_agent: "KnowledgeBaseBot/1.0 (internal; research)"
+  targets:
+    - url: "https://clouddocs.f5.com/"
+      section: "index"
+    - url: "https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest"
+      section: "as3"
+    - url: "https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest"
+      section: "do"
+    - url: "https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest"
+      section: "ts"
+    - url: "https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest"
+      section: "fast"
+    - url: "https://clouddocs.f5.com/products/extensions/f5-cloud-failover/latest"
+      section: "cfe"
+    - url: "https://clouddocs.f5.com/products/extensions/f5-automation-config-converter/latest"
+      section: "acc"
+    - url: "https://clouddocs.f5.com/products/waf-declarative-policy"
+      section: "waf"
+    - url: "https://clouddocs.f5.com/products/iapp/iapp-lx/tmos-14_0/"
+      section: "iapplx"
+    - url: "https://clouddocs.f5.com/ipsec-tsg/main/"
+      section: "ipsec"
+    - url: "https://clouddocs.f5.com/api/irules/"
+      section: "irules"
+      source: "irules"
+  # ATC schemas from F5 Extension snippets
+  schemas:
+    - url: "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/HEAD/schema/latest/as3-schema.json"
+      name: "as3-schema"
+    - url: "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/HEAD/src/schema/latest/base.schema.json"
+      name: "do-schema"
+    - url: "https://raw.githubusercontent.com/F5Networks/f5-telemetry-streaming/HEAD/src/schema/latest/base_schema.json"
+      name: "ts-schema"
+    - url: "https://raw.githubusercontent.com/F5Networks/f5-cloud-failover-extension/HEAD/src/nodejs/schema/base_schema.json"
+      name: "cfe-schema"
+
+rfc:
+  index_url: "https://www.rfc-editor.org/rfc-index.xml"
+  doc_url_template: "https://www.rfc-editor.org/rfc/rfc{number}.txt"
+  concurrent_downloads: 5       # Async concurrency limit
+  download_delay: 0.5           # Seconds between requests
+
+storage:
+  db_path: "db/knowledge.db"
+  f5_raw_dir: "data/f5/raw"
+  f5_processed_dir: "data/f5/processed"
+  rfc_index_dir: "data/rfc/index"
+  rfc_docs_dir: "data/rfc/docs"

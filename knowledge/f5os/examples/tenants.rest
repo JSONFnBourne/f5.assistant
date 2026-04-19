@@ -1,0 +1,65 @@
+### F5OS Tenants API – REST Client Examples
+# Assumes VS Code REST Client (humao.rest-client) is installed.
+#
+# Set environment variables in your REST client environment settings
+# for {{f5os_host}}, {{f5os_user}}, {{f5os_pass}} as appropriate, or replace
+# them inline.
+
+@f5os_host = 10.0.0.10
+@auth_basic = Basic {{base64 f5os_user:f5os_pass}}
+
+### List all tenants
+GET https://{{f5os_host}}/restconf/data/f5-tenants:tenants
+Authorization: {{auth_basic}}
+Accept: application/yang-data+json
+
+###
+### Create tenant1 (BIG-IP)
+POST https://{{f5os_host}}/restconf/data/f5-tenants:tenants
+Authorization: {{auth_basic}}
+Content-Type: application/yang-data+json
+Accept: application/yang-data+json
+
+{
+  "f5-tenants:tenant": [
+    {
+      "config": {
+        "f5-tenants:name": "tenant1",
+        "f5-tenants:type": "BIG-IP",
+        "f5-tenants:mgmt-ip": "192.0.2.10",
+        "f5-tenants:prefix-length": 24,
+        "f5-tenants:gateway": "192.0.2.1",
+        "f5-tenants:vlans": [
+          "vlan-10"
+        ],
+        "f5-tenant-mgmt-vlan:mgmt-vlan": "mgmt-vlan"
+      }
+    }
+  ]
+}
+
+###
+### Show tenant1
+GET https://{{f5os_host}}/restconf/data/f5-tenants:tenants/tenant=tenant1
+Authorization: {{auth_basic}}
+Accept: application/yang-data+json
+
+###
+### Update tenant1 management IP
+PATCH https://{{f5os_host}}/restconf/data/f5-tenants:tenants/tenant=tenant1/config
+Authorization: {{auth_basic}}
+Content-Type: application/yang-data+json
+Accept: application/yang-data+json
+
+{
+  "f5-tenants:mgmt-ip": "192.0.2.11",
+  "f5-tenants:prefix-length": 24,
+  "f5-tenants:gateway": "192.0.2.1"
+}
+
+###
+### Delete tenant1
+DELETE https://{{f5os_host}}/restconf/data/f5-tenants:tenants/tenant=tenant1
+Authorization: {{auth_basic}}
+Accept: application/yang-data+json
+

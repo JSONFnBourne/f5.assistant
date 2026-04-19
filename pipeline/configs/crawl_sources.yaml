@@ -1,0 +1,10 @@
+- url: https://clouddocs.f5.com/api/irules/Operators.html
+  max_depth: 1
+  ttl_days: 90
+- url: https://clouddocs.f5.com/api/irules/Events.html
+  max_depth: 2
+  ttl_days: 90
+- url: https://clouddocs.f5.com/api/irules/Commands.html
+  max_depth: 2
+  ttl_days: 90
+#

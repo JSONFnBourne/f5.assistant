@@ -1,0 +1,2989 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "openconfig-system",
+    "description": "Model for managing system-wide services and functions on\nnetwork devices.\n\nPortions of this code were derived from IETF RFC 7317.\nPlease reproduce this note if possible.\n\nIETF code is subject to the following copyright and license:\nCopyright (c) IETF Trust and the persons identified as authors of\nthe code.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, is permitted pursuant to, and subject to the license\nterms contained in, the Simplified BSD License set forth in\nSection 4.c of the IETF Trust's Legal Provisions Relating\nto IETF Documents (http://trustee.ietf.org/license-info).",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2020-01-07"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:config/f5-system-licensing:registration-key": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container registration-key created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container registration-key created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container registration-key updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:config/f5-system-licensing:registration-key/f5-system-licensing:base": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Base registration key from a license server.",
+        "description": "Base registration key from a license server.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_f5_system_licensing_base_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Base registration key from a license server.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key_f5-system-licensing_base"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Base registration key from a license server.",
+        "description": "Base registration key from a license server.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_f5_system_licensing_base_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key_f5-system-licensing_base"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf base created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Base registration key from a license server.",
+        "description": "Base registration key from a license server.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_f5_system_licensing_base_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key_f5-system-licensing_base"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf base updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Base registration key from a license server.",
+        "description": "Base registration key from a license server.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_registration_key_f5_system_licensing_base_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:config/f5-system-licensing:dossier": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Platform Dossier generated with the base-registration-key",
+        "description": "Platform Dossier generated with the base-registration-key",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_dossier_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform Dossier generated with the base-registration-key",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_dossier"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Platform Dossier generated with the base-registration-key",
+        "description": "Platform Dossier generated with the base-registration-key",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_dossier_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_dossier"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf dossier created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Platform Dossier generated with the base-registration-key",
+        "description": "Platform Dossier generated with the base-registration-key",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_dossier_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_dossier"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf dossier updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Platform Dossier generated with the base-registration-key",
+        "description": "Platform Dossier generated with the base-registration-key",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_dossier_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:config/f5-system-licensing:license": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "License acquired from license server for an specific platform",
+        "description": "License acquired from license server for an specific platform",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_license_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "License acquired from license server for an specific platform",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_license"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "License acquired from license server for an specific platform",
+        "description": "License acquired from license server for an specific platform",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_license_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_license"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf license created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "License acquired from license server for an specific platform",
+        "description": "License acquired from license server for an specific platform",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_license_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_license"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf license updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "License acquired from license server for an specific platform",
+        "description": "License acquired from license server for an specific platform",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_license_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:config/f5-system-licensing:active-modules": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Bits for active-modules in the license",
+        "description": "Bits for active-modules in the license",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_active_modules_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Bits for active-modules in the license",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_active-modules"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Bits for active-modules in the license",
+        "description": "Bits for active-modules in the license",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_active_modules_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_active-modules"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf active-modules created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Bits for active-modules in the license",
+        "description": "Bits for active-modules in the license",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_active_modules_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_active-modules"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf active-modules updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Bits for active-modules in the license",
+        "description": "Bits for active-modules in the license",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_config_f5_system_licensing_active_modules_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:state/f5-system-licensing:registration-key": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_state_f5_system_licensing_registration_key_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_registration-key"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:state/f5-system-licensing:registration-key/f5-system-licensing:base": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Base registration key from a license server.",
+        "description": "Base registration key from a license server.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_state_f5_system_licensing_registration_key_f5_system_licensing_base_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Base registration key from a license server.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_registration-key_f5-system-licensing_base"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:state/f5-system-licensing:dossier": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Platform Dossier generated with the base-registration-key",
+        "description": "Platform Dossier generated with the base-registration-key",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_state_f5_system_licensing_dossier_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform Dossier generated with the base-registration-key",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_dossier"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:state/f5-system-licensing:license": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "License acquired from license server for an specific platform",
+        "description": "License acquired from license server for an specific platform",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_state_f5_system_licensing_license_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "License acquired from license server for an specific platform",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_license"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:state/f5-system-licensing:active-modules": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Bits for active-modules in the license",
+        "description": "Bits for active-modules in the license",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_state_f5_system_licensing_active_modules_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Bits for active-modules in the license",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_active-modules"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:state/f5-system-licensing:raw-license": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "system raw license details.",
+        "description": "system raw license details.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_state_f5_system_licensing_raw_license_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "system raw license details.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_raw-license"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "system license feature flags information.",
+        "description": "system license feature flags information.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "system license feature flags information.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "system license feature flags information.",
+        "description": "system license feature flags information.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container feature-flags created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "system license feature flags information.",
+        "description": "system license feature flags information.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container feature-flags created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "system license feature flags information.",
+        "description": "system license feature flags information.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container feature-flags updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "system license feature flags information.",
+        "description": "system license feature flags information.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag": {
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag={f5-system-licensing_feature-flag-name}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "system license feature flags.",
+        "description": "system license feature flags.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "system license feature flags.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "system license feature flags.",
+        "description": "system license feature flags.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "list feature-flag created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "system license feature flags.",
+        "description": "system license feature flags.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "list feature-flag updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "system license feature flags.",
+        "description": "system license feature flags.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag={f5-system-licensing_feature-flag-name}/f5-system-licensing:name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "system license feature flag name.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_name_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_name"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf name created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_name_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf name updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_name_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag={f5-system-licensing_feature-flag-name}/f5-system-licensing:config": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container config created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container config updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag={f5-system-licensing_feature-flag-name}/f5-system-licensing:config/f5-system-licensing:name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_f5_system_licensing_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "system license feature flag name.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_f5_system_licensing_name_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_name"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf name created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_f5_system_licensing_name_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf name updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_f5_system_licensing_name_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag={f5-system-licensing_feature-flag-name}/f5-system-licensing:config/f5-system-licensing:value": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "system license feature flag value.",
+        "description": "system license feature flag value.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_f5_system_licensing_value_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "system license feature flag value.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_value"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "system license feature flag value.",
+        "description": "system license feature flag value.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_f5_system_licensing_value_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_value"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "leaf value created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "system license feature flag value.",
+        "description": "system license feature flag value.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_f5_system_licensing_value_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          },
+          {
+            "$ref": "#/parameters/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_value"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "leaf value updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "system license feature flag value.",
+        "description": "system license feature flag value.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_config_f5_system_licensing_value_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag={f5-system-licensing_feature-flag-name}/f5-system-licensing:state": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_state_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_state"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag={f5-system-licensing_feature-flag-name}/f5-system-licensing:state/f5-system-licensing:name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "system license feature flag name.",
+        "description": "system license feature flag name.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_state_f5_system_licensing_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "system license feature flag name.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_state_f5-system-licensing_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/openconfig-system:system/f5-system-licensing:licensing/f5-system-licensing:feature-flags/f5-system-licensing:feature-flag={f5-system-licensing_feature-flag-name}/f5-system-licensing:state/f5-system-licensing:value": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "system license feature flag value.",
+        "description": "system license feature flag value.",
+        "operationId": "data_openconfig_system_system_f5_system_licensing_licensing_f5_system_licensing_feature_flags_f5_system_licensing_feature_flag_f5_system_licensing_feature_flag_name_f5_system_licensing_state_f5_system_licensing_value_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/f5-system-licensing_feature-flag-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "system license feature flag value.",
+            "schema": {
+              "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_state_f5-system-licensing_value"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "accounting-method-id": {
+      "name": "accounting-method-id",
+      "in": "path",
+      "description": "An ordered list of methods used for AAA accounting for this\nevent type.  The method is defined by the destination for\naccounting data, which may be specified as the group of\nall TACACS+/RADIUS servers, a defined server group, or\nthe local system.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "alarm-id": {
+      "name": "alarm-id",
+      "in": "path",
+      "description": "References the unique alarm id",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "alias-id": {
+      "name": "alias-id",
+      "in": "path",
+      "description": "Additional aliases for the hostname",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "args-id": {
+      "name": "args-id",
+      "in": "path",
+      "description": "Current process command line arguments.  Arguments with\na parameter (e.g., --option 10  or -option=10) should be\nrepresented as a single element of the list with the\nargument name and parameter together.  Flag arguments, i.e.,\nthose without a parameter should also be in their own list\nelement.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "authentication-method-id": {
+      "name": "authentication-method-id",
+      "in": "path",
+      "description": "Ordered list of authentication methods for users.  This\ncan be either a reference to a server group, or a well-\ndefined designation in the AAA_METHOD_TYPE identity.  If\nauthentication fails with one method, the next defined\nmethod is tried -- failure of all methods results in the\nuser being denied access.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "authorization-method-id": {
+      "name": "authorization-method-id",
+      "in": "path",
+      "description": "Ordered list of methods for authorizing commands.  The first\nmethod that provides a response (positive or negative) should\nbe used.  The list may contain a well-defined method such\nas the set of all TACACS or RADIUS servers, or the name of\na defined AAA server group.  The system must validate\nthat the named server group exists.",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "cpu-index": {
+      "name": "cpu-index",
+      "in": "path",
+      "description": "Reference to list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config": {
+      "name": "config",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_active-modules": {
+      "name": "active-modules",
+      "in": "body",
+      "description": "Bits for active-modules in the license",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_active-modules"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_dossier": {
+      "name": "dossier",
+      "in": "body",
+      "description": "Platform Dossier generated with the base-registration-key",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_dossier"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_license": {
+      "name": "license",
+      "in": "body",
+      "description": "License acquired from license server for an specific platform",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_license"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key": {
+      "name": "registration-key",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key-post": {
+      "name": "registration-key",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key_f5-system-licensing_base": {
+      "name": "base",
+      "in": "body",
+      "description": "Base registration key from a license server.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key_f5-system-licensing_base"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags": {
+      "name": "feature-flags",
+      "in": "body",
+      "description": "system license feature flags information.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags-post": {
+      "name": "feature-flags",
+      "in": "body",
+      "description": "system license feature flags information.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name": {
+      "name": "feature-flag",
+      "in": "body",
+      "description": "system license feature flags.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config": {
+      "name": "config",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config-post": {
+      "name": "config",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config-post"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_name": {
+      "name": "name",
+      "in": "body",
+      "description": "system license feature flag name.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_name"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_value": {
+      "name": "value",
+      "in": "body",
+      "description": "system license feature flag value.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_value"
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_name": {
+      "name": "name",
+      "in": "body",
+      "description": "system license feature flag name.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_name"
+      }
+    },
+    "debug-service-service": {
+      "name": "debug-service-service",
+      "in": "path",
+      "description": "Reference to the debug-enable service key.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "event-event-type": {
+      "name": "event-event-type",
+      "in": "path",
+      "description": "Reference to the event-type list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "f5-system-licensing_feature-flag-name": {
+      "name": "f5-system-licensing_feature-flag-name",
+      "in": "path",
+      "description": "system license feature flag name.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "host-entry-hostname": {
+      "name": "host-entry-hostname",
+      "in": "path",
+      "description": "Reference to the hostname list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "ipv4-address-id": {
+      "name": "ipv4-address-id",
+      "in": "path",
+      "description": "List of IPv4 addressses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "ipv6-address-id": {
+      "name": "ipv6-address-id",
+      "in": "path",
+      "description": "List of IPv6 addresses for the host entry",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "license-license-id": {
+      "name": "license-license-id",
+      "in": "path",
+      "description": "Reference to license id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "listen-addresses-id": {
+      "name": "listen-addresses-id",
+      "in": "path",
+      "description": "The IP addresses that the gRPC server should listen\non. This may be an IPv4 or an IPv6 address",
+      "required": true,
+      "type": "string",
+      "format": "union"
+    },
+    "ntp-key-key-id": {
+      "name": "ntp-key-key-id",
+      "in": "path",
+      "description": "Reference to auth key-id list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "process-pid": {
+      "name": "process-pid",
+      "in": "path",
+      "description": "Reference to the process pid key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "remote-server-host": {
+      "name": "remote-server-host",
+      "in": "path",
+      "description": "Reference to the host list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "search-id": {
+      "name": "search-id",
+      "in": "path",
+      "description": "An ordered list of domains to search when resolving\na host name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "selector-facility": {
+      "name": "selector-facility",
+      "in": "path",
+      "description": "Reference to facility list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "selector-severity": {
+      "name": "selector-severity",
+      "in": "path",
+      "description": "Reference to severity list key",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-address": {
+      "name": "server-address",
+      "in": "path",
+      "description": "References the configured address of the DNS server",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "server-group-name": {
+      "name": "server-group-name",
+      "in": "path",
+      "description": "Reference to configured name of the server group",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    },
+    "user-username": {
+      "name": "user-username",
+      "in": "path",
+      "description": "References the configured username for the user",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:config": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-licensing:registration-key": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-licensing:base": {
+                  "description": "Base registration key from a license server. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            },
+            "f5-system-licensing:dossier": {
+              "description": "Platform Dossier generated with the base-registration-key (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-licensing:license": {
+              "description": "License acquired from license server for an specific platform (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-licensing:active-modules": {
+              "description": "Bits for active-modules in the license (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "bits"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:registration-key": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-licensing:base": {
+              "description": "Base registration key from a license server. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        },
+        "f5-system-licensing:dossier": {
+          "description": "Platform Dossier generated with the base-registration-key (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-licensing:license": {
+          "description": "License acquired from license server for an specific platform (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-licensing:active-modules": {
+          "description": "Bits for active-modules in the license (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "bits"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_active-modules": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:active-modules": {
+          "description": "Bits for active-modules in the license (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "bits"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_dossier": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:dossier": {
+          "description": "Platform Dossier generated with the base-registration-key (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_license": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:license": {
+          "description": "License acquired from license server for an specific platform (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:registration-key": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-licensing:base": {
+              "description": "Base registration key from a license server. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:base": {
+          "description": "Base registration key from a license server. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_config_f5-system-licensing_registration-key_f5-system-licensing_base": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:base": {
+          "description": "Base registration key from a license server. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:feature-flags": {
+          "description": "system license feature flags information. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-licensing:feature-flag": {
+              "type": "array",
+              "description": "system license feature flags. (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "f5-system-licensing:name": {
+                    "description": "system license feature flag name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "leafref"
+                  },
+                  "f5-system-licensing:config": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "f5-system-licensing:name": {
+                        "description": "system license feature flag name. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "f5-system-licensing:value": {
+                        "description": "system license feature flag value. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  },
+                  "f5-system-licensing:state": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "f5-system-licensing:name": {
+                        "description": "system license feature flag name. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "f5-system-licensing:value": {
+                        "description": "system license feature flag value. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:feature-flag": {
+          "type": "array",
+          "description": "system license feature flags. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-licensing:name": {
+                "description": "system license feature flag name. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "f5-system-licensing:config": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "f5-system-licensing:name": {
+                    "description": "system license feature flag name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-licensing:value": {
+                    "description": "system license feature flag value. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              },
+              "f5-system-licensing:state": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "f5-system-licensing:name": {
+                    "description": "system license feature flag name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-licensing:value": {
+                    "description": "system license feature flag value. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:feature-flag": {
+          "type": "array",
+          "description": "system license feature flags. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "f5-system-licensing:name": {
+                "description": "system license feature flag name. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "leafref"
+              },
+              "f5-system-licensing:config": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "f5-system-licensing:name": {
+                    "description": "system license feature flag name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-licensing:value": {
+                    "description": "system license feature flag value. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              },
+              "f5-system-licensing:state": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "f5-system-licensing:name": {
+                    "description": "system license feature flag name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "f5-system-licensing:value": {
+                    "description": "system license feature flag value. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:config": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-licensing:name": {
+              "description": "system license feature flag name. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-licensing:value": {
+              "description": "system license feature flag value. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config-post": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:name": {
+          "description": "system license feature flag name. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-system-licensing:value": {
+          "description": "system license feature flag value. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_name": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:name": {
+          "description": "system license feature flag name. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_config_f5-system-licensing_value": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:value": {
+          "description": "system license feature flag value. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_name": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:name": {
+          "description": "system license feature flag name. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_state": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:state": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-licensing:name": {
+              "description": "system license feature flag name. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-licensing:value": {
+              "description": "system license feature flag value. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_state_f5-system-licensing_name": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:name": {
+          "description": "system license feature flag name. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_feature-flags_f5-system-licensing_feature-flag_f5-system-licensing_feature-flag-name_f5-system-licensing_state_f5-system-licensing_value": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:value": {
+          "description": "system license feature flag value. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:state": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-licensing:registration-key": {
+              "description": "(non-presence)",
+              "type": "object",
+              "x-yang": {
+                "type": "container",
+                "is_presence": "false"
+              },
+              "properties": {
+                "f5-system-licensing:base": {
+                  "description": "Base registration key from a license server. (leaf)",
+                  "x-yang": {
+                    "type": "leaf"
+                  },
+                  "type": "string",
+                  "format": "string"
+                }
+              }
+            },
+            "f5-system-licensing:dossier": {
+              "description": "Platform Dossier generated with the base-registration-key (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-licensing:license": {
+              "description": "License acquired from license server for an specific platform (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "f5-system-licensing:active-modules": {
+              "description": "Bits for active-modules in the license (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "bits"
+            },
+            "f5-system-licensing:raw-license": {
+              "description": "system raw license details. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_active-modules": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:active-modules": {
+          "description": "Bits for active-modules in the license (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "bits"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_dossier": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:dossier": {
+          "description": "Platform Dossier generated with the base-registration-key (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_license": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:license": {
+          "description": "License acquired from license server for an specific platform (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_raw-license": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:raw-license": {
+          "description": "system raw license details. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_registration-key": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:registration-key": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "f5-system-licensing:base": {
+              "description": "Base registration key from a license server. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    },
+    "data_openconfig-system_system_f5-system-licensing_licensing_f5-system-licensing_state_f5-system-licensing_registration-key_f5-system-licensing_base": {
+      "type": "object",
+      "properties": {
+        "f5-system-licensing:base": {
+          "description": "Base registration key from a license server. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

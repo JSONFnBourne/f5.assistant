@@ -1,0 +1,1951 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "f5-tenant-images",
+    "description": "",
+    "contact": {
+      "name": "F5 Networks",
+      "url": "https://www.f5.com/F5OS/",
+      "email": "f5os@f5.com"
+    },
+    "version": "2024-05-03"
+  },
+  "basePath": "/restconf",
+  "tags": [
+    {
+      "name": "data",
+      "description": "data resources"
+    },
+    {
+      "name": "get",
+      "description": "get resources"
+    },
+    {
+      "name": "post",
+      "description": "post resources"
+    },
+    {
+      "name": "patch",
+      "description": "patch resources"
+    },
+    {
+      "name": "put",
+      "description": "put resources"
+    },
+    {
+      "name": "delete",
+      "description": "delete resources"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/yang-data+json"
+  ],
+  "consumes": [
+    "application/yang-data+json"
+  ],
+  "paths": {
+    "/data/f5-tenant-images:images": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "operationId": "data_f5_tenant_images_images_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "operationId": "data_f5_tenant_images_images_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-tenant-images_images-post"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container images created"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data",
+          "put"
+        ],
+        "summary": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "operationId": "data_f5_tenant_images_images_put",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-tenant-images_images"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "container images created or replaced"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "data",
+          "patch"
+        ],
+        "summary": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "operationId": "data_f5_tenant_images_images_patch",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-tenant-images_images"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "container images updated"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "data",
+          "delete"
+        ],
+        "summary": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+        "operationId": "data_f5_tenant_images_images_delete",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/import": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "Upload tenant image to the partition.",
+        "description": "Upload tenant image to the partition.",
+        "operationId": "data_f5_tenant_images_images_import_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-tenant-images_images_import-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_import-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/import/input": {
+    },
+    "/data/f5-tenant-images:images/import/input/server": {
+    },
+    "/data/f5-tenant-images:images/import/input/remote-path": {
+    },
+    "/data/f5-tenant-images:images/import/input/username": {
+    },
+    "/data/f5-tenant-images:images/import/input/password": {
+    },
+    "/data/f5-tenant-images:images/import/output": {
+    },
+    "/data/f5-tenant-images:images/import/output/result": {
+    },
+    "/data/f5-tenant-images:images/remove": {
+      "post": {
+        "tags": [
+          "data",
+          "post"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_tenant_images_images_remove_post",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/data_f5-tenant-images_images_remove-post-input"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_remove-post-output"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/remove/input": {
+    },
+    "/data/f5-tenant-images:images/remove/input/name": {
+    },
+    "/data/f5-tenant-images:images/remove/input/names": {
+    },
+    "/data/f5-tenant-images:images/remove/output": {
+    },
+    "/data/f5-tenant-images:images/remove/output/result": {
+    },
+    "/data/f5-tenant-images:images/image": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "BigIP VM images for launching tenants in the partition.",
+        "description": "BigIP VM images for launching tenants in the partition.",
+        "operationId": "data_f5_tenant_images_images_image_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "BigIP VM images for launching tenants in the partition.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "BigIP VM images for launching tenants in the partition.",
+        "description": "BigIP VM images for launching tenants in the partition.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BigIP VM images for launching tenants in the partition.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/name": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Image name.",
+        "description": "Image name.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_name_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image name.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_name"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/in-use": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "If true image is in use by one or more partition tenants.",
+        "description": "If true image is in use by one or more partition tenants.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_in_use_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If true image is in use by one or more partition tenants.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_in-use"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/type": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Type of image.",
+        "description": "Type of image.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_type_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Type of image.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_type"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/status": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Image operational status.\nValues:\n* not-present: Image file is not present on this controller.\n* importing: Image file import to this controller in-progress.\n* verifying: Image signature verification in-progress.\n* verification-failed: Image signature verification failed.\n* verified: Image signature verified.\n* processing: After verification image is being processed for use.\n* processed: Image is verified and process, ready for replication.\n* not-replicated: Image file not replicated to standby controller.\n* replicating: Image file replication to standby in-progress.\n* replicated: Image file present on both controllers.\nA valid image will end at not-replicated or replicated status.\nAn invalid image bundle will reach verification-failed and be removed from disk. ",
+        "description": "Image operational status.\nValues:\n* not-present: Image file is not present on this controller.\n* importing: Image file import to this controller in-progress.\n* verifying: Image signature verification in-progress.\n* verification-failed: Image signature verification failed.\n* verified: Image signature verified.\n* processing: After verification image is being processed for use.\n* processed: Image is verified and process, ready for replication.\n* not-replicated: Image file not replicated to standby controller.\n* replicating: Image file replication to standby in-progress.\n* replicated: Image file present on both controllers.\nA valid image will end at not-replicated or replicated status.\nAn invalid image bundle will reach verification-failed and be removed from disk. ",
+        "operationId": "data_f5_tenant_images_images_image_image_name_status_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image operational status.\nValues:\n* not-present: Image file is not present on this controller.\n* importing: Image file import to this controller in-progress.\n* verifying: Image signature verification in-progress.\n* verification-failed: Image signature verification failed.\n* verified: Image signature verified.\n* processing: After verification image is being processed for use.\n* processed: Image is verified and process, ready for replication.\n* not-replicated: Image file not replicated to standby controller.\n* replicating: Image file replication to standby in-progress.\n* replicated: Image file present on both controllers.\nA valid image will end at not-replicated or replicated status.\nAn invalid image bundle will reach verification-failed and be removed from disk. ",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_status"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/date": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Date of image.",
+        "description": "Date of image.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_date_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Date of image.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_date"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/size": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Size of image.",
+        "description": "Size of image.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_size_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Size of image.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_size"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/feature-flags": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "data_f5_tenant_images_images_image_image_name_feature_flags_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_feature-flags"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/feature-flags/clustering-as-service": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "On or off.",
+        "description": "On or off.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_feature_flags_clustering_as_service_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "On or off.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_feature-flags_clustering-as-service"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/feature-flags/deployment-type": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "VM or K8S.",
+        "description": "VM or K8S.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_feature_flags_deployment_type_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "VM or K8S.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_feature-flags_deployment-type"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/feature-flags/datapath": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "xnetd or native-set.",
+        "description": "xnetd or native-set.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_feature_flags_datapath_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "xnetd or native-set.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_feature-flags_datapath"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/feature-flags/min-cores": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Minimum number of cores required.",
+        "description": "Minimum number of cores required.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_feature_flags_min_cores_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Minimum number of cores required.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_feature-flags_min-cores"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/feature-flags/min-memory": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Minimum memory required.",
+        "description": "Minimum memory required.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_feature_flags_min_memory_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Minimum memory required.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_feature-flags_min-memory"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/feature-flags/min-storage": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Minimum storage required.",
+        "description": "Minimum storage required.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_feature_flags_min_storage_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Minimum storage required.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_feature-flags_min-storage"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/data/f5-tenant-images:images/image={image-name}/feature-flags/datapath-uses-mgmt-ip": {
+      "get": {
+        "tags": [
+          "data",
+          "get"
+        ],
+        "summary": "Set to true when mgmt-ip is used as datapath ip.",
+        "description": "Set to true when mgmt-ip is used as datapath ip.",
+        "operationId": "data_f5_tenant_images_images_image_image_name_feature_flags_datapath_uses_mgmt_ip_get",
+        "produces": [
+          "application/yang-data+json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/image-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Set to true when mgmt-ip is used as datapath ip.",
+            "schema": {
+              "$ref": "#/definitions/data_f5-tenant-images_images_image_image-name_feature-flags_datapath-uses-mgmt-ip"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "content": {
+      "name": "content",
+      "in": "query",
+      "description": "controlling descendant nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "config",
+      "enum": [
+        "config",
+        "nonconfig",
+        "all"
+      ]
+    },
+    "depth": {
+      "name": "depth",
+      "in": "query",
+      "description": "limit the depth of nodes in response",
+      "required": false,
+      "type": "integer",
+      "format": "uint16"
+    },
+    "fields": {
+      "name": "fields",
+      "in": "query",
+      "description": "optionally identify specific data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "filter": {
+      "name": "filter",
+      "in": "query",
+      "description": "xpath expression to filter data nodes in response",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "with-defaults": {
+      "name": "with-defaults",
+      "in": "query",
+      "description": "controlling default values in response",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "report-all",
+      "enum": [
+        "report-all",
+        "trim",
+        "explicit",
+        "report-all-tagged"
+      ]
+    },
+    "insert": {
+      "name": "insert",
+      "in": "query",
+      "description": "controlling the order when adding new list elements",
+      "required": false,
+      "type": "string",
+      "format": "enumeration",
+      "default": "first",
+      "enum": [
+        "first",
+        "last",
+        "before",
+        "after"
+      ]
+    },
+    "point": {
+      "name": "point",
+      "in": "query",
+      "description": "used to specify the insertion point",
+      "required": false,
+      "type": "string",
+      "format": "string"
+    },
+    "data_f5-tenant-images_images": {
+      "name": "images",
+      "in": "body",
+      "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-tenant-images_images"
+      }
+    },
+    "data_f5-tenant-images_images-post": {
+      "name": "images",
+      "in": "body",
+      "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-tenant-images_images-post"
+      }
+    },
+    "data_f5-tenant-images_images_import-post-input": {
+      "name": "import",
+      "in": "body",
+      "description": "Upload tenant image to the partition.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-tenant-images_images_import-post-input"
+      }
+    },
+    "data_f5-tenant-images_images_remove-post-input": {
+      "name": "remove",
+      "in": "body",
+      "description": "",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/data_f5-tenant-images_images_remove-post-input"
+      }
+    },
+    "image-name": {
+      "name": "image-name",
+      "in": "path",
+      "description": "Image name.",
+      "required": true,
+      "type": "string",
+      "format": "string"
+    },
+    "names-id": {
+      "name": "names-id",
+      "in": "path",
+      "description": "List of files to remove from the partition. They cannot be\nin use by one or more tenants.",
+      "required": true,
+      "type": "string",
+      "format": "leafref"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "OK"
+    },
+    "201": {
+      "description": "Created"
+    },
+    "204": {
+      "description": "No Content"
+    },
+    "400": {
+      "description": "Bad Request"
+    },
+    "401": {
+      "description": "Unauthorized"
+    },
+    "404": {
+      "description": "Not Found"
+    },
+    "405": {
+      "description": "Method Not Allowed"
+    },
+    "409": {
+      "description": "Conflict"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "data_f5-tenant-images_images": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:images": {
+          "description": "Tenant BigIP VM images in the partition. This images must be signed by\nthe vendor and the upload process will verify the signature. (non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "image": {
+              "type": "array",
+              "description": "BigIP VM images for launching tenants in the partition. (list)",
+              "x-yang": {
+                "type": "list"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Image name. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "in-use": {
+                    "description": "If true image is in use by one or more partition tenants. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  },
+                  "type": {
+                    "description": "Type of image. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "not-identified",
+                    "enum": [
+                      "not-identified",
+                      "vm-image",
+                      "helm-bundle",
+                      "helm-image",
+                      "helm-specification",
+                      "generic-image"
+                    ]
+                  },
+                  "status": {
+                    "description": "Image operational status.\nValues:\n* not-present: Image file is not present on this controller.\n* importing: Image file import to this controller in-progress.\n* verifying: Image signature verification in-progress.\n* verification-failed: Image signature verification failed.\n* verified: Image signature verified.\n* processing: After verification image is being processed for use.\n* processed: Image is verified and process, ready for replication.\n* not-replicated: Image file not replicated to standby controller.\n* replicating: Image file replication to standby in-progress.\n* replicated: Image file present on both controllers.\nA valid image will end at not-replicated or replicated status.\nAn invalid image bundle will reach verification-failed and be removed from disk.  (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "enumeration",
+                    "default": "not-present",
+                    "enum": [
+                      "not-present",
+                      "importing",
+                      "verifying",
+                      "verification-failed",
+                      "verified",
+                      "not-replicated",
+                      "replicating",
+                      "replicated",
+                      "processing",
+                      "processing-failed",
+                      "processed"
+                    ]
+                  },
+                  "date": {
+                    "description": "Date of image. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "size": {
+                    "description": "Size of image. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "feature-flags": {
+                    "description": "(non-presence)",
+                    "type": "object",
+                    "x-yang": {
+                      "type": "container",
+                      "is_presence": "false"
+                    },
+                    "properties": {
+                      "clustering-as-service": {
+                        "description": "On or off. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "deployment-type": {
+                        "description": "VM or K8S. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "datapath": {
+                        "description": "xnetd or native-set. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "min-cores": {
+                        "description": "Minimum number of cores required. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "byte"
+                      },
+                      "min-memory": {
+                        "description": "Minimum memory required. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "min-storage": {
+                        "description": "Minimum storage required. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "integer",
+                        "format": "uint16"
+                      },
+                      "datapath-uses-mgmt-ip": {
+                        "description": "Set to true when mgmt-ip is used as datapath ip. (leaf)",
+                        "x-yang": {
+                          "type": "leaf"
+                        },
+                        "type": "string",
+                        "format": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-tenant-images_images-post": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:server": {
+          "description": "Remote SSH server that has the tenant image. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-tenant-images:remote-path": {
+          "description": "Full or relative path of the tenant image on the server. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-tenant-images:username": {
+          "description": "Username for the server that has the tenant image. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-tenant-images:password": {
+          "description": "Password for the user with credentials for the server provided. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-tenant-images:name": {
+          "description": "Name of the file to remove from the partition. It cannot be\nin use by one or more tenants. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        },
+        "f5-tenant-images:image": {
+          "type": "array",
+          "description": "BigIP VM images for launching tenants in the partition. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Image name. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "in-use": {
+                "description": "If true image is in use by one or more partition tenants. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "type": {
+                "description": "Type of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "not-identified",
+                "enum": [
+                  "not-identified",
+                  "vm-image",
+                  "helm-bundle",
+                  "helm-image",
+                  "helm-specification",
+                  "generic-image"
+                ]
+              },
+              "status": {
+                "description": "Image operational status.\nValues:\n* not-present: Image file is not present on this controller.\n* importing: Image file import to this controller in-progress.\n* verifying: Image signature verification in-progress.\n* verification-failed: Image signature verification failed.\n* verified: Image signature verified.\n* processing: After verification image is being processed for use.\n* processed: Image is verified and process, ready for replication.\n* not-replicated: Image file not replicated to standby controller.\n* replicating: Image file replication to standby in-progress.\n* replicated: Image file present on both controllers.\nA valid image will end at not-replicated or replicated status.\nAn invalid image bundle will reach verification-failed and be removed from disk.  (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "not-present",
+                "enum": [
+                  "not-present",
+                  "importing",
+                  "verifying",
+                  "verification-failed",
+                  "verified",
+                  "not-replicated",
+                  "replicating",
+                  "replicated",
+                  "processing",
+                  "processing-failed",
+                  "processed"
+                ]
+              },
+              "date": {
+                "description": "Date of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "size": {
+                "description": "Size of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "feature-flags": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "clustering-as-service": {
+                    "description": "On or off. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "deployment-type": {
+                    "description": "VM or K8S. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "datapath": {
+                    "description": "xnetd or native-set. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "min-cores": {
+                    "description": "Minimum number of cores required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "min-memory": {
+                    "description": "Minimum memory required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "min-storage": {
+                    "description": "Minimum storage required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  },
+                  "datapath-uses-mgmt-ip": {
+                    "description": "Set to true when mgmt-ip is used as datapath ip. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:image": {
+          "type": "array",
+          "description": "BigIP VM images for launching tenants in the partition. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Image name. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "in-use": {
+                "description": "If true image is in use by one or more partition tenants. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "type": {
+                "description": "Type of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "not-identified",
+                "enum": [
+                  "not-identified",
+                  "vm-image",
+                  "helm-bundle",
+                  "helm-image",
+                  "helm-specification",
+                  "generic-image"
+                ]
+              },
+              "status": {
+                "description": "Image operational status.\nValues:\n* not-present: Image file is not present on this controller.\n* importing: Image file import to this controller in-progress.\n* verifying: Image signature verification in-progress.\n* verification-failed: Image signature verification failed.\n* verified: Image signature verified.\n* processing: After verification image is being processed for use.\n* processed: Image is verified and process, ready for replication.\n* not-replicated: Image file not replicated to standby controller.\n* replicating: Image file replication to standby in-progress.\n* replicated: Image file present on both controllers.\nA valid image will end at not-replicated or replicated status.\nAn invalid image bundle will reach verification-failed and be removed from disk.  (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "not-present",
+                "enum": [
+                  "not-present",
+                  "importing",
+                  "verifying",
+                  "verification-failed",
+                  "verified",
+                  "not-replicated",
+                  "replicating",
+                  "replicated",
+                  "processing",
+                  "processing-failed",
+                  "processed"
+                ]
+              },
+              "date": {
+                "description": "Date of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "size": {
+                "description": "Size of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "feature-flags": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "clustering-as-service": {
+                    "description": "On or off. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "deployment-type": {
+                    "description": "VM or K8S. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "datapath": {
+                    "description": "xnetd or native-set. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "min-cores": {
+                    "description": "Minimum number of cores required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "min-memory": {
+                    "description": "Minimum memory required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "min-storage": {
+                    "description": "Minimum storage required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  },
+                  "datapath-uses-mgmt-ip": {
+                    "description": "Set to true when mgmt-ip is used as datapath ip. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:image": {
+          "type": "array",
+          "description": "BigIP VM images for launching tenants in the partition. (list)",
+          "x-yang": {
+            "type": "list"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Image name. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "in-use": {
+                "description": "If true image is in use by one or more partition tenants. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "boolean"
+              },
+              "type": {
+                "description": "Type of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "not-identified",
+                "enum": [
+                  "not-identified",
+                  "vm-image",
+                  "helm-bundle",
+                  "helm-image",
+                  "helm-specification",
+                  "generic-image"
+                ]
+              },
+              "status": {
+                "description": "Image operational status.\nValues:\n* not-present: Image file is not present on this controller.\n* importing: Image file import to this controller in-progress.\n* verifying: Image signature verification in-progress.\n* verification-failed: Image signature verification failed.\n* verified: Image signature verified.\n* processing: After verification image is being processed for use.\n* processed: Image is verified and process, ready for replication.\n* not-replicated: Image file not replicated to standby controller.\n* replicating: Image file replication to standby in-progress.\n* replicated: Image file present on both controllers.\nA valid image will end at not-replicated or replicated status.\nAn invalid image bundle will reach verification-failed and be removed from disk.  (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "enumeration",
+                "default": "not-present",
+                "enum": [
+                  "not-present",
+                  "importing",
+                  "verifying",
+                  "verification-failed",
+                  "verified",
+                  "not-replicated",
+                  "replicating",
+                  "replicated",
+                  "processing",
+                  "processing-failed",
+                  "processed"
+                ]
+              },
+              "date": {
+                "description": "Date of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "size": {
+                "description": "Size of image. (leaf)",
+                "x-yang": {
+                  "type": "leaf"
+                },
+                "type": "string",
+                "format": "string"
+              },
+              "feature-flags": {
+                "description": "(non-presence)",
+                "type": "object",
+                "x-yang": {
+                  "type": "container",
+                  "is_presence": "false"
+                },
+                "properties": {
+                  "clustering-as-service": {
+                    "description": "On or off. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "deployment-type": {
+                    "description": "VM or K8S. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "datapath": {
+                    "description": "xnetd or native-set. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "min-cores": {
+                    "description": "Minimum number of cores required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "byte"
+                  },
+                  "min-memory": {
+                    "description": "Minimum memory required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "min-storage": {
+                    "description": "Minimum storage required. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "integer",
+                    "format": "uint16"
+                  },
+                  "datapath-uses-mgmt-ip": {
+                    "description": "Set to true when mgmt-ip is used as datapath ip. (leaf)",
+                    "x-yang": {
+                      "type": "leaf"
+                    },
+                    "type": "string",
+                    "format": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_date": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:date": {
+          "description": "Date of image. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_feature-flags": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:feature-flags": {
+          "description": "(non-presence)",
+          "type": "object",
+          "x-yang": {
+            "type": "container",
+            "is_presence": "false"
+          },
+          "properties": {
+            "clustering-as-service": {
+              "description": "On or off. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "deployment-type": {
+              "description": "VM or K8S. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "datapath": {
+              "description": "xnetd or native-set. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "string"
+            },
+            "min-cores": {
+              "description": "Minimum number of cores required. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "byte"
+            },
+            "min-memory": {
+              "description": "Minimum memory required. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint64"
+            },
+            "min-storage": {
+              "description": "Minimum storage required. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "integer",
+              "format": "uint16"
+            },
+            "datapath-uses-mgmt-ip": {
+              "description": "Set to true when mgmt-ip is used as datapath ip. (leaf)",
+              "x-yang": {
+                "type": "leaf"
+              },
+              "type": "string",
+              "format": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_feature-flags_clustering-as-service": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:clustering-as-service": {
+          "description": "On or off. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_feature-flags_datapath": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:datapath": {
+          "description": "xnetd or native-set. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_feature-flags_datapath-uses-mgmt-ip": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:datapath-uses-mgmt-ip": {
+          "description": "Set to true when mgmt-ip is used as datapath ip. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_feature-flags_deployment-type": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:deployment-type": {
+          "description": "VM or K8S. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_feature-flags_min-cores": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:min-cores": {
+          "description": "Minimum number of cores required. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "byte"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_feature-flags_min-memory": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:min-memory": {
+          "description": "Minimum memory required. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint64"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_feature-flags_min-storage": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:min-storage": {
+          "description": "Minimum storage required. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "integer",
+          "format": "uint16"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_in-use": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:in-use": {
+          "description": "If true image is in use by one or more partition tenants. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "boolean"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_name": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:name": {
+          "description": "Image name. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_size": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:size": {
+          "description": "Size of image. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_status": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:status": {
+          "description": "Image operational status.\nValues:\n* not-present: Image file is not present on this controller.\n* importing: Image file import to this controller in-progress.\n* verifying: Image signature verification in-progress.\n* verification-failed: Image signature verification failed.\n* verified: Image signature verified.\n* processing: After verification image is being processed for use.\n* processed: Image is verified and process, ready for replication.\n* not-replicated: Image file not replicated to standby controller.\n* replicating: Image file replication to standby in-progress.\n* replicated: Image file present on both controllers.\nA valid image will end at not-replicated or replicated status.\nAn invalid image bundle will reach verification-failed and be removed from disk.  (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "not-present",
+          "enum": [
+            "not-present",
+            "importing",
+            "verifying",
+            "verification-failed",
+            "verified",
+            "not-replicated",
+            "replicating",
+            "replicated",
+            "processing",
+            "processing-failed",
+            "processed"
+          ]
+        }
+      }
+    },
+    "data_f5-tenant-images_images_image_image-name_type": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:type": {
+          "description": "Type of image. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "enumeration",
+          "default": "not-identified",
+          "enum": [
+            "not-identified",
+            "vm-image",
+            "helm-bundle",
+            "helm-image",
+            "helm-specification",
+            "generic-image"
+          ]
+        }
+      }
+    },
+    "data_f5-tenant-images_images_import-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:server": {
+          "description": "Remote SSH server that has the tenant image. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-tenant-images:remote-path": {
+          "description": "Full or relative path of the tenant image on the server. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-tenant-images:username": {
+          "description": "Username for the server that has the tenant image. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        },
+        "f5-tenant-images:password": {
+          "description": "Password for the user with credentials for the server provided. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_import-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:result": {
+          "description": "Result of a dry run of the secure copy operation. It verifies that the\nimport parameters are valid before starting the operation in the background. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_remove-post-input": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:name": {
+          "description": "Name of the file to remove from the partition. It cannot be\nin use by one or more tenants. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "leafref"
+        }
+      }
+    },
+    "data_f5-tenant-images_images_remove-post-output": {
+      "type": "object",
+      "properties": {
+        "f5-tenant-images:result": {
+          "description": "Result of the remove operation. (leaf)",
+          "x-yang": {
+            "type": "leaf"
+          },
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}
