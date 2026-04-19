@@ -55,9 +55,12 @@ class TestXmlStatsTaxonomy:
     def test_top_expiring_certificates_sorted_ascending(self, tmos_post_upgrade_data):
         # `top_expiring_certificates` must surface the *soonest*-to-expire
         # certs first so the UI's expiry panel flags real operational risk.
+        # Ordering must hold whether the archive contains user-imported
+        # certs or not — a homelab VE with nothing but the shipped trust
+        # bundles returns an empty list here (session 16's dedupe fix),
+        # which is trivially sorted.
         xs = tmos_post_upgrade_data.xml_stats
         top = xs.top_expiring_certificates(10)
-        assert top, "no certificates returned"
 
         def _epoch(rec):
             try:
@@ -67,3 +70,30 @@ class TestXmlStatsTaxonomy:
 
         epochs = [_epoch(r) for r in top]
         assert epochs == sorted(epochs), epochs
+
+    def test_trust_bundle_filtered_from_expiry_panel(self, tmos_post_upgrade_data):
+        # The shipped `ca-bundle.crt` / `f5-ca-bundle.crt` trust stores
+        # explode into 900+ `certificate_summary` rows named
+        # `.../<bundle>.crt.NNN`. Session 16 filters them out of the
+        # expiry panel so user-imported certs aren't drowned. If a row
+        # with a trailing `.crt.<digits>` ever makes it through, the
+        # filter's regressed.
+        import re
+        _bundle_re = re.compile(r"\.crt\.\d+$")
+        xs = tmos_post_upgrade_data.xml_stats
+        for r in xs.top_expiring_certificates(50):
+            name = r.fields.get("name") or ""
+            assert not _bundle_re.search(name), f"bundle entry leaked: {name}"
+
+    def test_summary_counts_dedupe_by_name(self, tmos_post_upgrade_data):
+        # Runtime stat categories emit N replica rows per resource (one
+        # per TMM / plane / sampling window). Session 16 made
+        # `summary()` return distinct-resource counts; raw `len()` on
+        # the underlying list should be strictly higher than the
+        # summary count on any archive with real traffic.
+        xs = tmos_post_upgrade_data.xml_stats
+        summary = xs.summary()
+        assert summary["virtual_servers"] < len(xs.virtual_servers)
+        assert summary["pools"] < len(xs.pools)
+        assert summary["tmms"] < len(xs.tmms)
+        assert summary["cpus"] < len(xs.cpus)

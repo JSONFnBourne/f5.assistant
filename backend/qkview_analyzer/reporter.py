@@ -358,9 +358,14 @@ class Reporter:
                     "top_pool_members": [
                         r.fields for r in xs.top_pool_members(30)
                     ],
-                    "tmms": [r.fields for r in xs.tmms],
-                    "interfaces": [r.fields for r in xs.interfaces],
-                    "cpus": [r.fields for r in xs.cpus],
+                    # TMMs / interfaces / CPUs ship deduped — TMOS emits
+                    # multiple replica rows per resource (one per sample
+                    # window, one per plane, etc.) and the webapp panels
+                    # render these lists directly, so dedupe upstream
+                    # rather than forcing the frontend to collapse them.
+                    "tmms": [r.fields for r in xs.deduped_tmms()],
+                    "interfaces": [r.fields for r in xs.deduped_interfaces()],
+                    "cpus": [r.fields for r in xs.deduped_cpus()],
                     "active_modules": [r.fields for r in xs.active_modules],
                     "asm_policies": [r.fields for r in xs.asm_policies],
                     # Certs typically number in the hundreds (941 on the
