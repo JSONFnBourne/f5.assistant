@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useMemo } from 'react';
-import { UploadCloud, File, CheckCircle, AlertTriangle, Bug, Terminal, Network, Cpu, Activity, Folder, ShieldCheck } from 'lucide-react';
+import { UploadCloud, File, CheckCircle, AlertTriangle, Bug, Terminal, Network, Cpu, Activity, Folder, ShieldCheck, X, Loader2 } from 'lucide-react';
 
 type AppSummary = {
     name: string;
@@ -35,6 +35,174 @@ type XmlStatsPayload = {
     top_expiring_certificates?: XmlStatRow[];
 };
 
+function AppDetailsPanel({
+    fullPath,
+    loading,
+    error,
+    details,
+    showRaw,
+    onToggleRaw,
+    onClose,
+}: {
+    fullPath: string;
+    loading: boolean;
+    error: string | null;
+    details: any;
+    showRaw: boolean;
+    onToggleRaw: () => void;
+    onClose: () => void;
+}) {
+    const pool = details?.pool;
+    const poolIsObject = pool && typeof pool === 'object' && !Array.isArray(pool);
+    const members: Record<string, any> = poolIsObject && pool.members && typeof pool.members === 'object' ? pool.members : {};
+    const memberNames = Object.keys(members).filter((k) => k !== 'line');
+    const monitors: any[] = poolIsObject && pool.monitor
+        ? (Array.isArray(pool.monitor) ? pool.monitor : [pool.monitor])
+        : [];
+    const profiles: string[] = Array.isArray(details?.profiles) ? details.profiles : [];
+    const rules: string[] = Array.isArray(details?.rules) ? details.rules : [];
+    const lines: string[] = Array.isArray(details?.lines) ? details.lines : [];
+
+    const renderMonitor = (m: any, i: number) => {
+        if (typeof m === 'string') {
+            return <li key={i} className="font-mono text-xs">{m}</li>;
+        }
+        const keys = Object.keys(m || {}).filter((k) => k !== 'line');
+        return (
+            <li key={i} className="font-mono text-xs">
+                <span className="text-slate-700 dark:text-slate-300">{keys.slice(0, 6).map((k) => `${k}=${typeof m[k] === 'object' ? JSON.stringify(m[k]) : m[k]}`).join('  ')}</span>
+            </li>
+        );
+    };
+
+    return (
+        <div className="mt-6 border-t border-slate-200 dark:border-slate-700 pt-6">
+            <div className="flex items-start justify-between mb-3">
+                <div>
+                    <h4 className="font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                        <Network className="w-4 h-4 text-amber-500" />
+                        <span className="font-mono text-sm">{fullPath}</span>
+                    </h4>
+                    {details?.destination && (
+                        <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-1">destination: {details.destination}</p>
+                    )}
+                </div>
+                <button
+                    onClick={onClose}
+                    aria-label="Close app details"
+                    className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500"
+                >
+                    <X className="w-4 h-4" />
+                </button>
+            </div>
+
+            {loading && (
+                <div className="flex items-center gap-2 text-slate-500 text-sm py-4">
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Loading app details…
+                </div>
+            )}
+
+            {error && (
+                <div className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded px-3 py-2">
+                    {error}
+                </div>
+            )}
+
+            {!loading && !error && details && (
+                <div className="grid md:grid-cols-2 gap-6 text-sm">
+                    <div className="space-y-4">
+                        <div>
+                            <h5 className="font-semibold text-xs uppercase tracking-wider text-slate-500 mb-2">Pool</h5>
+                            {poolIsObject ? (
+                                <div className="font-mono text-xs space-y-1">
+                                    {details.pool && typeof details.pool === 'object' && Object.entries(details.pool)
+                                        .filter(([k]) => !['members', 'monitor', 'line'].includes(k))
+                                        .slice(0, 8)
+                                        .map(([k, v]) => (
+                                            <div key={k} className="flex gap-2">
+                                                <span className="text-slate-500 shrink-0">{k}:</span>
+                                                <span className="text-slate-800 dark:text-slate-200 break-all">{typeof v === 'object' ? JSON.stringify(v) : String(v)}</span>
+                                            </div>
+                                        ))}
+                                </div>
+                            ) : pool ? (
+                                <p className="font-mono text-xs text-slate-600 dark:text-slate-400">{String(pool)} <span className="text-slate-400">(not resolved)</span></p>
+                            ) : (
+                                <p className="text-xs text-slate-400 italic">No pool attached.</p>
+                            )}
+                        </div>
+
+                        <div>
+                            <h5 className="font-semibold text-xs uppercase tracking-wider text-slate-500 mb-2">Members ({memberNames.length})</h5>
+                            {memberNames.length > 0 ? (
+                                <ul className="font-mono text-xs space-y-1 max-h-48 overflow-y-auto">
+                                    {memberNames.map((m) => (
+                                        <li key={m} className="text-slate-700 dark:text-slate-300">{m}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p className="text-xs text-slate-400 italic">None.</p>
+                            )}
+                        </div>
+
+                        <div>
+                            <h5 className="font-semibold text-xs uppercase tracking-wider text-slate-500 mb-2">Monitors ({monitors.length})</h5>
+                            {monitors.length > 0 ? (
+                                <ul className="space-y-1">{monitors.map(renderMonitor)}</ul>
+                            ) : (
+                                <p className="text-xs text-slate-400 italic">None.</p>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="space-y-4">
+                        <div>
+                            <h5 className="font-semibold text-xs uppercase tracking-wider text-slate-500 mb-2">Profiles ({profiles.length})</h5>
+                            {profiles.length > 0 ? (
+                                <ul className="font-mono text-xs space-y-1 max-h-48 overflow-y-auto">
+                                    {profiles.map((p) => (
+                                        <li key={p} className="text-slate-700 dark:text-slate-300">{p}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p className="text-xs text-slate-400 italic">None.</p>
+                            )}
+                        </div>
+
+                        <div>
+                            <h5 className="font-semibold text-xs uppercase tracking-wider text-slate-500 mb-2">iRules ({rules.length})</h5>
+                            {rules.length > 0 ? (
+                                <ul className="font-mono text-xs space-y-1">
+                                    {rules.map((r) => (
+                                        <li key={r} className="text-slate-700 dark:text-slate-300">{r}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p className="text-xs text-slate-400 italic">None.</p>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="md:col-span-2">
+                        <button
+                            onClick={onToggleRaw}
+                            className="text-xs font-semibold text-amber-700 dark:text-amber-400 hover:underline"
+                        >
+                            {showRaw ? '▾ Hide' : '▸ Show'} raw config stanzas ({lines.length})
+                        </button>
+                        {showRaw && lines.length > 0 && (
+                            <pre className="mt-2 bg-black/80 text-slate-200 p-3 rounded text-xs overflow-x-auto max-h-[500px] overflow-y-auto font-mono leading-relaxed">
+                                {lines.join('\n\n')}
+                            </pre>
+                        )}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
 export default function QKViewPage() {
     const [file, setFile] = useState<File | null>(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -44,6 +212,11 @@ export default function QKViewPage() {
     const [error, setError] = useState<string | null>(null);
     const [activeCmd, setActiveCmd] = useState<string | null>(null);
     const [activePartition, setActivePartition] = useState<string | null>(null);
+    const [selectedAppPath, setSelectedAppPath] = useState<string | null>(null);
+    const [appDetails, setAppDetails] = useState<any>(null);
+    const [appDetailsLoading, setAppDetailsLoading] = useState(false);
+    const [appDetailsError, setAppDetailsError] = useState<string | null>(null);
+    const [showRawStanzas, setShowRawStanzas] = useState(false);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -83,6 +256,37 @@ export default function QKViewPage() {
             return na.localeCompare(nb, undefined, { numeric: true });
         });
     }, [xmlStats]);
+
+    const analysisId: number | null = analysisResult?.analysis_id ?? null;
+
+    const loadAppDetails = async (fullPath: string) => {
+        if (analysisId == null) {
+            setAppDetailsError('Analysis ID missing — re-upload the archive.');
+            return;
+        }
+        if (selectedAppPath === fullPath) {
+            setSelectedAppPath(null);
+            setAppDetails(null);
+            setAppDetailsError(null);
+            return;
+        }
+        setSelectedAppPath(fullPath);
+        setAppDetails(null);
+        setAppDetailsError(null);
+        setAppDetailsLoading(true);
+        setShowRawStanzas(false);
+        try {
+            const encoded = fullPath.replace(/^\//, '').split('/').map(encodeURIComponent).join('/');
+            const res = await fetch(`/api/qkview/${analysisId}/apps/${encoded}`);
+            if (!res.ok) throw new Error(`Backend returned ${res.status}`);
+            const data = await res.json();
+            setAppDetails(data.app ?? null);
+        } catch (err: any) {
+            setAppDetailsError(err.message || 'Failed to load app details.');
+        } finally {
+            setAppDetailsLoading(false);
+        }
+    };
 
     const handleDragOver = (e: React.DragEvent) => {
         e.preventDefault();
@@ -202,6 +406,9 @@ export default function QKViewPage() {
             });
 
             setAnalysisResult(finalData);
+            setSelectedAppPath(null);
+            setAppDetails(null);
+            setAppDetailsError(null);
         } catch (err: any) {
             setError(err.message || 'An error occurred during analysis.');
         } finally {
@@ -435,16 +642,38 @@ export default function QKViewPage() {
                                         {(effectivePartition
                                             ? (appsByPartition[effectivePartition] || [])
                                             : apps
-                                        ).map((a) => (
-                                            <tr key={a.fullPath} className="hover:bg-slate-50 dark:hover:bg-slate-700/40">
-                                                <td className="py-2 pr-4 font-mono text-xs text-slate-800 dark:text-slate-200">{a.name}</td>
-                                                <td className="py-2 pr-4 font-mono text-xs text-slate-600 dark:text-slate-400">{a.destination || '—'}</td>
-                                                <td className="py-2 font-mono text-xs text-slate-600 dark:text-slate-400">{a.pool || '—'}</td>
-                                            </tr>
-                                        ))}
+                                        ).map((a) => {
+                                            const isSelected = selectedAppPath === a.fullPath;
+                                            return (
+                                                <tr
+                                                    key={a.fullPath}
+                                                    onClick={() => loadAppDetails(a.fullPath)}
+                                                    className={`cursor-pointer ${isSelected ? 'bg-amber-50 dark:bg-amber-900/20' : 'hover:bg-slate-50 dark:hover:bg-slate-700/40'}`}
+                                                >
+                                                    <td className="py-2 pr-4 font-mono text-xs text-slate-800 dark:text-slate-200">{a.name}</td>
+                                                    <td className="py-2 pr-4 font-mono text-xs text-slate-600 dark:text-slate-400">{a.destination || '—'}</td>
+                                                    <td className="py-2 font-mono text-xs text-slate-600 dark:text-slate-400">{a.pool || '—'}</td>
+                                                </tr>
+                                            );
+                                        })}
                                     </tbody>
                                 </table>
                             </div>
+                            {selectedAppPath && (
+                                <AppDetailsPanel
+                                    fullPath={selectedAppPath}
+                                    loading={appDetailsLoading}
+                                    error={appDetailsError}
+                                    details={appDetails}
+                                    showRaw={showRawStanzas}
+                                    onToggleRaw={() => setShowRawStanzas((v) => !v)}
+                                    onClose={() => {
+                                        setSelectedAppPath(null);
+                                        setAppDetails(null);
+                                        setAppDetailsError(null);
+                                    }}
+                                />
+                            )}
                         </div>
                     )}
 

@@ -288,10 +288,11 @@ async def analyze_qkview(request: Request):
             # from accumulating in the long-lived worker.
             conn = sqlite3.connect(DB_PATH)
             try:
-                conn.execute(
+                cursor = conn.execute(
                     "INSERT INTO analyses (filename, summary) VALUES (?, ?)",
                     (filename, json_str)
                 )
+                analysis_id = cursor.lastrowid
                 conn.commit()
             finally:
                 conn.close()
@@ -320,6 +321,7 @@ async def analyze_qkview(request: Request):
                 return out
 
             client_dict = {k: v for k, v in summary_dict.items() if k != "tmos_config"}
+            client_dict["analysis_id"] = analysis_id
             if isinstance(client_dict.get("entries"), list):
                 client_dict["entries"] = [_trim_entry(e) for e in client_dict["entries"][:300]]
             if isinstance(client_dict.get("findings"), list):
