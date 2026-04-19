@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useMemo } from 'react';
-import { UploadCloud, File, CheckCircle, AlertTriangle, Bug, Terminal, Network, Cpu, Activity, Folder, ShieldCheck, X, Loader2 } from 'lucide-react';
+import { UploadCloud, File, CheckCircle, AlertTriangle, Bug, Terminal, Network, Cpu, Activity, Folder, ShieldCheck, X, Loader2, ChevronRight, ChevronDown, Copy, Check, Server, Calendar, Settings } from 'lucide-react';
 
 type AppSummary = {
     name: string;
@@ -20,6 +20,75 @@ type F5OSHealth = {
     description: string;
     value?: string;
 };
+
+type F5OSClusterNode = {
+    name: string;
+    running_state: string;
+    ready: boolean;
+    ready_message: string;
+    slot: string;
+};
+
+type F5OSPortgroup = { id: string; mode: string };
+
+type F5OSTenant = {
+    name: string;
+    type: string;
+    running_state: string;
+    status: string;
+    image_version: string;
+    mgmt_ip: string;
+    vcpu_cores_per_node: string;
+    memory_mb: string;
+};
+
+type F5OSOverview = {
+    generation_start: string;
+    generation_stop: string;
+    platform_pid: string;
+    platform_code: string;
+    platform_part_number: string;
+    platform_uuid: string;
+    platform_slot: string;
+    version_edition: string;
+    cluster_summary: string;
+    cluster_nodes: F5OSClusterNode[];
+    mgmt_ipv4_address: string;
+    mgmt_ipv4_prefix: string;
+    mgmt_ipv4_gateway: string;
+    mgmt_ipv6_address: string;
+    mgmt_ipv6_prefix: string;
+    mgmt_ipv6_gateway: string;
+    payg_license_level: string;
+    licensed_version: string;
+    registration_key: string;
+    licensed_date: string;
+    serial_number: string;
+    time_zone: string;
+    appliance_datetime: string;
+    appliance_mode: string;
+    portgroups: F5OSPortgroup[];
+    tenants: F5OSTenant[];
+    tenants_configured: number;
+    tenants_provisioned: number;
+    tenants_deployed: number;
+    tenants_running: number;
+};
+
+function formatGenerationDate(iso: string): string {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    return d.toUTCString();
+}
+
+function portgroupModeColor(mode: string): string {
+    if (mode === 'MODE_100GB') return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-200';
+    if (mode === 'MODE_25GB') return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200';
+    if (mode === 'MODE_10GB') return 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200';
+    if (!mode) return 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200';
+    return 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200';
+}
 
 type XmlStatRow = Record<string, string>;
 type XmlStatsPayload = {
@@ -61,7 +130,54 @@ function AppDetailsPanel({
         : [];
     const profiles: string[] = Array.isArray(details?.profiles) ? details.profiles : [];
     const rules: string[] = Array.isArray(details?.rules) ? details.rules : [];
+    const ruleBodies: Record<string, string> = (details?.rule_bodies && typeof details.rule_bodies === 'object') ? details.rule_bodies : {};
     const lines: string[] = Array.isArray(details?.lines) ? details.lines : [];
+
+    const [expandedRules, setExpandedRules] = useState<Set<string>>(new Set());
+    const [copied, setCopied] = useState(false);
+
+    const toggleRule = (name: string) => {
+        setExpandedRules((prev) => {
+            const next = new Set(prev);
+            if (next.has(name)) next.delete(name);
+            else next.add(name);
+            return next;
+        });
+    };
+
+    const copyStanzas = async () => {
+        try {
+            await navigator.clipboard.writeText(lines.join('\n\n'));
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1500);
+        } catch {
+            // fallback: select-all in a temp textarea
+            const ta = document.createElement('textarea');
+            ta.value = lines.join('\n\n');
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch { /* noop */ }
+            document.body.removeChild(ta);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1500);
+        }
+    };
+
+    // Config-based member status. QKView XML carries no runtime monitor state,
+    // so colouring reflects intent in bigip.conf: user-disabled / forced-down
+    // vs. default (assumed up). Live availability would need a device-side query.
+    const memberStatus = (m: any): { tone: 'up' | 'disabled' | 'down'; label: string } => {
+        const state = typeof m?.state === 'string' ? m.state : '';
+        const session = typeof m?.session === 'string' ? m.session : '';
+        if (state === 'user-down' || state.includes('forced-down')) return { tone: 'down', label: 'forced down' };
+        if (session === 'user-disabled' || session.includes('disabled')) return { tone: 'disabled', label: 'disabled' };
+        return { tone: 'up', label: 'enabled' };
+    };
+    const toneClasses: Record<'up' | 'disabled' | 'down', string> = {
+        up: 'bg-green-500',
+        disabled: 'bg-amber-500',
+        down: 'bg-red-500',
+    };
 
     const renderMonitor = (m: any, i: number) => {
         if (typeof m === 'string') {
@@ -136,11 +252,24 @@ function AppDetailsPanel({
                         <div>
                             <h5 className="font-semibold text-xs uppercase tracking-wider text-slate-500 mb-2">Members ({memberNames.length})</h5>
                             {memberNames.length > 0 ? (
-                                <ul className="font-mono text-xs space-y-1 max-h-48 overflow-y-auto">
-                                    {memberNames.map((m) => (
-                                        <li key={m} className="text-slate-700 dark:text-slate-300">{m}</li>
-                                    ))}
-                                </ul>
+                                <>
+                                    <ul className="font-mono text-xs space-y-1 max-h-48 overflow-y-auto">
+                                        {memberNames.map((m) => {
+                                            const s = memberStatus(members[m]);
+                                            return (
+                                                <li key={m} className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                                                    <span
+                                                        className={`inline-block w-2 h-2 rounded-full shrink-0 ${toneClasses[s.tone]}`}
+                                                        title={`config intent: ${s.label}`}
+                                                        aria-label={s.label}
+                                                    />
+                                                    <span className="truncate">{m}</span>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                    <p className="mt-1 text-[10px] text-slate-400 italic">Dot = bigip.conf intent (enabled / disabled / forced-down). Live monitor state is not in QKView.</p>
+                                </>
                             ) : (
                                 <p className="text-xs text-slate-400 italic">None.</p>
                             )}
@@ -174,9 +303,35 @@ function AppDetailsPanel({
                             <h5 className="font-semibold text-xs uppercase tracking-wider text-slate-500 mb-2">iRules ({rules.length})</h5>
                             {rules.length > 0 ? (
                                 <ul className="font-mono text-xs space-y-1">
-                                    {rules.map((r) => (
-                                        <li key={r} className="text-slate-700 dark:text-slate-300">{r}</li>
-                                    ))}
+                                    {rules.map((r) => {
+                                        const isOpen = expandedRules.has(r);
+                                        const body = ruleBodies[r];
+                                        const hasBody = typeof body === 'string' && body.length > 0;
+                                        return (
+                                            <li key={r} className="text-slate-700 dark:text-slate-300">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => hasBody && toggleRule(r)}
+                                                    disabled={!hasBody}
+                                                    className={`flex items-center gap-1 w-full text-left ${hasBody ? 'hover:text-amber-700 dark:hover:text-amber-400 cursor-pointer' : 'cursor-default opacity-75'}`}
+                                                    aria-expanded={isOpen}
+                                                >
+                                                    {hasBody ? (
+                                                        isOpen ? <ChevronDown className="w-3 h-3 shrink-0" /> : <ChevronRight className="w-3 h-3 shrink-0" />
+                                                    ) : (
+                                                        <span className="w-3 h-3 shrink-0" />
+                                                    )}
+                                                    <span className="truncate">{r}</span>
+                                                    {!hasBody && <span className="text-slate-400 text-[10px] ml-1">(body not parsed)</span>}
+                                                </button>
+                                                {isOpen && hasBody && (
+                                                    <pre className="mt-1 ml-4 bg-black/80 text-slate-200 p-2 rounded text-[11px] overflow-x-auto max-h-64 overflow-y-auto leading-relaxed">
+{body}
+                                                    </pre>
+                                                )}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             ) : (
                                 <p className="text-xs text-slate-400 italic">None.</p>
@@ -185,12 +340,24 @@ function AppDetailsPanel({
                     </div>
 
                     <div className="md:col-span-2">
-                        <button
-                            onClick={onToggleRaw}
-                            className="text-xs font-semibold text-amber-700 dark:text-amber-400 hover:underline"
-                        >
-                            {showRaw ? '▾ Hide' : '▸ Show'} raw config stanzas ({lines.length})
-                        </button>
+                        <div className="flex items-center gap-3 flex-wrap">
+                            <button
+                                onClick={onToggleRaw}
+                                className="text-xs font-semibold text-amber-700 dark:text-amber-400 hover:underline"
+                            >
+                                {showRaw ? '▾ Hide' : '▸ Show'} raw config stanzas ({lines.length})
+                            </button>
+                            {lines.length > 0 && (
+                                <button
+                                    onClick={copyStanzas}
+                                    className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-amber-700 dark:hover:text-amber-400"
+                                    aria-label="Copy raw config stanzas to clipboard"
+                                >
+                                    {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                                    {copied ? 'Copied' : 'Copy stanzas'}
+                                </button>
+                            )}
+                        </div>
                         {showRaw && lines.length > 0 && (
                             <pre className="mt-2 bg-black/80 text-slate-200 p-3 rounded text-xs overflow-x-auto max-h-[500px] overflow-y-auto font-mono leading-relaxed">
                                 {lines.join('\n\n')}
@@ -220,9 +387,11 @@ export default function QKViewPage() {
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const isF5OS = analysisResult?.device_info?.product === 'F5OS';
+    const rawProduct: string = analysisResult?.device_info?.product || '';
+    const isF5OS = rawProduct.startsWith('F5OS');
     const f5osCommands: Record<string, string> = analysisResult?.f5os_commands || {};
     const f5osHealth: F5OSHealth[] = analysisResult?.f5os_health || [];
+    const f5osOverview: F5OSOverview | null = analysisResult?.f5os_overview || null;
     const xmlStats: XmlStatsPayload | null = analysisResult?.xml_stats || null;
     const apps: AppSummary[] = analysisResult?.apps || [];
     const partitions: string[] = analysisResult?.partitions || [];
@@ -501,20 +670,149 @@ export default function QKViewPage() {
                         </button>
                     </div>
 
+                    {(() => {
+                        const di = analysisResult.device_info || {};
+                        const genIso: string = (isF5OS && f5osOverview?.generation_start) || di.generation_date || '';
+                        const platformLabel = isF5OS
+                            ? `${rawProduct || 'F5OS'}${f5osOverview?.platform_pid ? ` (${f5osOverview.platform_pid})` : ''}`
+                            : `${rawProduct || '—'}${di.platform ? ` (${di.platform})` : ''}`;
+                        const versionEdition = isF5OS
+                            ? (f5osOverview?.version_edition || `${di.version || '—'}${di.build ? ` - ${di.build}` : ''}`)
+                            : `${di.version || '—'}${di.build ? ` - ${di.build}` : ''}`;
+                        if (!genIso && !platformLabel && !versionEdition) return null;
+                        return (
+                            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                                <div className="flex flex-wrap items-start justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-700">
+                                    <div className="flex items-center gap-3">
+                                        <Calendar className="w-5 h-5 text-slate-500" />
+                                        <div>
+                                            <p className="text-xs uppercase tracking-wider text-slate-500">Generation Date</p>
+                                            <p className="font-mono text-sm text-slate-800 dark:text-slate-200">{formatGenerationDate(genIso)}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <Server className="w-5 h-5 text-slate-500" />
+                                        <div>
+                                            <p className="text-xs uppercase tracking-wider text-slate-500">Platform</p>
+                                            <p className="font-mono text-sm text-slate-800 dark:text-slate-200">{platformLabel}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <File className="w-5 h-5 text-slate-500" />
+                                        <div>
+                                            <p className="text-xs uppercase tracking-wider text-slate-500">Version-Edition</p>
+                                            <p className="font-mono text-sm text-slate-800 dark:text-slate-200">{versionEdition}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })()}
+
                     <div className="grid md:grid-cols-2 gap-6">
-                        {/* Device Info Card */}
-                        <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-                            <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                                <File className="w-5 h-5 text-blue-500" /> System Specifications
-                            </h3>
-                            <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
-                                <li><strong>Product:</strong> {analysisResult.device_info?.product || 'Unknown'}</li>
-                                <li><strong>Version:</strong> {analysisResult.device_info?.version || 'Unknown'}</li>
-                                <li><strong>Build:</strong> {analysisResult.device_info?.build || 'Unknown'}</li>
-                                <li><strong>Cores:</strong> {analysisResult.device_info?.cores ? analysisResult.device_info.cores : 'N/A'}</li>
-                                <li><strong>Memory:</strong> {analysisResult.device_info?.memory_mb ? `${analysisResult.device_info.memory_mb} MB` : 'Unknown'}</li>
-                            </ul>
-                        </div>
+                        {/* Device Info / F5OS System Status */}
+                        {isF5OS && f5osOverview ? (
+                            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                                <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                                    <Server className="w-5 h-5 text-blue-500" /> System Status
+                                </h3>
+                                <dl className="space-y-2 text-sm">
+                                    <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                        <dt className="text-slate-500">Cluster Status</dt>
+                                        <dd className="text-slate-800 dark:text-slate-200">{f5osOverview.cluster_summary || '—'}</dd>
+                                    </div>
+                                    <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                        <dt className="text-slate-500">Host name</dt>
+                                        <dd className="font-mono text-slate-800 dark:text-slate-200 break-all">{analysisResult.device_info?.hostname || '—'}</dd>
+                                    </div>
+                                    {(f5osOverview.mgmt_ipv4_address || f5osOverview.mgmt_ipv6_address) && (
+                                        <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                            <dt className="text-slate-500">Management IP</dt>
+                                            <dd className="font-mono text-xs text-slate-800 dark:text-slate-200 space-y-0.5">
+                                                {f5osOverview.mgmt_ipv4_address && (
+                                                    <div>IPv4 {f5osOverview.mgmt_ipv4_address}/{f5osOverview.mgmt_ipv4_prefix} <span className="text-slate-400">gw {f5osOverview.mgmt_ipv4_gateway || '—'}</span></div>
+                                                )}
+                                                {f5osOverview.mgmt_ipv6_address && f5osOverview.mgmt_ipv6_address !== '::' && (
+                                                    <div>IPv6 {f5osOverview.mgmt_ipv6_address}/{f5osOverview.mgmt_ipv6_prefix} <span className="text-slate-400">gw {f5osOverview.mgmt_ipv6_gateway || '—'}</span></div>
+                                                )}
+                                                {f5osOverview.mgmt_ipv6_address === '::' && (
+                                                    <div className="text-slate-400">IPv6 ::/0 (unset)</div>
+                                                )}
+                                            </dd>
+                                        </div>
+                                    )}
+                                    {f5osOverview.payg_license_level && (
+                                        <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                            <dt className="text-slate-500">PAYG License Level</dt>
+                                            <dd className="font-mono text-slate-800 dark:text-slate-200">{f5osOverview.payg_license_level}</dd>
+                                        </div>
+                                    )}
+                                    {f5osOverview.serial_number && (
+                                        <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                            <dt className="text-slate-500">Serial Number</dt>
+                                            <dd className="font-mono text-slate-800 dark:text-slate-200">{f5osOverview.serial_number}</dd>
+                                        </div>
+                                    )}
+                                    {f5osOverview.time_zone && (
+                                        <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                            <dt className="text-slate-500">Time Zone</dt>
+                                            <dd className="text-slate-800 dark:text-slate-200">{f5osOverview.time_zone}</dd>
+                                        </div>
+                                    )}
+                                </dl>
+                            </div>
+                        ) : (
+                            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                                <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                                    <Server className="w-5 h-5 text-blue-500" /> System Status
+                                </h3>
+                                <dl className="space-y-2 text-sm">
+                                    <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                        <dt className="text-slate-500">Host name</dt>
+                                        <dd className="font-mono text-slate-800 dark:text-slate-200 break-all">{analysisResult.device_info?.hostname || '—'}</dd>
+                                    </div>
+                                    <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                        <dt className="text-slate-500">Product</dt>
+                                        <dd className="text-slate-800 dark:text-slate-200">{analysisResult.device_info?.product || '—'}</dd>
+                                    </div>
+                                    <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                        <dt className="text-slate-500">Version</dt>
+                                        <dd className="font-mono text-slate-800 dark:text-slate-200">
+                                            {analysisResult.device_info?.version || '—'}
+                                            {analysisResult.device_info?.build ? ` - ${analysisResult.device_info.build}` : ''}
+                                        </dd>
+                                    </div>
+                                    {analysisResult.device_info?.edition && (
+                                        <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                            <dt className="text-slate-500">Edition</dt>
+                                            <dd className="text-slate-800 dark:text-slate-200">{analysisResult.device_info.edition}</dd>
+                                        </div>
+                                    )}
+                                    {analysisResult.device_info?.platform && (
+                                        <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                            <dt className="text-slate-500">Platform</dt>
+                                            <dd className="font-mono text-slate-800 dark:text-slate-200">{analysisResult.device_info.platform}</dd>
+                                        </div>
+                                    )}
+                                    <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                        <dt className="text-slate-500">Cores</dt>
+                                        <dd className="font-mono text-slate-800 dark:text-slate-200">{analysisResult.device_info?.cores ?? '—'}</dd>
+                                    </div>
+                                    <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                        <dt className="text-slate-500">Memory</dt>
+                                        <dd className="font-mono text-slate-800 dark:text-slate-200">
+                                            {analysisResult.device_info?.memory_mb ? `${analysisResult.device_info.memory_mb} MB` : '—'}
+                                        </dd>
+                                    </div>
+                                    {analysisResult.device_info?.base_mac && (
+                                        <div className="grid grid-cols-[11rem_1fr] gap-2">
+                                            <dt className="text-slate-500">Base MAC</dt>
+                                            <dd className="font-mono text-slate-800 dark:text-slate-200">{analysisResult.device_info.base_mac}</dd>
+                                        </div>
+                                    )}
+                                </dl>
+                            </div>
+                        )}
 
                         {/* Known Issues Card */}
                         <div className="p-6 flex flex-col bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[500px] overflow-y-auto">
@@ -548,12 +846,88 @@ export default function QKViewPage() {
                         </div>
                     </div>
 
+                    {/* F5OS Configuration Totals (portgroup modes, tenant counts, appliance-mode) */}
+                    {isF5OS && f5osOverview && (
+                        <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                            <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                                <Settings className="w-5 h-5 text-amber-500" /> Configuration Totals
+                            </h3>
+                            <div className="grid md:grid-cols-3 gap-6 text-sm">
+                                <div className="space-y-3">
+                                    <div>
+                                        <p className="text-xs uppercase tracking-wider text-slate-500 mb-1">Appliance Mode</p>
+                                        <p className={`font-mono ${f5osOverview.appliance_mode === 'enabled' ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-700 dark:text-slate-300'}`}>
+                                            {f5osOverview.appliance_mode || '—'}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs uppercase tracking-wider text-slate-500 mb-1">Tenant Counts</p>
+                                        <ul className="font-mono text-xs space-y-0.5">
+                                            <li className="flex justify-between gap-4"><span className="text-slate-500">Configured</span><span className="text-slate-800 dark:text-slate-200 tabular-nums">{f5osOverview.tenants_configured}</span></li>
+                                            <li className="flex justify-between gap-4"><span className="text-slate-500">Provisioned</span><span className="text-slate-800 dark:text-slate-200 tabular-nums">{f5osOverview.tenants_provisioned}</span></li>
+                                            <li className="flex justify-between gap-4"><span className="text-slate-500">Deployed</span><span className="text-slate-800 dark:text-slate-200 tabular-nums">{f5osOverview.tenants_deployed}</span></li>
+                                            <li className="flex justify-between gap-4"><span className="text-slate-500">Running</span><span className="text-slate-800 dark:text-slate-200 tabular-nums font-semibold">{f5osOverview.tenants_running}</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                {f5osOverview.portgroups.length > 0 && (
+                                    <div className="md:col-span-2">
+                                        <p className="text-xs uppercase tracking-wider text-slate-500 mb-2">Portgroup Modes in Use</p>
+                                        <div className="grid grid-cols-2 gap-x-4 gap-y-1 font-mono text-xs">
+                                            {f5osOverview.portgroups.map((pg) => (
+                                                <div key={pg.id} className="flex items-center justify-between gap-3 py-1 border-b border-slate-100 dark:border-slate-700 last:border-0">
+                                                    <span className="text-slate-600 dark:text-slate-400">portgroup {pg.id}</span>
+                                                    <span className={`px-2 py-0.5 rounded text-[11px] font-semibold ${portgroupModeColor(pg.mode)}`}>
+                                                        {pg.mode || 'unset'}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {f5osOverview.tenants.length > 0 && (
+                                <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700">
+                                    <p className="text-xs uppercase tracking-wider text-slate-500 mb-2">Tenants</p>
+                                    <table className="w-full text-xs">
+                                        <thead className="text-slate-500 uppercase">
+                                            <tr>
+                                                <th className="text-left py-1 pr-3">Name</th>
+                                                <th className="text-left py-1 pr-3">Type</th>
+                                                <th className="text-left py-1 pr-3">Running-State</th>
+                                                <th className="text-left py-1 pr-3">Status</th>
+                                                <th className="text-left py-1 pr-3">Image</th>
+                                                <th className="text-left py-1 pr-3">Mgmt IP</th>
+                                                <th className="text-right py-1">Mem MB</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
+                                            {f5osOverview.tenants.map((t) => (
+                                                <tr key={t.name}>
+                                                    <td className="py-1 pr-3 font-mono text-slate-800 dark:text-slate-200">{t.name}</td>
+                                                    <td className="py-1 pr-3 text-slate-700 dark:text-slate-300">{t.type || '—'}</td>
+                                                    <td className="py-1 pr-3 font-mono text-slate-700 dark:text-slate-300">{t.running_state || '—'}</td>
+                                                    <td className={`py-1 pr-3 font-mono ${t.status === 'Running' ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-700 dark:text-slate-300'}`}>{t.status || '—'}</td>
+                                                    <td className="py-1 pr-3 font-mono text-slate-600 dark:text-slate-400">{t.image_version || '—'}</td>
+                                                    <td className="py-1 pr-3 font-mono text-slate-700 dark:text-slate-300">{t.mgmt_ip || '—'}</td>
+                                                    <td className="py-1 text-right tabular-nums text-slate-700 dark:text-slate-300">{t.memory_mb || '—'}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
                     {/* F5OS Quick Links + Health (F5OS only) */}
                     {isF5OS && (Object.keys(f5osCommands).length > 0 || f5osHealth.length > 0) && (
                         <div className="grid md:grid-cols-3 gap-6">
                             <div className="md:col-span-1 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[500px] overflow-y-auto">
                                 <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                                    <Terminal className="w-5 h-5 text-amber-500" /> iHealth Quick Links
+                                    <Terminal className="w-5 h-5 text-amber-500" /> Command Links
                                 </h3>
                                 {Object.keys(f5osCommands).length === 0 ? (
                                     <p className="text-sm text-slate-500">No command outputs captured.</p>

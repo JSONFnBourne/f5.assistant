@@ -292,10 +292,13 @@ class Reporter:
                 "product": meta.product,
                 "version": meta.version,
                 "build": meta.build,
+                "edition": meta.edition,
                 "platform": meta.platform,
                 "hostname": meta.hostname,
                 "cores": meta.cores,
                 "memory_mb": meta.memory_mb,
+                "base_mac": meta.base_mac,
+                "generation_date": meta.generation_date,
             },
             "findings": [f.to_dict() for f in findings],
             "entries": entries,
@@ -325,6 +328,63 @@ class Reporter:
         if qkview_data is not None:
             if qkview_data.f5os_commands:
                 data["f5os_commands"] = qkview_data.f5os_commands
+            if qkview_data.f5os_overview is not None:
+                ov = qkview_data.f5os_overview
+                data["f5os_overview"] = {
+                    "generation_start": ov.generation_start,
+                    "generation_stop": ov.generation_stop,
+                    "platform_pid": ov.platform_pid,
+                    "platform_code": ov.platform_code,
+                    "platform_part_number": ov.platform_part_number,
+                    "platform_uuid": ov.platform_uuid,
+                    "platform_slot": ov.platform_slot,
+                    "version_edition": ov.version_edition,
+                    "cluster_summary": ov.cluster_summary,
+                    "cluster_nodes": [
+                        {
+                            "name": n.name,
+                            "running_state": n.running_state,
+                            "ready": n.ready,
+                            "ready_message": n.ready_message,
+                            "slot": n.slot,
+                        }
+                        for n in ov.cluster_nodes
+                    ],
+                    "mgmt_ipv4_address": ov.mgmt_ipv4_address,
+                    "mgmt_ipv4_prefix": ov.mgmt_ipv4_prefix,
+                    "mgmt_ipv4_gateway": ov.mgmt_ipv4_gateway,
+                    "mgmt_ipv6_address": ov.mgmt_ipv6_address,
+                    "mgmt_ipv6_prefix": ov.mgmt_ipv6_prefix,
+                    "mgmt_ipv6_gateway": ov.mgmt_ipv6_gateway,
+                    "payg_license_level": ov.payg_license_level,
+                    "licensed_version": ov.licensed_version,
+                    "registration_key": ov.registration_key,
+                    "licensed_date": ov.licensed_date,
+                    "serial_number": ov.serial_number,
+                    "time_zone": ov.time_zone,
+                    "appliance_datetime": ov.appliance_datetime,
+                    "appliance_mode": ov.appliance_mode,
+                    "portgroups": [
+                        {"id": p.id, "mode": p.mode} for p in ov.portgroups
+                    ],
+                    "tenants": [
+                        {
+                            "name": t.name,
+                            "type": t.type,
+                            "running_state": t.running_state,
+                            "status": t.status,
+                            "image_version": t.image_version,
+                            "mgmt_ip": t.mgmt_ip,
+                            "vcpu_cores_per_node": t.vcpu_cores_per_node,
+                            "memory_mb": t.memory_mb,
+                        }
+                        for t in ov.tenants
+                    ],
+                    "tenants_configured": ov.tenants_configured,
+                    "tenants_provisioned": ov.tenants_provisioned,
+                    "tenants_deployed": ov.tenants_deployed,
+                    "tenants_running": ov.tenants_running,
+                }
             if qkview_data.f5os_health:
                 data["f5os_health"] = [
                     {

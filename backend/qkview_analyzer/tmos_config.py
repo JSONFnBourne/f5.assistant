@@ -562,11 +562,14 @@ def app_details(config: dict[str, Any], full_path: str) -> dict[str, Any] | None
                 )
 
     rules = vs.get("rules")
+    rule_bodies: dict[str, str] = {}
     if isinstance(rules, list):
         for rule_name in rules:
             rule_body = config.get("ltm", {}).get("rule", {}).get(rule_name)
             if isinstance(rule_body, str):
+                rule_bodies[rule_name] = rule_body
                 lines.append(f"ltm rule {rule_name} {{\n{rule_body}\n}}")
+    app["rule_bodies"] = rule_bodies
 
     app["lines"] = lines
     return app

@@ -69,6 +69,44 @@ class TestRSeriesHost:
         assert any("show cluster" in k for k in keys), keys
         assert any("show tenants" in k for k in keys), keys
         assert any("show interfaces" in k for k in keys), keys
+        # Recently added to the allowlist so the iHealth-style overview
+        # card has something to parse. Missing them means the overview
+        # panel will show blanks for mgmt-ip / time-zone.
+        assert any("show system mgmt-ip" in k for k in keys), keys
+        assert any("show system clock" in k for k in keys), keys
+
+    def test_rseries_overview_matches_ihealth(self, rseries_host_data):
+        # Pin the iHealth-dashboard fields visible in data/qkview/rseries.png.
+        # These are the user-facing values we promise to surface on /qkview
+        # when an rSeries archive is uploaded — regressions here mean the
+        # overview card went blank or started lying.
+        ov = rseries_host_data.f5os_overview
+        assert ov is not None, "overview not built"
+        assert ov.platform_pid == "C129"
+        assert ov.serial_number == "f5-arqp-suuw"
+        assert ov.time_zone == "America/Chicago"
+        assert ov.appliance_mode == "enabled"
+        assert ov.payg_license_level == "r5800"
+        assert ov.mgmt_ipv4_address == "10.98.128.243"
+        assert ov.mgmt_ipv4_prefix == "24"
+        assert ov.mgmt_ipv4_gateway == "10.98.128.1"
+        assert ov.cluster_summary.startswith("K3S cluster is initialized")
+        assert len(ov.cluster_nodes) == 1 and ov.cluster_nodes[0].ready
+        # iHealth shows 10 portgroup rows on this platform; all 10 should
+        # carry a MODE_ value (no unset rows on this archive).
+        assert len(ov.portgroups) == 10
+        assert all(p.mode.startswith("MODE_") for p in ov.portgroups), [
+            (p.id, p.mode) for p in ov.portgroups
+        ]
+        # Tenant tallies — rSeries screenshot: 0 configured, 0 provisioned,
+        # 2 deployed, 2 running.
+        assert ov.tenants_deployed == 2
+        assert ov.tenants_running == 2
+        assert ov.tenants_configured == 0
+        assert ov.tenants_provisioned == 0
+        tenant_names = {t.name for t in ov.tenants}
+        assert "t9355-llb-1301b-mgmt" in tenant_names
+        assert "t9355-sig-1301b-mgmt" in tenant_names
 
 
 # ── VELOS partition (F5OS-C 1.8.2 / controller, double-nested) ────────────

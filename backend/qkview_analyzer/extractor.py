@@ -38,6 +38,10 @@ class DeviceMeta:
     cores: int = 0
     memory_mb: int = 0
     base_mac: str = ""
+    # ISO 8601 UTC. For TMOS this is the max tar-member mtime (qkview write
+    # time); for F5OS the root manifest's ts.start is authoritative and is
+    # exposed separately on F5OSOverview.
+    generation_date: str = ""
 
 
 @dataclass
@@ -50,6 +54,83 @@ class F5OSHealthEntry:
     description: str = ""
     value: str = ""
     updated_at: str = ""
+
+
+@dataclass
+class F5OSClusterNode:
+    """One node from `show cluster` — rSeries has one, VELOS can have many."""
+    name: str = ""
+    running_state: str = ""   # "running", "initializing", ...
+    ready: bool = False
+    ready_message: str = ""
+    slot: str = ""
+
+
+@dataclass
+class F5OSPortgroup:
+    """One row of iHealth's "Portgroup Modes in Use"."""
+    id: str = ""              # "1", "2", ...
+    mode: str = ""             # "MODE_100GB", "MODE_25GB", ...
+
+
+@dataclass
+class F5OSTenant:
+    """One tenant from `show tenants`."""
+    name: str = ""
+    type: str = ""             # "BIG-IP"
+    running_state: str = ""    # "configured" | "provisioned" | "deployed"
+    status: str = ""            # "Running" | ...
+    image_version: str = ""
+    mgmt_ip: str = ""
+    vcpu_cores_per_node: str = ""
+    memory_mb: str = ""
+
+
+@dataclass
+class F5OSOverview:
+    """iHealth-style overview card set for F5OS archives.
+
+    Fields mirror the rSeries iHealth dashboard so the webapp can render
+    the familiar "Generation Date / Platform / System Status / Configuration
+    Totals" layout verbatim. Populated from the root ``qkview/manifest.json``
+    plus a handful of ``show …`` command outputs already captured in
+    ``QKViewData.f5os_commands``.
+    """
+    # Top strip (iHealth breadcrumb bar)
+    generation_start: str = ""         # ts.start from root manifest, ISO 8601
+    generation_stop: str = ""          # ts.stop from root manifest
+    platform_pid: str = ""             # "C129" — iHealth's Platform parenthetical
+    platform_code: str = ""            # "R5R10" — PRODUCT/platform_info.platform
+    platform_part_number: str = ""
+    platform_uuid: str = ""
+    platform_slot: str = ""
+    version_edition: str = ""          # "1.8.3-23453" from product_info.version
+
+    # System Status card
+    cluster_summary: str = ""           # derived one-liner
+    cluster_nodes: list[F5OSClusterNode] = field(default_factory=list)
+    mgmt_ipv4_address: str = ""
+    mgmt_ipv4_prefix: str = ""
+    mgmt_ipv4_gateway: str = ""
+    mgmt_ipv6_address: str = ""
+    mgmt_ipv6_prefix: str = ""
+    mgmt_ipv6_gateway: str = ""
+    payg_license_level: str = ""        # "r5800" from licensing
+    licensed_version: str = ""
+    registration_key: str = ""
+    licensed_date: str = ""
+    serial_number: str = ""
+    time_zone: str = ""
+    appliance_datetime: str = ""        # current appliance clock at collection
+
+    # Configuration Totals card
+    appliance_mode: str = ""            # "enabled" | "disabled"
+    portgroups: list[F5OSPortgroup] = field(default_factory=list)
+    tenants: list[F5OSTenant] = field(default_factory=list)
+    tenants_configured: int = 0
+    tenants_provisioned: int = 0
+    tenants_deployed: int = 0
+    tenants_running: int = 0
 
 
 @dataclass
@@ -68,6 +149,9 @@ class QKViewData:
     # Key is the trimmed command name ("show running-config"), value is the
     # captured output. Populated from every discovered subpackage manifest.
     f5os_commands: dict[str, str] = field(default_factory=dict)
+    # Structured iHealth-style overview assembled from root manifest +
+    # `show system mgmt-ip` / `show system clock` / `show cluster` etc.
+    f5os_overview: Optional["F5OSOverview"] = None
     # Per-partition / per-tenant extra diag dumps from TMOS var/tmp.
     diag_files: dict[str, str] = field(default_factory=dict)
     # Streaming-parsed runtime stats from TMOS *_module.xml payloads (TMOS only).
@@ -533,6 +617,9 @@ _F5OS_QUICK_LINK_COMMANDS = (
     "show system processes",
     "show system uptime",
     "show system controller",
+    "show system mgmt-ip",
+    "show system clock",
+    "show portgroups",
     # Platform / chassis detail (primarily VELOS syscon, some rSeries)
     "show slots",
     "show ctrlr_status",
@@ -846,6 +933,297 @@ def _parse_f5os_system_health(content: str) -> list[F5OSHealthEntry]:
     return findings
 
 
+def _parse_f5os_mgmt_ip(content: str) -> dict[str, str]:
+    """Parse `show system mgmt-ip` into a flat {kind: value} dict.
+
+    kinds: ipv4_address, ipv4_prefix, ipv4_gateway, ipv6_address, ipv6_prefix,
+    ipv6_gateway.
+    """
+    out: dict[str, str] = {}
+    rules = (
+        ("system mgmt-ip state ipv4 system address ", "ipv4_address"),
+        ("system mgmt-ip state ipv4 prefix-length ",   "ipv4_prefix"),
+        ("system mgmt-ip state ipv4 gateway ",         "ipv4_gateway"),
+        ("system mgmt-ip state ipv6 system address ", "ipv6_address"),
+        ("system mgmt-ip state ipv6 prefix-length ",   "ipv6_prefix"),
+        ("system mgmt-ip state ipv6 gateway ",         "ipv6_gateway"),
+    )
+    for line in content.splitlines():
+        s = line.strip()
+        for prefix, key in rules:
+            if s.startswith(prefix):
+                out[key] = s[len(prefix):].strip()
+                break
+    return out
+
+
+def _parse_f5os_clock(content: str) -> dict[str, str]:
+    """Parse `show system clock` → timezone-name + appliance date-time."""
+    out: dict[str, str] = {}
+    for line in content.splitlines():
+        s = line.strip()
+        if s.startswith("system clock state timezone-name "):
+            out["timezone"] = s[len("system clock state timezone-name "):].strip()
+        elif s.startswith("system clock state appliance date-time "):
+            out["datetime"] = s[len("system clock state appliance date-time "):].strip().strip('"')
+    return out
+
+
+def _parse_f5os_appliance_mode(content: str) -> str:
+    """Return 'enabled' | 'disabled' from `show system appliance-mode`."""
+    for line in content.splitlines():
+        s = line.strip()
+        if s.startswith("system appliance-mode state "):
+            return s[len("system appliance-mode state "):].strip()
+    return ""
+
+
+def _parse_f5os_licensing(content: str) -> dict[str, str]:
+    """Parse `show system licensing` for PAYG level, registration key, dates.
+
+    The `Active Modules` block lists each module as e.g.
+    ``Local Traffic Manager, r5800 (DTSJKCS-NLVTKRA)`` — we extract the
+    platform tier (``r5800``) which iHealth surfaces as "PAYG License Level".
+    """
+    out: dict[str, str] = {}
+    in_modules = False
+    for raw in content.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        if line.startswith("Licensed version"):
+            parts = line.split()
+            if len(parts) >= 3:
+                out["licensed_version"] = parts[-1]
+        elif line.startswith("Registration Key"):
+            out["registration_key"] = line.split()[-1]
+        elif line.startswith("Licensed date"):
+            out["licensed_date"] = line.split()[-1]
+        elif line.startswith("Active Modules"):
+            in_modules = True
+            continue
+        elif line.startswith("Time Limited Modules"):
+            in_modules = False
+
+        if in_modules and "payg_license_level" not in out:
+            # First "<Module>, <tier> (<key>)" row wins. Tier follows the
+            # first comma; drop the trailing registration-key parenthetical.
+            m = re.match(r"^[A-Za-z].*?,\s*([A-Za-z0-9_-]+)\s*\(", line)
+            if m:
+                out["payg_license_level"] = m.group(1)
+    return out
+
+
+def _parse_f5os_cluster(content: str) -> tuple[list[F5OSClusterNode], str]:
+    """Parse `show cluster` into per-node state + a derived summary string.
+
+    Returns (nodes, summary). Summary mimics iHealth's "K3S cluster is
+    initialized and ready for use." when every node is ready; otherwise
+    reports how many of N are ready.
+    """
+    nodes: list[F5OSClusterNode] = []
+    current: Optional[F5OSClusterNode] = None
+    for raw in content.splitlines():
+        line = raw.rstrip()
+        m = re.match(r"^cluster nodes node (\S+)\s*$", line)
+        if m:
+            current = F5OSClusterNode(name=m.group(1))
+            nodes.append(current)
+            continue
+        # Guard against sibling-stanza bleed: `state …` rows are indented.
+        if raw and not raw.startswith((" ", "\t")):
+            current = None
+            continue
+        if current is None:
+            continue
+        s = line.strip()
+        if s.startswith("state node-running-state "):
+            current.running_state = s[len("state node-running-state "):].strip()
+        elif s.startswith("state slot-number "):
+            current.slot = s[len("state slot-number "):].strip()
+        elif s.startswith("state ready-info ready "):
+            current.ready = s[len("state ready-info ready "):].strip() == "true"
+        elif s.startswith('state ready-info message "'):
+            current.ready_message = s[len('state ready-info message "'):].rstrip('"').strip()
+
+    if nodes:
+        ready_count = sum(1 for n in nodes if n.ready)
+        if ready_count == len(nodes):
+            summary = "K3S cluster is initialized and ready for use."
+        else:
+            summary = f"{ready_count}/{len(nodes)} nodes ready"
+    else:
+        summary = ""
+    return nodes, summary
+
+
+def _parse_f5os_portgroup_modes(running_config: str) -> list[F5OSPortgroup]:
+    """Pull portgroup id + mode out of `show running-config`.
+
+    Expected stanza shape (one per portgroup)::
+
+        portgroups portgroup 1
+         config name 1
+         config mode MODE_100GB
+         ...
+
+    Missing mode lines (unoccupied portgroups) are kept as empty strings so
+    the UI can still show all physical portgroups and flag the gaps.
+    """
+    out: list[F5OSPortgroup] = []
+    current: Optional[F5OSPortgroup] = None
+    for raw in running_config.splitlines():
+        m = re.match(r"^portgroups portgroup (\S+)\s*$", raw)
+        if m:
+            current = F5OSPortgroup(id=m.group(1))
+            out.append(current)
+            continue
+        # Stanza rows are space-indented; any unindented line ends the
+        # current portgroup. Without this guard a later sibling stanza
+        # ("system … config mode standard") would overwrite portgroup N's
+        # mode because the parser never clears `current`.
+        if raw and not raw.startswith((" ", "\t")):
+            current = None
+            continue
+        if current is None:
+            continue
+        s = raw.strip()
+        if s.startswith("config mode "):
+            current.mode = s[len("config mode "):].strip()
+    return out
+
+
+def _parse_f5os_tenants(content: str) -> list[F5OSTenant]:
+    """Parse `show tenants` into a list of F5OSTenant rows.
+
+    Tenants on F5OS appear as ``tenants tenant <name>`` stanzas followed by
+    indented ``state …`` lines. The stanza terminates at the next blank line
+    or at a new ``tenants tenant`` line; trailing per-pod tables (NODE/POD
+    NAME) are ignored.
+    """
+    out: list[F5OSTenant] = []
+    current: Optional[F5OSTenant] = None
+    for raw in content.splitlines():
+        m = re.match(r"^tenants tenant (\S+)\s*$", raw)
+        if m:
+            current = F5OSTenant(name=m.group(1))
+            out.append(current)
+            continue
+        if raw and not raw.startswith((" ", "\t")):
+            current = None
+            continue
+        if current is None:
+            continue
+        s = raw.strip()
+        # F5OS pads between key and value with variable whitespace, so split
+        # on the first whitespace run after the known field name.
+        m2 = re.match(r"^state (\S+(?:-\S+)*)\s+(.+?)\s*$", s)
+        if not m2:
+            continue
+        key, value = m2.group(1), m2.group(2).strip().strip('"')
+        if key == "type":
+            current.type = value
+        elif key == "running-state":
+            current.running_state = value
+        elif key == "status":
+            current.status = value
+        elif key == "image-version":
+            current.image_version = value
+        elif key == "mgmt-ip":
+            current.mgmt_ip = value
+        elif key == "vcpu-cores-per-node":
+            current.vcpu_cores_per_node = value
+        elif key == "memory":
+            current.memory_mb = value
+    return out
+
+
+def _build_f5os_overview(
+    root_manifest: dict,
+    commands: dict[str, str],
+) -> F5OSOverview:
+    """Assemble the iHealth-style overview from the root manifest and the
+    already-captured ``show …`` outputs.
+
+    ``commands`` is keyed by trimmed command name (``"show system clock"``
+    etc.), matching ``QKViewData.f5os_commands``. Missing commands leave the
+    corresponding fields empty — this runs on partial archives too.
+    """
+    ov = F5OSOverview()
+
+    ts = root_manifest.get("ts") or {}
+    if isinstance(ts, dict):
+        ov.generation_start = ts.get("start", "") or ""
+        ov.generation_stop = ts.get("stop", "") or ""
+
+    pi = root_manifest.get("platform_info") or {}
+    if isinstance(pi, dict):
+        ov.platform_pid = pi.get("pid", "") or ""
+        ov.platform_code = pi.get("platform_type", "") or pi.get("platform", "") or ""
+        ov.platform_part_number = pi.get("part_number", "") or ""
+        ov.platform_uuid = pi.get("uuid", "") or ""
+        ov.platform_slot = str(pi.get("slot", "") or "")
+        ov.serial_number = pi.get("serial_number", "") or ""
+
+    prod = root_manifest.get("product_info") or {}
+    if isinstance(prod, dict):
+        ov.version_edition = prod.get("version", "") or ""
+
+    mgmt = commands.get("show system mgmt-ip")
+    if mgmt:
+        m = _parse_f5os_mgmt_ip(mgmt)
+        ov.mgmt_ipv4_address = m.get("ipv4_address", "")
+        ov.mgmt_ipv4_prefix = m.get("ipv4_prefix", "")
+        ov.mgmt_ipv4_gateway = m.get("ipv4_gateway", "")
+        ov.mgmt_ipv6_address = m.get("ipv6_address", "")
+        ov.mgmt_ipv6_prefix = m.get("ipv6_prefix", "")
+        ov.mgmt_ipv6_gateway = m.get("ipv6_gateway", "")
+
+    clock = commands.get("show system clock")
+    if clock:
+        c = _parse_f5os_clock(clock)
+        ov.time_zone = c.get("timezone", "")
+        ov.appliance_datetime = c.get("datetime", "")
+
+    appl = commands.get("show system appliance-mode")
+    if appl:
+        ov.appliance_mode = _parse_f5os_appliance_mode(appl)
+
+    lic = commands.get("show system licensing")
+    if lic:
+        li = _parse_f5os_licensing(lic)
+        ov.payg_license_level = li.get("payg_license_level", "")
+        ov.licensed_version = li.get("licensed_version", "")
+        ov.registration_key = li.get("registration_key", "")
+        ov.licensed_date = li.get("licensed_date", "")
+
+    cl = commands.get("show cluster")
+    if cl:
+        ov.cluster_nodes, ov.cluster_summary = _parse_f5os_cluster(cl)
+
+    rc = commands.get("show running-config")
+    if rc:
+        ov.portgroups = _parse_f5os_portgroup_modes(rc)
+
+    tn = commands.get("show tenants")
+    if tn:
+        ov.tenants = _parse_f5os_tenants(tn)
+        # iHealth tallies by running-state. "Running" is a status, not a
+        # running-state — it's derived from status == "Running".
+        for t in ov.tenants:
+            rs = (t.running_state or "").lower()
+            if rs == "configured":
+                ov.tenants_configured += 1
+            elif rs == "provisioned":
+                ov.tenants_provisioned += 1
+            elif rs == "deployed":
+                ov.tenants_deployed += 1
+            if (t.status or "").lower() == "running":
+                ov.tenants_running += 1
+
+    return ov
+
+
 def _extract_f5os_platform_from_events(content: str) -> str:
     """Try to extract platform model from event log reboot messages.
 
@@ -1076,6 +1454,17 @@ def _extract_f5os(root: Path, progress_callback=None) -> QKViewData:
                 data.raw_meta_files["VERSION"] = content
                 break
 
+    # ── 5. Assemble the iHealth-style overview from root manifest +
+    # already-captured quick-link command outputs.
+    try:
+        data.f5os_overview = _build_f5os_overview(root_data, data.f5os_commands)
+    except Exception:
+        logger.exception("F5OS overview assembly failed; continuing without it")
+        data.f5os_overview = None
+
+    if data.f5os_overview and data.f5os_overview.generation_start:
+        data.meta.generation_date = data.f5os_overview.generation_start
+
     if progress_callback:
         progress_callback(
             f"F5OS extraction complete: {log_count} log files, "
@@ -1132,12 +1521,18 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
 
         data = QKViewData()
         total_decompressed = 0
+        max_mtime = 0
 
         for i, member in enumerate(members):
             if not member.isfile():
                 continue
 
             name = member.name
+
+            # Track max file mtime — qkview writes all collected files at
+            # generation time, so the newest mtime is the generation date.
+            if member.mtime and member.mtime > max_mtime:
+                max_mtime = member.mtime
 
             # Running decompressed-size guard (uses header-reported size)
             total_decompressed += member.size
@@ -1215,6 +1610,20 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
 
     # Build device metadata
     data.meta = _build_device_meta(data.raw_meta_files)
+    if max_mtime:
+        from datetime import datetime, timezone
+        data.meta.generation_date = (
+            datetime.fromtimestamp(max_mtime, tz=timezone.utc).isoformat()
+        )
+
+    # Hostname lives in `sys global-settings { hostname foo.bar }` inside
+    # config/bigip_base.conf on TMOS. Pulled out here so the overview header
+    # and System Status panel don't show a blank.
+    base_conf = data.config_files.get("config/bigip_base.conf", "")
+    if base_conf and not data.meta.hostname:
+        m = re.search(r"^\s*hostname\s+(\S+)", base_conf, re.MULTILINE)
+        if m:
+            data.meta.hostname = m.group(1)
 
     # Stream-parse the big *_module.xml payloads for runtime stats. Done in a
     # second tar pass because the first pass consumes file pointers.
