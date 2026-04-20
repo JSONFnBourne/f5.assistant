@@ -325,7 +325,7 @@ function AppDetailsPanel({
                                                     {!hasBody && <span className="text-slate-400 text-[10px] ml-1">(body not parsed)</span>}
                                                 </button>
                                                 {isOpen && hasBody && (
-                                                    <pre className="mt-1 ml-4 bg-black/80 text-slate-200 p-2 rounded text-[11px] overflow-x-auto max-h-64 overflow-y-auto leading-relaxed">
+                                                    <pre className="mt-1 ml-4 bg-black text-slate-200 p-2 rounded text-[11px] overflow-x-auto max-h-64 overflow-y-auto leading-relaxed">
 {body}
                                                     </pre>
                                                 )}
@@ -359,7 +359,7 @@ function AppDetailsPanel({
                             )}
                         </div>
                         {showRaw && lines.length > 0 && (
-                            <pre className="mt-2 bg-black/80 text-slate-200 p-3 rounded text-xs overflow-x-auto max-h-[500px] overflow-y-auto font-mono leading-relaxed">
+                            <pre className="mt-2 bg-black text-slate-200 p-3 rounded text-xs overflow-x-auto max-h-[500px] overflow-y-auto font-mono leading-relaxed">
                                 {lines.join('\n\n')}
                             </pre>
                         )}
@@ -947,12 +947,12 @@ export default function QKViewPage() {
                                 )}
                             </div>
 
-                            <div className="md:col-span-2 p-6 bg-slate-900 rounded-xl shadow-lg border border-slate-800 max-h-[500px] overflow-hidden flex flex-col">
-                                <h3 className="font-semibold text-lg mb-4 text-slate-200 flex items-center gap-2">
+                            <div className="md:col-span-2 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 max-h-[500px] overflow-hidden flex flex-col">
+                                <h3 className="font-semibold text-lg mb-4 text-slate-800 dark:text-slate-200 flex items-center gap-2">
                                     <Terminal className="w-5 h-5 text-amber-400" />
                                     {activeCmd ? activeCmd : 'Select a command on the left'}
                                 </h3>
-                                <pre className="flex-1 bg-black/40 rounded p-4 text-xs text-green-300 font-mono overflow-auto whitespace-pre-wrap">
+                                <pre className="flex-1 bg-black rounded p-4 text-xs text-green-300 font-mono overflow-auto whitespace-pre-wrap">
                                     {activeCmd ? f5osCommands[activeCmd] : '# no command selected'}
                                 </pre>
                             </div>
@@ -970,10 +970,10 @@ export default function QKViewPage() {
                                     const sev = h.severity || 'info';
                                     const color = sev === 'critical' ? 'text-red-700 dark:text-red-300' : sev === 'error' ? 'text-red-600 dark:text-red-400' : sev === 'warning' ? 'text-amber-600 dark:text-amber-400' : 'text-slate-600 dark:text-slate-400';
                                     return (
-                                        <li key={i} className="py-2 flex items-start gap-3">
-                                            <span className={`uppercase font-semibold text-xs w-16 shrink-0 ${color}`}>{sev}</span>
-                                            <span className="font-mono text-xs text-slate-500 w-32 shrink-0">{h.component}</span>
-                                            <span className="text-slate-700 dark:text-slate-300">{h.description}</span>
+                                        <li key={i} className="py-2 grid grid-cols-[5rem_minmax(0,18rem)_1fr] gap-3 items-start">
+                                            <span className={`uppercase font-semibold text-xs pt-0.5 ${color}`}>{sev}</span>
+                                            <span className="font-mono text-xs text-slate-500 break-all leading-relaxed pt-0.5">{h.component}</span>
+                                            <span className="text-slate-700 dark:text-slate-300 break-words">{h.description}</span>
                                         </li>
                                     );
                                 })}
@@ -1113,18 +1113,26 @@ export default function QKViewPage() {
                                         </thead>
                                         <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
                                             {xmlStats.tmms.map((t, i) => {
-                                                const oneMin = parseInt(t['cpu_usage_1min'] || '0', 10);
-                                                const color = oneMin >= 80
+                                                // TMOS tmm_stat reports cpu_usage_* in hundredths of a percent
+                                                // (`show /sys tmm-info` divides by 100 for display).
+                                                const fmtPct = (raw: string | undefined) => {
+                                                    if (!raw) return '—';
+                                                    const n = parseInt(raw, 10);
+                                                    if (!Number.isFinite(n)) return '—';
+                                                    return `${(n / 100).toFixed(2)}%`;
+                                                };
+                                                const oneMinPct = parseInt(t['cpu_usage_1min'] || '0', 10) / 100;
+                                                const color = oneMinPct >= 80
                                                     ? 'text-red-600 dark:text-red-400'
-                                                    : oneMin >= 60
+                                                    : oneMinPct >= 60
                                                         ? 'text-amber-600 dark:text-amber-400'
                                                         : 'text-slate-700 dark:text-slate-300';
                                                 return (
                                                     <tr key={i} className={color}>
                                                         <td className="py-1 pr-2 font-mono">cpu {t['cpu']}/slot {t['slot_id']}</td>
-                                                        <td className="py-1 pr-2 text-right tabular-nums">{t['cpu_usage_1sec'] || '—'}</td>
-                                                        <td className="py-1 pr-2 text-right tabular-nums font-semibold">{t['cpu_usage_1min'] || '—'}</td>
-                                                        <td className="py-1 pr-2 text-right tabular-nums">{t['cpu_usage_5mins'] || '—'}</td>
+                                                        <td className="py-1 pr-2 text-right tabular-nums">{fmtPct(t['cpu_usage_1sec'])}</td>
+                                                        <td className="py-1 pr-2 text-right tabular-nums font-semibold">{fmtPct(t['cpu_usage_1min'])}</td>
+                                                        <td className="py-1 pr-2 text-right tabular-nums">{fmtPct(t['cpu_usage_5mins'])}</td>
                                                         <td className="py-1 text-right tabular-nums">{t['client_side_traffic.cur_conns'] || '0'}</td>
                                                     </tr>
                                                 );
@@ -1350,9 +1358,9 @@ export default function QKViewPage() {
                     )}
 
                     {/* Terminal Window for Raw Logs */}
-                    <div className="p-6 bg-slate-900 rounded-xl shadow-lg border border-slate-800">
-                        <div className="flex items-center justify-between mb-4 border-b border-slate-800 pb-4">
-                            <h3 className="font-semibold text-lg text-slate-200 flex items-center gap-2">
+                    <div className="p-6 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                        <div className="flex items-center justify-between mb-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                            <h3 className="font-semibold text-lg text-slate-800 dark:text-slate-200 flex items-center gap-2">
                                 <div className="flex gap-1.5 mr-2">
                                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                                     <div className="w-3 h-3 rounded-full bg-amber-500"></div>
@@ -1361,7 +1369,7 @@ export default function QKViewPage() {
                                 Extracted Critical/Warning Logs ({analysisResult.entry_count || 0})
                             </h3>
                         </div>
-                        <div className="bg-black/50 rounded border border-slate-800 p-4 h-96 overflow-y-auto font-mono text-sm">
+                        <div className="bg-black rounded border border-slate-800 p-4 h-96 overflow-y-auto font-mono text-sm">
                             {analysisResult.entries && analysisResult.entries.length > 0 ? (
                                 <ul className="space-y-1">
                                     {analysisResult.entries.slice(0, 150).map((entry: any, i: number) => {

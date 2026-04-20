@@ -229,13 +229,24 @@ async def analyze_qkview(request: Request):
 
                 progress("Building universal TMOS config tree…")
                 try:
+                    # Root bigip.conf carries /Common objects; per-partition
+                    # dumps under config/partitions/<name>/bigip.conf carry
+                    # their partition's objects (/DMZ, /public, ...). Merge
+                    # them all so VS from every partition land in tmos_tree.
+                    root_names = (
+                        "config/bigip.conf",
+                        "config/bigip_base.conf",
+                        "config/bigip_gtm.conf",
+                    )
+                    partition_names = sorted(
+                        name
+                        for name in data.config_files.keys()
+                        if name.startswith("config/partitions/")
+                        and name.endswith((".conf",))
+                    )
                     combined = "\n".join(
                         data.config_files.get(name, "")
-                        for name in (
-                            "config/bigip.conf",
-                            "config/bigip_base.conf",
-                            "config/bigip_gtm.conf",
-                        )
+                        for name in (*root_names, *partition_names)
                     )
                     if combined.strip():
                         tmos_tree = parse_tmos_config(combined)

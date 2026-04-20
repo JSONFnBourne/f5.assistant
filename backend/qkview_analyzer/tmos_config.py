@@ -433,23 +433,50 @@ def parse_tmos_config(config_text: str) -> dict[str, Any]:
 
 
 def list_partitions(config: dict[str, Any]) -> list[str]:
-    """Return unique partitions discovered across all LTM/GTM objects."""
-    partitions: set[str] = set()
+    """Return the set of administrative partitions defined in this config.
 
-    def _walk(obj: Any) -> None:
-        if isinstance(obj, dict):
-            for k, v in obj.items():
-                if isinstance(k, str) and k.startswith("/"):
-                    parts = k.split("/")
-                    if len(parts) >= 2 and parts[1]:
-                        partitions.add(parts[1])
-                if isinstance(v, (dict, list)):
-                    _walk(v)
-        elif isinstance(obj, list):
-            for item in obj:
-                _walk(item)
+    Sources, in order of authority:
+      1. `auth partition <name> { ... }` stanzas — the explicit TMOS declaration.
+         `Common` is implicit and never appears here, so we add it unconditionally.
+      2. `sys folder /<name>` entries at depth 1 — every partition has a matching
+         top-level folder; nested folders like `/DMZ/Drafts` are sub-folders and
+         are ignored.
+      3. `partition` field that `_orchestrate` tags onto each LTM/GTM object.
 
-    _walk(config)
+    A blind key-walk is **not** used: data-group records (e.g. iRule URI maps like
+    `/pfm-main/userPreferences/save` under `ltm data-group internal /Common/uri_dg`)
+    legitimately use `/`-prefixed keys that are not partitions.
+    """
+    partitions: set[str] = {"Common"}
+
+    auth_part = config.get("auth", {}).get("partition", {})
+    if isinstance(auth_part, dict):
+        for name in auth_part.keys():
+            if isinstance(name, str) and name:
+                partitions.add(name)
+
+    sys_folder = config.get("sys", {}).get("folder", {})
+    if isinstance(sys_folder, dict):
+        for path in sys_folder.keys():
+            if isinstance(path, str) and path.startswith("/"):
+                parts = path.split("/")
+                # depth-1 only: "/DMZ" yes, "/DMZ/Drafts" no, "/" no
+                if len(parts) == 2 and parts[1]:
+                    partitions.add(parts[1])
+
+    for module in ("ltm", "gtm"):
+        subtree = config.get(module, {})
+        if not isinstance(subtree, dict):
+            continue
+        for kind, objs in subtree.items():
+            if not isinstance(objs, dict):
+                continue
+            for obj in objs.values():
+                if isinstance(obj, dict):
+                    p = obj.get("partition")
+                    if isinstance(p, str) and p:
+                        partitions.add(p)
+
     return sorted(partitions)
 
 
