@@ -526,6 +526,19 @@ def _lookup_nested(container: Any, name: str) -> dict[str, Any] | None:
     return None
 
 
+def _fmt_stanza(header: str, body: Any) -> str:
+    """Render `header { body }` with the body on its own lines.
+
+    The parser stores `line` as the body joined with `\n` but with no leading or
+    trailing newline, so naive f-string concatenation glues the first and last
+    body lines to the braces. Normalize here.
+    """
+    text = body if isinstance(body, str) else ""
+    if not text.strip():
+        return f"{header} {{}}"
+    return f"{header} {{\n{text.rstrip()}\n}}"
+
+
 def app_details(config: dict[str, Any], full_path: str) -> dict[str, Any] | None:
     """Build a consolidated app view: VS + pool + members + nodes + monitors + profiles + iRules.
 
@@ -537,13 +550,13 @@ def app_details(config: dict[str, Any], full_path: str) -> dict[str, Any] | None
         return None
 
     app: dict[str, Any] = {k: v for k, v in vs.items() if k != "line"}
-    lines: list[str] = [f"ltm virtual {full_path} {{{vs.get('line', '')}}}"]
+    lines: list[str] = [_fmt_stanza(f"ltm virtual {full_path}", vs.get("line", ""))]
 
     pool_name = vs.get("pool")
     if isinstance(pool_name, str) and pool_name:
         pool = config.get("ltm", {}).get("pool", {}).get(pool_name)
         if isinstance(pool, dict):
-            lines.append(f"ltm pool {pool_name} {{{pool.get('line', '')}}}")
+            lines.append(_fmt_stanza(f"ltm pool {pool_name}", pool.get("line", "")))
             pool_copy = {k: v for k, v in pool.items() if k != "line"}
 
             members = pool_copy.get("members")
@@ -555,7 +568,7 @@ def app_details(config: dict[str, Any], full_path: str) -> dict[str, Any] | None
                     name_part = member_key.split(":")[0] if ":" in member_key else member_key
                     node = config.get("ltm", {}).get("node", {}).get(name_part)
                     if isinstance(node, dict):
-                        lines.append(f"ltm node {name_part} {{{node.get('line', '')}}}")
+                        lines.append(_fmt_stanza(f"ltm node {name_part}", node.get("line", "")))
 
             monitors = pool_copy.get("monitor")
             if monitors:
@@ -571,7 +584,10 @@ def app_details(config: dict[str, Any], full_path: str) -> dict[str, Any] | None
                         body.pop("line", None)
                         processed.append(body)
                         lines.append(
-                            f"ltm monitor {found['path']} {found['key']} {{{found['value'].get('line', '')}}}"
+                            _fmt_stanza(
+                                f"ltm monitor {found['path']} {found['key']}",
+                                found["value"].get("line", ""),
+                            )
                         )
                 pool_copy["monitor"] = processed
 
@@ -585,7 +601,10 @@ def app_details(config: dict[str, Any], full_path: str) -> dict[str, Any] | None
             found = _lookup_nested(config.get("ltm", {}).get("profile", {}), pname)
             if found is not None:
                 lines.append(
-                    f"ltm profile {found['path']} {found['key']} {{{found['value'].get('line', '')}}}"
+                    _fmt_stanza(
+                        f"ltm profile {found['path']} {found['key']}",
+                        found["value"].get("line", ""),
+                    )
                 )
 
     rules = vs.get("rules")

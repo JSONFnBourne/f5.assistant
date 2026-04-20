@@ -1003,9 +1003,15 @@ export default function QKViewPage() {
                                     ))}
                                 </div>
                             )}
-                            <div className="overflow-x-auto">
+                            {(() => {
+                                const displayedApps = effectivePartition
+                                    ? (appsByPartition[effectivePartition] || [])
+                                    : apps;
+                                const scrollable = displayedApps.length > 50;
+                                return (
+                            <div className={`overflow-x-auto ${scrollable ? 'max-h-[600px] overflow-y-auto' : ''}`}>
                                 <table className="w-full text-sm">
-                                    <thead className="text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-700">
+                                    <thead className={`text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-700 ${scrollable ? 'sticky top-0 bg-white dark:bg-slate-800 z-10' : ''}`}>
                                         <tr>
                                             <th className="text-left py-2 pr-4 font-semibold">Name</th>
                                             <th className="text-left py-2 pr-4 font-semibold">Destination</th>
@@ -1013,10 +1019,7 @@ export default function QKViewPage() {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-                                        {(effectivePartition
-                                            ? (appsByPartition[effectivePartition] || [])
-                                            : apps
-                                        ).map((a) => {
+                                        {displayedApps.map((a) => {
                                             const isSelected = selectedAppPath === a.fullPath;
                                             return (
                                                 <tr
@@ -1033,6 +1036,8 @@ export default function QKViewPage() {
                                     </tbody>
                                 </table>
                             </div>
+                                );
+                            })()}
                             {selectedAppPath && (
                                 <AppDetailsPanel
                                     fullPath={selectedAppPath}
@@ -1054,11 +1059,11 @@ export default function QKViewPage() {
                     {/* XML Stats panels (TMOS only) */}
                     {xmlStats && (
                         <div className="grid md:grid-cols-2 gap-6">
-                            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                            <div className="md:col-span-2 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
                                 <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
                                     <Activity className="w-5 h-5 text-emerald-500" /> Runtime Stats
                                 </h3>
-                                <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                                <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-2 text-sm">
                                     {Object.entries(xmlStats.summary).map(([k, v]) => (
                                         <li key={k} className="flex justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
                                             <span className="text-slate-500 font-mono text-xs">{k}</span>
@@ -1068,7 +1073,7 @@ export default function QKViewPage() {
                                 </ul>
                             </div>
 
-                            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[400px] overflow-y-auto">
+                            <div className="md:col-span-2 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[500px] overflow-y-auto">
                                 <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
                                     <Network className="w-5 h-5 text-indigo-500" /> Top Virtual Servers
                                 </h3>
@@ -1095,6 +1100,32 @@ export default function QKViewPage() {
                                     </table>
                                 )}
                             </div>
+
+                            {xmlStats.top_pools && xmlStats.top_pools.length > 0 && (
+                                <div className="md:col-span-2 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[500px] overflow-y-auto">
+                                    <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <Network className="w-5 h-5 text-orange-500" /> Top Pools
+                                    </h3>
+                                    <table className="w-full text-xs">
+                                        <thead className="text-slate-500 uppercase">
+                                            <tr>
+                                                <th className="text-left py-1 pr-2">Name</th>
+                                                <th className="text-right py-1 pr-2">Cur</th>
+                                                <th className="text-right py-1">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
+                                            {xmlStats.top_pools.map((p, i) => (
+                                                <tr key={i}>
+                                                    <td className="py-1 pr-2 font-mono">{p['name'] || '—'}</td>
+                                                    <td className="py-1 pr-2 text-right tabular-nums">{p['serverside.cur_conns'] || '0'}</td>
+                                                    <td className="py-1 text-right tabular-nums">{p['serverside.tot_conns'] || '0'}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
 
                             {xmlStats.tmms.length > 0 && (
                                 <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[400px] overflow-y-auto">
@@ -1227,32 +1258,6 @@ export default function QKViewPage() {
                                                     </tr>
                                                 );
                                             })}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            )}
-
-                            {xmlStats.top_pools && xmlStats.top_pools.length > 0 && (
-                                <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[400px] overflow-y-auto">
-                                    <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                                        <Network className="w-5 h-5 text-orange-500" /> Top Pools
-                                    </h3>
-                                    <table className="w-full text-xs">
-                                        <thead className="text-slate-500 uppercase">
-                                            <tr>
-                                                <th className="text-left py-1 pr-2">Name</th>
-                                                <th className="text-right py-1 pr-2">Cur</th>
-                                                <th className="text-right py-1">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-                                            {xmlStats.top_pools.map((p, i) => (
-                                                <tr key={i}>
-                                                    <td className="py-1 pr-2 font-mono">{p['name'] || '—'}</td>
-                                                    <td className="py-1 pr-2 text-right tabular-nums">{p['serverside.cur_conns'] || '0'}</td>
-                                                    <td className="py-1 text-right tabular-nums">{p['serverside.tot_conns'] || '0'}</td>
-                                                </tr>
-                                            ))}
                                         </tbody>
                                     </table>
                                 </div>
