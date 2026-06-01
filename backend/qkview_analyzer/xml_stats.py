@@ -392,11 +392,19 @@ def parse_module_xml(stream: IO[bytes], stats: XmlStats) -> None:
     direct-record tag, clearing each processed subtree to keep peak memory
     bounded.
     """
+    # Hardening: the *_module.xml comes from an uploaded, attacker-controllable
+    # archive. Disable entity resolution and network access so a crafted DTD
+    # can't pull in local files (XXE) or expand entities. huge_tree stays on
+    # because real qkview stat dumps legitimately exceed libxml2's default
+    # node/depth limits; the per-member size guard in the extractor already
+    # caps the payload.
     context = etree.iterparse(
         stream,
         events=("end",),
         recover=True,
         huge_tree=True,
+        resolve_entities=False,
+        no_network=True,
     )
     direct_tags = set(_CATEGORY_MAP.keys())
 

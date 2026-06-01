@@ -11,6 +11,7 @@ import tempfile
 import threading
 import json
 import logging
+from contextlib import asynccontextmanager
 from typing import Optional
 
 logger = logging.getLogger("f5_backend")
@@ -72,7 +73,14 @@ from qkview_analyzer.tmos_config import (
     app_details,
 )
 
-app = FastAPI(title="F5 Assistant Backend API", version="0.1.0")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Startup/shutdown hook. Replaces the deprecated @app.on_event handler."""
+    init_db()
+    yield
+
+
+app = FastAPI(title="F5 Assistant Backend API", version="0.7.0", lifespan=lifespan)
 
 _ALLOWED_ORIGIN = os.environ.get("FRONTEND_ORIGIN", "http://localhost:3000")
 
@@ -110,10 +118,6 @@ def init_db():
     ''')
     conn.commit()
     conn.close()
-
-@app.on_event("startup")
-async def startup_event():
-    init_db()
 
 @app.get("/")
 async def root():
