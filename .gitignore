@@ -146,6 +146,7 @@ f5-corkscrew-main/
 # Miscellaneous
 # ============================================================
 *.bak
+*.bak-*
 *.tmp
 *.temp
 *.orig
