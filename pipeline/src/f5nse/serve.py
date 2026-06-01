@@ -31,7 +31,10 @@ class GenerateResponse(BaseModel):
 class ServeArgs:
     model_path: Path = Path("data/models/f5nse-lora")
     base_model: str = "meta-llama/Llama-3.1-8B-Instruct"
-    host: str = "0.0.0.0"
+    # Loopback by default — the endpoint is unauthenticated. Override on the
+    # CLI (--host 0.0.0.0) only on a trusted network behind something that
+    # does authn/authz.
+    host: str = "127.0.0.1"
     port: int = 8000
     load_in_8bit: bool = True
     trust_remote_code: bool = False
@@ -75,12 +78,15 @@ class F5NSEServer:
 
 def create_app(server: F5NSEServer) -> FastAPI:
     app = FastAPI(title="f5nse Inference")
+    # Scoped to the local webapp origins, matching irule/serve.py. A wildcard
+    # origin with allow_credentials=True is also a CORS spec violation browsers
+    # reject, so the previous config was both unsafe and broken.
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
+        allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+        allow_credentials=False,
+        allow_methods=["GET", "POST"],
+        allow_headers=["Content-Type"],
     )
 
     @app.post("/generate", response_model=GenerateResponse)
