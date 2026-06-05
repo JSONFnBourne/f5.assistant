@@ -73,6 +73,9 @@ const K_NUMBER_RE = /\bk\d{4,}\b/gi;
 // CVE identifier pattern
 const CVE_RE = /\bcve-\d{4}-\d+\b/gi;
 
+// RFC number pattern: "RFC 8267", "RFC8267", "rfc-1156" -> doc_id 'rfc8267'
+const RFC_NUMBER_RE = /\brfc[\s-]?(\d{1,5})\b/gi;
+
 // iRules Tcl namespace command pattern (e.g. TCP::collect, HTTP::redirect, SSL::cipher)
 const IRULE_CMD_RE = /\b([A-Za-z]+)::([A-Za-z_]+)\b/g;
 
@@ -128,6 +131,34 @@ export async function searchDocuments(
         }
       } catch (err) {
         console.error('Direct K-number lookup error:', err);
+      }
+    }
+  }
+
+  // ── 1a. Direct RFC-number lookup ─────────────────────────────────────────
+  // "RFC 8267" / "rfc8267" -> fetch doc_id 'rfc8267' directly. A bare RFC number
+  // ranks poorly in FTS (the digits aren't identifier-weighted and 'rfc' is a
+  // stop word), so an exact lookup is required — mirrors the K-number branch.
+  // Unlike K-numbers, this intentionally ignores the mode source filter: an
+  // explicitly named RFC is self-disambiguating and should resolve in any mode.
+  const rfcMatches = [...query.matchAll(RFC_NUMBER_RE)];
+  if (rfcMatches.length > 0) {
+    const rfcSql = `
+      SELECT id, source, doc_id, title, url, section, content, '' as snippet
+      FROM documents WHERE doc_id = ?
+    `;
+    for (const m of rfcMatches) {
+      const rfcId = `rfc${m[1]}`;
+      try {
+        const rfcRows = prep(rfcSql).all(rfcId) as SearchResult[];
+        for (const row of rfcRows) {
+          if (!seenIds.has(row.id)) {
+            seenIds.add(row.id);
+            results.push(row);
+          }
+        }
+      } catch (err) {
+        console.error('Direct RFC-number lookup error:', err);
       }
     }
   }
