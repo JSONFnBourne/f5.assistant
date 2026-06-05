@@ -1,0 +1,543 @@
+# Eval candidate review
+
+Flip `- [ ] accept` to `- [x] accept` to keep a row. Edit `- question:` freely. For concept rows, fill `- expected_doc_ids:` with real `documents.doc_id` values (comma-separated). Identifier rows have tautological gold pre-filled.
+
+Identifier candidates: 16 · Concept candidates: 50
+
+
+---
+
+## Identifier class (auto · gold pre-filled)
+
+### i001  ·  tag: identifier  ·  query_type: k-number
+- [ ] accept
+- question: What does F5 article K43963930 address?
+- expected_doc_ids: K43963930
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i002  ·  tag: identifier  ·  query_type: k-number
+- [ ] accept
+- question: What does F5 article K000140241 address?
+- expected_doc_ids: K000140241
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i003  ·  tag: identifier  ·  query_type: k-number
+- [ ] accept
+- question: What does F5 article K000132804 address?
+- expected_doc_ids: K000132804
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i004  ·  tag: identifier  ·  query_type: k-number
+- [ ] accept
+- question: What does F5 article K65053647 address?
+- expected_doc_ids: K65053647
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i005  ·  tag: identifier  ·  query_type: k-number
+- [ ] accept
+- question: What does F5 article K10397582 address?
+- expected_doc_ids: K10397582
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i006  ·  tag: identifier  ·  query_type: k-number
+- [ ] accept
+- question: What does F5 article K15983 address?
+- expected_doc_ids: K15983
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i007  ·  tag: identifier  ·  query_type: k-number
+- [ ] accept
+- question: What does F5 article K15399 address?
+- expected_doc_ids: K15399
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i008  ·  tag: identifier  ·  query_type: k-number
+- [ ] accept
+- question: What does F5 article K02236463 address?
+- expected_doc_ids: K02236463
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i009  ·  tag: identifier  ·  query_type: cve
+- [ ] accept
+- question: Which F5 article documents CVE-2025-59037?
+- expected_doc_ids: K000157932
+- source_url: 
+- notes: identifier-class; tautological gold=article carrying this CVE in keywords; seed=42
+
+### i010  ·  tag: identifier  ·  query_type: cve
+- [ ] accept
+- question: Which F5 article documents CVE-2025-53020?
+- expected_doc_ids: K000152805
+- source_url: 
+- notes: identifier-class; tautological gold=article carrying this CVE in keywords; seed=42
+
+### i011  ·  tag: identifier  ·  query_type: cve
+- [ ] accept
+- question: Which F5 article documents CVE-2018-1000073?
+- expected_doc_ids: K52952871
+- source_url: 
+- notes: identifier-class; tautological gold=article carrying this CVE in keywords; seed=42
+
+### i012  ·  tag: identifier  ·  query_type: irule
+- [ ] accept
+- question: What does the ACCESS::ephemeral-auth iRule command do?
+- expected_doc_ids: https://clouddocs.f5.com/api/irules/ACCESS__ephemeral_auth.html
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i013  ·  tag: identifier  ·  query_type: irule
+- [ ] accept
+- question: What does the ACCESS::disable iRule command do?
+- expected_doc_ids: https://clouddocs.f5.com/api/irules/ACCESS__disable.html
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i014  ·  tag: identifier  ·  query_type: irule
+- [ ] accept
+- question: What does the ANTIFRAUD::disable_phishing iRule command do?
+- expected_doc_ids: https://clouddocs.f5.com/api/irules/ANTIFRAUD__disable_phishing.html
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i015  ·  tag: identifier  ·  query_type: rfc
+- [ ] accept
+- question: What does RFC 8267 specify?
+- expected_doc_ids: rfc8267
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+### i016  ·  tag: identifier  ·  query_type: rfc
+- [ ] accept
+- question: What does RFC 1156 specify?
+- expected_doc_ids: rfc1156
+- source_url: 
+- notes: identifier-class; tautological gold=sampled doc_id; seed=42
+
+
+---
+
+## Concept / troubleshooting class (harvested · fill expected_doc_ids)
+
+
+### ── tag: DNS/GTM (10) ──
+
+### c006  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: GTM Setup question with HA design
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/gtm-setup-question-with-ha-design/237844
+- first_post: When you create the listener, you'll see it's just a VIP that gets created. That VIP will be in the traffic group that fails over between the two devices. You could also have it use the destination IP of the floating IP if you're short on IPs but typically you'd give it it's own IP. You could also c
+- notes: harvested first-post; 124-word OP
+
+### c010  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: GTM - maximum and recommended number of pools under the Wide IP
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/gtm---maximum-and-recommended-number-of-pools-under-the-wide-ip/132223
+- first_post: Hi Ray, Performance wise its not recommended in production environment but maximum number is 255. You can go with iRule selection method. Hope this will helpful. Please let me know if any question. Regards, Sam
+- notes: harvested first-post; 35-word OP
+
+### c013  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: can't access on prem dns when using F5LTM as a gateway
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/cant-access-on-prem-dns-when-using-f5ltm-as-a-gateway/345110
+- first_post: Hello MillersvilleEri​ Might you are using same internal DNS as DNS of bigip itself? And if yes might you have created mangement route for interal DNS IP or subnet?
+- notes: harvested first-post; 29-word OP
+
+### c017  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: Same IP Shared between multiple GTM LIsteners
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/same-ip-shared-between-multiple-gtm-listeners/204144
+- first_post: Hi All, I hope this is a simple anwser because I don't believe this is setup correctly. We have two i2800 F5s running DNS and LTM feature sets. LTM portion works as expected with device-group and traffic-group, etc. The issue I believe is on the DNS (GTM) feature set. I've only ever seen this instal
+- notes: harvested first-post; 207-word OP
+
+### c022  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: DNS Failover Mechanism
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/dns-failover-mechanism/198781
+- first_post: Hello, it's not a basic question. On the contrary, it is important that you raised it I recapitulate. you have 2 dns that are authoritative for your domain abc.com. ns1.mydomain.com ns2.mydomain.com If you F5 DNS Fail (ns1.). it will happen the following way... User will try to join (he will make a 
+- notes: harvested first-post; 130-word OP
+
+### c026  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: Testing GTM topology results
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/testing-gtm-topology-results/149226
+- first_post: I was wondering what resources people use to test the effect of GTM-topology load-balancing on Internet-based LDNS servers? I need a way to submit a DNS query that will reach my GTM from a geographically-known DNS server. I've googled this quite a bit, but haven't found a great resource yet which I 
+- notes: harvested first-post; 66-word OP
+
+### c031  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: GTM doesn't seem to resolve its own WIP
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/gtm-doesnt-seem-to-resolve-its-own-wip/69568
+- first_post: Hello, So I've spun up a new GTM (11.2.1) and there are two LTM's (each at different datacenters). I've created the VIPs (test.company.com) on the LTM's and a WIP (test.gtm.company.com) on the GTM to load balance the two VIPs. Connection between the F5 are working as expected. However; we have a DNS
+- notes: harvested first-post; 146-word OP
+
+### c033  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: DNS - SPF record error
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/dns---spf-record-error/71521
+- first_post: This is a warning from bind (named). When SPF was originally implemented, it used TXT records, as there was no RR type for SPF. This was later added by RFC4408, and the named developers eventually added a warning, to alert you if both TXT and SPF RR types were not present. As per RFC4408, "An SPF-co
+- notes: harvested first-post; 137-word OP
+
+### c038  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: GTM and Akamai
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/gtm-and-akamai/136379
+- first_post: Hello, We have a customer who has 3 datacenters (LA, NY, and Dallas) in an active/active/active configuration using GTMs and topology load balancing. Recently we had a report that Akamai servers were hitting the wrong origin server based on the real location of the Akamai servers. After updating the
+- notes: harvested first-post; 223-word OP
+
+### c043  ·  tag: DNS/GTM  ·  query_type: concept
+- [ ] accept
+- question: F5 DNS Firewall
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/f5-dns-firewall/193244
+- first_post: I think you are better off trying to create a check list of protection that you require and see how you can implement it in F5 DNS/GTM. An easy way to create your own set of protection is to rely on iRule and DNS profile standard features.
+- notes: harvested first-post; 47-word OP
+
+
+### ── tag: F5OS (10) ──
+
+### c001  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: iWorkflow Application Service unhealthy after deploying applications on tenant GUI
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/iworkflow-application-service-unhealthy-after-deploying-applications-on-tenant-g/127014
+- first_post: Hello Nathan, our customer has some 50 F5s (incl vCMPs) in their datacenters and are looking for ways to bulk provision/automate services deployment. Their ultimate vision is orchestration but they are not ready yet. So we're looking for some kind of intermediate automation solution. And recently I'
+- notes: harvested first-post; 283-word OP
+
+### c004  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: Import the iSeries UCS file into the rSeries BIG IP tenant.
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/import-the-iseries-ucs-file-into-the-rseries-big-ip-tenant-/344461
+- first_post: Hello, I have import ucs file from my iseries and trying to import it into big ip tenant on rseries but I got this error. I have tried the manual version and F5 journeys but the result is always the same. -----------------------------------------------------------------------------------------------
+- notes: harvested first-post; 178-word OP
+
+### c008  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: r5900 SSLO L2 service abnormal
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/r5900-sslo-l2-service-abnormal/323482
+- first_post: Adding to this based on my recent struggles with migrating SSLO from iSeries to rSeries... You need to complete the following: If using L2 Services with SSLO, deploy the new rSeries Tenant with the appropriate MAC Block Size (aka MAC Pool). You will need 2 MAC addresses for each L2 service, and 1 fo
+- notes: harvested first-post; 285-word OP
+
+### c015  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: How to migrate from F5 BIG-IP i2800 to r2800
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/how-to-migrate-from-f5-big-ip-i2800-to-r2800/341557
+- first_post: Yes it is feasible. The easiest option is deploying rseries as members of the current cluster and let them sync the configuration. During a MW you can failover to a rseries node and check your services. If everything is ok you can start decommissioning iseries nodes. The only drawback is the need of
+- notes: harvested first-post; 63-word OP
+
+### c020  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: Migration of complete ucs file of BIGIP 2000 LTM to r5800 creating tenant/ Using Journey APP
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/migration-of-complete-ucs-file-of-bigip-2000-ltm-to-r5800-creating-tenant-using-/342406
+- first_post: You can run docker or podman in windows too. But indeed some basic docker commands are needed Which version do you run in 2000 ?
+- notes: harvested first-post; 25-word OP
+
+### c024  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: R2600 device and tenant/partition configuration
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/r2600-device-and-tenantpartition-configuration/335193
+- first_post: Hello, I'm working with configuration on r2600 where is one tenant with multiple vlans. On tenant perspective I want to add each vlan to specific partition. How to do this in correct way for rSeries? There is a bug http://cdn.f5.com/product/bugtracker/ID1231889.html which says that all vlans need to
+- notes: harvested first-post; 91-word OP
+
+### c029  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: Unable to ping from some self ip on Velos
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/unable-to-ping-from-some-self-ip-on-velos/340073
+- first_post: unavailable​ Hello , just wondering if you ever found the solution to this query. I was able to find some information for you if not Remove and re-add the affected VLAN(s) to the tenant. Verify ARP table and routing table on the tenant. If the issue persists, set the tenant to provisioned, wait, the
+- notes: harvested first-post; 94-word OP
+
+### c032  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: How to add VLAN in tenant on F5r2600 running F5OS?
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/how-to-add-vlan-in-tenant-on-f5r2600-running-f5os/314761
+- first_post: Hi kridsana, Network Settings > VLANs Create new vlan. Network Settings > Interfaces Bind the vlan to the interface. Tenant Management > Tenant Deployements Select the vlan on tenant. The vlan will be automatically added to the bigip tenant. No need to restart tenant.
+- notes: harvested first-post; 44-word OP
+
+### c036  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: SNMP Monitoring/OIDs for rSeries
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/snmp-monitoringoids-for-rseries/345014
+- first_post: F5OS rSeries Has opentelemetry exporters from 1.7 and up isn't that a better option for monitoring ? https://techdocs.f5.com/en-us/f5os-a-1-7-0/relnote-f5os-a-1-7-0/title-new-in.html
+- notes: harvested first-post; 18-word OP
+
+### c041  ·  tag: F5OS  ·  query_type: f5os
+- [ ] accept
+- question: Velos Qkviews not appearing to iHealth.com
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/velos-qkviews-not-appearing-to-ihealth-com/305026
+- first_post: Hi, Did you notice that the Qkviews from Velos Controller did not appear on iHealth after they were uploaded? Velos controller version is 1.2
+- notes: harvested first-post; 24-word OP
+
+
+### ── tag: LTM (10) ──
+
+### c003  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: Clone pool with two servers
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/clone-pool-with-two-servers/237925
+- first_post: Hi, clone pool doesn't seem a very well documented feature so I didn't found anything about it. We have the requirement to clone serverside traffic to TWO servers. To put two servers in the clone pool shouldn't be an issue, but how does the LB behave? Will it really be send out twice to each server 
+- notes: harvested first-post; 87-word OP
+
+### c007  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: Need to remove expired certifiate from LTM
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/need-to-remove-expired-certifiate-from-ltm/228274
+- first_post: Try this command from cli. It should be able to tell you where it is referenced. tmsh show running-config recursive one-line | grep "default.crt" If possible post the output here.
+- notes: harvested first-post; 30-word OP
+
+### c019  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: LTM 11.5 how to change ssmtp root email destination
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/ltm-11-5-how-to-change-ssmtp-root-email-destination/265502
+- first_post: You can create an iRule procedure that sets the mailfrom address. I created a wiki on how to do it. Send Email via iRule Procedures - Send an Email via an iRule, Procedure and Sideband connection
+- notes: harvested first-post; 36-word OP
+
+### c023  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: Issues with load balancing for SAP PI
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/issues-with-load-balancing-for-sap-pi/160918
+- first_post: Hello Experts, We are having issues with load balancing on our SAP PI application. ECC system has 5 application servers and PI has 2, the observation is that when an ECC application server sends a request; it generally gets stuck to one application server on PI. We are currently using the cookie per
+- notes: harvested first-post; 114-word OP
+
+### c028  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: Virtual LTM_Ver 10.1.0
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/virtual-ltm-ver-10-1-0/126197
+- first_post: Are you able to connect via a browser to the management interface? What error do you get or what do you see when the licensing doesn't complete? If the admin GUI isn't working for you, can you connect to the management IP via SSH? If so, you can run: get_dossier -b "base key" replace base key with y
+- notes: harvested first-post; 108-word OP
+
+### c035  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: Rulle to connect to a specific server in a pool based on URL
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/rulle-to-connect-to-a-specific-server-in-a-pool-based-on-url/176595
+- first_post: I've been searching for this as well, for essentially the same reasons, but have not found anything yet that quite matches up. If anyone has suggestions on this I'd be very interested.
+- notes: harvested first-post; 32-word OP
+
+### c040  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: Number of keystores on an LTM
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/number-of-keystores-on-an-ltm/258590
+- first_post: Is there a way to find out how many keystores exist on an LTM? Especially if additional modules (APM, ASM, etc.) are installed? Thanks, Jen
+- notes: harvested first-post; 25-word OP
+
+### c045  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: Load balance vCenter problem
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/load-balance-vcenter-problem/59681
+- first_post: Hello! We trying to reproduce load balance vCnter SSO with f5 LTM which now working on Apache according this article - http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&docType=kc&docTypeID=DT_KB_1_1&externalId=2034157 So, on our apache server we have exact configuration only nodes
+- notes: harvested first-post; 149-word OP
+
+### c048  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: Questions about test topology issues (LTM on ESXi)
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/questions-about-test-topology-issues-ltm-on-esxi/109035
+- first_post: The topology looks like this: -one local network (192.168.1.0/24) with a an ESXi host -2 webservers and 2 F5s set up as virtual machines on ESXi -local router is unable to route between local/virtual networks The idea is to have the servers on a separate network (let's say 10.0.0.0/8) and be able to
+- notes: harvested first-post; 232-word OP
+
+### c050  ·  tag: LTM  ·  query_type: concept
+- [ ] accept
+- question: SMTP Virtual Server Redirect?
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/smtp-virtual-server-redirect/197647
+- first_post: Hi, I don't think there is any function within SMTP that would allow you to send a response back to the client telling them to make the same request to another host/IP. I didn't see anything in the RFC's that looked relevant ( Click here ). (edit: the SMTP wikipedia page has a nice index of related 
+- notes: harvested first-post; 106-word OP
+
+
+### ── tag: iRules (10) ──
+
+### c005  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: F5 APM irule to log the VPN session parameters
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/f5-apm-irule-to-log-the-vpn-session-parameters/345647
+- first_post: Hello REddy​ Why don't you create a log profile to send APM logs to syslog? APM logs already contain what you ask for.
+- notes: harvested first-post; 23-word OP
+
+### c009  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: using irules to call datagroups
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/using-irules-to-call-datagroups/44613
+- first_post: Hi All, I have 3 data groups based on subnets as follows: DG1 10.10.0.0 255.255.0.0 DG2 12.12.0.0 255.255.0.0 DG3 11.11.0.0 255.255.0.0 Apart from this i have 3 rate rate classes meant to applied to the the above 3 data groups. Is there a way i can use an irule to call for these 3 data groups, apply
+- notes: harvested first-post; 82-word OP
+
+### c012  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: Help needed in this iRule to change the behavior of the authentication subroutine in the iRule
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/help-needed-in-this-irule-to-change-the-behavior-of-the-authentication-subroutin/239415
+- first_post: Could someone at least tell me if this is possble? Thanks in advance,
+- notes: harvested first-post; 13-word OP
+
+### c016  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: iRule datagroup sideband
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/irule-datagroup-sideband/312323
+- first_post: Debugging an iRule? Kai_Wilke may be able to help with that, if JRahm or the community don't jump in with an answer first!
+- notes: harvested first-post; 23-word OP
+
+### c021  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: APM irule to assign the "advance resource assign" and "static IP" based on username while connecting vpn
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/apm-irule-to-assign-the-advance-resource-assign-and-static-ip-based-on-username-/140071
+- first_post: Hello Guys, Im new to irule. I need help to write an irule for my access policy so that when e.g. "abc" username connects to ssl vpn "corporate network resource" assign to it along with a "static IP" and when "xyz" username comes in "dmz network resource" assign to it along with a "static IP". Netwo
+- notes: harvested first-post; 129-word OP
+
+### c025  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: iRule error message
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/irule-error-message/169784
+- first_post: Hello, my iRule keeps producing the following error message: TCL error: clean_incoming_xff - Operation not supported (line 1) invoked from within "HTTP::header remove "X-Forwarded-For"" the iRule itself: clean_incoming_xff: when HTTP_REQUEST { HTTP::header remove "X-Forwarded-For" HTTP::header remov
+- notes: harvested first-post; 60-word OP
+
+### c030  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: data group iRule
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/data-group-irule/21595
+- first_post: Hello iExperts, I just wanted to double check with you the following irule where i want to double check that the client IP is in a determinate data group range of IPs (ecmvpn_ip_dg) and if so, return a HTTP 302 redirect to such client. Is it the correct and "optimized" way to do it? when RULE_INIT {
+- notes: harvested first-post; 122-word OP
+
+### c037  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: iRulesLX: Invalid command name
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/iruleslx-invalid-command-name/213562
+- first_post: Try it with curved brackets: if {[catch {ILX::call $handle "otpgen" } result]} { see here https://devcentral.f5.com/s/articles/getting-started-with-irules-lx-part-3-coding-exception-handling-20411
+- notes: harvested first-post; 16-word OP
+
+### c042  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: irule language?
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/irule-language/27661
+- first_post: Hello! I am network engineer, and have an interesting about F5. So i want to know irule can be coded by python or not. Because i do not want to learn so many programming languages. Best regards!
+- notes: harvested first-post; 37-word OP
+
+### c046  ·  tag: iRules  ·  query_type: irule
+- [ ] accept
+- question: Irule for traffic segregation between 3 type of codec to differentiate the traffic for different pool.
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/irule-for-traffic-segregation-between-3-type-of-codec-to-differentiate-the-traff/237148
+- first_post: HI all please help me with the irule in LTM for SIP traffic segregation between 3 codec for differentiate the traffic for different pool. conditions:- 1)there are 3 codec i:e AMR -WB , AMR-NB and EVS 2)All pools WB, EVS and NB should be up on primary site else the traffic will be route to DR locatio
+- notes: harvested first-post; 205-word OP
+
+
+### ── tag: upgrades (10) ──
+
+### c002  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: Best way to migrate setup
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/best-way-to-migrate-setup/165670
+- first_post: Is the Single Configuration File (SCF) any use to you? https://support.f5.com/kb/en-us/solutions/public/8000/400/sol8435.html basically, provides a flat text file of the config. You could then edit/remove stuff and load it onto the new device. Oh, remember to change the hostname and IP's! Chris.
+- notes: harvested first-post; 41-word OP
+
+### c011  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: upgrade from 11.2.1 to 11.5.1 failed
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/upgrade-from-11-2-1-to-11-5-1-failed/151752
+- first_post: Hello friends, I need some support urgently. I have called F5 and the operator has told me that the engineers are out. Please, I follow the steps to upgrade a HA pair and I re-activated the license a s recommended in the askF5. But I got this error: License is not operational (expired or digital sig
+- notes: harvested first-post; 290-word OP
+
+### c014  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: Configuration time wrong after hotfix upgrade
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/configuration-time-wrong-after-hotfix-upgrade/46603
+- first_post: I had to reboot our LTMs last night (to fix another issue) and the timezone on configuration reverted to the correct timezone.
+- notes: harvested first-post; 22-word OP
+
+### c018  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: Modified ASM Cookie - After upgrade to 12.1.1
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/modified-asm-cookie---after-upgrade-to-12-1-1/62726
+- first_post: MSZ, have you seen the release notes, see link asm v12 release notes . This references a workaround for this issue. Hope this helps, N
+- notes: harvested first-post; 25-word OP
+
+### c027  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: Not able to upgrade
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/not-able-to-upgrade/195136
+- first_post: Are you sure the file was downloaded completed and OK ? According to the image the file extesion is : .crdownload and the MD5 Verified is no. Another strange thing is Hotfix usually are listed in System ›› Software Management : Hotfix List Is the image from that section ?
+- notes: harvested first-post; 50-word OP
+
+### c034  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: Procedure of upgrading from BIG IP v11.4.1 (Build 635.0) to 11.6.3.1
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/procedure-of-upgrading-from-big-ip-v11-4-1-build-635-0-to-11-6-3-1/126692
+- first_post: Steps are correct but do on different order. 1) Take the backup of both unit. 2) Activate license on standby device. 3) Upgrade standby device(image n hotfix) 4) Validate the behavior of device(memory, CPU, interface packet in n out, etc) 5) Failover device from standby to active 6) Do the same step
+- notes: harvested first-post; 64-word OP
+
+### c039  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: Viprion version upgrade
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/viprion-version-upgrade/341511
+- first_post: My host is running on version 15.x and wanted to upgrade on 17.x but one of guest is running on 14.x so if I upgrade the host from 15.x to 17.x thn is there any issue occurs in the behaviour of guest who is running on 14.x or need to upgrade the guest first to 15 or 17
+- notes: harvested first-post; 58-word OP
+
+### c044  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: Upgraded to Big-IP 12.0.0
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/upgraded-to-big-ip-12-0-0/202282
+- first_post: I downloaded 12.0.0 today since its now available and have been trying to upgrade a box I've got in my lab. I keep getting a "L4 rule feature not licensed" when it tries to boot and load the config. Funny thing is I'm running a Best license and only have LTM provisioned. Has anyone else experienced 
+- notes: harvested first-post; 66-word OP
+
+### c047  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: f5 upgrade warning
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/f5-upgrade-warning/273527
+- first_post: Hi Nathan, If you've followed the steps in SOL6640 and still get the unclean filesystem warning, I'd suggest opening a case with F5 Support. Aaron
+- notes: harvested first-post; 25-word OP
+
+### c049  ·  tag: upgrades  ·  query_type: concept
+- [ ] accept
+- question: Can i DO direct Upgrade my BIG IP LTM from v 13.1.0.2  (Build 0.0.6) version to 15.1.0.4
+- expected_doc_ids: 
+- source_url: https://community.f5.com/discussions/technicalforum/can-i-do-direct-upgrade-my-big-ip-ltm-from-v-13-1-0-2-build-0-0-6-version-to-15-/266885
+- first_post: According to this site from f5, it is possible to upgrade from 13.x to 15.x https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/releasenotes/product/relnote-bigip-15-1-0.html But I run into problem that the The configuration can not be loaded and I currently stuck in the upgrade process and try to 
+- notes: harvested first-post; 70-word OP
+
