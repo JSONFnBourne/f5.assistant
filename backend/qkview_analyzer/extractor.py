@@ -1601,8 +1601,12 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
                     data.diag_files[diag_name] = content
                 continue
 
-            # tmstat snapshots (keep as binary for now)
-            if name.startswith("shared/tmstat/"):
+            # tmstat data (keep as binary for now). Two layouts coexist:
+            #   - appliance snapshots under shared/tmstat/snapshots/...
+            #   - live segments under var/tmstat/... (TMOS VE; also the F5OS
+            #     subpackage path .../filesystem/var/tmstat/...)
+            # Match both so VE/F5OS tmstat members aren't silently dropped.
+            if "shared/tmstat/" in name or "var/tmstat/" in name:
                 f = tar.extractfile(member)
                 if f:
                     data.tmstat_files[name] = f.read()
