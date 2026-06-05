@@ -11,9 +11,8 @@ from typing import List, Literal, Optional
 from datasets import load_dataset
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-from transformers import TrainingArguments
 from peft import LoraConfig, get_peft_model
-from trl import SFTTrainer
+from trl import SFTConfig, SFTTrainer
 import tyro
 
 LOGGER = logging.getLogger("irule.train")
@@ -255,16 +254,24 @@ def run_train(args: TrainArgs) -> None:
         "remove_unused_columns": True,
         "group_by_length": False,
     }
+    # trl>=0.13: SFT-specific options (text field, max length, packing) live on
+    # SFTConfig, which subclasses TrainingArguments. Build it directly.
+    sft_kwargs = {
+        "dataset_text_field": "text",
+        "max_length": args.max_seq_length,
+        "packing": args.packing,
+    }
     try:
-        training_args = TrainingArguments(
+        training_args = SFTConfig(
             evaluation_strategy=args.evaluation_strategy,
             **training_kwargs,
+            **sft_kwargs,
         )
     except TypeError:
         LOGGER.warning(
-            "TrainingArguments does not accept 'evaluation_strategy'; using defaults and setting attribute manually."
+            "SFTConfig does not accept 'evaluation_strategy'; using defaults and setting attribute manually."
         )
-        training_args = TrainingArguments(**training_kwargs)
+        training_args = SFTConfig(**training_kwargs, **sft_kwargs)
         if hasattr(training_args, "evaluation_strategy"):
             setattr(training_args, "evaluation_strategy", args.evaluation_strategy)
         elif hasattr(training_args, "eval_strategy"):
@@ -309,14 +316,14 @@ def run_train(args: TrainArgs) -> None:
     )
 
     def build_trainer(packing: bool) -> SFTTrainer:
+        # trl>=0.13: packing/text-field/max-length come from SFTConfig (args);
+        # the tokenizer is passed as processing_class.
+        training_args.packing = packing
         return SFTTrainer(
             model=model,
-            tokenizer=tokenizer,
+            processing_class=tokenizer,
             train_dataset=train_ds,
             eval_dataset=eval_ds,
-            dataset_text_field="text",
-            max_seq_length=args.max_seq_length,
-            packing=packing,
             args=training_args,
         )
 

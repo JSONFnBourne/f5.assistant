@@ -339,22 +339,28 @@ def run_evaluate(args: EvaluateArgs) -> None:
             generation_kwargs["top_p"] = args.top_p
 
         bs = max(1, args.gen_batch_size)
+        # Left-pad so every row's generated tokens start at the same index; this
+        # lets us slice off the prompt cleanly instead of string-splitting on the
+        # question (which left the chat template's "assistant" header glued to
+        # every candidate and skewed the judge).
+        tokenizer.padding_side = "left"
         for i in range(0, len(eval_samples), bs):
             batch = eval_samples[i : i + bs]
             prompts = [build_eval_prompt(tokenizer, b["question"]) for b in batch]
             inputs = tokenizer(prompts, return_tensors="pt", padding=True)
             inputs = {k: v.to(model.device) for k, v in inputs.items()}
+            input_len = inputs["input_ids"].shape[1]
             with torch.no_grad():
                 outputs = model.generate(**inputs, **generation_kwargs)
-            texts = tokenizer.batch_decode(outputs, skip_special_tokens=True)
+            # Decode only the newly generated continuation, not the prompt.
+            texts = tokenizer.batch_decode(
+                outputs[:, input_len:], skip_special_tokens=True
+            )
             for b, out in zip(batch, texts):
-                text = out
-                if b["question"] in text:
-                    text = text.split(b["question"], 1)[-1].strip()
                 generations.append(
                     {
                         "question": b["question"],
-                        "candidate": text,
+                        "candidate": out.strip(),
                         "reference": b["reference"],
                         "context": b["context"],
                     }
