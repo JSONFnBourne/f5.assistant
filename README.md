@@ -44,7 +44,8 @@ A Next.js 16 app that is the front door to everything. Six tools:
 A FastAPI service that does the heavy lifting when a QKView is uploaded:
 
 1. Decompresses and unpacks the archive (`.qkview`, `.tgz`, `.tar`)
-2. Detects BIG-IP vs F5OS archive format
+2. Detects the archive family — four incompatible layouts (TMOS VE/BIG-IP,
+   F5OS rSeries, VELOS partition, VELOS controller/syscon)
 3. Parses syslog-format logs — both classic `MMM DD HH:MM:SS` and ISO 8601
 4. Builds an in-memory SQLite FTS5 log index for fast rule queries
 5. Parses `bigip.conf` for VLANs, self-IPs, and hostnames (BIG-IP only)
@@ -63,14 +64,14 @@ An end-to-end supervised fine-tuning system for producing domain-expert language
 models. Two active pipelines:
 
 - **`f5nse`** — Broad F5 expert (TMSH, LTM, DNS, and more). Base model:
-  `Llama-3.1-8B-Instruct`. Runs 11 stages: scrape approved F5 URLs → clean →
-  chunk at 512 tokens → auto-generate QA pairs → LLM-grade quality (filter at
-  0.85+) → 90/10 split → QLoRA fine-tune (4-bit) → evaluate → merge LoRA
-  adapters → export GGUF → serve.
+  `Llama-3.1-8B-Instruct`. Stages: scrape approved F5 URLs → clean → chunk at
+  512 tokens → auto-generate QA pairs → LLM-grade quality → package → validate →
+  90/10 split → QLoRA fine-tune → evaluate → merge LoRA adapters → export GGUF →
+  serve.
 
 - **`irule`** — iRules specialist. Base model: `Llama-3.2-3B-Instruct` (4-bit).
-  Same 11 stages plus two extras: entity extraction and rulebook derivation that
-  enforce valid iRule syntax during training.
+  Same stages plus two extras after `chunk`: entity extraction and rulebook
+  derivation that enforce valid iRule syntax during training.
 
 Training data is sourced **exclusively from approved F5 documentation URLs** —
 no human-written data. A judge LLM auto-generates and scores every QA pair.
@@ -87,8 +88,8 @@ product module: `tmos/`, `ltm/`, `dns/`, `apm/`, `asm/`, `sslo/`, `swg/`,
 F5OS-A 1.8.3 and F5OS-C 1.8.1.
 
 The `/db` directory holds the primary SQLite knowledge database (`knowledge.db`,
-FTS5-indexed, 46,931 documents) and a placeholder assistant state database
-(`f5_assistant.db`).
+FTS5-indexed, 46,931 documents). The session/analysis state database is
+`backend/f5_assistant.db` (populated at runtime) — **not** in `/db`.
 
 ### Knowledge Database Breakdown
 
@@ -116,12 +117,12 @@ prevents any single document title from flooding the result slots.
 | Layer         | Technology                                                  |
 |---------------|-------------------------------------------------------------|
 | Frontend      | Next.js 16, TypeScript, Tailwind CSS                        |
-| Backend       | FastAPI, Python 3.10, Uvicorn                               |
-| Local LLM     | Ollama — `qwen2.5:7b` (Q4_K_M, 7.6B params, 4.7 GB)       |
-| Fallback LLM  | `llama3.2:latest` (Q4_K_M, 3.2B params, 2.0 GB) installed  |
-| Fine-tuning   | PyTorch, HuggingFace TRL, PEFT, BitsAndBytes (4-bit QLoRA) |
+| Backend       | FastAPI, Python 3.12, Uvicorn                               |
+| Local LLM     | Ollama — `qwen2.5:14b` (Q4_K_M, 14B params, 9.0 GB)        |
+| Other models  | `llama3.1:8b`, `qwen2.5:7b`, `llama3.2:latest` (code fallback) installed |
+| Fine-tuning   | PyTorch 2.5, HuggingFace TRL, PEFT, BitsAndBytes (4-bit QLoRA) |
 | Storage       | SQLite (FTS5), JSONL                                        |
-| Hardware      | RTX 3060 Ti (8 GB VRAM), Ryzen 7 5700X3D, 32 GB DDR4      |
+| Hardware      | RTX 4080 SUPER (16 GB VRAM), Ryzen 7 5800X3D, 30 GiB RAM   |
 
 ---
 
@@ -137,13 +138,13 @@ prevents any single document title from flooding the result slots.
 1. Engineer types a question in `/knowledge`
 2. Classifier routes to F5, RFC, or general context
 3. `/api/knowledge` runs multi-pass retrieval against `knowledge.db`
-4. Qwen2.5:7b answers strictly from retrieved context at temperature 0.3
+4. The local LLM (qwen2.5:14b) answers strictly from retrieved context at temperature 0.3
 5. Streamed markdown response with source citations
 
 ### iRule Generation
 1. Engineer selects protocol and desired traffic events in `/generator`
 2. Builder constructs a Tcl skeleton
-3. `/api/generate` sends skeleton + protocol to Qwen2.5:7b via Ollama
+3. `/api/generate` sends skeleton + protocol to qwen2.5:14b via Ollama
 4. Model returns completed, hardened iRule code
 
 ---
