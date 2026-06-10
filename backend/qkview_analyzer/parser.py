@@ -2,7 +2,7 @@
 
 import re
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 
 
@@ -176,8 +176,10 @@ def parse_line(line: str, source_file: str = "", line_number: int = 0) -> Option
             if ts_str.endswith("Z"):
                 ts_str = ts_str.replace("Z", "+00:00")
             timestamp = datetime.fromisoformat(ts_str)
+            # Normalize to naive UTC (not server-local time) so entries from
+            # this source line up with parse_f5os_event_log's naive-UTC output.
             if timestamp.tzinfo is not None:
-                timestamp = timestamp.astimezone(tz=None).replace(tzinfo=None)
+                timestamp = timestamp.astimezone(timezone.utc).replace(tzinfo=None)
         except (ValueError, TypeError):
             return None
 
@@ -286,10 +288,12 @@ def parse_line(line: str, source_file: str = "", line_number: int = 0) -> Option
                 ts_str = ts_str.replace('Z', '+00:00')
             timestamp = datetime.fromisoformat(ts_str)
             # Normalize to naive UTC so mixed log sources sort together.
-            # F5OS event logs are parsed as naive, so mixing tz-aware ISO 8601
-            # entries with those would raise TypeError in the downstream sort.
+            # F5OS event logs are parsed as naive UTC, so converting to any
+            # other zone (e.g. server-local) would skew mixed-source timelines
+            # by the UTC offset; tz-aware entries would also raise TypeError
+            # in the downstream sort against naive ones.
             if timestamp.tzinfo is not None:
-                timestamp = timestamp.astimezone(tz=None).replace(tzinfo=None)
+                timestamp = timestamp.astimezone(timezone.utc).replace(tzinfo=None)
         except (ValueError, TypeError):
             return None
 

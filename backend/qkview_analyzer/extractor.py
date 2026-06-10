@@ -412,6 +412,7 @@ def _stream_extract_f5os_to_dir(
     """
     extracted = 0
     skipped = 0
+    total_extracted_bytes = 0
     last_progress = 0
     with tarfile.open(str(qkview_path), "r|*") as tar:
         for member in tar:
@@ -434,8 +435,21 @@ def _stream_extract_f5os_to_dir(
                 skipped += 1
                 continue
 
+            # Cumulative cap on what actually lands in the tempdir — a bomb
+            # built from many under-cap allowlisted members must not fill the
+            # staging disk.
+            total_extracted_bytes += member.size
+            if total_extracted_bytes > _MAX_DECOMPRESSED_BYTES:
+                raise ValueError(
+                    f"Total extracted size exceeded {_MAX_DECOMPRESSED_BYTES:,} bytes — "
+                    "aborting to prevent decompression bomb"
+                )
+
             try:
-                tar.extract(member, path=str(dest_dir), set_attrs=False)
+                # filter="data" (members are already symlink/hardlink- and
+                # traversal-screened above); silences the Py3.12+ tarfile
+                # DeprecationWarning ahead of the 3.14 default flip.
+                tar.extract(member, path=str(dest_dir), set_attrs=False, filter="data")
                 extracted += 1
             except (tarfile.TarError, OSError) as e:
                 logger.debug("skip extract %s: %s", name, e)
@@ -1496,18 +1510,28 @@ def _extract_f5os_via_tempdir(
 
 def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
     """Extract data from a traditional TMOS .qkview / .tgz archive."""
-    with tarfile.open(str(qkview_path), "r:*") as tar:
-        members = tar.getmembers()
-        total = len(members)
+    data = QKViewData()
+    total_decompressed = 0
+    max_mtime = 0
+    member_count = 0
 
-        # Zip bomb / excessive member guard
-        if total > 500_000:
-            raise ValueError(f"Archive contains {total} members — refusing to process (limit: 500,000)")
+    # Stream mode ("r|*"): members are validated as they decompress past, so
+    # the zip-bomb guards below abort at the first violated limit. The old
+    # random-access getmembers() walk decompressed the entire gzip stream
+    # before any guard could run.
+    with tarfile.open(str(qkview_path), "r|*") as tar:
+        for member in tar:
+            member_count += 1
 
-        # Path traversal guard; symlinks/hardlinks are skipped (not extracted to disk)
-        # TMOS qkviews legitimately contain symlinks (e.g. VERSION -> VERSION.LTM,
-        # usr/share/monitors/*) — rejecting them would break all BIG-IP archives.
-        for member in members:
+            # Zip bomb / excessive member guard
+            if member_count > 500_000:
+                raise ValueError(
+                    "Archive contains more than 500,000 members — refusing to process"
+                )
+
+            # Path traversal guard; symlinks/hardlinks are skipped (not extracted to disk)
+            # TMOS qkviews legitimately contain symlinks (e.g. VERSION -> VERSION.LTM,
+            # usr/share/monitors/*) — rejecting them would break all BIG-IP archives.
             if member.name.startswith('/') or '..' in member.name.split('/'):
                 raise ValueError(f"Unsafe archive member path detected: {member.name!r}")
 
@@ -1519,11 +1543,6 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
                     f"(limit: {_MAX_SINGLE_FILE_BYTES:,})"
                 )
 
-        data = QKViewData()
-        total_decompressed = 0
-        max_mtime = 0
-
-        for i, member in enumerate(members):
             if not member.isfile():
                 continue
 
@@ -1543,8 +1562,8 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
                 )
 
             # Progress update every 100 files
-            if progress_callback and i % 100 == 0:
-                progress_callback(f"Processing {i}/{total}: {name}")
+            if progress_callback and member_count % 100 == 0:
+                progress_callback(f"Processing member {member_count}: {name}")
 
             # Metadata files (target strict basenames to handle F5OS nested variations)
             basename = name.split("/")[-1]
@@ -1657,8 +1676,7 @@ def extract_qkview(qkview_path: str | Path, progress_callback=None) -> QKViewDat
     Dispatches to the F5OS or TMOS pipeline based on the presence of a
     root ``qkview/manifest.json``. F5OS archives are stream-extracted to a
     tempdir for fast subsequent reads; TMOS archives are processed directly
-    out of the gzipped tar (members are accessed sequentially during a
-    single ``getmembers`` walk, which is already cheap).
+    out of the gzipped tar in a single sequential streaming pass.
     """
     qkview_path = Path(qkview_path)
     if not qkview_path.exists():

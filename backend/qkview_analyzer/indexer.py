@@ -128,6 +128,7 @@ class LogIndexer:
         source_file: Optional[str] = None,
         limit: int = 1000,
         offset: int = 0,
+        descending: bool = False,
     ) -> list[dict]:
         """Query log entries with composable filters.
 
@@ -141,6 +142,8 @@ class LogIndexer:
             source_file: Source file filter (prefix match)
             limit: Max results to return
             offset: Result offset for pagination
+            descending: Sort newest-first instead of oldest-first. Used by
+                capped scans that must not be blind to the newest entries.
 
         Returns:
             List of dicts with log entry data
@@ -168,6 +171,8 @@ class LogIndexer:
             conditions.append("source_file LIKE ?")
             params.append(f"{source_file}%")
 
+        order = "DESC" if descending else "ASC"
+
         # FTS search uses a JOIN
         if search:
             where_clause = " AND ".join(conditions) if conditions else "1=1"
@@ -176,7 +181,7 @@ class LogIndexer:
                 FROM logs
                 JOIN logs_fts ON logs.id = logs_fts.rowid
                 WHERE logs_fts MATCH ? AND {where_clause}
-                ORDER BY logs.timestamp_epoch ASC
+                ORDER BY logs.timestamp_epoch {order}
                 LIMIT ? OFFSET ?
             """
             params = [search] + params + [limit, offset]
@@ -185,7 +190,7 @@ class LogIndexer:
             sql = f"""
                 SELECT * FROM logs
                 WHERE {where_clause}
-                ORDER BY timestamp_epoch ASC
+                ORDER BY timestamp_epoch {order}
                 LIMIT ? OFFSET ?
             """
             params.extend([limit, offset])
@@ -199,6 +204,7 @@ class LogIndexer:
         end: Optional[datetime] = None,
         min_severity: Optional[str] = None,
         process: Optional[str] = None,
+        msg_code: str | None = None,
     ) -> int:
         """Get count of matching entries without fetching them."""
         conditions = []
@@ -217,6 +223,10 @@ class LogIndexer:
         if process:
             conditions.append("process = ?")
             params.append(process)
+        if msg_code:
+            # Prefix match — same semantics as query()'s msg_code filter.
+            conditions.append("msg_code LIKE ?")
+            params.append(f"{msg_code}%")
 
         where_clause = " AND ".join(conditions) if conditions else "1=1"
         sql = f"SELECT COUNT(*) FROM logs WHERE {where_clause}"

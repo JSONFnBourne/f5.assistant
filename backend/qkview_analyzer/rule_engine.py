@@ -1,5 +1,6 @@
 """YAML-based known-issue detection rule engine."""
 
+import logging
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -9,6 +10,17 @@ from typing import Optional
 import yaml
 
 from .indexer import LogIndexer
+
+logger = logging.getLogger("f5_backend")
+
+# Memory cap for the shared regex scan. When the index holds more entries
+# than this, the scan fetches the newest N (timestamp DESC) and findings
+# produced from it carry a `note` flagging the cap.
+_REGEX_SCAN_LIMIT = 50_000
+
+# Per-msg_code sample fetch cap. True counts come from SQL COUNT(*), so this
+# only bounds the in-memory sample/correlation set.
+_MSG_CODE_FETCH_LIMIT = 10_000
 
 
 @dataclass
@@ -44,9 +56,10 @@ class Finding:
     first_seen: Optional[datetime] = None
     last_seen: Optional[datetime] = None
     count: int = 0
+    note: str | None = None  # e.g. "regex scan capped at N newest entries"
 
     def to_dict(self) -> dict:
-        return {
+        out = {
             "rule_name": self.rule_name,
             "description": self.rule_description,
             "severity": self.severity,
@@ -57,6 +70,9 @@ class Finding:
             "last_seen": self.last_seen.isoformat() if self.last_seen else None,
             "sample_entries": self.matched_entries[:5],  # limit to 5 samples
         }
+        if self.note:
+            out["note"] = self.note
+        return out
 
 
 class RuleEngine:
@@ -107,6 +123,17 @@ class RuleEngine:
                     correlation=rule_data.get("correlation"),
                     recommendation=rule_data.get("recommendation", ""),
                 )
+                if (
+                    rule.correlation
+                    and rule.correlation.get("type") == "paired"
+                    and len(rule.patterns) > 2
+                ):
+                    logger.warning(
+                        "Paired rule %r declares %d patterns; only the first "
+                        "two are used for correlation",
+                        rule.name,
+                        len(rule.patterns),
+                    )
                 self.rules.append(rule)
 
     def scan(self, indexer: LogIndexer, progress_callback=None) -> list[Finding]:
@@ -121,11 +148,24 @@ class RuleEngine:
         """
         findings = []
 
+        # Shared regex corpus, fetched once for every regex rule instead of
+        # per-rule. When the index exceeds the cap, fetch the newest N
+        # (timestamp DESC) and restore ASC order so correlation sweeps still
+        # see chronological input.
+        shared_entries: list[dict] | None = None
+        regex_capped = False
+        if any(ptype == "regex" for rule in self.rules for ptype, _ in rule._compiled):
+            total = indexer.query_count()
+            regex_capped = total > _REGEX_SCAN_LIMIT
+            shared_entries = indexer.query(limit=_REGEX_SCAN_LIMIT, descending=regex_capped)
+            if regex_capped:
+                shared_entries.reverse()
+
         for i, rule in enumerate(self.rules):
             if progress_callback:
                 progress_callback(f"Scanning rule {i + 1}/{len(self.rules)}: {rule.name}")
 
-            finding = self._evaluate_rule(rule, indexer)
+            finding = self._evaluate_rule(rule, indexer, shared_entries, regex_capped)
             if finding and finding.count > 0:
                 findings.append(finding)
 
@@ -135,33 +175,64 @@ class RuleEngine:
 
         return findings
 
-    def _evaluate_rule(self, rule: Rule, indexer: LogIndexer) -> Optional[Finding]:
+    def _evaluate_rule(
+        self,
+        rule: Rule,
+        indexer: LogIndexer,
+        shared_entries: list[dict] | None = None,
+        regex_capped: bool = False,
+    ) -> Optional[Finding]:
         """Evaluate a single rule against the log index."""
         all_matches = []
+        true_count = 0
+        notes: list[str] = []
 
         for pattern_type, pattern_value in rule._compiled:
             if pattern_type == "msg_code":
-                # Query by message code
-                entries = indexer.query(msg_code=pattern_value, limit=10000)
+                # True count from SQL; the fetch only feeds samples/correlation.
+                code_count = indexer.query_count(msg_code=pattern_value)
+                capped = code_count > _MSG_CODE_FETCH_LIMIT
+                entries = indexer.query(
+                    msg_code=pattern_value, limit=_MSG_CODE_FETCH_LIMIT, descending=capped
+                )
+                if capped:
+                    entries.reverse()  # restore chronological order
+                    notes.append(
+                        f"msg_code {pattern_value}: sampled newest "
+                        f"{_MSG_CODE_FETCH_LIMIT:,} of {code_count:,} matches"
+                    )
+                true_count += code_count
                 all_matches.extend(entries)
             elif pattern_type == "regex":
-                # Search by regex — use FTS for initial filter, then regex refine
-                # Try to extract a simple keyword for FTS
-                regex_pattern = pattern_value
-                entries = indexer.query(limit=50000)  # Get all entries for regex scan
-                for entry in entries:
-                    if regex_pattern.search(entry.get("message", "")) or \
-                       regex_pattern.search(entry.get("raw_line", "")):
-                        all_matches.append(entry)
+                # Regex scan over the shared corpus (fetched once in scan()).
+                if shared_entries is None:
+                    shared_entries = indexer.query(limit=_REGEX_SCAN_LIMIT)
+                matched = [
+                    e
+                    for e in shared_entries
+                    if pattern_value.search(e.get("message", ""))
+                    or pattern_value.search(e.get("raw_line", ""))
+                ]
+                if regex_capped and matched:
+                    cap_note = f"regex scan capped at newest {_REGEX_SCAN_LIMIT:,} entries"
+                    if cap_note not in notes:
+                        notes.append(cap_note)
+                true_count += len(matched)
+                all_matches.extend(matched)
 
         if not all_matches:
             return None
 
+        note = "; ".join(notes) if notes else None
+
         # Handle correlation rules (e.g., paired events like down+up = flap)
         if rule.correlation and rule.correlation.get("type") == "paired":
-            return self._evaluate_paired_correlation(rule, all_matches)
+            finding = self._evaluate_paired_correlation(rule, all_matches)
+            if finding is not None and note:
+                finding.note = note
+            return finding
 
-        # Simple rule: just count matching entries
+        # Simple rule: count from SQL (msg_code) plus regex matches
         finding = Finding(
             rule_name=rule.name,
             rule_description=rule.description,
@@ -169,7 +240,8 @@ class RuleEngine:
             category=rule.category,
             recommendation=rule.recommendation,
             matched_entries=all_matches[:10],  # Keep first 10 as samples
-            count=len(all_matches),
+            count=true_count,
+            note=note,
         )
 
         if all_matches:

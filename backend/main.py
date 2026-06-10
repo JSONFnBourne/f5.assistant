@@ -5,13 +5,17 @@ import asyncio
 import ctypes
 import ctypes.util
 import gc
+import re
 import sqlite3
 import os
 import tempfile
 import threading
 import json
 import logging
+import uuid
+from collections import Counter
 from contextlib import asynccontextmanager
+from datetime import datetime
 from typing import Optional
 
 logger = logging.getLogger("f5_backend")
@@ -94,6 +98,37 @@ app.add_middleware(
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "f5_assistant.db")
 
+# Per-analysis on-disk log indexes (SQLite FTS5). The index built during
+# analysis (and used by the rule engine) is persisted here as
+# <analysis_id>.db so GET /api/qkview/{id}/logs can search it later.
+LOG_INDEX_DIR = os.path.join(os.path.dirname(__file__), "data", "log_index")
+
+
+def _log_index_path(analysis_id: int) -> str:
+    return os.path.join(LOG_INDEX_DIR, f"{analysis_id}.db")
+
+
+def _sweep_log_indexes(conn: sqlite3.Connection) -> None:
+    """Delete log-index DB files with no surviving `analyses` row.
+
+    Runs after the 30-day retention DELETE so indexes belonging to swept
+    rows — and any orphans from interrupted runs — are removed together.
+    Temp files (non-numeric stems) are left alone: a concurrent analysis
+    may still be writing one.
+    """
+    if not os.path.isdir(LOG_INDEX_DIR):
+        return
+    keep = {row[0] for row in conn.execute("SELECT id FROM analyses")}
+    for name in os.listdir(LOG_INDEX_DIR):
+        stem, ext = os.path.splitext(name)
+        if ext != ".db" or not stem.isdigit():
+            continue
+        if int(stem) not in keep:
+            try:
+                os.remove(os.path.join(LOG_INDEX_DIR, name))
+            except OSError:
+                pass
+
 def init_db():
     """Initialize the SQLite database with required schemas."""
     conn = sqlite3.connect(DB_PATH)
@@ -151,18 +186,23 @@ async def analyze_qkview(request: Request):
         raise HTTPException(status_code=400, detail=f"File must be an archive of types: {allowed_extensions}")
 
     temp_path = None
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".qkview") as temp_file:
-        bytes_written = 0
-        async for chunk in request.stream():
-            if not chunk:
-                continue
-            bytes_written += len(chunk)
-            if bytes_written > MAX_UPLOAD_BYTES:
-                temp_file.close()
-                os.remove(temp_file.name)
-                raise HTTPException(status_code=413, detail="File exceeds 1 GB limit.")
-            temp_file.write(chunk)
-        temp_path = temp_file.name
+    bytes_written = 0
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".qkview") as temp_file:
+            temp_path = temp_file.name
+            async for chunk in request.stream():
+                if not chunk:
+                    continue
+                bytes_written += len(chunk)
+                if bytes_written > MAX_UPLOAD_BYTES:
+                    raise HTTPException(status_code=413, detail="File exceeds 1 GB limit.")
+                temp_file.write(chunk)
+    except BaseException:
+        # Spooling failed (client disconnect, size cap, …) — never leak the
+        # delete=False temp file into /tmp (a 16 GB tmpfs on this host).
+        if temp_path and os.path.exists(temp_path):
+            os.remove(temp_path)
+        raise
 
     if bytes_written == 0:
         os.remove(temp_path)
@@ -183,7 +223,9 @@ async def analyze_qkview(request: Request):
             raise HTTPException(status_code=400, detail="Invalid file content: not a valid gzip/qkview archive.")
 
     loop = asyncio.get_running_loop()
-    queue: asyncio.Queue = asyncio.Queue(maxsize=256)
+    # Unbounded: put_nowait runs inside loop callbacks where QueueFull would
+    # be swallowed — a dropped result/sentinel hangs the stream forever.
+    queue: asyncio.Queue = asyncio.Queue()
 
     def push(event: dict) -> None:
         """Thread-safe emit of one NDJSON event to the streaming response."""
@@ -194,6 +236,12 @@ async def analyze_qkview(request: Request):
 
     def worker() -> None:
         indexer: Optional[LogIndexer] = None
+        # The index is built at a temp path inside LOG_INDEX_DIR (same
+        # filesystem as its final name) because the analysis_id it will be
+        # named after only exists once the summary row is INSERTed. Set to
+        # None after the promoting rename; the finally block removes any
+        # leftover temp file on failure paths.
+        temp_index_path: Optional[str] = None
         try:
             progress("Extracting archive…")
             data = extract_qkview(temp_path, progress_callback=progress)
@@ -212,8 +260,18 @@ async def analyze_qkview(request: Request):
                 entries.sort(key=lambda e: e.timestamp)
 
             progress(f"Indexing {len(entries)} log entries…")
-            indexer = LogIndexer()
+            os.makedirs(LOG_INDEX_DIR, exist_ok=True)
+            temp_index_path = os.path.join(LOG_INDEX_DIR, f"tmp_{uuid.uuid4().hex}.db")
+            indexer = LogIndexer(db_path=temp_index_path)
             indexer.bulk_insert(entries, progress_callback=progress)
+            # Hostname fallback source: most common hostname across parsed
+            # entries. Must be computed before `entries` is dropped below.
+            hostname_counts = Counter(
+                e.hostname
+                for e in entries
+                if e.hostname and e.hostname not in ("", "-", "localhost")
+            )
+            fallback_hostname = hostname_counts.most_common(1)[0][0] if hostname_counts else None
             # `entries` is duplicated into the SQLite index; drop our copy now
             # so gc can reclaim it before the Reporter/json stage allocates.
             entries = []
@@ -258,12 +316,10 @@ async def analyze_qkview(request: Request):
                     logger.exception("Universal TMOS parser failed; continuing without app tree")
                     tmos_tree = {}
 
-            # Hostname fallback: derive from most common hostname in parsed log entries
-            if not data.meta.hostname and entries:
-                from collections import Counter
-                hostnames = [e.hostname for e in entries if e.hostname and e.hostname not in ("", "-", "localhost")]
-                if hostnames:
-                    data.meta.hostname = Counter(hostnames).most_common(1)[0][0]
+            # Hostname fallback: config didn't provide one — use the most
+            # common hostname seen in the parsed log entries.
+            if not data.meta.hostname and fallback_hostname:
+                data.meta.hostname = fallback_hostname
 
             progress("Running rule engine scan…")
             engine = RuleEngine(platform="f5os" if is_f5os else "tmos")
@@ -283,47 +339,34 @@ async def analyze_qkview(request: Request):
 
             progress("Generating summary…")
             queried = indexer.query(min_severity="warning", limit=5000)
-            json_str = Reporter.to_json(
-                data.meta,
-                queried,
-                findings,
-                config if not is_f5os else None,
-                qkview_data=data,
+            summary_dict = json.loads(
+                Reporter.to_json(
+                    data.meta,
+                    queried,
+                    findings,
+                    config if not is_f5os else None,
+                    qkview_data=data,
+                )
             )
-            summary_dict = json.loads(json_str)
 
             if tmos_tree:
                 summary_dict["tmos_config"] = tmos_tree
                 summary_dict["partitions"] = list_partitions(tmos_tree)
                 summary_dict["apps"] = app_summary(tmos_tree)
-                json_str = json.dumps(summary_dict, default=str)
 
-            # sqlite3.Connection's context manager commits but does not close
-            # the connection — explicit close keeps per-request connections
-            # from accumulating in the long-lived worker.
-            conn = sqlite3.connect(DB_PATH)
-            try:
-                cursor = conn.execute(
-                    "INSERT INTO analyses (filename, summary) VALUES (?, ?)",
-                    (filename, json_str)
-                )
-                analysis_id = cursor.lastrowid
-                conn.commit()
-            finally:
-                conn.close()
-
-            # Trim the streamed payload so the browser doesn't freeze parsing
-            # and rendering megabytes it will never show. SQLite keeps the full
-            # summary (including tmos_config) for the /apps detail endpoints.
-            # VELOS partition findings have been observed with 88 MB multi-line
-            # "messages" that blow the client stream past 500 MB.
+            # Trim log entries BEFORE persisting and streaming. VELOS
+            # partition findings have been observed with 88 MB multi-line
+            # "messages" that blow the client stream past 500 MB — and
+            # storing them untrimmed bloats the analyses table the same way.
+            # config/apps/partitions/tmos_config stay full fidelity: the
+            # GET /api/qkview/{id}/apps endpoints serve from the stored copy.
             MAX_MESSAGE_BYTES = 2048
 
             def _trim_entry(e):
                 # webapp/app/qkview/page.tsx renders sample.raw_line and
-                # entry.raw_line; `message` is a duplicate we drop for the
-                # client stream. Truncate raw_line to keep the UI responsive
-                # when the log parser produces a single 88 MB "entry".
+                # entry.raw_line; `message` is a duplicate we drop. Truncate
+                # raw_line to keep the UI responsive when the log parser
+                # produces a single 88 MB "entry".
                 if not isinstance(e, dict):
                     return e
                 out = {k: v for k, v in e.items() if k != "message"}
@@ -335,16 +378,49 @@ async def analyze_qkview(request: Request):
                     )
                 return out
 
-            client_dict = {k: v for k, v in summary_dict.items() if k != "tmos_config"}
-            client_dict["analysis_id"] = analysis_id
-            if isinstance(client_dict.get("entries"), list):
-                client_dict["entries"] = [_trim_entry(e) for e in client_dict["entries"][:300]]
-            if isinstance(client_dict.get("findings"), list):
-                client_dict["findings"] = [
+            if isinstance(summary_dict.get("entries"), list):
+                summary_dict["entries"] = [_trim_entry(e) for e in summary_dict["entries"][:300]]
+            if isinstance(summary_dict.get("findings"), list):
+                summary_dict["findings"] = [
                     {**f, "sample_entries": [_trim_entry(s) for s in f.get("sample_entries", [])]}
                     if isinstance(f, dict) else f
-                    for f in client_dict["findings"]
+                    for f in summary_dict["findings"]
                 ]
+
+            # sqlite3.Connection's context manager commits but does not close
+            # the connection — explicit close keeps per-request connections
+            # from accumulating in the long-lived worker.
+            conn = sqlite3.connect(DB_PATH)
+            try:
+                # Retention sweep: stored summaries older than 30 days are
+                # dead weight — drop them before adding the new row.
+                conn.execute(
+                    "DELETE FROM analyses WHERE analysis_date < datetime('now','-30 days')"
+                )
+                cursor = conn.execute(
+                    "INSERT INTO analyses (filename, summary) VALUES (?, ?)",
+                    (filename, json.dumps(summary_dict, default=str))
+                )
+                analysis_id = cursor.lastrowid
+                conn.commit()
+                # Remove log-index files orphaned by the retention DELETE
+                # above (or by earlier interrupted runs).
+                _sweep_log_indexes(conn)
+            finally:
+                conn.close()
+
+            # Promote the on-disk index to its permanent per-analysis name
+            # now that the id exists. The indexer is done being queried at
+            # this point (rule engine + summary query ran above); close it
+            # so the SQLite file is complete before the rename.
+            indexer.close()
+            os.replace(temp_index_path, _log_index_path(analysis_id))
+            temp_index_path = None
+
+            # Client stream drops tmos_config (megabytes the browser never
+            # renders); the /apps endpoints read it from the stored summary.
+            client_dict = {k: v for k, v in summary_dict.items() if k != "tmos_config"}
+            client_dict["analysis_id"] = analysis_id
 
             push({
                 "type": "result",
@@ -361,13 +437,21 @@ async def analyze_qkview(request: Request):
                 "detail": "Analysis failed. Check server logs for details.",
             })
         finally:
-            # Close the :memory: SQLite even on error paths — otherwise a
-            # failed analyze leaves the entire indexed log set resident
-            # until the worker thread's frame is GC'd.
+            # Close the index SQLite even on error paths — otherwise a
+            # failed analyze leaves the connection (and its page cache)
+            # resident until the worker thread's frame is GC'd. close()
+            # after close() is a no-op, so the success path is unaffected.
             if indexer is not None:
                 try:
                     indexer.close()
                 except Exception:
+                    pass
+            # Analysis failed before the index was promoted — don't leave
+            # the temp index file behind in LOG_INDEX_DIR.
+            if temp_index_path and os.path.exists(temp_index_path):
+                try:
+                    os.remove(temp_index_path)
+                except OSError:
                     pass
             if temp_path and os.path.exists(temp_path):
                 try:
@@ -407,7 +491,9 @@ def _load_summary(analysis_id: int) -> dict:
 
 
 @app.get("/api/qkview/{analysis_id}/apps")
-async def list_qkview_apps(analysis_id: int, partition: Optional[str] = None):
+def list_qkview_apps(analysis_id: int, partition: Optional[str] = None):
+    # Plain `def`: FastAPI runs it on the threadpool, so the sync SQLite
+    # read + json.loads in _load_summary can't block the event loop.
     """Return the list of virtual-server app summaries for a stored analysis.
 
     Optional `?partition=Common` filters to a single partition.
@@ -424,7 +510,8 @@ async def list_qkview_apps(analysis_id: int, partition: Optional[str] = None):
 
 
 @app.get("/api/qkview/{analysis_id}/apps/{full_path:path}")
-async def qkview_app_details(analysis_id: int, full_path: str):
+def qkview_app_details(analysis_id: int, full_path: str):
+    # Plain `def` — threadpooled for the same reason as list_qkview_apps.
     """Return the consolidated stanza set for a single virtual server."""
     if not full_path.startswith("/"):
         full_path = "/" + full_path
@@ -436,6 +523,160 @@ async def qkview_app_details(analysis_id: int, full_path: str):
     if details is None:
         raise HTTPException(status_code=404, detail=f"App not found: {full_path}")
     return {"analysis_id": analysis_id, "app": details}
+
+
+# FTS5 treats many characters as operators ('-' is NOT, '"' quotes, etc.).
+# Mirror the webapp knowledge-retrieval sanitizer: strip to word chars,
+# emit each surviving term as a quoted token (implicit AND between them).
+# User text NEVER reaches MATCH unquoted.
+def _build_fts_match(q: str) -> Optional[str]:
+    sanitized = re.sub(r"[^\w\s]", " ", q)[:512]
+    terms = [t for t in sanitized.split() if len(t) >= 2]
+    if not terms:
+        return None
+    return " ".join(f'"{t}"' for t in terms)
+
+
+def _parse_iso_param(name: str, value: str) -> float:
+    try:
+        return datetime.fromisoformat(value).timestamp()
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid `{name}` timestamp: {value!r} (expected ISO 8601)",
+        ) from exc
+
+
+@app.get("/api/qkview/{analysis_id}/logs")
+def search_qkview_logs(
+    analysis_id: int,
+    q: Optional[str] = None,
+    severity: Optional[str] = None,
+    process: Optional[str] = None,
+    source: Optional[str] = None,
+    since: Optional[str] = None,
+    until: Optional[str] = None,
+    limit: int = 50,
+    offset: int = 0,
+    facets: bool = False,
+):
+    # Plain `def` — threadpooled like the /apps endpoints, so the sync
+    # SQLite reads can't block the event loop.
+    """Search the persisted per-analysis log index.
+
+    Query params: `q` (full-text, sanitized), `severity`/`process`/`source`
+    (exact filters), `since`/`until` (ISO timestamps), `limit` (default 50,
+    max 500), `offset`, `facets` (include distinct severity/process/source
+    counts for filter dropdowns).
+    """
+    limit = max(1, min(limit, 500))
+    offset = max(0, offset)
+
+    with sqlite3.connect(DB_PATH) as conn:
+        row = conn.execute(
+            "SELECT 1 FROM analyses WHERE id = ?", (analysis_id,)
+        ).fetchone()
+    if row is None:
+        raise HTTPException(status_code=404, detail="Analysis not found")
+
+    index_path = _log_index_path(analysis_id)
+    if not os.path.exists(index_path):
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                "No log index stored for this analysis — it predates the "
+                "log-search feature. Re-run the analysis to generate one."
+            ),
+        )
+
+    conditions: list[str] = []
+    params: list = []
+    if severity:
+        conditions.append("logs.severity = ?")
+        params.append(severity.lower())
+    if process:
+        conditions.append("logs.process = ?")
+        params.append(process)
+    if source:
+        conditions.append("logs.source_file = ?")
+        params.append(source)
+    if since:
+        conditions.append("logs.timestamp_epoch >= ?")
+        params.append(_parse_iso_param("since", since))
+    if until:
+        conditions.append("logs.timestamp_epoch <= ?")
+        params.append(_parse_iso_param("until", until))
+
+    match_expr = _build_fts_match(q) if q else None
+    where = " AND ".join(conditions) if conditions else "1=1"
+    if match_expr:
+        base = (
+            "FROM logs JOIN logs_fts ON logs.id = logs_fts.rowid "
+            f"WHERE logs_fts MATCH ? AND {where}"
+        )
+        params = [match_expr, *params]
+    else:
+        base = f"FROM logs WHERE {where}"
+
+    # Read-only URI open: the endpoint must never create or mutate index files.
+    con = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
+    con.row_factory = sqlite3.Row
+    try:
+        total = con.execute(f"SELECT COUNT(*) {base}", params).fetchone()[0]
+        rows = con.execute(
+            "SELECT logs.timestamp, logs.hostname, logs.process, logs.severity, "
+            f"logs.msg_code, logs.source_file, logs.message, logs.raw_line {base} "
+            "ORDER BY logs.timestamp_epoch ASC, logs.id ASC LIMIT ? OFFSET ?",
+            [*params, limit, offset],
+        ).fetchall()
+        entries = [
+            {
+                "timestamp": r["timestamp"],
+                "host": r["hostname"],
+                "process": r["process"],
+                "severity": r["severity"],
+                "msg_code": r["msg_code"],
+                "source": r["source_file"],
+                "message": r["message"],
+                "raw_line": r["raw_line"],
+            }
+            for r in rows
+        ]
+        result = {
+            "analysis_id": analysis_id,
+            "total": total,
+            "limit": limit,
+            "offset": offset,
+            "entries": entries,
+            "capped": offset + len(entries) < total,
+        }
+        if facets:
+            result["facets"] = {
+                "severities": [
+                    {"value": r[0], "count": r[1]}
+                    for r in con.execute(
+                        "SELECT severity, COUNT(*) FROM logs "
+                        "GROUP BY severity ORDER BY MIN(severity_num)"
+                    )
+                ],
+                "processes": [
+                    {"value": r[0], "count": r[1]}
+                    for r in con.execute(
+                        "SELECT process, COUNT(*) FROM logs WHERE process IS NOT NULL "
+                        "GROUP BY process ORDER BY COUNT(*) DESC LIMIT 100"
+                    )
+                ],
+                "sources": [
+                    {"value": r[0], "count": r[1]}
+                    for r in con.execute(
+                        "SELECT source_file, COUNT(*) FROM logs "
+                        "GROUP BY source_file ORDER BY COUNT(*) DESC LIMIT 100"
+                    )
+                ],
+            }
+        return result
+    finally:
+        con.close()
 
 
 if __name__ == "__main__":
