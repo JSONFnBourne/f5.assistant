@@ -2,21 +2,21 @@ from __future__ import annotations
 
 import asyncio
 import sys
-from typing import Callable, Dict, List, Tuple, Type
+from collections.abc import Callable
 
 import tyro
 
 from . import (
-    clean,
     chunk,
+    clean,
     evaluate,
-    extract,
-    rulebook,
     export,
+    extract,
     generate,
     grade,
     merge,
     package,
+    rulebook,
     scrape,
     serve,
     split,
@@ -24,11 +24,10 @@ from . import (
     validate,
 )
 
+CommandEntry = tuple[type[object], Callable[[object], None], str]
 
-CommandEntry = Tuple[Type[object], Callable[[object], None], str]
 
-
-def _build_commands() -> Dict[str, CommandEntry]:
+def _build_commands() -> dict[str, CommandEntry]:
     return {
         "scrape": (
             scrape.ScrapeArgs,
@@ -113,7 +112,7 @@ def _build_commands() -> Dict[str, CommandEntry]:
     }
 
 
-def _print_help(commands: Dict[str, CommandEntry]) -> None:
+def _print_help(commands: dict[str, CommandEntry]) -> None:
     lines = ["Usage: python -m irule.cli <command> [--flags]\n", "Available commands:"]
     for name, (_, _, description) in commands.items():
         lines.append(f"  {name:<10} {description}")
@@ -121,7 +120,7 @@ def _print_help(commands: Dict[str, CommandEntry]) -> None:
     print("\n".join(lines))
 
 
-def main(argv: List[str] | None = None) -> None:
+def main(argv: list[str] | None = None) -> None:
     if argv is None:
         argv = sys.argv[1:]
     commands = _build_commands()

@@ -1,20 +1,17 @@
 """CLI entry point for qkview-analyzer."""
 
-import sys
 from datetime import datetime
-from pathlib import Path
-from typing import Optional
 
 import click
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
+from .config_parser import BigIPConfig, parse_bigip_base_conf, parse_bigip_conf
 from .extractor import extract_qkview
-from .parser import parse_all_logs, parse_f5os_event_log
 from .indexer import LogIndexer
-from .config_parser import parse_bigip_conf, parse_bigip_base_conf, BigIPConfig
-from .rule_engine import RuleEngine
+from .parser import parse_all_logs, parse_f5os_event_log
 from .reporter import Reporter
+from .rule_engine import RuleEngine
 from .tmstat_parser import parse_tmstat_files
 
 console = Console()
@@ -48,9 +45,13 @@ def _load_and_index(qkview_file: str) -> tuple:
         # F5OS: also parse event log and system events
         if data.meta.product == "F5OS":
             if data.f5os_event_log:
-                entries.extend(parse_f5os_event_log(data.f5os_event_log, source_file="event-log.log"))
+                entries.extend(
+                    parse_f5os_event_log(data.f5os_event_log, source_file="event-log.log")
+                )
             if data.f5os_system_events:
-                entries.extend(parse_f5os_event_log(data.f5os_system_events, source_file="system-events"))
+                entries.extend(
+                    parse_f5os_event_log(data.f5os_system_events, source_file="system-events")
+                )
             entries.sort(key=lambda e: e.timestamp)
 
         # Index
@@ -68,9 +69,7 @@ def _load_and_index(qkview_file: str) -> tuple:
             config = parse_bigip_conf(data.config_files["config/bigip.conf"])
 
         if "config/bigip_base.conf" in data.config_files:
-            base_config = parse_bigip_base_conf(
-                data.config_files["config/bigip_base.conf"]
-            )
+            base_config = parse_bigip_base_conf(data.config_files["config/bigip_base.conf"])
             config.vlans = base_config.vlans
             config.self_ips = base_config.self_ips
 
@@ -95,7 +94,8 @@ def cli():
 @click.option("--start", "-s", help="Start time filter (YYYY-MM-DD HH:MM)")
 @click.option("--end", "-e", help="End time filter (YYYY-MM-DD HH:MM)")
 @click.option(
-    "--severity", "-v",
+    "--severity",
+    "-v",
     type=click.Choice(
         ["debug", "info", "notice", "warning", "err", "crit", "alert", "emerg"],
         case_sensitive=False,
@@ -129,7 +129,9 @@ def analyze(qkview_file: str, start: str, end: str, severity: str, json_output: 
             indexer,
             progress_callback=lambda msg: progress.update(task, description=msg),
         )
-        progress.update(task, description=f"[green]✓ Scan complete — {len(findings)} issue(s) found[/]")
+        progress.update(
+            task, description=f"[green]✓ Scan complete — {len(findings)} issue(s) found[/]"
+        )
 
     if json_output:
         # JSON export
@@ -192,7 +194,8 @@ def analyze(qkview_file: str, start: str, end: str, severity: str, json_output: 
 @click.option("--start", "-s", help="Start time filter (YYYY-MM-DD HH:MM)")
 @click.option("--end", "-e", help="End time filter (YYYY-MM-DD HH:MM)")
 @click.option(
-    "--severity", "-v",
+    "--severity",
+    "-v",
     type=click.Choice(
         ["debug", "info", "notice", "warning", "err", "crit", "alert", "emerg"],
         case_sensitive=False,
@@ -245,6 +248,7 @@ def logs(
 
     if json_output:
         import json
+
         click.echo(json.dumps(results, indent=2, default=str))
     elif table_mode:
         reporter.print_log_entries_table(results)
@@ -268,6 +272,7 @@ def config(qkview_file: str, json_output: bool):
 
     if json_output:
         import json
+
         output = {
             "virtual_servers": {
                 name: {
@@ -327,7 +332,9 @@ def export(qkview_file: str, output_file: str, start: str, end: str, severity: s
     with open(output_file, "w") as f:
         f.write(json_str)
 
-    console.print(f"[green]✓ Exported {len(queried)} entries and {len(findings)} findings to {output_file}[/]")
+    console.print(
+        f"[green]✓ Exported {len(queried)} entries and {len(findings)} findings to {output_file}[/]"
+    )
     indexer.close()
 
 
@@ -352,7 +359,7 @@ def info(qkview_file: str):
     reporter = Reporter(console)
     reporter.print_device_summary(data.meta)
 
-    console.print(f"\n[dim]Archive contents:[/]")
+    console.print("\n[dim]Archive contents:[/]")
     console.print(f"  Log files:    {len(data.log_files)}")
     console.print(f"  Config files: {len(data.config_files)}")
     console.print(f"  tmstat files: {len(data.tmstat_files)}")

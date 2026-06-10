@@ -3,12 +3,11 @@ from __future__ import annotations
 import json
 import logging
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional
 
 from .rulebook import load_event_order
-
 
 LOGGER = logging.getLogger("irule.extract")
 
@@ -23,8 +22,8 @@ def strip_disclaimer(text: str) -> str:
     return text
 
 
-def load_clean_index(clean_dir: Path) -> Dict[str, dict]:
-    index: Dict[str, dict] = {}
+def load_clean_index(clean_dir: Path) -> dict[str, dict]:
+    index: dict[str, dict] = {}
     for path in clean_dir.glob("*.json"):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -36,10 +35,10 @@ def load_clean_index(clean_dir: Path) -> Dict[str, dict]:
     return index
 
 
-def parse_bullet_entries(section_text: str) -> List[dict]:
-    entries: List[dict] = []
-    current_name: Optional[str] = None
-    current_desc: List[str] = []
+def parse_bullet_entries(section_text: str) -> list[dict]:
+    entries: list[dict] = []
+    current_name: str | None = None
+    current_desc: list[str] = []
     for raw_line in section_text.splitlines():
         line = raw_line.strip()
         if not line:
@@ -67,11 +66,11 @@ def path_for_entity(name: str) -> str:
     return name.replace("::", "__") + ".html"
 
 
-def parse_examples(text: str) -> List[str]:
-    examples: List[str] = []
+def parse_examples(text: str) -> list[str]:
+    examples: list[str] = []
     lines = text.splitlines()
     collecting = False
-    current: List[str] = []
+    current: list[str] = []
     for line in lines:
         if line.startswith("## "):
             if collecting:
@@ -88,13 +87,13 @@ def parse_examples(text: str) -> List[str]:
     return cleaned
 
 
-def parse_valid_events(text: str) -> List[str]:
+def parse_valid_events(text: str) -> list[str]:
     matches = re.search(r"Valid Events\s*:?\s*(.*)", text, re.IGNORECASE)
     if not matches:
         return []
     line = matches.group(1)
     line = line.replace("and", ",")
-    parts = [part.strip().rstrip('.') for part in line.split(',')]
+    parts = [part.strip().rstrip(".") for part in line.split(",")]
     return [part for part in parts if part]
 
 
@@ -106,7 +105,7 @@ def extract_section_by_heading(text: str, headings: Iterable[str]) -> str:
     """
     target = {h.strip().lower() for h in headings}
     lines = text.splitlines()
-    buf: List[str] = []
+    buf: list[str] = []
     collecting = False
     for raw in lines:
         line = raw.rstrip("\n")
@@ -122,21 +121,21 @@ def extract_section_by_heading(text: str, headings: Iterable[str]) -> str:
     return strip_disclaimer(body)
 
 
-def ensure_module_page(module: str, index: Dict[str, dict]) -> dict:
+def ensure_module_page(module: str, index: dict[str, dict]) -> dict:
     url = f"https://clouddocs.f5.com/api/irules/{module}.html"
     if url not in index:
         raise FileNotFoundError(f"Module page {url} not found in clean index")
     return index[url]
 
 
-def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, dict]) -> List[dict]:
+def build_entity_records(module: str, clean_dir: Path, event_order: dict[str, dict]) -> list[dict]:
     index = load_clean_index(clean_dir)
     module_data = ensure_module_page(module, index)
     module_text = strip_disclaimer(module_data.get("text", ""))
 
     lines = module_text.splitlines()
     state = None
-    sections: Dict[str, List[str]] = {"description": []}
+    sections: dict[str, list[str]] = {"description": []}
     for line in lines:
         line = line.rstrip()
         if line.startswith("## "):
@@ -149,7 +148,9 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
 
     description = "\n".join(sections.get("description", [])).strip()
     if not description:
-        description = strip_disclaimer((module_data.get("sections", {}) or {}).get("description", ""))
+        description = strip_disclaimer(
+            (module_data.get("sections", {}) or {}).get("description", "")
+        )
     # Tolerate headings labelled either "Command List" or "Commands"
     command_section_lines = sections.get("command list", []) or sections.get("commands", [])
     command_entries = parse_bullet_entries("\n".join(command_section_lines))
@@ -158,7 +159,7 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
         structured = (module_data.get("sections", {}) or {}).get("available_commands", "")
         if structured:
             # available_commands is a simple newline list without dashes; parse per line
-            entries: List[dict] = []
+            entries: list[dict] = []
             for raw in structured.splitlines():
                 line = raw.strip()
                 if not line:
@@ -176,7 +177,7 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
     if not event_entries:
         structured = (module_data.get("sections", {}) or {}).get("associated_events", "")
         if structured:
-            entries: List[dict] = []
+            entries: list[dict] = []
             for raw in structured.splitlines():
                 line = raw.strip()
                 if not line:
@@ -189,7 +190,7 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
             event_entries = entries
     module_related_info = "\n".join(sections.get("related information", [])).strip()
 
-    entities: List[dict] = []
+    entities: list[dict] = []
 
     base_url = module_data.get("url")
     entities.append(
@@ -212,15 +213,19 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
         detail = index.get(command_url)
         description_detail = None
         syntax = None
-        examples: List[str] = []
-        valid_events: List[str] = []
+        examples: list[str] = []
+        valid_events: list[str] = []
         if detail:
             detail_sections = detail.get("sections", {})
-            description_detail = strip_disclaimer(detail_sections.get("description", "") or detail.get("text", ""))
+            description_detail = strip_disclaimer(
+                detail_sections.get("description", "") or detail.get("text", "")
+            )
             syntax = detail_sections.get("syntax")
             examples = parse_examples(detail.get("text", ""))
             valid_events = parse_valid_events(detail.get("text", ""))
-            related_information = extract_section_by_heading(detail.get("text", ""), ("related information",))
+            related_information = extract_section_by_heading(
+                detail.get("text", ""), ("related information",)
+            )
         entity = {
             "module": module,
             "name": name,
@@ -230,7 +235,11 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
             "syntax": syntax,
             "examples": examples,
             "valid_events": valid_events,
-            **({"related_information": related_information} if detail and related_information else {}),
+            **(
+                {"related_information": related_information}
+                if detail and related_information
+                else {}
+            ),
             "source_url": command_url if detail else base_url,
         }
         entities.append(entity)
@@ -243,12 +252,16 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
         event_url = f"https://clouddocs.f5.com/api/irules/{path_for_entity(name)}"
         detail = index.get(event_url)
         description_detail = None
-        examples: List[str] = []
+        examples: list[str] = []
         if detail:
             detail_sections = detail.get("sections", {})
-            description_detail = strip_disclaimer(detail_sections.get("description", "") or detail.get("text", ""))
+            description_detail = strip_disclaimer(
+                detail_sections.get("description", "") or detail.get("text", "")
+            )
             examples = parse_examples(detail.get("text", ""))
-            related_information = extract_section_by_heading(detail.get("text", ""), ("related information",))
+            related_information = extract_section_by_heading(
+                detail.get("text", ""), ("related information",)
+            )
         order_meta = event_order.get(name, {})
         entity = {
             "module": module,
@@ -259,7 +272,11 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
             "source_url": event_url if detail else base_url,
             "event_order": order_meta,
             "examples": examples,
-            **({"related_information": related_information} if detail and related_information else {}),
+            **(
+                {"related_information": related_information}
+                if detail and related_information
+                else {}
+            ),
         }
         entities.append(entity)
 
@@ -270,8 +287,8 @@ def build_entity_records(module: str, clean_dir: Path, event_order: Dict[str, di
 class ExtractArgs:
     module: str
     clean_dir: Path = Path("data/clean")
-    output_path: Optional[Path] = None
-    event_order_path: Optional[Path] = Path("irules_https_event_order.jsonl")
+    output_path: Path | None = None
+    event_order_path: Path | None = Path("irules_https_event_order.jsonl")
 
 
 def run_extract(args: ExtractArgs) -> None:
@@ -293,12 +310,12 @@ def run_extract(args: ExtractArgs) -> None:
 class ExtractAllArgs:
     clean_dir: Path = Path("data/clean")
     output_dir: Path = Path("data/entities")
-    event_order_path: Optional[Path] = Path("irules_https_event_order.jsonl")
-    modules: Optional[List[str]] = None  # Optional explicit list to restrict extraction
-    aggregate_path: Optional[Path] = None  # If set, also write a combined JSONL here
+    event_order_path: Path | None = Path("irules_https_event_order.jsonl")
+    modules: list[str] | None = None  # Optional explicit list to restrict extraction
+    aggregate_path: Path | None = None  # If set, also write a combined JSONL here
 
 
-def discover_modules_from_index(index: Dict[str, dict]) -> List[str]:
+def discover_modules_from_index(index: dict[str, dict]) -> list[str]:
     pattern = re.compile(r"https://clouddocs\.f5\.com/api/irules/([A-Z0-9]+)\.html$")
     mods: set[str] = set()
     for url in index.keys():
@@ -313,7 +330,9 @@ def run_extract_all(args: ExtractAllArgs) -> None:
     index = load_clean_index(args.clean_dir)
     if not index:
         raise FileNotFoundError(f"No cleaned documents found in {args.clean_dir}")
-    modules = [m.strip().upper() for m in (args.modules or []) if m.strip()] or discover_modules_from_index(index)
+    modules = [
+        m.strip().upper() for m in (args.modules or []) if m.strip()
+    ] or discover_modules_from_index(index)
     if not modules:
         raise RuntimeError("No modules discovered to extract.")
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -340,7 +359,9 @@ def run_extract_all(args: ExtractAllArgs) -> None:
         if agg_fh:
             agg_fh.close()
     if args.aggregate_path:
-        LOGGER.info("Aggregate entity file written to %s (total records %s)", args.aggregate_path, total)
+        LOGGER.info(
+            "Aggregate entity file written to %s (total records %s)", args.aggregate_path, total
+        )
 
 
 def main() -> None:

@@ -1,22 +1,22 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
 import asyncio
 import ctypes
 import ctypes.util
 import gc
-import re
-import sqlite3
-import os
-import tempfile
-import threading
 import json
 import logging
+import os
+import re
+import sqlite3
+import tempfile
+import threading
 import uuid
 from collections import Counter
 from contextlib import asynccontextmanager
 from datetime import datetime
-from typing import Optional
+
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 
 logger = logging.getLogger("f5_backend")
 
@@ -64,18 +64,24 @@ def _reclaim_memory():
         except OSError:
             pass
 
-from qkview_analyzer.extractor import extract_qkview
-from qkview_analyzer.parser import parse_all_logs, parse_f5os_event_log
-from qkview_analyzer.indexer import LogIndexer
-from qkview_analyzer.config_parser import parse_bigip_conf, parse_bigip_base_conf, BigIPConfig
-from qkview_analyzer.rule_engine import RuleEngine, Finding
-from qkview_analyzer.reporter import Reporter
-from qkview_analyzer.tmos_config import (
-    parse_tmos_config,
-    list_partitions,
-    app_summary,
-    app_details,
+
+from qkview_analyzer.config_parser import (
+    BigIPConfig,
+    parse_bigip_base_conf,
+    parse_bigip_conf,
 )
+from qkview_analyzer.extractor import extract_qkview
+from qkview_analyzer.indexer import LogIndexer
+from qkview_analyzer.parser import parse_all_logs, parse_f5os_event_log
+from qkview_analyzer.reporter import Reporter
+from qkview_analyzer.rule_engine import Finding, RuleEngine
+from qkview_analyzer.tmos_config import (
+    app_details,
+    app_summary,
+    list_partitions,
+    parse_tmos_config,
+)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -129,20 +135,21 @@ def _sweep_log_indexes(conn: sqlite3.Connection) -> None:
             except OSError:
                 pass
 
+
 def init_db():
     """Initialize the SQLite database with required schemas."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     # Create tables for QKView analysis summaries and Chat History
-    cursor.execute('''
+    cursor.execute("""
         CREATE TABLE IF NOT EXISTS analyses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             filename TEXT NOT NULL,
             analysis_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             summary JSON NOT NULL
         )
-    ''')
-    cursor.execute('''
+    """)
+    cursor.execute("""
         CREATE TABLE IF NOT EXISTS chat_history (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             session_id TEXT NOT NULL,
@@ -150,21 +157,25 @@ def init_db():
             content TEXT NOT NULL,
             timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
-    ''')
+    """)
     conn.commit()
     conn.close()
+
 
 @app.get("/")
 async def root():
     return {"message": "F5 Assistant Backend API is running."}
 
+
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "db_initialized": os.path.exists(DB_PATH)}
 
+
 @app.options("/api/analyze")
 async def analyze_qkview_options():
     return {}
+
 
 @app.post("/api/analyze")
 async def analyze_qkview(request: Request):
@@ -183,7 +194,9 @@ async def analyze_qkview(request: Request):
     filename = request.headers.get("x-filename") or "upload.qkview"
     allowed_extensions = (".qkview", ".tgz", ".tar.gz", ".tar")
     if not filename.endswith(allowed_extensions):
-        raise HTTPException(status_code=400, detail=f"File must be an archive of types: {allowed_extensions}")
+        raise HTTPException(
+            status_code=400, detail=f"File must be an archive of types: {allowed_extensions}"
+        )
 
     temp_path = None
     bytes_written = 0
@@ -211,16 +224,21 @@ async def analyze_qkview(request: Request):
     # Validate file content before starting the streaming pipeline — that way
     # bad uploads still return a plain 4xx instead of a 200 with a stream.
     import tarfile as _tarfile
+
     if filename.endswith(".tar"):
         if not _tarfile.is_tarfile(temp_path):
             os.remove(temp_path)
-            raise HTTPException(status_code=400, detail="Invalid file content: not a valid tar archive.")
+            raise HTTPException(
+                status_code=400, detail="Invalid file content: not a valid tar archive."
+            )
     else:
         with open(temp_path, "rb") as f:
             magic = f.read(2)
-        if magic != b'\x1f\x8b':
+        if magic != b"\x1f\x8b":
             os.remove(temp_path)
-            raise HTTPException(status_code=400, detail="Invalid file content: not a valid gzip/qkview archive.")
+            raise HTTPException(
+                status_code=400, detail="Invalid file content: not a valid gzip/qkview archive."
+            )
 
     loop = asyncio.get_running_loop()
     # Unbounded: put_nowait runs inside loop callbacks where QueueFull would
@@ -235,13 +253,13 @@ async def analyze_qkview(request: Request):
         push({"type": "progress", "msg": msg})
 
     def worker() -> None:
-        indexer: Optional[LogIndexer] = None
+        indexer: LogIndexer | None = None
         # The index is built at a temp path inside LOG_INDEX_DIR (same
         # filesystem as its final name) because the analysis_id it will be
         # named after only exists once the summary row is INSERTed. Set to
         # None after the promoting rename; the finally block removes any
         # leftover temp file on failure paths.
-        temp_index_path: Optional[str] = None
+        temp_index_path: str | None = None
         try:
             progress("Extracting archive…")
             data = extract_qkview(temp_path, progress_callback=progress)
@@ -252,10 +270,14 @@ async def analyze_qkview(request: Request):
             is_f5os = data.meta.product == "F5OS"
             if is_f5os:
                 if data.f5os_event_log:
-                    event_entries = parse_f5os_event_log(data.f5os_event_log, source_file="event-log.log")
+                    event_entries = parse_f5os_event_log(
+                        data.f5os_event_log, source_file="event-log.log"
+                    )
                     entries.extend(event_entries)
                 if data.f5os_system_events:
-                    sys_event_entries = parse_f5os_event_log(data.f5os_system_events, source_file="system-events")
+                    sys_event_entries = parse_f5os_event_log(
+                        data.f5os_system_events, source_file="system-events"
+                    )
                     entries.extend(sys_event_entries)
                 entries.sort(key=lambda e: e.timestamp)
 
@@ -303,12 +325,10 @@ async def analyze_qkview(request: Request):
                     partition_names = sorted(
                         name
                         for name in data.config_files.keys()
-                        if name.startswith("config/partitions/")
-                        and name.endswith((".conf",))
+                        if name.startswith("config/partitions/") and name.endswith((".conf",))
                     )
                     combined = "\n".join(
-                        data.config_files.get(name, "")
-                        for name in (*root_names, *partition_names)
+                        data.config_files.get(name, "") for name in (*root_names, *partition_names)
                     )
                     if combined.strip():
                         tmos_tree = parse_tmos_config(combined)
@@ -328,14 +348,16 @@ async def analyze_qkview(request: Request):
             if is_f5os and data.f5os_health:
                 for h in data.f5os_health:
                     if h.health == "unhealthy":
-                        findings.append(Finding(
-                            rule_name=f"f5os-health-{h.component}",
-                            rule_description=f"F5OS Health: {h.component} — {h.description}",
-                            severity="critical" if h.severity == "critical" else "warning",
-                            category="hardware",
-                            recommendation=f"Check {h.component} hardware status. Component reports: {h.description}",
-                            count=1,
-                        ))
+                        findings.append(
+                            Finding(
+                                rule_name=f"f5os-health-{h.component}",
+                                rule_description=f"F5OS Health: {h.component} — {h.description}",
+                                severity="critical" if h.severity == "critical" else "warning",
+                                category="hardware",
+                                recommendation=f"Check {h.component} hardware status. Component reports: {h.description}",
+                                count=1,
+                            )
+                        )
 
             progress("Generating summary…")
             queried = indexer.query(min_severity="warning", limit=5000)
@@ -382,8 +404,14 @@ async def analyze_qkview(request: Request):
                 summary_dict["entries"] = [_trim_entry(e) for e in summary_dict["entries"][:300]]
             if isinstance(summary_dict.get("findings"), list):
                 summary_dict["findings"] = [
-                    {**f, "sample_entries": [_trim_entry(s) for s in f.get("sample_entries", [])]}
-                    if isinstance(f, dict) else f
+                    (
+                        {
+                            **f,
+                            "sample_entries": [_trim_entry(s) for s in f.get("sample_entries", [])],
+                        }
+                        if isinstance(f, dict)
+                        else f
+                    )
                     for f in summary_dict["findings"]
                 ]
 
@@ -399,7 +427,7 @@ async def analyze_qkview(request: Request):
                 )
                 cursor = conn.execute(
                     "INSERT INTO analyses (filename, summary) VALUES (?, ?)",
-                    (filename, json.dumps(summary_dict, default=str))
+                    (filename, json.dumps(summary_dict, default=str)),
                 )
                 analysis_id = cursor.lastrowid
                 conn.commit()
@@ -422,20 +450,25 @@ async def analyze_qkview(request: Request):
             client_dict = {k: v for k, v in summary_dict.items() if k != "tmos_config"}
             client_dict["analysis_id"] = analysis_id
 
-            push({
-                "type": "result",
-                "status": "success",
-                "filename": filename,
-                "data": client_dict,
-            })
+            push(
+                {
+                    "type": "result",
+                    "status": "success",
+                    "filename": filename,
+                    "data": client_dict,
+                }
+            )
         except Exception:
             import traceback
+
             logger.error("FAILED TO ANALYZE QKVIEW:\n%s", traceback.format_exc())
-            push({
-                "type": "error",
-                "status_code": 500,
-                "detail": "Analysis failed. Check server logs for details.",
-            })
+            push(
+                {
+                    "type": "error",
+                    "status_code": 500,
+                    "detail": "Analysis failed. Check server logs for details.",
+                }
+            )
         finally:
             # Close the index SQLite even on error paths — otherwise a
             # failed analyze leaves the connection (and its page cache)
@@ -476,12 +509,11 @@ async def analyze_qkview(request: Request):
         headers={"Cache-Control": "no-cache, no-transform", "X-Accel-Buffering": "no"},
     )
 
+
 def _load_summary(analysis_id: int) -> dict:
     """Fetch a stored analysis summary JSON blob from SQLite."""
     with sqlite3.connect(DB_PATH) as conn:
-        row = conn.execute(
-            "SELECT summary FROM analyses WHERE id = ?", (analysis_id,)
-        ).fetchone()
+        row = conn.execute("SELECT summary FROM analyses WHERE id = ?", (analysis_id,)).fetchone()
     if row is None:
         raise HTTPException(status_code=404, detail="Analysis not found")
     try:
@@ -491,7 +523,7 @@ def _load_summary(analysis_id: int) -> dict:
 
 
 @app.get("/api/qkview/{analysis_id}/apps")
-def list_qkview_apps(analysis_id: int, partition: Optional[str] = None):
+def list_qkview_apps(analysis_id: int, partition: str | None = None):
     # Plain `def`: FastAPI runs it on the threadpool, so the sync SQLite
     # read + json.loads in _load_summary can't block the event loop.
     """Return the list of virtual-server app summaries for a stored analysis.
@@ -529,7 +561,7 @@ def qkview_app_details(analysis_id: int, full_path: str):
 # Mirror the webapp knowledge-retrieval sanitizer: strip to word chars,
 # emit each surviving term as a quoted token (implicit AND between them).
 # User text NEVER reaches MATCH unquoted.
-def _build_fts_match(q: str) -> Optional[str]:
+def _build_fts_match(q: str) -> str | None:
     sanitized = re.sub(r"[^\w\s]", " ", q)[:512]
     terms = [t for t in sanitized.split() if len(t) >= 2]
     if not terms:
@@ -550,12 +582,12 @@ def _parse_iso_param(name: str, value: str) -> float:
 @app.get("/api/qkview/{analysis_id}/logs")
 def search_qkview_logs(
     analysis_id: int,
-    q: Optional[str] = None,
-    severity: Optional[str] = None,
-    process: Optional[str] = None,
-    source: Optional[str] = None,
-    since: Optional[str] = None,
-    until: Optional[str] = None,
+    q: str | None = None,
+    severity: str | None = None,
+    process: str | None = None,
+    source: str | None = None,
+    since: str | None = None,
+    until: str | None = None,
     limit: int = 50,
     offset: int = 0,
     facets: bool = False,
@@ -573,9 +605,7 @@ def search_qkview_logs(
     offset = max(0, offset)
 
     with sqlite3.connect(DB_PATH) as conn:
-        row = conn.execute(
-            "SELECT 1 FROM analyses WHERE id = ?", (analysis_id,)
-        ).fetchone()
+        row = conn.execute("SELECT 1 FROM analyses WHERE id = ?", (analysis_id,)).fetchone()
     if row is None:
         raise HTTPException(status_code=404, detail="Analysis not found")
 
@@ -681,5 +711,6 @@ def search_qkview_logs(
 
 if __name__ == "__main__":
     import uvicorn
+
     # Start the application on port 8000
     uvicorn.run("main:app", host="127.0.0.1", port=8000)

@@ -1,20 +1,17 @@
 """Rich terminal output and JSON export for qkview analysis results."""
 
 import json
-from datetime import datetime
-from typing import Optional
 
+from rich import box
+from rich.columns import Columns
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
-from rich.columns import Columns
-from rich import box
 
+from .config_parser import BigIPConfig
 from .extractor import DeviceMeta, QKViewData
 from .rule_engine import Finding
-from .config_parser import BigIPConfig
-
 
 # Severity-to-color mapping (bash-like terminal coloring)
 SEVERITY_COLORS = {
@@ -38,7 +35,7 @@ FINDING_SEVERITY_COLORS = {
 class Reporter:
     """Generate Rich terminal output and JSON exports."""
 
-    def __init__(self, console: Optional[Console] = None):
+    def __init__(self, console: Console | None = None):
         self.console = console or Console()
 
     # ── Device Summary ──────────────────────────────────────────
@@ -80,7 +77,9 @@ class Reporter:
         start, end = time_range
         time_str = "Unknown"
         if start and end:
-            time_str = f"{start.strftime('%Y-%m-%d %H:%M:%S')} → {end.strftime('%Y-%m-%d %H:%M:%S')}"
+            time_str = (
+                f"{start.strftime('%Y-%m-%d %H:%M:%S')} → {end.strftime('%Y-%m-%d %H:%M:%S')}"
+            )
 
         self.console.print()
         self.console.print(
@@ -145,16 +144,18 @@ class Reporter:
 
         for finding in findings:
             color = FINDING_SEVERITY_COLORS.get(finding.severity, "white")
-            severity_badge = Text(f" {finding.severity.upper()} ", style=f"bold white on {color.replace('bold ', '')}")
+            severity_badge = Text(
+                f" {finding.severity.upper()} ", style=f"bold white on {color.replace('bold ', '')}"
+            )
 
             # Finding header
             self.console.print()
+            self.console.print(f"  {severity_badge} [bold]{finding.rule_description}[/]")
             self.console.print(
-                f"  {severity_badge} [bold]{finding.rule_description}[/]"
+                f"    [dim]Rule:[/] {finding.rule_name}  "
+                f"[dim]Category:[/] {finding.category}  "
+                f"[dim]Occurrences:[/] {finding.count}"
             )
-            self.console.print(f"    [dim]Rule:[/] {finding.rule_name}  "
-                             f"[dim]Category:[/] {finding.category}  "
-                             f"[dim]Occurrences:[/] {finding.count}")
 
             if finding.first_seen and finding.last_seen:
                 self.console.print(
@@ -167,7 +168,7 @@ class Reporter:
 
             # Sample entries
             if finding.matched_entries:
-                self.console.print(f"    [dim]Sample entries:[/]")
+                self.console.print("    [dim]Sample entries:[/]")
                 for entry in finding.matched_entries[:3]:
                     sev = entry.get("severity", "info")
                     sev_color = SEVERITY_COLORS.get(sev, "white")
@@ -278,8 +279,8 @@ class Reporter:
         meta: DeviceMeta,
         entries: list[dict],
         findings: list[Finding],
-        config: Optional[BigIPConfig] = None,
-        qkview_data: Optional[QKViewData] = None,
+        config: BigIPConfig | None = None,
+        qkview_data: QKViewData | None = None,
     ) -> str:
         """Export analysis results as JSON.
 
@@ -364,9 +365,7 @@ class Reporter:
                     "time_zone": ov.time_zone,
                     "appliance_datetime": ov.appliance_datetime,
                     "appliance_mode": ov.appliance_mode,
-                    "portgroups": [
-                        {"id": p.id, "mode": p.mode} for p in ov.portgroups
-                    ],
+                    "portgroups": [{"id": p.id, "mode": p.mode} for p in ov.portgroups],
                     "tenants": [
                         {
                             "name": t.name,
@@ -407,17 +406,13 @@ class Reporter:
                 # for the current UI, and keep the response well under 10 MB.
                 data["xml_stats"] = {
                     "summary": xs.summary(),
-                    "top_virtual_servers": [
-                        r.fields for r in xs.top_virtual_servers(20)
-                    ],
+                    "top_virtual_servers": [r.fields for r in xs.top_virtual_servers(20)],
                     "top_pools": [r.fields for r in xs.top_pools(20)],
                     # Top-N pool members by serverside.tot_conns. Full list
                     # can reach thousands on busy TMOS LTM deployments; 30
                     # is enough to surface the traffic hot-spots the webapp
                     # renders in its members panel.
-                    "top_pool_members": [
-                        r.fields for r in xs.top_pool_members(30)
-                    ],
+                    "top_pool_members": [r.fields for r in xs.top_pool_members(30)],
                     # TMMs / interfaces / CPUs ship deduped — TMOS emits
                     # multiple replica rows per resource (one per sample
                     # window, one per plane, etc.) and the webapp panels

@@ -38,13 +38,18 @@ from scripts.utils.db import init_db, upsert_document
 # Logging configuration
 # ---------------------------------------------------------------------------
 logger.remove()
-logger.add(sys.stderr, level="INFO", format="<green>{time:HH:mm:ss}</green> | <level>{level}</level> | {message}")
+logger.add(
+    sys.stderr,
+    level="INFO",
+    format="<green>{time:HH:mm:ss}</green> | <level>{level}</level> | {message}",
+)
 logger.add("logs/curate_f5.log", rotation="10 MB", retention="30 days", level="DEBUG")
 
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def load_config(config_path: str) -> dict:
     with open(config_path) as f:
@@ -120,6 +125,7 @@ def save_processed(content: str, url: str, processed_dir: Path) -> Path:
 # Schema fetching (AS3, DO, TS, CFE from F5 Extension snippet URLs)
 # ---------------------------------------------------------------------------
 
+
 def fetch_schemas(schemas: list[dict], session: requests.Session, cfg: dict, force: bool) -> None:
     db_path = cfg["storage"]["db_path"]
     processed_dir = Path(cfg["storage"]["f5_processed_dir"]) / "schemas"
@@ -160,6 +166,7 @@ def fetch_schemas(schemas: list[dict], session: requests.Session, cfg: dict, for
 # ---------------------------------------------------------------------------
 # Main crawl
 # ---------------------------------------------------------------------------
+
 
 def crawl_target(
     target: dict,
@@ -230,6 +237,7 @@ def crawl_target(
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="F5 CloudDocs knowledge curation")

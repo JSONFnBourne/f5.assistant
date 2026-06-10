@@ -40,17 +40,16 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
-from urllib.parse import urljoin, urlparse, urldefrag
+from urllib.parse import urldefrag, urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup, Tag
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 
-DB_PATH  = Path(__file__).parent.parent / "db" / "knowledge.db"
-SOURCE   = "techdocs"
-DELAY_S  = 0.5
+DB_PATH = Path(__file__).parent.parent / "db" / "knowledge.db"
+SOURCE = "techdocs"
+DELAY_S = 0.5
 
 HEADERS = {"User-Agent": "F5-KB-Ingestor/1.0 (+internal-knowledge-base)"}
 
@@ -58,33 +57,81 @@ HEADERS = {"User-Agent": "F5-KB-Ingestor/1.0 (+internal-knowledge-base)"}
 # These were already ingested.  Add new old-format pages here if found.
 MANIFEST: list[tuple[str, str]] = [
     # APM Configuration Guide 11.4.0 — already ingested
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_intro.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_webappaccmgt.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_resources.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_understanding.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_creatingpolicies.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_general_actions.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_client_checks.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_server_checks.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_clientcert_auth.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_virtualserver.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_advanced_policies.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_loggingandreporting.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_snmp.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_sessionvars.html"),
-    ("apm-config-guide", "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_irules.html"),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_intro.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_webappaccmgt.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_resources.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_understanding.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_creatingpolicies.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_general_actions.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_client_checks.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_server_checks.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_clientcert_auth.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_virtualserver.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_advanced_policies.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_loggingandreporting.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_snmp.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_sessionvars.html",
+    ),
+    (
+        "apm-config-guide",
+        "https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-config-11-4-0/apm_config_irules.html",
+    ),
 ]
 
 # ── TOC discovery ──────────────────────────────────────────────────────────────
+
 
 def _toc_url_to_section(toc_url: str) -> str:
     """Derive a human-readable section tag from the TOC URL path."""
     path = urlparse(toc_url).path.rstrip("/")
     # e.g. /en-us/bigip-17-1-0/big-ip-system-dos-protection-... → dos-protection
-    stem = Path(path).stem   # e.g. big-ip-system-dos-protection-and-protocol-firewall-implementations
+    stem = Path(
+        path
+    ).stem  # e.g. big-ip-system-dos-protection-and-protocol-firewall-implementations
     # Trim common prefixes for a shorter tag
-    stem = re.sub(r'^big-ip-system-', '', stem)
-    stem = re.sub(r'^big-ip-', '', stem)
+    stem = re.sub(r"^big-ip-system-", "", stem)
+    stem = re.sub(r"^big-ip-", "", stem)
     return stem[:60]
 
 
@@ -162,8 +209,15 @@ CONTENT_SELECTORS = [
     "div.topic",
 ]
 
-STRIP_CLASSES = ["navfooter", "navheader", "breadcrumb", "toc", "related-links",
-                 "shortdesc", "navigation"]
+STRIP_CLASSES = [
+    "navfooter",
+    "navheader",
+    "breadcrumb",
+    "toc",
+    "related-links",
+    "shortdesc",
+    "navigation",
+]
 
 
 def _url_to_doc_id(url: str) -> str:
@@ -184,7 +238,7 @@ def _extract_keywords(soup: BeautifulSoup) -> str:
     return " ".join(kws)[:2000]
 
 
-def fetch_and_parse(url: str, session: requests.Session) -> Optional[dict]:
+def fetch_and_parse(url: str, session: requests.Session) -> dict | None:
     try:
         resp = session.get(url, timeout=20, headers=HEADERS)
         resp.raise_for_status()
@@ -194,7 +248,7 @@ def fetch_and_parse(url: str, session: requests.Session) -> Optional[dict]:
 
     # Quick 404 detection for F5's soft-404 pages
     if "page you are looking for does not exist" in resp.text:
-        print(f"  SKIP (soft 404)", file=sys.stderr)
+        print("  SKIP (soft 404)", file=sys.stderr)
         return None
 
     soup = BeautifulSoup(resp.text, "html.parser")
@@ -204,7 +258,7 @@ def fetch_and_parse(url: str, session: requests.Session) -> Optional[dict]:
     title = title_tag.get_text(" ", strip=True) if title_tag else urlparse(url).path
 
     # Main content
-    body: Optional[Tag] = None
+    body: Tag | None = None
     for sel in CONTENT_SELECTORS:
         body = soup.select_one(sel)
         if body:
@@ -231,16 +285,16 @@ def fetch_and_parse(url: str, session: requests.Session) -> Optional[dict]:
     now = datetime.now(timezone.utc).isoformat()
 
     return {
-        "doc_id":       _url_to_doc_id(url),
-        "title":        title,
-        "url":          url,
-        "source":       SOURCE,
-        "section":      "",
-        "keywords":     keywords,
-        "content":      content,
+        "doc_id": _url_to_doc_id(url),
+        "title": title,
+        "url": url,
+        "source": SOURCE,
+        "section": "",
+        "keywords": keywords,
+        "content": content,
         "content_hash": content_hash,
         "last_fetched": now,
-        "created_at":   now,
+        "created_at": now,
     }
 
 
@@ -293,30 +347,42 @@ def rebuild_fts(conn: sqlite3.Connection) -> None:
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__,
-                                     formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--toc-urls",  type=Path, default=None,
-                        help="File of TOC page URLs (one per line). Chapters auto-discovered.")
-    parser.add_argument("--manifest",  type=Path, default=None,
-                        help="File of explicit chapter URLs (one per line).")
-    parser.add_argument("--dry-run",   action="store_true")
-    parser.add_argument("--force",     action="store_true",
-                        help="Re-index URLs already in the database.")
-    parser.add_argument("--delay",     type=float, default=DELAY_S,
-                        help=f"Seconds between requests (default {DELAY_S})")
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "--toc-urls",
+        type=Path,
+        default=None,
+        help="File of TOC page URLs (one per line). Chapters auto-discovered.",
+    )
+    parser.add_argument(
+        "--manifest", type=Path, default=None, help="File of explicit chapter URLs (one per line)."
+    )
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--force", action="store_true", help="Re-index URLs already in the database."
+    )
+    parser.add_argument(
+        "--delay", type=float, default=DELAY_S, help=f"Seconds between requests (default {DELAY_S})"
+    )
     args = parser.parse_args()
 
     session = requests.Session()
     conn = sqlite3.connect(DB_PATH) if not args.dry_run else None
     seen: set[str] = existing_urls(conn) if conn else set()
 
-    work: list[tuple[str, str]] = []   # (section, chapter_url)
+    work: list[tuple[str, str]] = []  # (section, chapter_url)
 
     # ── Mode: TOC URL list ─────────────────────────────────────────────────────
     if args.toc_urls:
-        toc_lines = [l.strip() for l in args.toc_urls.read_text().splitlines()
-                     if l.strip() and not l.strip().startswith("#")]
+        toc_lines = [
+            l.strip()
+            for l in args.toc_urls.read_text().splitlines()
+            if l.strip() and not l.strip().startswith("#")
+        ]
         print(f"TOC pages to crawl: {len(toc_lines)}")
         for toc_url in toc_lines:
             section = _toc_url_to_section(toc_url)
@@ -381,8 +447,7 @@ def main() -> None:
         time.sleep(args.delay)
 
     print(f"\n{'─'*55}")
-    print(f"Inserted: {inserted}  Updated: {updated}  "
-          f"Skipped: {skipped}  Errors: {errors}")
+    print(f"Inserted: {inserted}  Updated: {updated}  " f"Skipped: {skipped}  Errors: {errors}")
 
     if conn and (inserted + updated) > 0:
         rebuild_fts(conn)

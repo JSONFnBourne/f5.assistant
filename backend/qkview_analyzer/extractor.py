@@ -29,6 +29,7 @@ logger = logging.getLogger("f5_backend")
 @dataclass
 class DeviceMeta:
     """Device metadata extracted from qkview."""
+
     product: str = ""
     version: str = ""
     build: str = ""
@@ -47,9 +48,10 @@ class DeviceMeta:
 @dataclass
 class F5OSHealthEntry:
     """A single F5OS system health finding."""
+
     component: str = ""
-    health: str = ""        # "ok", "unhealthy"
-    severity: str = ""      # "info", "error", "critical"
+    health: str = ""  # "ok", "unhealthy"
+    severity: str = ""  # "info", "error", "critical"
     attribute: str = ""
     description: str = ""
     value: str = ""
@@ -59,8 +61,9 @@ class F5OSHealthEntry:
 @dataclass
 class F5OSClusterNode:
     """One node from `show cluster` — rSeries has one, VELOS can have many."""
+
     name: str = ""
-    running_state: str = ""   # "running", "initializing", ...
+    running_state: str = ""  # "running", "initializing", ...
     ready: bool = False
     ready_message: str = ""
     slot: str = ""
@@ -69,17 +72,19 @@ class F5OSClusterNode:
 @dataclass
 class F5OSPortgroup:
     """One row of iHealth's "Portgroup Modes in Use"."""
-    id: str = ""              # "1", "2", ...
-    mode: str = ""             # "MODE_100GB", "MODE_25GB", ...
+
+    id: str = ""  # "1", "2", ...
+    mode: str = ""  # "MODE_100GB", "MODE_25GB", ...
 
 
 @dataclass
 class F5OSTenant:
     """One tenant from `show tenants`."""
+
     name: str = ""
-    type: str = ""             # "BIG-IP"
-    running_state: str = ""    # "configured" | "provisioned" | "deployed"
-    status: str = ""            # "Running" | ...
+    type: str = ""  # "BIG-IP"
+    running_state: str = ""  # "configured" | "provisioned" | "deployed"
+    status: str = ""  # "Running" | ...
     image_version: str = ""
     mgmt_ip: str = ""
     vcpu_cores_per_node: str = ""
@@ -96,18 +101,19 @@ class F5OSOverview:
     plus a handful of ``show …`` command outputs already captured in
     ``QKViewData.f5os_commands``.
     """
+
     # Top strip (iHealth breadcrumb bar)
-    generation_start: str = ""         # ts.start from root manifest, ISO 8601
-    generation_stop: str = ""          # ts.stop from root manifest
-    platform_pid: str = ""             # "C129" — iHealth's Platform parenthetical
-    platform_code: str = ""            # "R5R10" — PRODUCT/platform_info.platform
+    generation_start: str = ""  # ts.start from root manifest, ISO 8601
+    generation_stop: str = ""  # ts.stop from root manifest
+    platform_pid: str = ""  # "C129" — iHealth's Platform parenthetical
+    platform_code: str = ""  # "R5R10" — PRODUCT/platform_info.platform
     platform_part_number: str = ""
     platform_uuid: str = ""
     platform_slot: str = ""
-    version_edition: str = ""          # "1.8.3-23453" from product_info.version
+    version_edition: str = ""  # "1.8.3-23453" from product_info.version
 
     # System Status card
-    cluster_summary: str = ""           # derived one-liner
+    cluster_summary: str = ""  # derived one-liner
     cluster_nodes: list[F5OSClusterNode] = field(default_factory=list)
     mgmt_ipv4_address: str = ""
     mgmt_ipv4_prefix: str = ""
@@ -115,16 +121,16 @@ class F5OSOverview:
     mgmt_ipv6_address: str = ""
     mgmt_ipv6_prefix: str = ""
     mgmt_ipv6_gateway: str = ""
-    payg_license_level: str = ""        # "r5800" from licensing
+    payg_license_level: str = ""  # "r5800" from licensing
     licensed_version: str = ""
     registration_key: str = ""
     licensed_date: str = ""
     serial_number: str = ""
     time_zone: str = ""
-    appliance_datetime: str = ""        # current appliance clock at collection
+    appliance_datetime: str = ""  # current appliance clock at collection
 
     # Configuration Totals card
-    appliance_mode: str = ""            # "enabled" | "disabled"
+    appliance_mode: str = ""  # "enabled" | "disabled"
     portgroups: list[F5OSPortgroup] = field(default_factory=list)
     tenants: list[F5OSTenant] = field(default_factory=list)
     tenants_configured: int = 0
@@ -136,11 +142,12 @@ class F5OSOverview:
 @dataclass
 class QKViewData:
     """All extracted data from a qkview archive."""
+
     meta: DeviceMeta = field(default_factory=DeviceMeta)
-    log_files: dict[str, str] = field(default_factory=dict)       # name -> content
-    config_files: dict[str, str] = field(default_factory=dict)     # name -> content
-    tmstat_files: dict[str, bytes] = field(default_factory=dict)   # name -> binary
-    raw_meta_files: dict[str, str] = field(default_factory=dict)   # VERSION.LTM, etc.
+    log_files: dict[str, str] = field(default_factory=dict)  # name -> content
+    config_files: dict[str, str] = field(default_factory=dict)  # name -> content
+    tmstat_files: dict[str, bytes] = field(default_factory=dict)  # name -> binary
+    raw_meta_files: dict[str, str] = field(default_factory=dict)  # VERSION.LTM, etc.
     f5os_health: list[F5OSHealthEntry] = field(default_factory=list)
     # F5OS event log content (raw text) for separate parsing
     f5os_event_log: str = ""
@@ -155,7 +162,7 @@ class QKViewData:
     # Per-partition / per-tenant extra diag dumps from TMOS var/tmp.
     diag_files: dict[str, str] = field(default_factory=dict)
     # Streaming-parsed runtime stats from TMOS *_module.xml payloads (TMOS only).
-    xml_stats: Optional[XmlStats] = None
+    xml_stats: XmlStats | None = None
 
 
 # Log files we care about — everything under var/log/
@@ -188,17 +195,17 @@ _META_FILES_BASENAMES = {
 }
 
 # Decompression safety limits
-_MAX_DECOMPRESSED_BYTES = 8 * 1024 * 1024 * 1024   # 8 GB total extracted
-_MAX_SINGLE_FILE_BYTES  = 512 * 1024 * 1024          # 512 MB per file
+_MAX_DECOMPRESSED_BYTES = 8 * 1024 * 1024 * 1024  # 8 GB total extracted
+_MAX_SINGLE_FILE_BYTES = 512 * 1024 * 1024  # 512 MB per file
 
 # Log file prefixes to skip (binary or not useful for text analysis)
 _SKIP_PREFIXES = [
-    "var/log/journal/",      # systemd binary journals
-    "var/log/wtmp",          # binary login records
-    "var/log/btmp",          # binary failed login records
-    "var/log/lastlog",       # binary last login
+    "var/log/journal/",  # systemd binary journals
+    "var/log/wtmp",  # binary login records
+    "var/log/btmp",  # binary failed login records
+    "var/log/lastlog",  # binary last login
     "var/log/pam/tallylog",  # binary tally
-    "var/log/bootchart/",    # compressed bootchart
+    "var/log/bootchart/",  # compressed bootchart
 ]
 
 
@@ -207,7 +214,7 @@ def _should_skip_log(name: str) -> bool:
     return any(name.startswith(prefix) for prefix in _SKIP_PREFIXES)
 
 
-def _read_member_text(tar: tarfile.TarFile, member: tarfile.TarInfo) -> Optional[str]:
+def _read_member_text(tar: tarfile.TarFile, member: tarfile.TarInfo) -> str | None:
     """Read a tar member as text, handling _transformed (gzip) files."""
     f = tar.extractfile(member)
     if f is None:
@@ -263,7 +270,7 @@ def _build_device_meta(raw_meta: dict[str, str]) -> DeviceMeta:
         meta.edition = v.get("edition", "")
     # F5OS VERSION (YAML-like key: value)
     elif "VERSION" in raw_meta and "product" not in meta.product:
-        v = _parse_version_ltm(raw_meta["VERSION"]) # uses same parser as LTM basically
+        v = _parse_version_ltm(raw_meta["VERSION"])  # uses same parser as LTM basically
         meta.product = "F5OS"
         meta.version = v.get("version", "")
         meta.platform = v.get("platform", "")
@@ -461,12 +468,10 @@ def _stream_extract_f5os_to_dir(
                 progress_callback(f"Extracting F5OS members ({extracted} files)…")
 
     if progress_callback:
-        progress_callback(
-            f"F5OS extraction: kept {extracted} members, skipped {skipped}"
-        )
+        progress_callback(f"F5OS extraction: kept {extracted} members, skipped {skipped}")
 
 
-def _read_text(path: Path) -> Optional[str]:
+def _read_text(path: Path) -> str | None:
     """Read a file as UTF-8 text, with gzip auto-decompress for *_transformed."""
     try:
         raw = path.read_bytes()
@@ -491,7 +496,7 @@ def _read_text(path: Path) -> Optional[str]:
 def _parse_f5os_manifest_commands(
     root: Path,
     subpackage_prefix: str,
-    manifest_data: Optional[dict] = None,
+    manifest_data: dict | None = None,
 ) -> dict[str, str]:
     """Return a command_name -> output_path mapping for a subpackage.
 
@@ -557,7 +562,7 @@ def _discover_f5os_subpackage_prefixes(
             path = pkg.get("path", "")
             dir_name = ""
             if path.startswith("subpackages/"):
-                tail = path[len("subpackages/"):]
+                tail = path[len("subpackages/") :]
                 for ext in (".tar.gz", ".tgz", ".tar"):
                     if tail.endswith(ext):
                         tail = tail[: -len(ext)]
@@ -615,7 +620,7 @@ _F5OS_QUICK_LINK_COMMANDS = (
     "show lacp",
     "show tenants",
     "show partitions",
-    "show service",          # catches service-pods, services, service-instances, service-table
+    "show service",  # catches service-pods, services, service-instances, service-table
     # System state family
     "show system state",
     "show system version",
@@ -639,7 +644,7 @@ _F5OS_QUICK_LINK_COMMANDS = (
     "show ctrlr_status",
     "show chassis",
     "show blades",
-    "show images",            # includes "show image" on syscon
+    "show images",  # includes "show image" on syscon
     "show system chassis-macs",
     "show system blade-power",
     "show system aaa",
@@ -668,7 +673,7 @@ def _normalize_f5os_command_name(name: str) -> str:
     stripped = name.strip()
     for prefix in ("/confd/scripts/f5_confd_run_cmd", "/usr/bin/env", "/bin/sh -c"):
         if stripped.startswith(prefix):
-            stripped = stripped[len(prefix):].strip()
+            stripped = stripped[len(prefix) :].strip()
     return stripped
 
 
@@ -703,7 +708,7 @@ def _f5os_prefix_priority(prefix: str) -> tuple[int, int]:
 def _pick_primary_f5os_prefix(
     root: Path,
     prefixes: list[str],
-    manifests: Optional[dict[str, dict]] = None,
+    manifests: dict[str, dict] | None = None,
 ) -> tuple[str, dict[str, str]]:
     """Pick the first prefix whose manifest yields commands, preferring host
     managers over partition/chassis ones.
@@ -721,7 +726,7 @@ def _pick_primary_f5os_prefix(
 def _collect_f5os_quick_link_outputs(
     root: Path,
     prefixes: list[str],
-    manifests: Optional[dict[str, dict]] = None,
+    manifests: dict[str, dict] | None = None,
 ) -> dict[str, str]:
     """Walk every discovered manifest and return outputs for any command whose
     name matches the iHealth Quick-Links allowlist, keyed by trimmed name.
@@ -783,7 +788,12 @@ def _parse_f5os_system_image(content: str) -> str:
     for line in lines:
         # Skip headers, dashes, blank lines
         stripped = line.strip()
-        if not stripped or stripped.startswith("#") or stripped.startswith("-") or stripped.startswith("VERSION"):
+        if (
+            not stripped
+            or stripped.startswith("#")
+            or stripped.startswith("-")
+            or stripped.startswith("VERSION")
+        ):
             continue
 
         parts = stripped.split()
@@ -880,7 +890,12 @@ def _parse_f5os_system_health(content: str) -> list[F5OSHealthEntry]:
 
     for line in lines:
         stripped = line.strip()
-        if not stripped or stripped.startswith("-") or stripped.startswith("COMPONENT") or stripped.startswith("ATTRIBUTE"):
+        if (
+            not stripped
+            or stripped.startswith("-")
+            or stripped.startswith("COMPONENT")
+            or stripped.startswith("ATTRIBUTE")
+        ):
             continue
 
         # Check for main component health summary lines
@@ -926,23 +941,33 @@ def _parse_f5os_system_health(content: str) -> list[F5OSHealthEntry]:
                             break
                         found_first_health = True
                         continue
-                    if found_first_health and p not in ("critical", "error", "warning", "info", "-"):
+                    if found_first_health and p not in (
+                        "critical",
+                        "error",
+                        "warning",
+                        "info",
+                        "-",
+                    ):
                         text_parts.append(p)
 
                 description = " ".join(text_parts).strip()
                 if not description:
                     # Fallback: try to find quoted text or descriptive parts
-                    desc_match = re.search(r'((?:PSU|CPU|SSD|ASW|ATSE|Firmware|Watchdog)[\w\s-]{1,100})', stripped)
+                    desc_match = re.search(
+                        r"((?:PSU|CPU|SSD|ASW|ATSE|Firmware|Watchdog)[\w\s-]{1,100})", stripped
+                    )
                     if desc_match:
                         description = desc_match.group(1).strip()
 
                 if description and severity:
-                    findings.append(F5OSHealthEntry(
-                        component=current_component,
-                        health="unhealthy",
-                        severity=severity,
-                        description=description,
-                    ))
+                    findings.append(
+                        F5OSHealthEntry(
+                            component=current_component,
+                            health="unhealthy",
+                            severity=severity,
+                            description=description,
+                        )
+                    )
 
     return findings
 
@@ -956,17 +981,17 @@ def _parse_f5os_mgmt_ip(content: str) -> dict[str, str]:
     out: dict[str, str] = {}
     rules = (
         ("system mgmt-ip state ipv4 system address ", "ipv4_address"),
-        ("system mgmt-ip state ipv4 prefix-length ",   "ipv4_prefix"),
-        ("system mgmt-ip state ipv4 gateway ",         "ipv4_gateway"),
+        ("system mgmt-ip state ipv4 prefix-length ", "ipv4_prefix"),
+        ("system mgmt-ip state ipv4 gateway ", "ipv4_gateway"),
         ("system mgmt-ip state ipv6 system address ", "ipv6_address"),
-        ("system mgmt-ip state ipv6 prefix-length ",   "ipv6_prefix"),
-        ("system mgmt-ip state ipv6 gateway ",         "ipv6_gateway"),
+        ("system mgmt-ip state ipv6 prefix-length ", "ipv6_prefix"),
+        ("system mgmt-ip state ipv6 gateway ", "ipv6_gateway"),
     )
     for line in content.splitlines():
         s = line.strip()
         for prefix, key in rules:
             if s.startswith(prefix):
-                out[key] = s[len(prefix):].strip()
+                out[key] = s[len(prefix) :].strip()
                 break
     return out
 
@@ -977,9 +1002,9 @@ def _parse_f5os_clock(content: str) -> dict[str, str]:
     for line in content.splitlines():
         s = line.strip()
         if s.startswith("system clock state timezone-name "):
-            out["timezone"] = s[len("system clock state timezone-name "):].strip()
+            out["timezone"] = s[len("system clock state timezone-name ") :].strip()
         elif s.startswith("system clock state appliance date-time "):
-            out["datetime"] = s[len("system clock state appliance date-time "):].strip().strip('"')
+            out["datetime"] = s[len("system clock state appliance date-time ") :].strip().strip('"')
     return out
 
 
@@ -988,7 +1013,7 @@ def _parse_f5os_appliance_mode(content: str) -> str:
     for line in content.splitlines():
         s = line.strip()
         if s.startswith("system appliance-mode state "):
-            return s[len("system appliance-mode state "):].strip()
+            return s[len("system appliance-mode state ") :].strip()
     return ""
 
 
@@ -1036,7 +1061,7 @@ def _parse_f5os_cluster(content: str) -> tuple[list[F5OSClusterNode], str]:
     reports how many of N are ready.
     """
     nodes: list[F5OSClusterNode] = []
-    current: Optional[F5OSClusterNode] = None
+    current: F5OSClusterNode | None = None
     for raw in content.splitlines():
         line = raw.rstrip()
         m = re.match(r"^cluster nodes node (\S+)\s*$", line)
@@ -1052,13 +1077,13 @@ def _parse_f5os_cluster(content: str) -> tuple[list[F5OSClusterNode], str]:
             continue
         s = line.strip()
         if s.startswith("state node-running-state "):
-            current.running_state = s[len("state node-running-state "):].strip()
+            current.running_state = s[len("state node-running-state ") :].strip()
         elif s.startswith("state slot-number "):
-            current.slot = s[len("state slot-number "):].strip()
+            current.slot = s[len("state slot-number ") :].strip()
         elif s.startswith("state ready-info ready "):
-            current.ready = s[len("state ready-info ready "):].strip() == "true"
+            current.ready = s[len("state ready-info ready ") :].strip() == "true"
         elif s.startswith('state ready-info message "'):
-            current.ready_message = s[len('state ready-info message "'):].rstrip('"').strip()
+            current.ready_message = s[len('state ready-info message "') :].rstrip('"').strip()
 
     if nodes:
         ready_count = sum(1 for n in nodes if n.ready)
@@ -1085,7 +1110,7 @@ def _parse_f5os_portgroup_modes(running_config: str) -> list[F5OSPortgroup]:
     the UI can still show all physical portgroups and flag the gaps.
     """
     out: list[F5OSPortgroup] = []
-    current: Optional[F5OSPortgroup] = None
+    current: F5OSPortgroup | None = None
     for raw in running_config.splitlines():
         m = re.match(r"^portgroups portgroup (\S+)\s*$", raw)
         if m:
@@ -1103,7 +1128,7 @@ def _parse_f5os_portgroup_modes(running_config: str) -> list[F5OSPortgroup]:
             continue
         s = raw.strip()
         if s.startswith("config mode "):
-            current.mode = s[len("config mode "):].strip()
+            current.mode = s[len("config mode ") :].strip()
     return out
 
 
@@ -1116,7 +1141,7 @@ def _parse_f5os_tenants(content: str) -> list[F5OSTenant]:
     NAME) are ignored.
     """
     out: list[F5OSTenant] = []
-    current: Optional[F5OSTenant] = None
+    current: F5OSTenant | None = None
     for raw in content.splitlines():
         m = re.match(r"^tenants tenant (\S+)\s*$", raw)
         if m:
@@ -1350,7 +1375,11 @@ def _extract_f5os(root: Path, progress_callback=None) -> QKViewData:
     # show system licensing → last-resort version fallback.
     if not data.meta.version:
         for cmd_name, cmd_path in sys_mgr_cmds.items():
-            if "show system licensing" in cmd_name and "raw-license" not in cmd_name and "feature-flags" not in cmd_name:
+            if (
+                "show system licensing" in cmd_name
+                and "raw-license" not in cmd_name
+                and "feature-flags" not in cmd_name
+            ):
                 content = _read_text(root / cmd_path)
                 if content:
                     data.meta.version = _parse_f5os_licensing_version(content)
@@ -1525,14 +1554,12 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
 
             # Zip bomb / excessive member guard
             if member_count > 500_000:
-                raise ValueError(
-                    "Archive contains more than 500,000 members — refusing to process"
-                )
+                raise ValueError("Archive contains more than 500,000 members — refusing to process")
 
             # Path traversal guard; symlinks/hardlinks are skipped (not extracted to disk)
             # TMOS qkviews legitimately contain symlinks (e.g. VERSION -> VERSION.LTM,
             # usr/share/monitors/*) — rejecting them would break all BIG-IP archives.
-            if member.name.startswith('/') or '..' in member.name.split('/'):
+            if member.name.startswith("/") or ".." in member.name.split("/"):
                 raise ValueError(f"Unsafe archive member path detected: {member.name!r}")
 
             # Per-file size guard (member.size is the uncompressed size reported in the header)
@@ -1579,7 +1606,7 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
                     continue
                 content = _read_member_text(tar, member)
                 if content and content.strip():
-                    log_name = name[name.find("var/log/") + len("var/log/"):]
+                    log_name = name[name.find("var/log/") + len("var/log/") :]
 
                     if "partitions/" in name:
                         part_id = name.split("partitions/")[1].split("/")[0]
@@ -1616,7 +1643,7 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
                     continue
                 content = _read_member_text(tar, member)
                 if content and content.strip():
-                    diag_name = name[len("var/tmp/"):]
+                    diag_name = name[len("var/tmp/") :]
                     data.diag_files[diag_name] = content
                 continue
 
@@ -1635,9 +1662,8 @@ def _extract_tmos(qkview_path: Path, progress_callback=None) -> QKViewData:
     data.meta = _build_device_meta(data.raw_meta_files)
     if max_mtime:
         from datetime import datetime, timezone
-        data.meta.generation_date = (
-            datetime.fromtimestamp(max_mtime, tz=timezone.utc).isoformat()
-        )
+
+        data.meta.generation_date = datetime.fromtimestamp(max_mtime, tz=timezone.utc).isoformat()
 
     # Hostname lives in `sys global-settings { hostname foo.bar }` inside
     # config/bigip_base.conf on TMOS. Pulled out here so the overview header

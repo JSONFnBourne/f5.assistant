@@ -26,9 +26,7 @@ def db_path(tmp_path: Path) -> Path:
 
 def _fts_rowids(db_path: Path, term: str) -> list[int]:
     with sqlite3.connect(db_path) as conn:
-        rows = conn.execute(
-            "SELECT rowid FROM docs_fts WHERE docs_fts MATCH ?", (term,)
-        ).fetchall()
+        rows = conn.execute("SELECT rowid FROM docs_fts WHERE docs_fts MATCH ?", (term,)).fetchall()
     return [r[0] for r in rows]
 
 
@@ -42,9 +40,7 @@ def test_insert_then_update_keeps_fts_in_sync(db_path: Path) -> None:
         content="oldtoken appears only in the first revision",
     )
     with sqlite3.connect(db_path) as conn:
-        doc_rowid = conn.execute(
-            "SELECT id FROM documents WHERE doc_id = 'K12345'"
-        ).fetchone()[0]
+        doc_rowid = conn.execute("SELECT id FROM documents WHERE doc_id = 'K12345'").fetchone()[0]
 
     assert _fts_rowids(db_path, "oldtoken") == [doc_rowid]
 
@@ -61,9 +57,7 @@ def test_insert_then_update_keeps_fts_in_sync(db_path: Path) -> None:
 
     # Still exactly one document row, same rowid
     with sqlite3.connect(db_path) as conn:
-        rows = conn.execute(
-            "SELECT id FROM documents WHERE doc_id = 'K12345'"
-        ).fetchall()
+        rows = conn.execute("SELECT id FROM documents WHERE doc_id = 'K12345'").fetchall()
     assert [r[0] for r in rows] == [doc_rowid]
 
     # NEW text is findable under the real rowid…

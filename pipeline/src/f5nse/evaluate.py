@@ -4,13 +4,12 @@ import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 import torch
-from datasets import load_dataset
-from peft import PeftModel, PeftConfig
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import tyro
+from datasets import load_dataset
+from peft import PeftConfig, PeftModel
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 LOGGER = logging.getLogger("f5nse.evaluate")
 
@@ -28,7 +27,7 @@ class EvaluateArgs:
     max_new_tokens: int = 512
     judge_threshold: float = 0.8
     trust_remote_code: bool = False
-    max_samples: Optional[int] = None
+    max_samples: int | None = None
     judge_on_cpu: bool = True
 
 
@@ -101,7 +100,9 @@ def build_eval_prompt(tokenizer, question: str) -> str:
     )
 
 
-def make_judge_prompt(question: str, reference_answer: str, candidate_answer: str, context: str) -> str:
+def make_judge_prompt(
+    question: str, reference_answer: str, candidate_answer: str, context: str
+) -> str:
     return (
         "You are f5nse-judge comparing model output with the reference answer.\n"
         "Assign a score between 0.0 and 1.0 where 1.0 matches the reference and is grounded in context.\n"
@@ -113,7 +114,7 @@ def make_judge_prompt(question: str, reference_answer: str, candidate_answer: st
     )
 
 
-def parse_judge_result(text: str) -> Optional[dict]:
+def parse_judge_result(text: str) -> dict | None:
     if "```" in text:
         parts = text.split("```")
         for idx, part in enumerate(parts):
@@ -173,7 +174,11 @@ def run_evaluate(args: EvaluateArgs) -> None:
             example.get("context", ""),
         )
         inputs = judge_tokenizer(judge_prompt, return_tensors="pt")
-        device = judge_model.device if hasattr(judge_model, "device") else ("cuda" if torch.cuda.is_available() else "cpu")
+        device = (
+            judge_model.device
+            if hasattr(judge_model, "device")
+            else ("cuda" if torch.cuda.is_available() else "cpu")
+        )
         inputs = {k: v.to(device) for k, v in inputs.items()}
         with torch.no_grad():
             outputs = judge_model.generate(

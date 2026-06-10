@@ -3,10 +3,9 @@ from __future__ import annotations
 import json
 import logging
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, Optional, Set
-
 
 LOGGER = logging.getLogger("irule.rulebook")
 
@@ -56,26 +55,26 @@ DEFAULT_OPERATORS = WORD_OPERATORS.union(SYMBOL_OPERATORS)
 
 @dataclass
 class Rulebook:
-    commands: Set[str]
-    events: Set[str]
-    operators: Set[str]
-    event_order: Dict[str, dict]
+    commands: set[str]
+    events: set[str]
+    operators: set[str]
+    event_order: dict[str, dict]
 
 
-def extract_command_tokens(text: str) -> Set[str]:
+def extract_command_tokens(text: str) -> set[str]:
     return set(match.group(1) for match in COMMAND_PATTERN.finditer(text))
 
 
-def discover_events(text: str) -> Set[str]:
+def discover_events(text: str) -> set[str]:
     return set(EVENT_DECL_PATTERN.findall(text))
 
 
-def extract_events_from_text(text: str, known_events: Set[str]) -> Set[str]:
+def extract_events_from_text(text: str, known_events: set[str]) -> set[str]:
     return {event for event in known_events if event in text}
 
 
-def extract_operator_tokens(text: str, known_operators: Set[str]) -> Set[str]:
-    tokens: Set[str] = set()
+def extract_operator_tokens(text: str, known_operators: set[str]) -> set[str]:
+    tokens: set[str] = set()
     lowered = text.lower()
     for op in WORD_OPERATORS:
         if op in known_operators and re.search(rf"\b{re.escape(op)}\b", lowered):
@@ -103,7 +102,7 @@ def load_rulebook(path: Path) -> Rulebook:
 
 
 def write_rulebook(rulebook: Rulebook, path: Path) -> None:
-    payload: Dict[str, Iterable[str]] = {
+    payload: dict[str, Iterable[str]] = {
         "commands": sorted(rulebook.commands),
         "events": sorted(rulebook.events),
         "operators": sorted(rulebook.operators),
@@ -117,17 +116,17 @@ def write_rulebook(rulebook: Rulebook, path: Path) -> None:
 class RulebookArgs:
     chunks_path: Path = Path("data/chunks/chunks.jsonl")
     output_path: Path = Path("data/rulebook/command_tokens.json")
-    event_order_path: Optional[Path] = Path("irules_https_event_order.jsonl")
+    event_order_path: Path | None = Path("irules_https_event_order.jsonl")
 
 
-def load_event_order(path: Optional[Path]) -> Dict[str, dict]:
+def load_event_order(path: Path | None) -> dict[str, dict]:
     if not path:
         return {}
     path = Path(path)
     if not path.exists():
         LOGGER.warning("Event order file %s not found; skipping event ordering data.", path)
         return {}
-    order_map: Dict[str, dict] = {}
+    order_map: dict[str, dict] = {}
     with path.open("r", encoding="utf-8") as fh:
         for line in fh:
             line = line.strip()
@@ -150,8 +149,8 @@ def run_rulebook(args: RulebookArgs) -> None:
     if not args.chunks_path.exists():
         LOGGER.error("Chunks file %s not found", args.chunks_path)
         return
-    commands: Set[str] = set()
-    events: Set[str] = set()
+    commands: set[str] = set()
+    events: set[str] = set()
     with args.chunks_path.open("r", encoding="utf-8") as fh:
         for line in fh:
             try:

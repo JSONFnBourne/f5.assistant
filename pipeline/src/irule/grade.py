@@ -1,22 +1,22 @@
 from __future__ import annotations
 
 import json
-import re
 import logging
+import re
+from collections.abc import Iterator
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator, Literal, Optional
+from typing import Literal
 
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import tyro
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 from .rulebook import (
     DEFAULT_OPERATORS,
     Rulebook,
     discover_events,
     extract_command_tokens,
-    extract_operator_tokens,
     load_rulebook,
 )
 
@@ -32,7 +32,7 @@ def load_qa(path: Path) -> Iterator[dict]:
 SCORE_KEYS = {"factual", "linguistic", "domain", "overall"}
 
 
-def parse_grade_output(text: str) -> Optional[dict]:
+def parse_grade_output(text: str) -> dict | None:
     """Extract and parse a judge JSON object from LLM output.
 
     More robust than naive slicing:
@@ -71,11 +71,11 @@ def parse_grade_output(text: str) -> Optional[dict]:
                 if ch == '"':
                     in_str = True
                     continue
-                if ch == '{':
+                if ch == "{":
                     if depth == 0:
                         start_idx = i
                     depth += 1
-                elif ch == '}':
+                elif ch == "}":
                     if depth > 0:
                         depth -= 1
                         if depth == 0 and start_idx is not None:
@@ -103,7 +103,7 @@ def parse_grade_output(text: str) -> Optional[dict]:
     return None
 
 
-def validate_result(result: dict) -> Optional[dict]:
+def validate_result(result: dict) -> dict | None:
     if not isinstance(result, dict):
         return None
     scores = result.get("scores")
@@ -182,15 +182,15 @@ class GradeArgs:
     output_path: Path = Path("data/datasets/qa_graded.jsonl")
     judge_model: str = "meta-llama/Llama-3.2-3B-Instruct"
     quantization: Literal["4bit", "8bit", "none"] = "4bit"
-    max_gpu_memory: Optional[str] = None
-    max_cpu_memory: Optional[str] = "48GiB"
+    max_gpu_memory: str | None = None
+    max_cpu_memory: str | None = "48GiB"
     device: str = "cuda"
     min_overall: float = 0.85
     trust_remote_code: bool = False
-    max_items: Optional[int] = None
+    max_items: int | None = None
     overwrite: bool = False
     skip_if_exists: bool = False
-    rulebook_path: Optional[Path] = Path("data/rulebook/command_tokens.json")
+    rulebook_path: Path | None = Path("data/rulebook/command_tokens.json")
 
 
 def setup_judge(args: GradeArgs):
@@ -241,11 +241,13 @@ def setup_judge(args: GradeArgs):
                 LOGGER.info("Judge primary device: %s", getattr(model, "device", "unknown"))
         except Exception:
             pass
+
         def _is_cuda(mod):
             try:
                 return next(mod.parameters()).is_cuda
             except StopIteration:
                 return False
+
         if not _is_cuda(model):
             try:
                 model.to("cuda")
@@ -263,7 +265,11 @@ def generate_judge_output(
     temperature: float = 0.0,
     top_p: float = 0.9,
 ) -> str:
-    device = model.device if hasattr(model, "device") else ("cuda" if torch.cuda.is_available() else "cpu")
+    device = (
+        model.device
+        if hasattr(model, "device")
+        else ("cuda" if torch.cuda.is_available() else "cpu")
+    )
     inputs = tokenizer(prompt, return_tensors="pt")
     inputs = {k: v.to(device) for k, v in inputs.items()}
     with torch.no_grad():
@@ -287,7 +293,9 @@ def run_grade(args: GradeArgs) -> None:
             LOGGER.info("Graded file %s already exists; skipping judge run.", args.output_path)
             return
         if not args.overwrite:
-            LOGGER.error("Output %s exists. Remove it or use --overwrite to regenerate.", args.output_path)
+            LOGGER.error(
+                "Output %s exists. Remove it or use --overwrite to regenerate.", args.output_path
+            )
             return
         args.output_path.unlink()
     model, tokenizer = setup_judge(args)
@@ -309,7 +317,8 @@ def run_grade(args: GradeArgs) -> None:
             )
         else:
             LOGGER.warning(
-                "Rulebook not found at %s; domain validation limited during grading.", args.rulebook_path
+                "Rulebook not found at %s; domain validation limited during grading.",
+                args.rulebook_path,
             )
     else:
         LOGGER.warning("Rulebook path not provided; domain validation limited during grading.")
@@ -332,7 +341,11 @@ def run_grade(args: GradeArgs) -> None:
                     sorted(combined_cmds - context_cmds),
                 )
                 continue
-            if rulebook.commands and combined_cmds and not combined_cmds.issubset(rulebook.commands):
+            if (
+                rulebook.commands
+                and combined_cmds
+                and not combined_cmds.issubset(rulebook.commands)
+            ):
                 LOGGER.warning(
                     "Skipping QA due to commands not present in rulebook: %s",
                     sorted(combined_cmds - rulebook.commands),
@@ -340,7 +353,11 @@ def run_grade(args: GradeArgs) -> None:
                 continue
 
             # Event validation
-            potential_events = {tok for tok in re.findall(r"\b([A-Z][A-Z0-9_]+)\b", question + " " + answer) if "_" in tok}
+            potential_events = {
+                tok
+                for tok in re.findall(r"\b([A-Z][A-Z0-9_]+)\b", question + " " + answer)
+                if "_" in tok
+            }
             context_events = discover_events(context)
             if potential_events and not potential_events.issubset(context_events):
                 LOGGER.warning(
@@ -357,9 +374,7 @@ def run_grade(args: GradeArgs) -> None:
                     mislabelled_event = True
                     break
             if mislabelled_event:
-                LOGGER.warning(
-                    "Skipping QA due to event labeled as command: %s", question
-                )
+                LOGGER.warning("Skipping QA due to event labeled as command: %s", question)
                 continue
 
             prompt = make_prompt(question, answer, context)
@@ -402,7 +417,12 @@ def run_grade(args: GradeArgs) -> None:
                 retained += 1
             if args.max_items and total >= args.max_items:
                 break
-    LOGGER.info("Judge retained %s/%s items (%.2f%%)", retained, total, (retained / total * 100) if total else 0.0)
+    LOGGER.info(
+        "Judge retained %s/%s items (%.2f%%)",
+        retained,
+        total,
+        (retained / total * 100) if total else 0.0,
+    )
 
 
 def main() -> None:

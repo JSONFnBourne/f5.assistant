@@ -28,14 +28,10 @@ class TestShouldExtract:
         assert _f5os_should_extract("qkview/manifest.json")
 
     def test_subpackage_manifest_kept(self):
-        assert _f5os_should_extract(
-            "qkview/subpackages/host-qkview/qkview/manifest.json"
-        )
+        assert _f5os_should_extract("qkview/subpackages/host-qkview/qkview/manifest.json")
 
     def test_product_file_kept(self):
-        assert _f5os_should_extract(
-            "qkview/subpackages/host-qkview/qkview/filesystem/etc/PRODUCT"
-        )
+        assert _f5os_should_extract("qkview/subpackages/host-qkview/qkview/filesystem/etc/PRODUCT")
         assert _f5os_should_extract(
             "qkview/subpackages/host-qkview/qkview/filesystem/etc/PRODUCT.LTS"
         )
@@ -57,17 +53,11 @@ class TestShouldExtract:
         )
 
     def test_meminfo_and_version_kept(self):
-        assert _f5os_should_extract(
-            "qkview/subpackages/host-qkview/qkview/filesystem/proc/meminfo"
-        )
-        assert _f5os_should_extract(
-            "qkview/subpackages/host-qkview/qkview/filesystem/version"
-        )
+        assert _f5os_should_extract("qkview/subpackages/host-qkview/qkview/filesystem/proc/meminfo")
+        assert _f5os_should_extract("qkview/subpackages/host-qkview/qkview/filesystem/version")
 
     def test_qkview_collect_log_kept(self):
-        assert _f5os_should_extract(
-            "qkview/subpackages/host-qkview/qkview/qkview-collect.log"
-        )
+        assert _f5os_should_extract("qkview/subpackages/host-qkview/qkview/qkview-collect.log")
 
     def test_k8s_subpackages_skipped(self):
         # VELOS syscon ships ~40 of these; each adds tens of MB of
@@ -75,9 +65,7 @@ class TestShouldExtract:
         assert not _f5os_should_extract(
             "qkview/subpackages/k8s_kube-apiserver/qkview/manifest.json"
         )
-        assert not _f5os_should_extract(
-            "qkview/subpackages/k8s_etcd/qkview/filesystem/etc/PRODUCT"
-        )
+        assert not _f5os_should_extract("qkview/subpackages/k8s_etcd/qkview/filesystem/etc/PRODUCT")
         assert not _f5os_should_extract(
             "qkview/subpackages/k8s_openshift-apiserver/qkview/commands/h/0/out"
         )
@@ -93,9 +81,7 @@ class TestShouldExtract:
         assert not _f5os_should_extract(
             "qkview/subpackages/host-qkview/qkview/filesystem/usr/lib/libfoo.so"
         )
-        assert not _f5os_should_extract(
-            "qkview/subpackages/host-qkview/qkview/filesystem/bin/bash"
-        )
+        assert not _f5os_should_extract("qkview/subpackages/host-qkview/qkview/filesystem/bin/bash")
 
     def test_non_subpackage_paths_skipped(self):
         # Anything outside subpackages/ is noise for F5OS.
@@ -159,9 +145,7 @@ class TestPrefixPriorityAndCommandFiltering:
         assert _normalize_f5os_command_name(wrapped) == "show running-config"
 
     def test_quick_link_match(self):
-        assert _is_quick_link_command(
-            "/confd/scripts/f5_confd_run_cmd show system state"
-        )
+        assert _is_quick_link_command("/confd/scripts/f5_confd_run_cmd show system state")
         assert _is_quick_link_command("show running-config")
 
     def test_quick_link_excludes_raw_license(self):

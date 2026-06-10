@@ -1,19 +1,19 @@
 """Scraper for the F5 tmsh documentation."""
+
 from __future__ import annotations
 
 import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple
 from urllib.parse import urljoin, urlparse
 
 import httpx
 from bs4 import BeautifulSoup, Tag
 
-from ..config import DirectoryLayout, ScrapeTarget, ScraperConfig
+from ..config import DirectoryLayout, ScraperConfig, ScrapeTarget
 
-IGNORED_BOILERPLATE: Tuple[str, ...] = (
+IGNORED_BOILERPLATE: tuple[str, ...] = (
     "COPYRIGHT\n       No part of this program may be reproduced or transmitted in any form or by any means, electronic or mechanical, including\n       photocopying, recording, or information storage and retrieval systems, for any purpose other than the purchaser's personal\n       use, without the express written permission of F5 Networks, Inc.\n\n       F5 Networks and BIG-IP (c) Copyright 2018. All rights reserved.\n\nBIG-IP\t\t\t\t    2018-07-10\t\t\t\tapi-protection response(1)",
     "If you are looking to move beyond–or simply bypass–the theory and would like to find complex examples to reference, be sure to check out the CodeShare to find a plethora of ways to put iRules to work. \nThe BIG-IP API Reference documentation contains community-contributed content. F5 does not monitor or control community code contributions. We make no guarantees or warranties regarding the available code, and it may contain errors, defects, bugs, inaccuracies, or security vulnerabilities. Your access to and use of any code available in the BIG-IP API reference guides is solely at your own risk.",
 )
@@ -36,12 +36,12 @@ class F5Scraper:
         self.config = config.with_metadata_path(layout)
         assert self.config.metadata_path is not None
         self._metadata_path = self.config.metadata_path
-        self._metadata: Dict[str, str] = self._load_metadata()
+        self._metadata: dict[str, str] = self._load_metadata()
 
     # ------------------------------------------------------------------
     # public API
-    def run(self) -> List[ScrapeResult]:
-        results: List[ScrapeResult] = []
+    def run(self) -> list[ScrapeResult]:
+        results: list[ScrapeResult] = []
         for target in self.config.targets:
             results.extend(self._scrape_target(target))
         self._save_metadata()
@@ -53,10 +53,10 @@ class F5Scraper:
         self._metadata.clear()
 
     # ------------------------------------------------------------------
-    def _scrape_target(self, target: ScrapeTarget) -> List[ScrapeResult]:
-        pending: List[Tuple[str, int]] = [(target.url, 0)]
-        visited: Set[str] = set()
-        results: List[ScrapeResult] = []
+    def _scrape_target(self, target: ScrapeTarget) -> list[ScrapeResult]:
+        pending: list[tuple[str, int]] = [(target.url, 0)]
+        visited: set[str] = set()
+        results: list[ScrapeResult] = []
 
         while pending:
             url, depth = pending.pop(0)
@@ -91,7 +91,7 @@ class F5Scraper:
         age = datetime.now(timezone.utc) - last_collected
         return age >= self.config.cache_expiry
 
-    def _fetch(self, url: str) -> Optional[str]:
+    def _fetch(self, url: str) -> str | None:
         headers = {"User-Agent": self.config.user_agent}
         try:
             with httpx.Client(follow_redirects=True, headers=headers, timeout=30.0) as client:
@@ -101,7 +101,7 @@ class F5Scraper:
         except httpx.HTTPError:
             return None
 
-    def _extract_and_filter(self, url: str, html: str) -> Tuple[str, List[str]]:
+    def _extract_and_filter(self, url: str, html: str) -> tuple[str, list[str]]:
         soup = BeautifulSoup(html, "html.parser")
         main = soup.select_one("div.wy-nav-content div[role='main'] div.section")
         if main is None:
@@ -115,7 +115,7 @@ class F5Scraper:
         links = [urljoin(url, a["href"]) for a in green_area.find_all("a", href=True)]
         return green_area.prettify(), links
 
-    def _select_green_area(self, container: Tag) -> Optional[Tag]:
+    def _select_green_area(self, container: Tag) -> Tag | None:
         """Return the element that matches the visual "green box" instructions."""
 
         # Preference order: unordered lists, tables, and definition lists inside the section.
@@ -148,7 +148,7 @@ class F5Scraper:
     def _is_same_domain(self, base_url: str, candidate: str) -> bool:
         return urlparse(base_url).netloc == urlparse(candidate).netloc
 
-    def _load_metadata(self) -> Dict[str, str]:
+    def _load_metadata(self) -> dict[str, str]:
         if not self._metadata_path.exists():
             return {}
         try:
@@ -158,4 +158,6 @@ class F5Scraper:
 
     def _save_metadata(self) -> None:
         self._metadata_path.parent.mkdir(parents=True, exist_ok=True)
-        self._metadata_path.write_text(json.dumps(self._metadata, indent=2, sort_keys=True), encoding="utf-8")
+        self._metadata_path.write_text(
+            json.dumps(self._metadata, indent=2, sort_keys=True), encoding="utf-8"
+        )

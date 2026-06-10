@@ -8,6 +8,7 @@ assembled_candidates.jsonl so the curated smoke set stays intact and nothing is 
 - Identifier rows: gold validated vs documents.doc_id (exact -> K/bare-numeric normalization).
 - Concept rows: carried through with EMPTY gold (they remain UNSCORED downstream).
 """
+
 from __future__ import annotations
 
 import json
@@ -48,31 +49,44 @@ def main() -> None:
                 found += 1
             elif norm(g) in normed:
                 normfixed += 1
-                print(f"  ~ {r['id']}: {g!r} not exact, matched via normalization -> {normed[norm(g)]!r}")
+                print(
+                    f"  ~ {r['id']}: {g!r} not exact, matched via normalization -> {normed[norm(g)]!r}"
+                )
             else:
                 notfound += 1
                 print(f"  ✗ {r['id']}: gold {g!r} NOT FOUND in documents.doc_id")
-    print(f"  exact={found}  norm-matched={normfixed}  NOT-found={notfound}  (of {sum(len(r['expected_doc_ids']) for r in ident)} gold refs)")
+    print(
+        f"  exact={found}  norm-matched={normfixed}  NOT-found={notfound}  (of {sum(len(r['expected_doc_ids']) for r in ident)} gold refs)"
+    )
 
     # assemble into harness schema
     rows = []
     for r in ident:
-        rows.append({
-            "id": r["id"], "question": r["question"],
-            "expected_doc_ids": r["expected_doc_ids"],
-            "query_type": r["query_type"], "notes": r.get("notes", ""),
-        })
+        rows.append(
+            {
+                "id": r["id"],
+                "question": r["question"],
+                "expected_doc_ids": r["expected_doc_ids"],
+                "query_type": r["query_type"],
+                "notes": r.get("notes", ""),
+            }
+        )
     for r in concept:
-        rows.append({
-            "id": r["id"], "question": r["question"],
-            "expected_doc_ids": [],  # UNSCORED until human review supplies gold
-            "query_type": r["query_type"],
-            "notes": f"harvested concept (unscored); src={r.get('source_url','')}",
-        })
+        rows.append(
+            {
+                "id": r["id"],
+                "question": r["question"],
+                "expected_doc_ids": [],  # UNSCORED until human review supplies gold
+                "query_type": r["query_type"],
+                "notes": f"harvested concept (unscored); src={r.get('source_url','')}",
+            }
+        )
     with open(OUT, "w", encoding="utf-8") as fh:
         for row in rows:
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
-    print(f"\nassembled {len(rows)} rows ({len(ident)} identifier scored + {len(concept)} concept unscored) -> {OUT}")
+    print(
+        f"\nassembled {len(rows)} rows ({len(ident)} identifier scored + {len(concept)} concept unscored) -> {OUT}"
+    )
 
 
 if __name__ == "__main__":

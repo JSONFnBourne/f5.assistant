@@ -83,7 +83,9 @@ def run_pipeline(archive: str) -> None:
         if data.f5os_event_log:
             entries.extend(parse_f5os_event_log(data.f5os_event_log, source_file="event-log.log"))
         if data.f5os_system_events:
-            entries.extend(parse_f5os_event_log(data.f5os_system_events, source_file="system-events"))
+            entries.extend(
+                parse_f5os_event_log(data.f5os_system_events, source_file="system-events")
+            )
         entries.sort(key=lambda e: e.timestamp)
 
     indexer = LogIndexer()

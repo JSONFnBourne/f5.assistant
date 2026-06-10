@@ -2,12 +2,12 @@
 
 import re
 from dataclasses import dataclass, field
-from typing import Optional
 
 
 @dataclass
 class PoolMember:
     """A pool member (node:port)."""
+
     address: str
     port: int
     name: str = ""
@@ -20,6 +20,7 @@ class PoolMember:
 @dataclass
 class Pool:
     """An LTM pool."""
+
     name: str
     partition: str = "Common"
     members: list[PoolMember] = field(default_factory=list)
@@ -34,6 +35,7 @@ class Pool:
 @dataclass
 class VirtualServer:
     """An LTM Virtual Server."""
+
     name: str
     partition: str = "Common"
     destination: str = ""
@@ -55,6 +57,7 @@ class VirtualServer:
 @dataclass
 class SelfIP:
     """A network self IP."""
+
     name: str
     address: str = ""
     vlan: str = ""
@@ -64,6 +67,7 @@ class SelfIP:
 @dataclass
 class VLAN:
     """A network VLAN."""
+
     name: str
     tag: int = 0
     partition: str = "Common"
@@ -73,6 +77,7 @@ class VLAN:
 @dataclass
 class BigIPConfig:
     """Parsed BIG-IP configuration."""
+
     hostname: str = ""
     virtual_servers: dict[str, VirtualServer] = field(default_factory=dict)
     pools: dict[str, Pool] = field(default_factory=dict)
@@ -105,27 +110,31 @@ class BigIPConfig:
         for pool in pools:
             vss = self.find_vs_for_pool(pool.full_path)
             for vs in vss:
-                chains.append({
-                    "member": member_address,
-                    "pool": pool.full_path,
-                    "pool_monitor": pool.monitor,
-                    "pool_lb_method": pool.lb_method,
-                    "virtual_server": vs.full_path,
-                    "vs_destination": vs.destination,
-                    "vs_irules": vs.irules,
-                    "vs_profiles": vs.profiles,
-                })
+                chains.append(
+                    {
+                        "member": member_address,
+                        "pool": pool.full_path,
+                        "pool_monitor": pool.monitor,
+                        "pool_lb_method": pool.lb_method,
+                        "virtual_server": vs.full_path,
+                        "vs_destination": vs.destination,
+                        "vs_irules": vs.irules,
+                        "vs_profiles": vs.profiles,
+                    }
+                )
             if not vss:
-                chains.append({
-                    "member": member_address,
-                    "pool": pool.full_path,
-                    "pool_monitor": pool.monitor,
-                    "pool_lb_method": pool.lb_method,
-                    "virtual_server": "(none)",
-                    "vs_destination": "",
-                    "vs_irules": [],
-                    "vs_profiles": [],
-                })
+                chains.append(
+                    {
+                        "member": member_address,
+                        "pool": pool.full_path,
+                        "pool_monitor": pool.monitor,
+                        "pool_lb_method": pool.lb_method,
+                        "virtual_server": "(none)",
+                        "vs_destination": "",
+                        "vs_irules": [],
+                        "vs_profiles": [],
+                    }
+                )
         return chains
 
 
@@ -154,7 +163,7 @@ def _extract_stanza_blocks(content: str, object_type: str) -> list[tuple[str, st
             elif content[pos] == "}":
                 depth -= 1
             pos += 1
-        block = content[start:pos - 1]
+        block = content[start : pos - 1]
         results.append((name, block))
 
     return results
@@ -206,7 +215,7 @@ def _parse_pool_members(block: str) -> list[PoolMember]:
         elif block[pos] == "}":
             depth -= 1
         pos += 1
-    members_block = block[brace_pos + 1:pos - 1]
+    members_block = block[brace_pos + 1 : pos - 1]
 
     members = []
     # Each member: /Common/addr:port { address X.X.X.X }
@@ -306,7 +315,7 @@ def parse_bigip_base_conf(content: str) -> BigIPConfig:
         config.self_ips[name] = self_ip
 
     # Parse Hostname from sys global-settings
-    hn_match = re.search(r'sys global-settings\s*\{[^}]*hostname\s+(\S+)', content, re.IGNORECASE)
+    hn_match = re.search(r"sys global-settings\s*\{[^}]*hostname\s+(\S+)", content, re.IGNORECASE)
     if hn_match:
         config.hostname = hn_match.group(1).strip()
 

@@ -2,16 +2,16 @@ from __future__ import annotations
 
 import json
 import logging
-from dataclasses import dataclass
 import os
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Literal, Optional
+from typing import Literal
 
 import torch
-from datasets import load_dataset
-from peft import PeftModel, PeftConfig
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import tyro
+from datasets import load_dataset
+from peft import PeftConfig, PeftModel
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 LOGGER = logging.getLogger("irule.evaluate")
 
@@ -27,18 +27,18 @@ class EvaluateArgs:
     judge_model: str = "meta-llama/Llama-3.2-3B-Instruct"
     output_metrics: Path = Path("data/models/eval_metrics.json")
     quantization: Literal["4bit", "8bit", "none"] = "4bit"
-    max_gpu_memory: Optional[str] = None
-    max_cpu_memory: Optional[str] = "48GiB"
+    max_gpu_memory: str | None = None
+    max_cpu_memory: str | None = "48GiB"
     temperature: float = 0.0
     top_p: float = 0.9
     max_new_tokens: int = 512
     judge_threshold: float = 0.85
     trust_remote_code: bool = False
-    max_samples: Optional[int] = None
+    max_samples: int | None = None
     judge_on_cpu: bool = False
     gen_batch_size: int = 4
     judge_batch_size: int = 8
-    candidates_cache: Optional[Path] = Path("data/models/eval_candidates.jsonl")
+    candidates_cache: Path | None = Path("data/models/eval_candidates.jsonl")
     use_cache: bool = True
     overwrite_cache: bool = False
 
@@ -94,7 +94,9 @@ def load_peft_model(args: EvaluateArgs):
         tokenizer.padding_side = "left"
         model = PeftModel.from_pretrained(base_model, args.model_path)
     except (OSError, ValueError):
-        LOGGER.info("No PEFT adapters detected at %s; loading merged model directly.", args.model_path)
+        LOGGER.info(
+            "No PEFT adapters detected at %s; loading merged model directly.", args.model_path
+        )
         peft_config = None
         model = AutoModelForCausalLM.from_pretrained(args.model_path, **kwargs)
         tokenizer = AutoTokenizer.from_pretrained(
@@ -114,11 +116,13 @@ def load_peft_model(args: EvaluateArgs):
                 LOGGER.info("Eval model device: %s", getattr(model, "device", "unknown"))
         except Exception:
             pass
+
         def _is_cuda(mod):
             try:
                 return next(mod.parameters()).is_cuda
             except StopIteration:
                 return False
+
         if not _is_cuda(model):
             try:
                 model.to("cuda")
@@ -137,7 +141,9 @@ def setup_judge(args: EvaluateArgs):
         quant_mode = args.quantization
         if quant_mode == "4bit":
             if not torch.cuda.is_available():
-                raise RuntimeError("4-bit judge mode requires a CUDA-capable GPU or enable --judge-on-cpu.")
+                raise RuntimeError(
+                    "4-bit judge mode requires a CUDA-capable GPU or enable --judge-on-cpu."
+                )
             judge_kwargs["quantization_config"] = BitsAndBytesConfig(
                 load_in_4bit=True,
                 bnb_4bit_use_double_quant=True,
@@ -147,7 +153,9 @@ def setup_judge(args: EvaluateArgs):
             judge_kwargs["device_map"] = {"": "cuda:0"}
         elif quant_mode == "8bit":
             if not torch.cuda.is_available():
-                raise RuntimeError("8-bit judge mode requires a CUDA-capable GPU or enable --judge-on-cpu.")
+                raise RuntimeError(
+                    "8-bit judge mode requires a CUDA-capable GPU or enable --judge-on-cpu."
+                )
             judge_kwargs["quantization_config"] = BitsAndBytesConfig(
                 load_in_8bit=True, llm_int8_enable_fp32_cpu_offload=True
             )
@@ -189,11 +197,13 @@ def setup_judge(args: EvaluateArgs):
                 LOGGER.info("Judge model device: %s", getattr(judge_model, "device", "unknown"))
         except Exception:
             pass
+
         def _is_cuda(mod):
             try:
                 return next(mod.parameters()).is_cuda
             except StopIteration:
                 return False
+
         if not _is_cuda(judge_model):
             try:
                 judge_model.to("cuda")
@@ -219,7 +229,9 @@ def build_eval_prompt(tokenizer, question: str) -> str:
     )
 
 
-def make_judge_prompt(question: str, reference_answer: str, candidate_answer: str, context: str) -> str:
+def make_judge_prompt(
+    question: str, reference_answer: str, candidate_answer: str, context: str
+) -> str:
     return (
         "You are irule-judge comparing model output with the reference answer.\n"
         "Assign a score between 0.0 and 1.0 where 1.0 matches the reference and is grounded in context.\n"
@@ -231,7 +243,7 @@ def make_judge_prompt(question: str, reference_answer: str, candidate_answer: st
     )
 
 
-def parse_judge_result(text: str) -> Optional[dict]:
+def parse_judge_result(text: str) -> dict | None:
     """Robustly extract a JSON object from judge output (mirrors grade.py)."""
 
     def iter_candidates(response: str):
@@ -267,11 +279,11 @@ def parse_judge_result(text: str) -> Optional[dict]:
             if ch == '"':
                 in_string = True
                 continue
-            if ch == '{':
+            if ch == "{":
                 if depth == 0:
                     start_idx = i
                 depth += 1
-            elif ch == '}':
+            elif ch == "}":
                 if depth > 0:
                     depth -= 1
                     if depth == 0 and start_idx is not None:
@@ -353,9 +365,7 @@ def run_evaluate(args: EvaluateArgs) -> None:
             with torch.no_grad():
                 outputs = model.generate(**inputs, **generation_kwargs)
             # Decode only the newly generated continuation, not the prompt.
-            texts = tokenizer.batch_decode(
-                outputs[:, input_len:], skip_special_tokens=True
-            )
+            texts = tokenizer.batch_decode(outputs[:, input_len:], skip_special_tokens=True)
             for b, out in zip(batch, texts):
                 generations.append(
                     {
@@ -407,9 +417,7 @@ def run_evaluate(args: EvaluateArgs) -> None:
         # uniform padded prompt length — slice there (mirrors the generation
         # phase above), not at the per-row unpadded length.
         input_len = inputs["input_ids"].shape[1]
-        return judge_tokenizer.batch_decode(
-            outputs[:, input_len:], skip_special_tokens=True
-        )
+        return judge_tokenizer.batch_decode(outputs[:, input_len:], skip_special_tokens=True)
 
     for i in range(0, len(generations), jbs):
         batch = generations[i : i + jbs]
@@ -422,7 +430,7 @@ def run_evaluate(args: EvaluateArgs) -> None:
             parsed = parse_judge_result(t)
             if not parsed:
                 retry = (
-                    make_judge_prompt(b["question"], b["reference"], b["candidate"], b["context"]) 
+                    make_judge_prompt(b["question"], b["reference"], b["candidate"], b["context"])
                     + "\n\nReminder: respond with a single JSON object containing 'score', 'verdict', and 'analysis'."
                 )
                 t2 = judge_batch([retry])[0]

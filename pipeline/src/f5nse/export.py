@@ -4,7 +4,6 @@ import logging
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 import tyro
 
@@ -16,7 +15,7 @@ class ExportArgs:
     model_dir: Path = Path("data/models/f5nse-merged")
     llama_cpp_path: Path = Path("~/src/llama.cpp")
     output_path: Path = Path("data/models/f5nse.gguf")
-    quantization: Optional[str] = "q4_k_m"
+    quantization: str | None = "q4_k_m"
     vocab_only: bool = False
     python_executable: str = "python"
 

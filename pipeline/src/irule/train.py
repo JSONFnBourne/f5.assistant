@@ -2,18 +2,19 @@ from __future__ import annotations
 
 import logging
 import os
+
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "max_split_size_mb:64")
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List, Literal, Optional
+from typing import Literal
 
-from datasets import load_dataset
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-from peft import LoraConfig, get_peft_model
-from trl import SFTConfig, SFTTrainer
 import tyro
+from datasets import load_dataset
+from peft import LoraConfig, get_peft_model
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from trl import SFTConfig, SFTTrainer
 
 LOGGER = logging.getLogger("irule.train")
 
@@ -25,13 +26,13 @@ class TrainArgs:
     base_model: str = "meta-llama/Llama-3.2-3B-Instruct"
     output_dir: Path = Path("data/models/irule-lora")
     quantization: Literal["4bit", "8bit", "none"] = "4bit"
-    max_gpu_memory: Optional[str] = None
-    max_cpu_memory: Optional[str] = "48GiB"
+    max_gpu_memory: str | None = None
+    max_cpu_memory: str | None = "48GiB"
     backend: Literal["auto", "transformers", "unsloth"] = "auto"
     lora_r: int = 64
     lora_alpha: int = 16
     lora_dropout: float = 0.05
-    lora_target_modules: List[str] = field(
+    lora_target_modules: list[str] = field(
         default_factory=lambda: [
             "q_proj",
             "k_proj",
@@ -332,9 +333,7 @@ def run_train(args: TrainArgs) -> None:
         try:
             trainer = build_trainer(packing=True)
         except Exception as exc:
-            LOGGER.warning(
-                "Packing failed (%s). Falling back to non-packed batches.", exc
-            )
+            LOGGER.warning("Packing failed (%s). Falling back to non-packed batches.", exc)
             trainer = build_trainer(packing=False)
     else:
         trainer = build_trainer(packing=False)

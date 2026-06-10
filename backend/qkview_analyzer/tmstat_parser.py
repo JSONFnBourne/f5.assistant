@@ -36,10 +36,11 @@ _CLUSTER_FILE_RE = re.compile(r"^(blade\d+)-([A-Za-z]\w*)$")
 @dataclass
 class TmstatSummary:
     """Path-derived coverage summary of tmstat data."""
+
     snapshot_count: int = 0
-    time_ranges: list[str] = None   # distinct numeric intervals (snapshot layout)
-    categories: list[str] = None    # distinct types (public / performance)
-    blades: list[str] = None        # distinct blades seen across both layouts
+    time_ranges: list[str] = None  # distinct numeric intervals (snapshot layout)
+    categories: list[str] = None  # distinct types (public / performance)
+    blades: list[str] = None  # distinct blades seen across both layouts
 
     def __post_init__(self):
         if self.time_ranges is None:
@@ -66,8 +67,8 @@ def parse_tmstat_path(path: str) -> dict | None:
     if "tmstat" not in parts:
         return None
     anchor = parts.index("tmstat")
-    root = parts[anchor - 1] if anchor > 0 else ""   # "shared" or "var"
-    tail = parts[anchor + 1:]
+    root = parts[anchor - 1] if anchor > 0 else ""  # "shared" or "var"
+    tail = parts[anchor + 1 :]
     if not tail:
         return None
 
@@ -96,11 +97,11 @@ def parse_tmstat_path(path: str) -> dict | None:
 
     # Live-segment layout: <scope>/<segment...>
     info["family"] = "segment"
-    info["scope"] = tail[0]            # "blade" or "cluster"
+    info["scope"] = tail[0]  # "blade" or "cluster"
     m = _CLUSTER_FILE_RE.match(info["segment"])
     if m:
-        info["blade"] = m.group(1)     # e.g. blade1
-        info["type"] = m.group(2)      # e.g. public / performance
+        info["blade"] = m.group(1)  # e.g. blade1
+        info["type"] = m.group(2)  # e.g. public / performance
     return info
 
 

@@ -5,7 +5,6 @@ import logging
 import statistics
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 import tyro
 
@@ -18,7 +17,7 @@ class ValidateArgs:
     min_records: int = 1
     expect_scores: bool = True
     require_context: bool = True
-    min_overall: Optional[float] = None
+    min_overall: float | None = None
 
 
 def load_records(path: Path):
@@ -80,7 +79,9 @@ def run_validate(args: ValidateArgs) -> None:
         median_score = statistics.median(overall_scores)
         LOGGER.info("Overall score mean %.4f median %.4f", mean_score, median_score)
         if args.min_overall is not None and mean_score < args.min_overall:
-            LOGGER.warning("Mean overall score %.4f below threshold %.4f", mean_score, args.min_overall)
+            LOGGER.warning(
+                "Mean overall score %.4f below threshold %.4f", mean_score, args.min_overall
+            )
 
 
 def main() -> None:

@@ -31,9 +31,9 @@ _QKVIEW_DIR = Path(__file__).resolve().parents[2] / "data" / "qkview"
 # Map a short fixture name → archive filename. The names are stable; the
 # files change as the user collects fresh qkviews.
 _ARCHIVES = {
-    "rseries_host":      "rSeries.tar",
-    "velos_partition":   "partition.tar",
-    "velos_syscon":      "syscon.tar",
+    "rseries_host": "rSeries.tar",
+    "velos_partition": "partition.tar",
+    "velos_syscon": "syscon.tar",
     "tmos_post_upgrade": "tmos_ve.qkview",
 }
 
@@ -55,6 +55,7 @@ def _f5os_tempdir(tmp_path_factory) -> Path:
     """
     import shutil
     import tempfile
+
     base = Path(tempfile.mkdtemp(prefix="pytest_f5os_", dir="/var/tmp"))
     os.environ["F5_QKVIEW_TMPDIR"] = str(base)
     yield base

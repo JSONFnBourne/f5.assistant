@@ -2,9 +2,8 @@
 
 import sqlite3
 from datetime import datetime
-from typing import Optional
 
-from .parser import LogEntry, SEVERITY_LEVELS
+from .parser import SEVERITY_LEVELS, LogEntry
 
 
 class LogIndexer:
@@ -72,7 +71,7 @@ class LogIndexer:
         cursor = self.conn.cursor()
 
         for i in range(0, total, batch_size):
-            batch = entries[i:i + batch_size]
+            batch = entries[i : i + batch_size]
 
             if progress_callback and i % batch_size == 0:
                 progress_callback(f"Indexing entries {i}/{total}...")
@@ -119,13 +118,13 @@ class LogIndexer:
 
     def query(
         self,
-        start: Optional[datetime] = None,
-        end: Optional[datetime] = None,
-        min_severity: Optional[str] = None,
-        process: Optional[str] = None,
-        msg_code: Optional[str] = None,
-        search: Optional[str] = None,
-        source_file: Optional[str] = None,
+        start: datetime | None = None,
+        end: datetime | None = None,
+        min_severity: str | None = None,
+        process: str | None = None,
+        msg_code: str | None = None,
+        search: str | None = None,
+        source_file: str | None = None,
         limit: int = 1000,
         offset: int = 0,
         descending: bool = False,
@@ -200,10 +199,10 @@ class LogIndexer:
 
     def query_count(
         self,
-        start: Optional[datetime] = None,
-        end: Optional[datetime] = None,
-        min_severity: Optional[str] = None,
-        process: Optional[str] = None,
+        start: datetime | None = None,
+        end: datetime | None = None,
+        min_severity: str | None = None,
+        process: str | None = None,
         msg_code: str | None = None,
     ) -> int:
         """Get count of matching entries without fetching them."""
@@ -255,7 +254,7 @@ class LogIndexer:
         )
         return {row["source_file"]: row["cnt"] for row in cursor.fetchall()}
 
-    def get_time_range(self) -> tuple[Optional[datetime], Optional[datetime]]:
+    def get_time_range(self) -> tuple[datetime | None, datetime | None]:
         """Get the earliest and latest timestamps in the index."""
         cursor = self.conn.execute(
             "SELECT MIN(timestamp) as min_ts, MAX(timestamp) as max_ts FROM logs"

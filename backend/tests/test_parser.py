@@ -18,7 +18,7 @@ from qkview_analyzer.parser import (
 
 def test_iso8601_f5os_structured_line_parses():
     line = (
-        '2026-01-16T00:57:13.773098+00:00 mseg lopd[22]: '
+        "2026-01-16T00:57:13.773098+00:00 mseg lopd[22]: "
         'nodename=blade-1(p1) priority="Info" version=1.0 msgid=0x6201000000000022 '
         'msg="LOP daemon LOPD starting"'
     )
@@ -42,7 +42,7 @@ def test_velos_partition_velos_log_no_over_aggregation():
         "---===[ BOOT-MARKER F5OS-C blade version 1.8.2-28311 ]===---"
     )
     structured_lines = [
-        f'2026-01-16T00:57:{i:02d}.000000+00:00 mseg lopd[22]: '
+        f"2026-01-16T00:57:{i:02d}.000000+00:00 mseg lopd[22]: "
         f'nodename=blade-1(p1) priority="Info" msgid=0x6201000000000022 '
         f'msg="tick {i}"'
         for i in range(30)

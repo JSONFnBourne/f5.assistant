@@ -5,7 +5,6 @@ import re
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 import yaml
 
@@ -26,12 +25,13 @@ _MSG_CODE_FETCH_LIMIT = 10_000
 @dataclass
 class Rule:
     """A single known-issue detection rule."""
+
     name: str
     description: str
-    severity: str                          # critical, warning, info
-    category: str                          # ltm, system, ha, network, etc.
+    severity: str  # critical, warning, info
+    category: str  # ltm, system, ha, network, etc.
     patterns: list[dict] = field(default_factory=list)  # {msg_code: str} or {regex: str}
-    correlation: Optional[dict] = None     # {type: paired, max_window_minutes: int}
+    correlation: dict | None = None  # {type: paired, max_window_minutes: int}
     recommendation: str = ""
 
     def __post_init__(self):
@@ -47,14 +47,15 @@ class Rule:
 @dataclass
 class Finding:
     """A detected known issue."""
+
     rule_name: str
     rule_description: str
     severity: str
     category: str
     recommendation: str
     matched_entries: list[dict] = field(default_factory=list)  # matching log entries
-    first_seen: Optional[datetime] = None
-    last_seen: Optional[datetime] = None
+    first_seen: datetime | None = None
+    last_seen: datetime | None = None
     count: int = 0
     note: str | None = None  # e.g. "regex scan capped at N newest entries"
 
@@ -103,7 +104,7 @@ class RuleEngine:
             return
 
         for yaml_file in rules_dir.glob("*.yaml"):
-            with open(yaml_file, "r") as f:
+            with open(yaml_file) as f:
                 data = yaml.safe_load(f)
 
             if not data or "rules" not in data:
@@ -181,7 +182,7 @@ class RuleEngine:
         indexer: LogIndexer,
         shared_entries: list[dict] | None = None,
         regex_capped: bool = False,
-    ) -> Optional[Finding]:
+    ) -> Finding | None:
         """Evaluate a single rule against the log index."""
         all_matches = []
         true_count = 0
@@ -246,9 +247,7 @@ class RuleEngine:
 
         if all_matches:
             timestamps = [
-                datetime.fromisoformat(e["timestamp"])
-                for e in all_matches
-                if e.get("timestamp")
+                datetime.fromisoformat(e["timestamp"]) for e in all_matches if e.get("timestamp")
             ]
             if timestamps:
                 finding.first_seen = min(timestamps)
@@ -258,7 +257,7 @@ class RuleEngine:
 
     def _evaluate_paired_correlation(
         self, rule: Rule, all_matches: list[dict]
-    ) -> Optional[Finding]:
+    ) -> Finding | None:
         """Evaluate a paired correlation rule (e.g., down then up = flap).
 
         Merge-sweep over ``timestamp_epoch``: pairs are matched whenever
@@ -325,9 +324,7 @@ class RuleEngine:
             return None
 
         epochs = [
-            e["timestamp_epoch"]
-            for e in (*group1, *group2)
-            if e.get("timestamp_epoch") is not None
+            e["timestamp_epoch"] for e in (*group1, *group2) if e.get("timestamp_epoch") is not None
         ]
         first_seen = datetime.fromtimestamp(min(epochs)) if epochs else None
         last_seen = datetime.fromtimestamp(max(epochs)) if epochs else None

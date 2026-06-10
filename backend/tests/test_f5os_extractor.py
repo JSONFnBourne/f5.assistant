@@ -27,7 +27,6 @@ from __future__ import annotations
 
 import pytest
 
-
 # ── rSeries host (F5OS-A 1.8.3 / R5R1X) ───────────────────────────────────
 
 

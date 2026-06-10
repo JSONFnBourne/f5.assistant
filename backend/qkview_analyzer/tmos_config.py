@@ -124,13 +124,10 @@ def _group_objects(lines: list[str]) -> tuple[list[list[str]], Exception | None]
                     subcount = 0
 
                     stripped = line.strip()
-                    is_skippable_rule_internal = (
-                        rule_flag
-                        and (
-                            stripped.startswith("#")
-                            or stripped.startswith("set")
-                            or stripped.startswith("STREAM")
-                        )
+                    is_skippable_rule_internal = rule_flag and (
+                        stripped.startswith("#")
+                        or stripped.startswith("set")
+                        or stripped.startswith("STREAM")
                     )
 
                     if not is_skippable_rule_internal:
@@ -194,9 +191,7 @@ def _orchestrate(arr: list[str]) -> dict[str, Any]:
                 while (i + c) < len(arr) and arr[i + c] != "    }":
                     c += 1
                     if i + c >= len(arr):
-                        raise ValueError(
-                            f"Missing or mis-indented '}}' for line: '{line}'"
-                        )
+                        raise ValueError(f"Missing or mis-indented '}}' for line: '{line}'")
                 sub_arr = _remove_one_indent(arr[i : i + c + 1])
 
                 arr_idx = 0
@@ -224,10 +219,7 @@ def _orchestrate(arr: list[str]) -> dict[str, Any]:
                 continue
 
             # Flag-style single word
-            if (
-                (" " not in stripped or re.match(r'^"[\s\S]*"$', stripped))
-                and "}" not in line
-            ):
+            if (" " not in stripped or re.match(r'^"[\s\S]*"$', stripped)) and "}" not in line:
                 obj[stripped] = ""
                 i += 1
                 continue
@@ -336,9 +328,7 @@ def _flat_to_hierarchical(flat: dict[str, Any]) -> dict[str, Any]:
         category = parts[0]
         result.setdefault(category, {})
 
-        name_idx = next(
-            (i for i, p in enumerate(parts) if p.startswith("/")), -1
-        )
+        name_idx = next((i for i, p in enumerate(parts) if p.startswith("/")), -1)
         if name_idx == -1:
             rest_key = " ".join(parts[1:])
             result[category][rest_key] = value
@@ -360,9 +350,7 @@ def _flat_to_hierarchical(flat: dict[str, Any]) -> dict[str, Any]:
         enhanced: dict[str, Any] = dict(value)
         enhanced["line"] = body
 
-        m = re.match(
-            r"^(/[\w\d_\-.]+(?:/[\w\d_\-.]+)?)/([\w\d_\-.]+)$", object_name
-        )
+        m = re.match(r"^(/[\w\d_\-.]+(?:/[\w\d_\-.]+)?)/([\w\d_\-.]+)$", object_name)
         if m:
             path_segment = m.group(1)
             segs = path_segment.split("/")

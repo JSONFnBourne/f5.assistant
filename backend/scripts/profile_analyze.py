@@ -52,7 +52,9 @@ def main(archive: str) -> None:
         if data.f5os_event_log:
             entries.extend(parse_f5os_event_log(data.f5os_event_log, source_file="event-log.log"))
         if data.f5os_system_events:
-            entries.extend(parse_f5os_event_log(data.f5os_system_events, source_file="system-events"))
+            entries.extend(
+                parse_f5os_event_log(data.f5os_system_events, source_file="system-events")
+            )
         entries.sort(key=lambda e: e.timestamp)
         print(f"[3] f5os_event + sort     {time.time() - tA:6.2f}s  total_entries={len(entries)}")
 

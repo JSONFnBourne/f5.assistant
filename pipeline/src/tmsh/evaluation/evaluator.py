@@ -1,8 +1,8 @@
 """Evaluation utilities for the tmsh fine-tuned model."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict
 
 from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -19,7 +19,7 @@ def load_jsonl_dataset(path: str):
     return load_dataset("json", data_files=path, split="train")
 
 
-def evaluate_model(config: EvaluationConfig) -> Dict[str, float]:
+def evaluate_model(config: EvaluationConfig) -> dict[str, float]:
     tokenizer = AutoTokenizer.from_pretrained(config.model_path)
     model = AutoModelForCausalLM.from_pretrained(config.model_path, device_map="auto")
 

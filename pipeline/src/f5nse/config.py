@@ -1,12 +1,10 @@
 from __future__ import annotations
 
-import dataclasses
-from dataclasses import dataclass, field
+from collections.abc import Iterable, Sequence
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, Sequence
 
 import yaml
-
 
 DEFAULT_SOURCE_CONFIG = Path("configs/crawl_sources.yaml")
 
@@ -26,11 +24,11 @@ class SourceSpec:
         return ()
 
 
-def load_sources(path: Path | None = None) -> List[SourceSpec]:
+def load_sources(path: Path | None = None) -> list[SourceSpec]:
     """Load crawl seed configuration from YAML."""
     config_path = path or DEFAULT_SOURCE_CONFIG
     data = yaml.safe_load(config_path.read_text())
-    specs: List[SourceSpec] = []
+    specs: list[SourceSpec] = []
     if not data:
         return specs
     for entry in data:

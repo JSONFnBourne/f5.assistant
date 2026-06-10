@@ -7,8 +7,9 @@ needs to be re-fetched based on its last_fetched timestamp.
 """
 
 import sqlite3
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
 from loguru import logger
 
 

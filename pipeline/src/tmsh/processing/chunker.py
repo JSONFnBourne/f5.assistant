@@ -1,8 +1,9 @@
 """Utilities for chunking cleaned documentation into model-ready segments."""
+
 from __future__ import annotations
 
+from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
-from typing import Iterator, List, Sequence
 
 
 @dataclass
@@ -21,10 +22,10 @@ def sliding_window_chunk(
     window_size: int = 1200,
     overlap: int = 200,
     source: str = "",
-) -> List[Chunk]:
+) -> list[Chunk]:
     """Chunk ``text`` using a simple character based sliding window."""
 
-    chunks: List[Chunk] = []
+    chunks: list[Chunk] = []
     if window_size <= 0:
         raise ValueError("window_size must be positive")
     if overlap >= window_size:

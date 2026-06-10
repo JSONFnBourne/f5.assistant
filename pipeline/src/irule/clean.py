@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import json
 import logging
+import re
+from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator, Optional, Sequence
 
-from bs4 import BeautifulSoup, NavigableString
-import re
 import tyro
+from bs4 import BeautifulSoup, NavigableString
 
 LOGGER = logging.getLogger("irule.clean")
 
@@ -104,10 +104,7 @@ def expand_tables_to_lists(soup: BeautifulSoup) -> None:
     for table in list(soup.find_all("table")):
         rows: list[list[str]] = []
         for tr in table.find_all("tr"):
-            cells = [
-                cell.get_text(" ", strip=True)
-                for cell in tr.find_all(["th", "td"])
-            ]
+            cells = [cell.get_text(" ", strip=True) for cell in tr.find_all(["th", "td"])]
             if cells:
                 rows.append(cells)
         if not rows:

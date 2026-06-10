@@ -1,10 +1,11 @@
 """Generate synthetic QA pairs with the Judge LLM."""
+
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, Optional
 
 from ..processing.chunker import Chunk
 
@@ -17,14 +18,14 @@ class QAPair:
     question: str
     answer: str
     domain: str
-    name: Optional[str] = None
-    module: Optional[str] = None
-    syntax: Optional[str] = None
-    description: Optional[str] = None
-    options: Optional[List[str]] = None
-    examples: Optional[List[str]] = None
-    see_also: Optional[List[str]] = None
-    source: Optional[str] = None
+    name: str | None = None
+    module: str | None = None
+    syntax: str | None = None
+    description: str | None = None
+    options: list[str] | None = None
+    examples: list[str] | None = None
+    see_also: list[str] | None = None
+    source: str | None = None
 
     def to_json(self) -> str:
         payload = {
@@ -71,12 +72,12 @@ class JudgeLLM:
             )
         return self._pipeline
 
-    def generate(self, chunk: Chunk, domain: str) -> List[QAPair]:
+    def generate(self, chunk: Chunk, domain: str) -> list[QAPair]:
         """Generate QA pairs for a single documentation chunk."""
 
         prompt = PROMPT_TEMPLATE.format(chunk=chunk.text)
         responses = self.pipeline(prompt)
-        qa_pairs: List[QAPair] = []
+        qa_pairs: list[QAPair] = []
         for response in responses:
             text = response["generated_text"][len(prompt) :].strip()
             try:
@@ -105,13 +106,13 @@ def generate_dataset(
     chunks: Iterable[Chunk],
     output_path: Path,
     *,
-    judge: Optional[JudgeLLM] = None,
+    judge: JudgeLLM | None = None,
     domain: str = "tmsh",
-) -> List[QAPair]:
+) -> list[QAPair]:
     """Generate QA pairs for ``chunks`` and persist them as JSONL."""
 
     judge = judge or JudgeLLM()
-    qa_pairs: List[QAPair] = []
+    qa_pairs: list[QAPair] = []
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as handle:
         for chunk in chunks:

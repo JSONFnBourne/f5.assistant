@@ -1,9 +1,9 @@
 """FastAPI application for serving the fine-tuned tmsh model."""
+
 from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
-from typing import Optional
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -23,7 +23,7 @@ class GenerationResponse(BaseModel):
 
 
 @lru_cache(maxsize=1)
-def load_model(model_path: Optional[str] = None):
+def load_model(model_path: str | None = None):
     model_path = model_path or str(Path("./artifacts/model").resolve())
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForCausalLM.from_pretrained(model_path, device_map="auto")

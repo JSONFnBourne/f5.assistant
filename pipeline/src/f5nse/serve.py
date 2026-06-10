@@ -3,15 +3,14 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 import torch
+import tyro
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from peft import PeftModel, PeftConfig
+from peft import PeftConfig, PeftModel
 from pydantic import BaseModel
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-import tyro
 
 LOGGER = logging.getLogger("f5nse.serve")
 

@@ -1,10 +1,11 @@
 """QLoRA fine-tuning utilities."""
+
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, Optional
 
 import torch
 from datasets import Dataset
@@ -40,15 +41,15 @@ class QLoRAConfig:
     base_model: str = BASE_MODEL
     batch_size: int = 1
     gradient_accumulation_steps: int = 16
-    max_steps: Optional[int] = None
+    max_steps: int | None = None
     learning_rate: float = 2e-4
     warmup_steps: int = 50
     logging_steps: int = 10
     save_steps: int = 200
 
 
-def load_training_examples(path: Path) -> List[TrainingExample]:
-    examples: List[TrainingExample] = []
+def load_training_examples(path: Path) -> list[TrainingExample]:
+    examples: list[TrainingExample] = []
     with path.open("r", encoding="utf-8") as handle:
         for line in handle:
             payload = json.loads(line)

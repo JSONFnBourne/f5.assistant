@@ -14,6 +14,7 @@ Outputs:
   concept_candidates.jsonl   raw harvested rows (expected_doc_ids EMPTY)
   candidates_review.md       unified human-review file (identifier + concept sections)
 """
+
 from __future__ import annotations
 
 import gzip
@@ -45,14 +46,61 @@ ID_JSONL = os.path.join(HERE, "identifier_candidates.jsonl")
 # Tag buckets (priority order avoids double-counting). query_type maps to the harness enum;
 # DNS/GTM, LTM, upgrades have no dedicated enum value -> "concept".
 TAG_RULES = [
-    ("F5OS",    ["f5os", "velos", "rseries", "r5800", "r5900", "r10800", "r10900", "r2800", "r4800", "tenant", "chassis-partition"], "f5os"),
-    ("iRules",  ["irule", "irules", "-tcl-", "tcl-", "istats"], "irule"),
-    ("DNS/GTM", ["dns", "gtm", "wide-ip", "wideip", "gslb", "zonerunner", "zone-runner"], "concept"),
-    ("upgrades",["upgrade", "upgrading", "migration", "migrate", "downgrade", "hotfix", "rollback"], "concept"),
-    ("LTM",     ["ltm", "virtual-server", "-pool-", "snat", "persistence", "health-monitor", "-monitor-", "irule-pool", "load-balanc"], "concept"),
+    (
+        "F5OS",
+        [
+            "f5os",
+            "velos",
+            "rseries",
+            "r5800",
+            "r5900",
+            "r10800",
+            "r10900",
+            "r2800",
+            "r4800",
+            "tenant",
+            "chassis-partition",
+        ],
+        "f5os",
+    ),
+    ("iRules", ["irule", "irules", "-tcl-", "tcl-", "istats"], "irule"),
+    (
+        "DNS/GTM",
+        ["dns", "gtm", "wide-ip", "wideip", "gslb", "zonerunner", "zone-runner"],
+        "concept",
+    ),
+    (
+        "upgrades",
+        ["upgrade", "upgrading", "migration", "migrate", "downgrade", "hotfix", "rollback"],
+        "concept",
+    ),
+    (
+        "LTM",
+        [
+            "ltm",
+            "virtual-server",
+            "-pool-",
+            "snat",
+            "persistence",
+            "health-monitor",
+            "-monitor-",
+            "irule-pool",
+            "load-balanc",
+        ],
+        "concept",
+    ),
 ]
-ANNOUNCE = ["announc", "now-available", "general-availability", "introducing",
-            "welcome-to", "end-of-life", "eol-", "is-now", "release-notes"]
+ANNOUNCE = [
+    "announc",
+    "now-available",
+    "general-availability",
+    "introducing",
+    "welcome-to",
+    "end-of-life",
+    "eol-",
+    "is-now",
+    "release-notes",
+]
 
 
 def fetch(url: str, timeout: int = 30) -> bytes:
@@ -106,7 +154,11 @@ def extract_subject_body(page: bytes):
         if isinstance(o, dict):
             if subject["v"] is None and isinstance(o.get("subject"), str) and o["subject"].strip():
                 subject["v"] = o["subject"].strip()
-            if body["v"] is None and isinstance(o.get("body"), str) and len(strip_html(o["body"])) > 20:
+            if (
+                body["v"] is None
+                and isinstance(o.get("body"), str)
+                and len(strip_html(o["body"])) > 20
+            ):
                 body["v"] = o["body"]
             t = o.get("tags")
             if isinstance(t, list):
@@ -135,7 +187,11 @@ def main() -> None:
             urls += sitemap_locs(fetch(sm))
         except Exception as e:  # noqa: BLE001
             print(f"  sitemap skip {sm}: {e}")
-    threads = [u for u in urls if "/discussions/technicalforum/" in u and u.rstrip("/").split("/")[-1].isdigit()]
+    threads = [
+        u
+        for u in urls
+        if "/discussions/technicalforum/" in u and u.rstrip("/").split("/")[-1].isdigit()
+    ]
     print(f"thread URLs in sitemaps: {len(threads)}")
 
     # 2. bucket by tag (slug-inferred), drop announcements, queue per tag
@@ -188,16 +244,18 @@ def main() -> None:
             seen_titles.add(norm)
             n += 1
             per_tag_count[tag] += 1
-            accepted.append({
-                "id": f"c{n:03d}",
-                "tag": tag,
-                "query_type": qt_by_tag[tag],
-                "question": subject,
-                "expected_doc_ids": [],
-                "source_url": url,
-                "first_post_excerpt": qtext[:300],
-                "first_post_words": wc,
-            })
+            accepted.append(
+                {
+                    "id": f"c{n:03d}",
+                    "tag": tag,
+                    "query_type": qt_by_tag[tag],
+                    "question": subject,
+                    "expected_doc_ids": [],
+                    "source_url": url,
+                    "first_post_excerpt": qtext[:300],
+                    "first_post_words": wc,
+                }
+            )
 
     print(f"fetched {fetches} threads; accepted {len(accepted)} concept candidates")
     print("  per tag:", json.dumps(per_tag_count))
@@ -218,9 +276,11 @@ def write_review_md(concept: list[dict]) -> None:
 
     lines = []
     lines.append("# Eval candidate review\n")
-    lines.append("Flip `- [ ] accept` to `- [x] accept` to keep a row. Edit `- question:` freely. "
-                 "For concept rows, fill `- expected_doc_ids:` with real `documents.doc_id` values "
-                 "(comma-separated). Identifier rows have tautological gold pre-filled.\n")
+    lines.append(
+        "Flip `- [ ] accept` to `- [x] accept` to keep a row. Edit `- question:` freely. "
+        "For concept rows, fill `- expected_doc_ids:` with real `documents.doc_id` values "
+        "(comma-separated). Identifier rows have tautological gold pre-filled.\n"
+    )
     lines.append(f"Identifier candidates: {len(ident)} · Concept candidates: {len(concept)}\n")
 
     lines.append("\n---\n\n## Identifier class (auto · gold pre-filled)\n")
@@ -229,11 +289,13 @@ def write_review_md(concept: list[dict]) -> None:
         lines.append("- [ ] accept")
         lines.append(f"- question: {r['question']}")
         lines.append(f"- expected_doc_ids: {', '.join(r['expected_doc_ids'])}")
-        lines.append(f"- source_url: ")
+        lines.append("- source_url: ")
         lines.append(f"- notes: {r['notes']}")
         lines.append("")
 
-    lines.append("\n---\n\n## Concept / troubleshooting class (harvested · fill expected_doc_ids)\n")
+    lines.append(
+        "\n---\n\n## Concept / troubleshooting class (harvested · fill expected_doc_ids)\n"
+    )
     by_tag: dict[str, list[dict]] = {}
     for r in concept:
         by_tag.setdefault(r["tag"], []).append(r)

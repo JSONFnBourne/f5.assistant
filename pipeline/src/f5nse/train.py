@@ -3,15 +3,18 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List
 
-from datasets import load_dataset
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-from transformers import TrainingArguments
-from peft import LoraConfig
-from trl import SFTTrainer
 import tyro
+from datasets import load_dataset
+from peft import LoraConfig
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    BitsAndBytesConfig,
+    TrainingArguments,
+)
+from trl import SFTTrainer
 
 LOGGER = logging.getLogger("f5nse.train")
 
@@ -27,7 +30,7 @@ class TrainArgs:
     lora_r: int = 64
     lora_alpha: int = 16
     lora_dropout: float = 0.05
-    lora_target_modules: List[str] = field(
+    lora_target_modules: list[str] = field(
         default_factory=lambda: [
             "q_proj",
             "k_proj",

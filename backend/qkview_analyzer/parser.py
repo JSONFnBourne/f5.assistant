@@ -3,8 +3,6 @@
 import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Optional
-
 
 # F5 syslog format:
 # MMM DD HH:MM:SS hostname severity process[PID]: MSGCODE:LEVEL: message
@@ -111,14 +109,15 @@ SEVERITY_NAMES = {v: k for k, v in SEVERITY_LEVELS.items()}
 @dataclass
 class LogEntry:
     """A single parsed log entry."""
+
     timestamp: datetime
     hostname: str
     severity: str
     severity_num: int
     process: str
-    pid: Optional[int]
-    msg_code: Optional[str]
-    f5_severity: Optional[int]
+    pid: int | None
+    msg_code: str | None
+    f5_severity: int | None
     message: str
     source_file: str
     line_number: int
@@ -140,9 +139,18 @@ def _infer_year(month: str, day: int) -> int:
     """
     now = datetime.now()
     month_num = {
-        "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4,
-        "May": 5, "Jun": 6, "Jul": 7, "Aug": 8,
-        "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
+        "Jan": 1,
+        "Feb": 2,
+        "Mar": 3,
+        "Apr": 4,
+        "May": 5,
+        "Jun": 6,
+        "Jul": 7,
+        "Aug": 8,
+        "Sep": 9,
+        "Oct": 10,
+        "Nov": 11,
+        "Dec": 12,
     }.get(month, 1)
 
     year = now.year
@@ -156,7 +164,7 @@ def _infer_year(month: str, day: int) -> int:
     return year
 
 
-def parse_line(line: str, source_file: str = "", line_number: int = 0) -> Optional[LogEntry]:
+def parse_line(line: str, source_file: str = "", line_number: int = 0) -> LogEntry | None:
     """Parse a single syslog, ISO 8601, or F5OS structured line into a LogEntry.
 
     Returns None if the line doesn't match any expected format.
@@ -216,9 +224,18 @@ def parse_line(line: str, source_file: str = "", line_number: int = 0) -> Option
         time_str = g["time"]
         year = _infer_year(month, day)
         month_num = {
-            "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4,
-            "May": 5, "Jun": 6, "Jul": 7, "Aug": 8,
-            "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
+            "Jan": 1,
+            "Feb": 2,
+            "Mar": 3,
+            "Apr": 4,
+            "May": 5,
+            "Jun": 6,
+            "Jul": 7,
+            "Aug": 8,
+            "Sep": 9,
+            "Oct": 10,
+            "Nov": 11,
+            "Dec": 12,
         }.get(month, 1)
         try:
             h, m, s = time_str.split(":")
@@ -262,16 +279,25 @@ def parse_line(line: str, source_file: str = "", line_number: int = 0) -> Option
         time_str = g["time"]
         year = _infer_year(month, day)
         month_num = {
-            "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4,
-            "May": 5, "Jun": 6, "Jul": 7, "Aug": 8,
-            "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
+            "Jan": 1,
+            "Feb": 2,
+            "Mar": 3,
+            "Apr": 4,
+            "May": 5,
+            "Jun": 6,
+            "Jul": 7,
+            "Aug": 8,
+            "Sep": 9,
+            "Oct": 10,
+            "Nov": 11,
+            "Dec": 12,
         }.get(month, 1)
         try:
             h, m, s = time_str.split(":")
             timestamp = datetime(year, month_num, day, int(h), int(m), int(s))
         except (ValueError, TypeError):
             return None
-        
+
         msg_code = g["msg_code"]
         f5_severity = int(g["f5_sev"]) if g["f5_sev"] else None
     else:
@@ -279,13 +305,13 @@ def parse_line(line: str, source_file: str = "", line_number: int = 0) -> Option
         match = _ISO8601_RE.match(line)
         if not match:
             return None
-        
+
         g = match.groupdict()
         try:
             # handle 'Z' or offset
             ts_str = g["timestamp"]
-            if ts_str.endswith('Z'):
-                ts_str = ts_str.replace('Z', '+00:00')
+            if ts_str.endswith("Z"):
+                ts_str = ts_str.replace("Z", "+00:00")
             timestamp = datetime.fromisoformat(ts_str)
             # Normalize to naive UTC so mixed log sources sort together.
             # F5OS event logs are parsed as naive UTC, so converting to any
@@ -343,7 +369,7 @@ def parse_log_content(
     entries = []
     lines = content.splitlines()
     total_lines = len(lines)
-    current_entry: Optional[LogEntry] = None
+    current_entry: LogEntry | None = None
     msg_chunks: list[str] = []
     raw_chunks: list[str] = []
     cont_bytes = 0
@@ -374,12 +400,7 @@ def parse_log_content(
             raw_chunks = []
             cont_bytes = 0
             cont_capped = False
-        elif (
-            current_entry is not None
-            and line
-            and line[0] in (" ", "\t")
-            and line.strip()
-        ):
+        elif current_entry is not None and line and line[0] in (" ", "\t") and line.strip():
             if cont_bytes < _MAX_CONTINUATION_BYTES:
                 stripped = line.strip()
                 msg_chunks.append(stripped)
@@ -447,20 +468,22 @@ def parse_f5os_event_log(
         event_type_str = g.get("event_type", "")
         message = g.get("message", "")
 
-        entries.append(LogEntry(
-            timestamp=timestamp,
-            hostname=source,
-            severity=severity,
-            severity_num=severity_num,
-            process=event_type_str,
-            pid=None,
-            msg_code=g.get("event_id"),
-            f5_severity=None,
-            message=message,
-            source_file=source_file,
-            line_number=i + 1,
-            raw_line=line,
-        ))
+        entries.append(
+            LogEntry(
+                timestamp=timestamp,
+                hostname=source,
+                severity=severity,
+                severity_num=severity_num,
+                process=event_type_str,
+                pid=None,
+                msg_code=g.get("event_id"),
+                f5_severity=None,
+                message=message,
+                source_file=source_file,
+                line_number=i + 1,
+                raw_line=line,
+            )
+        )
 
     return entries
 

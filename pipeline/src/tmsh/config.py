@@ -1,11 +1,11 @@
 """Central configuration objects for the tmsh project scaffold."""
+
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from datetime import timedelta
 from pathlib import Path
-from typing import Iterable, List, Optional
-
 
 PROJECT_NAME: str = "tmsh"
 
@@ -28,7 +28,7 @@ class DirectoryLayout:
     scripts: Path
 
     @classmethod
-    def from_project_root(cls, root: Path) -> "DirectoryLayout":
+    def from_project_root(cls, root: Path) -> DirectoryLayout:
         return cls(
             root=root,
             data_raw=root / "data" / "raw",
@@ -58,9 +58,9 @@ class ScraperConfig:
         "tmsh-scaffold/0.1 (+https://github.com/owner/tmsh; contact=maintainers@tmsh.local)"
     )
     cache_expiry: timedelta = field(default=timedelta(days=120))
-    metadata_path: Optional[Path] = None
+    metadata_path: Path | None = None
 
-    def with_metadata_path(self, directory_layout: DirectoryLayout) -> "ScraperConfig":
+    def with_metadata_path(self, directory_layout: DirectoryLayout) -> ScraperConfig:
         if self.metadata_path is not None:
             return self
         return ScraperConfig(
@@ -71,7 +71,7 @@ class ScraperConfig:
         )
 
 
-SCRAPE_TARGETS: List[ScrapeTarget] = [
+SCRAPE_TARGETS: list[ScrapeTarget] = [
     ScrapeTarget(
         name="general",
         url="https://clouddocs.f5.com/cli/tmsh-reference/latest/general/",

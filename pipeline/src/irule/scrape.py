@@ -1,23 +1,22 @@
 from __future__ import annotations
 
 import asyncio
-import contextlib
 import hashlib
 import json
 import logging
 import sqlite3
 import time
 from collections import deque
+from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, Iterator, List, Optional, Sequence
 from urllib.parse import urldefrag, urljoin, urlparse
 from urllib.robotparser import RobotFileParser
 
 import aiohttp
-from bs4 import BeautifulSoup
 import tyro
+from bs4 import BeautifulSoup
 
 from .config import DEFAULT_SOURCE_CONFIG, SourceSpec, load_sources
 
@@ -35,14 +34,12 @@ class CrawlState:
         self.path = path
         path.parent.mkdir(parents=True, exist_ok=True)
         self.conn = sqlite3.connect(path)
-        self.conn.execute(
-            """
+        self.conn.execute("""
             CREATE TABLE IF NOT EXISTS fetch_log(
                 url TEXT PRIMARY KEY,
                 fetched_ts REAL NOT NULL
             )
-            """
-        )
+            """)
         self.conn.commit()
 
     def should_fetch(self, url: str, ttl_days: int, force_refresh: bool) -> bool:
@@ -66,7 +63,7 @@ class CrawlState:
     def close(self) -> None:
         self.conn.close()
 
-    def __enter__(self) -> "CrawlState":
+    def __enter__(self) -> CrawlState:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback) -> None:
@@ -79,8 +76,8 @@ class RobotsCache:
     def __init__(self, session: aiohttp.ClientSession, user_agent: str) -> None:
         self.session = session
         self.user_agent = user_agent
-        self.cache: Dict[str, RobotFileParser] = {}
-        self.crawl_delay: Dict[str, float] = {}
+        self.cache: dict[str, RobotFileParser] = {}
+        self.crawl_delay: dict[str, float] = {}
         self.lock = asyncio.Lock()
 
     async def allow(self, url: str) -> bool:
@@ -116,7 +113,7 @@ class RobotsCache:
         return parser
 
 
-def normalize_link(link: str, base_url: str) -> Optional[str]:
+def normalize_link(link: str, base_url: str) -> str | None:
     if not link:
         return None
     joined = urljoin(base_url, link)
@@ -142,7 +139,7 @@ def extract_links(html: str, base_url: str, allowed_domains: Sequence[str]) -> I
             yield href
 
 
-def should_skip_content_type(content_type: Optional[str], allowed_types: Sequence[str]) -> bool:
+def should_skip_content_type(content_type: str | None, allowed_types: Sequence[str]) -> bool:
     if not content_type:
         return False
     return not any(ct in content_type for ct in allowed_types)
@@ -171,7 +168,7 @@ class ScrapeArgs:
     concurrency: int = 2
     request_timeout: float = 20.0
     user_agent: str = "irule-crawler/0.1 (+https://github.com/JSONFnBourne/irule)"
-    max_pages: Optional[int] = None
+    max_pages: int | None = None
     throttle_seconds: float = 1.0
     respect_robots: bool = True
     force_refresh: bool = False
@@ -217,7 +214,7 @@ async def crawl_source(
     queue.append((spec.url, 0))
     visited: set[str] = set()
     stats = {"fetched": 0, "skipped": 0}
-    host_last_fetch: Dict[str, float] = {}
+    host_last_fetch: dict[str, float] = {}
     while queue:
         if args.max_pages and stats["fetched"] >= args.max_pages:
             break

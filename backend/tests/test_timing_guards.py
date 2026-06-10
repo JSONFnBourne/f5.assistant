@@ -18,11 +18,9 @@ from __future__ import annotations
 import time
 
 import pytest
-
 from qkview_analyzer.indexer import LogIndexer
 from qkview_analyzer.parser import parse_all_logs
 from qkview_analyzer.rule_engine import RuleEngine
-
 
 PARSE_BUDGET_SECONDS = 30.0
 SCAN_BUDGET_SECONDS = 20.0

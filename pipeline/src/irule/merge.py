@@ -5,9 +5,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import torch
+import tyro
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import tyro
 
 LOGGER = logging.getLogger("irule.merge")
 

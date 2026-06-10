@@ -4,10 +4,9 @@ import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Optional
 
-from transformers import AutoTokenizer
 import tyro
+from transformers import AutoTokenizer
 
 LOGGER = logging.getLogger("f5nse.chunk")
 
@@ -26,7 +25,7 @@ class ChunkArgs:
     chunk_size_tokens: int = 512
     chunk_overlap_tokens: int = 64
     min_chunk_chars: int = 120
-    max_chunks: Optional[int] = None
+    max_chunks: int | None = None
     trust_remote_code: bool = False
     overwrite: bool = False
 
@@ -55,7 +54,10 @@ def run_chunk(args: ChunkArgs) -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
     args.output_path.parent.mkdir(parents=True, exist_ok=True)
     if args.output_path.exists() and not args.overwrite:
-        LOGGER.info("Chunk output %s exists. Use --overwrite to regenerate or remove the file.", args.output_path)
+        LOGGER.info(
+            "Chunk output %s exists. Use --overwrite to regenerate or remove the file.",
+            args.output_path,
+        )
         return
     tokenizer = AutoTokenizer.from_pretrained(
         args.tokenizer_name, trust_remote_code=args.trust_remote_code, use_fast=True

@@ -5,7 +5,7 @@ Covers both real qkview layouts confirmed across the data/qkview/ fixtures:
   - live-segment layout (TMOS VE + F5OS subpackages): .../var/tmstat/<scope>/<segment>
 """
 
-from qkview_analyzer.tmstat_parser import parse_tmstat_path, parse_tmstat_files
+from qkview_analyzer.tmstat_parser import parse_tmstat_files, parse_tmstat_path
 
 
 def test_snapshot_iseries_86400():
@@ -15,7 +15,7 @@ def test_snapshot_iseries_86400():
     assert info is not None
     assert info["family"] == "snapshot"
     assert info["blade"] == "blade0"
-    assert info["type"] == "public"        # category
+    assert info["type"] == "public"  # category
     assert info["interval"] == "86400"
 
 
@@ -45,8 +45,10 @@ def test_segment_tmos_ve():
 def test_segment_f5os_cluster_encodes_blade_and_type():
     # Real path from data/qkview/rSeries.tar — F5OS subpackage prefix + cluster
     # filename "<blade>-<type>". The anchor logic must skip the subpackage path.
-    p = ("qkview/subpackages/system_tmstat_merged/qkview/filesystem/"
-         "var/tmstat/cluster/blade1-public")
+    p = (
+        "qkview/subpackages/system_tmstat_merged/qkview/filesystem/"
+        "var/tmstat/cluster/blade1-public"
+    )
     info = parse_tmstat_path(p)
     assert info["family"] == "segment"
     assert info["scope"] == "cluster"

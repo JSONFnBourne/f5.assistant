@@ -79,6 +79,7 @@ class TestXmlStatsTaxonomy:
         # with a trailing `.crt.<digits>` ever makes it through, the
         # filter's regressed.
         import re
+
         _bundle_re = re.compile(r"\.crt\.\d+$")
         xs = tmos_post_upgrade_data.xml_stats
         for r in xs.top_expiring_certificates(50):

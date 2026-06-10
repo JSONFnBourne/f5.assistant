@@ -30,25 +30,25 @@ from pathlib import Path
 
 # ── Configuration ─────────────────────────────────────────────────────────────
 
-DB_PATH    = Path(__file__).parent.parent / "db" / "knowledge.db"
-DATA_ROOT  = Path("/home/jsonbourne/projects/Support/data")
+DB_PATH = Path(__file__).parent.parent / "db" / "knowledge.db"
+DATA_ROOT = Path("/home/jsonbourne/projects/Support/data")
 
 SOURCES = [
     {
-        "source":  "f5_kb",
-        "dir":     DATA_ROOT / "Knowledge_Base",
+        "source": "f5_kb",
+        "dir": DATA_ROOT / "Knowledge_Base",
         "section": "knowledge-base",
         "base_kw": ["f5", "bigip", "knowledge-base", "troubleshooting"],
     },
     {
-        "source":  "f5_security",
-        "dir":     DATA_ROOT / "Security_Advisories",
+        "source": "f5_security",
+        "dir": DATA_ROOT / "Security_Advisories",
         "section": "security-advisory",
         "base_kw": ["f5", "bigip", "security", "cve", "vulnerability"],
     },
     {
-        "source":  "xc_techdocs",
-        "dir":     DATA_ROOT / "XC_TechDocs",
+        "source": "xc_techdocs",
+        "dir": DATA_ROOT / "XC_TechDocs",
         "section": "xc-techdocs",
         "base_kw": ["f5", "xc", "distributed-cloud", "f5xc"],
     },
@@ -62,10 +62,10 @@ BATCH_SIZE = 500
 
 # ── Parsers ───────────────────────────────────────────────────────────────────
 
-_URL_RE    = re.compile(r'https?://(?:my\.f5\.com|docs\.f5\.com|clouddocs\.f5\.com)\S+')
-_TITLE_RE  = re.compile(r'^(K\w+):\s+(.+)$', re.MULTILINE)
-_HEADER_RE = re.compile(r'^# Article\s+(K\w+)', re.MULTILINE)
-_CVE_RE    = re.compile(r'CVE-\d{4}-\d+')
+_URL_RE = re.compile(r"https?://(?:my\.f5\.com|docs\.f5\.com|clouddocs\.f5\.com)\S+")
+_TITLE_RE = re.compile(r"^(K\w+):\s+(.+)$", re.MULTILINE)
+_HEADER_RE = re.compile(r"^# Article\s+(K\w+)", re.MULTILINE)
+_CVE_RE = re.compile(r"CVE-\d{4}-\d+")
 
 
 def parse_article(path: Path, base_kw: list[str]) -> dict | None:
@@ -84,7 +84,7 @@ def parse_article(path: Path, base_kw: list[str]) -> dict | None:
         return None
 
     # doc_id: K-number from filename, e.g. "K14190"
-    k_num = path.stem          # e.g. "K14190" or "K000133373"
+    k_num = path.stem  # e.g. "K14190" or "K000133373"
     doc_id = k_num
 
     # Title: prefer "KXXXXX: <description>" line, fall back to filename
@@ -109,11 +109,11 @@ def parse_article(path: Path, base_kw: list[str]) -> dict | None:
     content_hash = hashlib.sha256(content.encode("utf-8")).hexdigest()
 
     return {
-        "doc_id":       doc_id,
-        "title":        title[:500],          # cap title length
-        "url":          url,
-        "keywords":     keywords_json,
-        "content":      content,
+        "doc_id": doc_id,
+        "title": title[:500],  # cap title length
+        "url": url,
+        "keywords": keywords_json,
+        "content": content,
         "content_hash": content_hash,
     }
 
@@ -154,10 +154,11 @@ def rebuild_fts(conn: sqlite3.Connection) -> None:
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Bulk ingest F5 Support KB into knowledge.db")
     parser.add_argument("--dry-run", action="store_true", help="Parse only, no DB writes")
-    parser.add_argument("--force",   action="store_true", help="Re-index already-present articles")
+    parser.add_argument("--force", action="store_true", help="Re-index already-present articles")
     args = parser.parse_args()
 
     if not DB_PATH.exists():
@@ -168,7 +169,7 @@ def main() -> None:
     conn = sqlite3.connect(DB_PATH)
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA synchronous=NORMAL")
-    conn.execute("PRAGMA cache_size=-64000")   # 64 MB page cache
+    conn.execute("PRAGMA cache_size=-64000")  # 64 MB page cache
 
     # Pre-load existing doc_id → content_hash to support incremental ingest.
     # Skipping is hash-based, not presence-based, so edited KB articles re-ingest.
@@ -179,15 +180,15 @@ def main() -> None:
         print(f"Existing documents in DB: {len(existing):,}")
 
     total_inserted = 0
-    total_skipped  = 0
-    total_errors   = 0
+    total_skipped = 0
+    total_errors = 0
 
     try:
         for src in SOURCES:
-            src_dir  = src["dir"]
-            source   = src["source"]
-            section  = src["section"]
-            base_kw  = src["base_kw"]
+            src_dir = src["dir"]
+            source = src["source"]
+            section = src["section"]
+            base_kw = src["base_kw"]
 
             md_files = sorted(src_dir.glob("*.md"))
             if not md_files:
@@ -201,8 +202,10 @@ def main() -> None:
 
             for i, path in enumerate(md_files):
                 if i % 2000 == 0 and i > 0:
-                    print(f"  … {i:,}/{len(md_files):,} processed "
-                          f"(+{inserted} new, {skipped} skipped, {errors} errors)")
+                    print(
+                        f"  … {i:,}/{len(md_files):,} processed "
+                        f"(+{inserted} new, {skipped} skipped, {errors} errors)"
+                    )
 
                 doc_id = path.stem
 
@@ -216,19 +219,21 @@ def main() -> None:
                     skipped += 1
                     continue
 
-                batch.append((
-                    source,
-                    article["doc_id"],
-                    article["title"],
-                    article["url"],
-                    section,
-                    article["keywords"],
-                    article["content_hash"],
-                    article["content"],
-                    str(path),           # local_path
-                    now,                 # last_fetched
-                    now,                 # created_at
-                ))
+                batch.append(
+                    (
+                        source,
+                        article["doc_id"],
+                        article["title"],
+                        article["url"],
+                        section,
+                        article["keywords"],
+                        article["content_hash"],
+                        article["content"],
+                        str(path),  # local_path
+                        now,  # last_fetched
+                        now,  # created_at
+                    )
+                )
 
                 if len(batch) >= BATCH_SIZE and not args.dry_run:
                     bulk_insert(conn, batch)
@@ -242,10 +247,12 @@ def main() -> None:
                 bulk_insert(conn, batch)
                 conn.commit()
 
-            print(f"  [{source}] done — {inserted:,} inserted, {skipped:,} skipped, {errors:,} errors")
+            print(
+                f"  [{source}] done — {inserted:,} inserted, {skipped:,} skipped, {errors:,} errors"
+            )
             total_inserted += inserted
-            total_skipped  += skipped
-            total_errors   += errors
+            total_skipped += skipped
+            total_errors += errors
 
         # Rebuild FTS once for all sources
         if not args.dry_run and total_inserted > 0:

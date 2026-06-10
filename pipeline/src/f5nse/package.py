@@ -2,18 +2,16 @@ from __future__ import annotations
 
 import json
 import logging
-import statistics
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 import tyro
 
 LOGGER = logging.getLogger("f5nse.package")
 
 
-def summarize_jsonl(path: Path, limit: Optional[int] = 100) -> dict:
+def summarize_jsonl(path: Path, limit: int | None = 100) -> dict:
     stats = {"records": 0, "sample_questions": []}
     with path.open("r", encoding="utf-8") as fh:
         for idx, line in enumerate(fh):
@@ -36,10 +34,10 @@ def summarize_jsonl(path: Path, limit: Optional[int] = 100) -> dict:
 @dataclass
 class PackageArgs:
     input_path: Path = Path("data/chunks/chunks.jsonl")
-    additional_file: Optional[Path] = Path("data/datasets/qa_raw.jsonl")
+    additional_file: Path | None = Path("data/datasets/qa_raw.jsonl")
     output_path: Path = Path("data/external/qa_package.zip")
-    summary_path: Optional[Path] = None
-    limit_records: Optional[int] = None
+    summary_path: Path | None = None
+    limit_records: int | None = None
 
 
 def create_package(args: PackageArgs) -> None:

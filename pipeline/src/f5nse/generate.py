@@ -5,24 +5,23 @@ import logging
 import random
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List
 
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import tyro
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 LOGGER = logging.getLogger("f5nse.generate")
 
 
-def load_chunks(path: Path) -> List[dict]:
-    chunks: List[dict] = []
+def load_chunks(path: Path) -> list[dict]:
+    chunks: list[dict] = []
     with path.open("r", encoding="utf-8") as fh:
         for line in fh:
             chunks.append(json.loads(line))
     return chunks
 
 
-def extract_json_block(text: str) -> List[dict]:
+def extract_json_block(text: str) -> list[dict]:
     candidates = []
     if "```" in text:
         parts = text.split("```")
@@ -106,7 +105,9 @@ def generate_completion(
     prompt: str,
     args: GenerateArgs,
 ) -> str:
-    target_device = "cuda" if torch.cuda.is_available() and args.device.startswith("cuda") else "cpu"
+    target_device = (
+        "cuda" if torch.cuda.is_available() and args.device.startswith("cuda") else "cpu"
+    )
     inputs = tokenizer(prompt, return_tensors="pt")
     input_len = inputs["input_ids"].shape[1]
     inputs = {k: v.to(target_device) for k, v in inputs.items()}
@@ -141,7 +142,9 @@ def run_generate(args: GenerateArgs) -> None:
         return
     random.Random(args.seed).shuffle(chunks)
     if args.load_in_8bit and not (torch.cuda.is_available() and args.device.startswith("cuda")):
-        raise RuntimeError("8-bit generation requires a CUDA-capable device. Disable --load-in-8bit or set --device cuda.")
+        raise RuntimeError(
+            "8-bit generation requires a CUDA-capable device. Disable --load-in-8bit or set --device cuda."
+        )
     model, tokenizer = setup_generator(args)
     torch.manual_seed(args.seed)
     if torch.cuda.is_available():

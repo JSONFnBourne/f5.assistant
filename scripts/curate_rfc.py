@@ -21,7 +21,6 @@ import argparse
 import asyncio
 import json
 import sys
-import time
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
@@ -41,7 +40,11 @@ from scripts.utils.db import init_db, upsert_document
 # Logging
 # ---------------------------------------------------------------------------
 logger.remove()
-logger.add(sys.stderr, level="INFO", format="<green>{time:HH:mm:ss}</green> | <level>{level}</level> | {message}")
+logger.add(
+    sys.stderr,
+    level="INFO",
+    format="<green>{time:HH:mm:ss}</green> | <level>{level}</level> | {message}",
+)
 logger.add("logs/curate_rfc.log", rotation="10 MB", retention="30 days", level="DEBUG")
 
 # RFC XML namespace
@@ -51,6 +54,7 @@ RFC_NS = {"rfc": "https://www.rfc-editor.org/rfc-index"}
 # ---------------------------------------------------------------------------
 # Index parsing
 # ---------------------------------------------------------------------------
+
 
 def fetch_rfc_index(index_url: str, index_dir: Path) -> Path:
     """Download the RFC index XML and cache it locally."""
@@ -81,16 +85,13 @@ def parse_rfc_index(index_path: Path) -> list[dict]:
 
     rfcs = []
     for entry in root.findall(f"{ns}rfc-entry"):
+
         def txt(tag: str) -> str | None:
             el = entry.find(f"{ns}{tag}")
             return el.text.strip() if el is not None and el.text else None
 
         def txt_list(tag: str, inner: str) -> list[str]:
-            return [
-                c.text.strip()
-                for c in entry.findall(f"{ns}{tag}/{ns}{inner}")
-                if c.text
-            ]
+            return [c.text.strip() for c in entry.findall(f"{ns}{tag}/{ns}{inner}") if c.text]
 
         doc_id_raw = txt("doc-id")
         if not doc_id_raw:
@@ -98,20 +99,22 @@ def parse_rfc_index(index_path: Path) -> list[dict]:
 
         number = doc_id_raw.replace("RFC", "").lstrip("0") or "0"
 
-        rfcs.append({
-            "doc_id": doc_id_raw.lower(),          # e.g. 'rfc793'
-            "number": number,                       # e.g. '793'
-            "title": txt("title"),
-            "status": txt("current-status"),
-            "date_year": txt("date/year"),
-            "date_month": txt("date/month"),
-            "keywords": txt_list("keywords", "kw"),
-            "authors": txt_list("author", "name"),
-            "obsoletes": txt_list("obsoletes", "doc-id"),
-            "obsoleted_by": txt_list("obsoleted-by", "doc-id"),
-            "updates": txt_list("updates", "doc-id"),
-            "updated_by": txt_list("updated-by", "doc-id"),
-        })
+        rfcs.append(
+            {
+                "doc_id": doc_id_raw.lower(),  # e.g. 'rfc793'
+                "number": number,  # e.g. '793'
+                "title": txt("title"),
+                "status": txt("current-status"),
+                "date_year": txt("date/year"),
+                "date_month": txt("date/month"),
+                "keywords": txt_list("keywords", "kw"),
+                "authors": txt_list("author", "name"),
+                "obsoletes": txt_list("obsoletes", "doc-id"),
+                "obsoleted_by": txt_list("obsoleted-by", "doc-id"),
+                "updates": txt_list("updates", "doc-id"),
+                "updated_by": txt_list("updated-by", "doc-id"),
+            }
+        )
 
     logger.info(f"Parsed {len(rfcs):,} RFC entries from index")
     return rfcs
@@ -120,6 +123,7 @@ def parse_rfc_index(index_path: Path) -> list[dict]:
 # ---------------------------------------------------------------------------
 # Async downloading
 # ---------------------------------------------------------------------------
+
 
 async def download_rfc(
     session: aiohttp.ClientSession,
@@ -161,9 +165,7 @@ async def download_rfc(
                 await f.write(content)
 
             # Index in DB
-            keywords_json = json.dumps(
-                rfc.get("keywords", []) + [rfc.get("status", ""), "rfc"]
-            )
+            keywords_json = json.dumps(rfc.get("keywords", []) + [rfc.get("status", ""), "rfc"])
             upsert_document(
                 db_path,
                 source="rfc",
@@ -217,8 +219,18 @@ async def download_all_rfcs(
 
     async with aiohttp.ClientSession(connector=connector, headers=headers) as session:
         tasks = [
-            download_rfc(session, rfc, doc_url_template, docs_dir, db_path,
-                         ttl, force, semaphore, delay, results)
+            download_rfc(
+                session,
+                rfc,
+                doc_url_template,
+                docs_dir,
+                db_path,
+                ttl,
+                force,
+                semaphore,
+                delay,
+                results,
+            )
             for rfc in rfcs
         ]
         for coro in tqdm(asyncio.as_completed(tasks), total=len(tasks), desc="RFCs"):
@@ -236,6 +248,7 @@ async def download_all_rfcs(
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="RFC knowledge curation")
@@ -266,9 +279,7 @@ def main() -> None:
 
     # Step 4: Download all RFC documents (async, with cache)
     logger.info(f"=== Starting RFC document download ({len(rfcs):,} total) ===")
-    asyncio.run(
-        download_all_rfcs(rfcs, cfg, db_path, args.force, args.dry_run, args.limit)
-    )
+    asyncio.run(download_all_rfcs(rfcs, cfg, db_path, args.force, args.dry_run, args.limit))
 
 
 def load_config(config_path: str) -> dict:

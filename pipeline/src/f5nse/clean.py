@@ -2,12 +2,12 @@ from __future__ import annotations
 
 import json
 import logging
+from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator, Optional, Sequence
 
-from bs4 import BeautifulSoup, NavigableString
 import tyro
+from bs4 import BeautifulSoup, NavigableString
 
 LOGGER = logging.getLogger("f5nse.clean")
 

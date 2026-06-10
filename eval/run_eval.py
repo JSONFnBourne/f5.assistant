@@ -12,25 +12,30 @@ Pipeline per question:
 
 Touches nothing outside eval/. Rollback = rm -rf eval/.
 """
+
 from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import sys
 import urllib.request
-import re
 from datetime import datetime, timezone
 
 EVAL_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(EVAL_DIR)
 WEBAPP = os.path.join(REPO, "webapp")
 # abspath: retrieve.cjs runs with cwd=webapp/, so a relative EVAL_QUESTIONS would not resolve.
-QUESTIONS = os.path.abspath(os.environ.get("EVAL_QUESTIONS", os.path.join(EVAL_DIR, "questions.jsonl")))
+QUESTIONS = os.path.abspath(
+    os.environ.get("EVAL_QUESTIONS", os.path.join(EVAL_DIR, "questions.jsonl"))
+)
 RESULTS_DIR = os.path.join(EVAL_DIR, "results")
 
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
-MODEL = os.environ.get("EVAL_MODEL", "qwen2.5:7b")  # /knowledge stock model; override via EVAL_MODEL
+MODEL = os.environ.get(
+    "EVAL_MODEL", "qwen2.5:7b"
+)  # /knowledge stock model; override via EVAL_MODEL
 
 # ── grounding prompt: faithful copy of webapp/app/api/knowledge/route.ts ──────
 SHARED_RULES = """
@@ -122,7 +127,10 @@ def retrieve_all() -> dict[str, dict]:
     env = dict(os.environ, NODE_PATH=os.path.join(WEBAPP, "node_modules"))
     proc = subprocess.run(
         ["node", os.path.join(EVAL_DIR, "retrieve.cjs"), QUESTIONS],
-        cwd=WEBAPP, env=env, capture_output=True, text=True,
+        cwd=WEBAPP,
+        env=env,
+        capture_output=True,
+        text=True,
     )
     if proc.returncode != 0:
         sys.exit(f"[retrieve.cjs failed]\n{proc.stderr}")
@@ -131,16 +139,18 @@ def retrieve_all() -> dict[str, dict]:
 
 # ── generation (stock model, no judge) ───────────────────────────────────────
 def call_ollama(system: str, user: str) -> dict:
-    body = json.dumps({
-        "model": MODEL,
-        "stream": False,
-        "messages": [
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
-        # mirror route.ts:99-104
-        "options": {"num_ctx": 8192, "temperature": 0.3, "top_k": 40, "top_p": 0.9},
-    }).encode()
+    body = json.dumps(
+        {
+            "model": MODEL,
+            "stream": False,
+            "messages": [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+            # mirror route.ts:99-104
+            "options": {"num_ctx": 8192, "temperature": 0.3, "top_k": 40, "top_p": 0.9},
+        }
+    ).encode()
     req = urllib.request.Request(
         OLLAMA_URL + "/api/chat", data=body, headers={"Content-Type": "application/json"}
     )
@@ -178,8 +188,16 @@ def main() -> None:
         # Rows with no gold (e.g. harvested concept candidates pre-review) are UNSCORED:
         # we still retrieve + generate for qualitative review, but they don't count as misses.
         scored = bool(q.get("expected_doc_ids"))
-        m = metrics_for(ranked_ids, q["expected_doc_ids"]) if scored else {
-            "first_relevant_rank": None, "hit_at_5": None, "hit_at_10": None, "reciprocal_rank": None}
+        m = (
+            metrics_for(ranked_ids, q["expected_doc_ids"])
+            if scored
+            else {
+                "first_relevant_rank": None,
+                "hit_at_5": None,
+                "hit_at_10": None,
+                "reciprocal_rank": None,
+            }
+        )
 
         # generation: mirror the route's production slice (5, or 8 for general)
         slice_n = 8 if mode == "general" else 5
@@ -197,21 +215,23 @@ def main() -> None:
         except Exception as exc:  # noqa: BLE001
             gen_err = str(exc)[:200]
 
-        per_q.append({
-            "id": q["id"],
-            "question": q["question"],
-            "query_type": q.get("query_type"),
-            "expected_doc_ids": q.get("expected_doc_ids", []),
-            "mode": mode,
-            "scored": scored,
-            "retrieved_doc_ids_ranked": ranked_ids,
-            **m,
-            "answer_captured": answer is not None,
-            "gen_tokens_per_sec": tok_s,
-            "answer": answer,
-            "generation_error": gen_err,
-            "context_sources": [{"doc_id": d["doc_id"], "title": d["title"]} for d in ctx_docs],
-        })
+        per_q.append(
+            {
+                "id": q["id"],
+                "question": q["question"],
+                "query_type": q.get("query_type"),
+                "expected_doc_ids": q.get("expected_doc_ids", []),
+                "mode": mode,
+                "scored": scored,
+                "retrieved_doc_ids_ranked": ranked_ids,
+                **m,
+                "answer_captured": answer is not None,
+                "gen_tokens_per_sec": tok_s,
+                "answer": answer,
+                "generation_error": gen_err,
+                "context_sources": [{"doc_id": d["doc_id"], "title": d["title"]} for d in ctx_docs],
+            }
+        )
 
     n = len(per_q)
     scored_q = [p for p in per_q if p["scored"]]
@@ -256,8 +276,10 @@ def main() -> None:
     print("===== PER-QUERY-TYPE RETRIEVAL METRICS (primary) =====")
     print(f"  {'query_type':<12} {'n':>3} {'hit@5':>7} {'hit@10':>7} {'mrr':>7}")
     for qt, m in per_type.items():
-        print(f"  {qt:<12} {m['n_scored']:>3} {m['hit_rate_at_5']:>7.3f} "
-              f"{m['hit_rate_at_10']:>7.3f} {m['mrr']:>7.3f}")
+        print(
+            f"  {qt:<12} {m['n_scored']:>3} {m['hit_rate_at_5']:>7.3f} "
+            f"{m['hit_rate_at_10']:>7.3f} {m['mrr']:>7.3f}"
+        )
     print("  (identifier-derived types — k-number/rfc/irule — exercise direct-lookup")
     print("   branches and are near-tautological; weight the concept rows most.)")
 
@@ -267,10 +289,12 @@ def main() -> None:
     for p in per_q:
         if not p["scored"]:
             continue
-        print(f"  {p['id']} [{p['query_type']:9s}] mode={p['mode']:7s} "
-              f"hit@5={p['hit_at_5']:.0f} hit@10={p['hit_at_10']:.0f} "
-              f"rr={p['reciprocal_rank']:.3f} rank={p['first_relevant_rank']} "
-              f"answer={'yes' if p['answer_captured'] else 'NO'}")
+        print(
+            f"  {p['id']} [{p['query_type']:9s}] mode={p['mode']:7s} "
+            f"hit@5={p['hit_at_5']:.0f} hit@10={p['hit_at_10']:.0f} "
+            f"rr={p['reciprocal_rank']:.3f} rank={p['first_relevant_rank']} "
+            f"answer={'yes' if p['answer_captured'] else 'NO'}"
+        )
     if n - ns:
         print(f"  (+{n - ns} unscored rows — retrieved + answered for review, no gold)")
     print(f"\nwrote {out_path}")

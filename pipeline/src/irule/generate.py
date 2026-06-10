@@ -6,40 +6,40 @@ import random
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Literal, Optional
+from typing import Literal
 
 import torch
+import tyro
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 from .rulebook import (
-    Rulebook,
     DEFAULT_OPERATORS,
+    Rulebook,
     discover_events,
     extract_command_tokens,
     extract_operator_tokens,
     load_rulebook,
 )
-import tyro
 
 LOGGER = logging.getLogger("irule.generate")
 
 
-def load_chunks(path: Path) -> List[dict]:
-    chunks: List[dict] = []
+def load_chunks(path: Path) -> list[dict]:
+    chunks: list[dict] = []
     with path.open("r", encoding="utf-8") as fh:
         for line in fh:
             chunks.append(json.loads(line))
     return chunks
 
 
-def extract_json_block(text: str) -> List[dict]:
+def extract_json_block(text: str) -> list[dict]:
     """Extract a JSON array from model output.
 
     Tries fenced blocks first, then searches for the first balanced array. Only emits a
     warning if every strategy fails so the log isn't spammed for partial successes.
     """
 
-    def parse_candidate(snippet: str) -> Optional[List[dict]]:
+    def parse_candidate(snippet: str) -> list[dict] | None:
         try:
             parsed = json.loads(snippet)
         except json.JSONDecodeError:
@@ -91,7 +91,7 @@ def normalize_command_spacing(text: str) -> str:
 
 
 def build_context_from_entity(entity: dict) -> str:
-    parts: List[str] = []
+    parts: list[str] = []
     description = entity.get("description") or entity.get("summary")
     if description:
         parts.append(description.strip())
@@ -116,7 +116,7 @@ def build_context_from_entity(entity: dict) -> str:
     return "\n\n".join(part for part in parts if part).strip()
 
 
-def build_qas_from_entity(entity: dict) -> List[dict]:
+def build_qas_from_entity(entity: dict) -> list[dict]:
     name = entity.get("name", "").strip()
     if not name:
         return []
@@ -124,9 +124,9 @@ def build_qas_from_entity(entity: dict) -> List[dict]:
     module = entity.get("module")
     context = build_context_from_entity(entity)
     source_url = entity.get("source_url")
-    qas: List[dict] = []
+    qas: list[dict] = []
 
-    def add(question: str, answer: Optional[str]) -> None:
+    def add(question: str, answer: str | None) -> None:
         if not answer:
             return
         qas.append(
@@ -209,7 +209,7 @@ def build_prompt(context: str, pairs: int) -> str:
         f"Produce exactly {pairs} items.\n\n"
         "Example format:\n"
         "[\n"
-        "  {\"question\": \"...\", \"answer\": \"...\", \"reference\": \"...\"}\n"
+        '  {"question": "...", "answer": "...", "reference": "..."}\n'
         "]\n\n"
         "Context:\n"
         "-----\n"
@@ -224,18 +224,18 @@ class GenerateArgs:
     output_path: Path = Path("data/datasets/qa_raw.jsonl")
     generator_model: str = "meta-llama/Llama-3.2-3B-Instruct"
     quantization: Literal["4bit", "8bit", "none"] = "4bit"
-    max_gpu_memory: Optional[str] = None
-    max_cpu_memory: Optional[str] = "48GiB"
+    max_gpu_memory: str | None = None
+    max_cpu_memory: str | None = "48GiB"
     device: str = "cuda"
     pairs_per_chunk: int = 2
-    max_records: Optional[int] = None
-    rulebook_path: Optional[Path] = Path("data/rulebook/command_tokens.json")
+    max_records: int | None = None
+    rulebook_path: Path | None = Path("data/rulebook/command_tokens.json")
     temperature: float = 0.0
     top_p: float = 0.9
     max_new_tokens: int = 512
     seed: int = 42
     trust_remote_code: bool = False
-    entities_path: Optional[Path] = None
+    entities_path: Path | None = None
     overwrite: bool = False
     skip_if_exists: bool = False
 
@@ -373,7 +373,9 @@ def run_generate(args: GenerateArgs) -> None:
                 args.rulebook_path,
             )
         else:
-            LOGGER.warning("Rulebook not found at %s; domain validation limited.", args.rulebook_path)
+            LOGGER.warning(
+                "Rulebook not found at %s; domain validation limited.", args.rulebook_path
+            )
     else:
         LOGGER.warning("Rulebook path not provided; domain validation limited.")
     skipped_chunks = 0
@@ -486,7 +488,11 @@ def run_generate(args: GenerateArgs) -> None:
                     failure_fh.write("\n")
                     skipped_commands += 1
                     continue
-                if rulebook.commands and combined_commands and not combined_commands.issubset(rulebook.commands):
+                if (
+                    rulebook.commands
+                    and combined_commands
+                    and not combined_commands.issubset(rulebook.commands)
+                ):
                     json.dump(
                         {
                             "url": chunk["url"],
@@ -503,23 +509,27 @@ def run_generate(args: GenerateArgs) -> None:
                     skipped_commands += 1
                     continue
 
-                potential_events = {tok for tok in re.findall(r"\b([A-Z][A-Z0-9_]+)\b", question + " " + answer) if "_" in tok}
+                potential_events = {
+                    tok
+                    for tok in re.findall(r"\b([A-Z][A-Z0-9_]+)\b", question + " " + answer)
+                    if "_" in tok
+                }
                 if potential_events and not potential_events.issubset(context_events):
-                        json.dump(
-                            {
-                                "url": chunk["url"],
-                                "prompt": prompt,
-                                "completion": completion,
-                                "question": question,
-                                "reason": "event_not_in_context",
-                                "unknown_tokens": sorted(potential_events - context_events),
-                            },
-                            failure_fh,
-                            ensure_ascii=False,
-                        )
-                        failure_fh.write("\n")
-                        skipped_events += 1
-                        continue
+                    json.dump(
+                        {
+                            "url": chunk["url"],
+                            "prompt": prompt,
+                            "completion": completion,
+                            "question": question,
+                            "reason": "event_not_in_context",
+                            "unknown_tokens": sorted(potential_events - context_events),
+                        },
+                        failure_fh,
+                        ensure_ascii=False,
+                    )
+                    failure_fh.write("\n")
+                    skipped_events += 1
+                    continue
 
                 # Terminology consistency: flag events mislabeled as commands
                 mislabelled_event = False
@@ -571,7 +581,9 @@ def run_generate(args: GenerateArgs) -> None:
     else:
         LOGGER.info("Generated %s records", written)
     if skipped_chunks:
-        LOGGER.warning("Generator skipped %s chunk(s) because no valid QA pairs were parsed", skipped_chunks)
+        LOGGER.warning(
+            "Generator skipped %s chunk(s) because no valid QA pairs were parsed", skipped_chunks
+        )
     if skipped_commands:
         LOGGER.warning("Skipped %s QA pair(s) due to command/context mismatch", skipped_commands)
     if skipped_events:

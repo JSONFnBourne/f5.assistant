@@ -293,9 +293,7 @@ class TestLogSearch:
         assert len(page1["entries"]) == 3
         assert page1["capped"] is True
 
-        page2 = c.get(
-            f"/api/qkview/{analysis_id}/logs", params={"limit": 3, "offset": 3}
-        ).json()
+        page2 = c.get(f"/api/qkview/{analysis_id}/logs", params={"limit": 3, "offset": 3}).json()
         assert len(page2["entries"]) == 1
         assert page2["capped"] is False
         # Pages must not overlap (stable timestamp+id ordering).

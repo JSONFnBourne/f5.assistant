@@ -3,15 +3,15 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Literal, Optional
+from typing import Literal
 
 import torch
+import tyro
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from peft import PeftModel, PeftConfig
+from peft import PeftConfig, PeftModel
 from pydantic import BaseModel
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-import tyro
 
 LOGGER = logging.getLogger("irule.serve")
 
@@ -34,8 +34,8 @@ class ServeArgs:
     host: str = "127.0.0.1"
     port: int = 8000
     quantization: Literal["4bit", "8bit", "none"] = "4bit"
-    max_gpu_memory: Optional[str] = "7GiB"
-    max_cpu_memory: Optional[str] = "48GiB"
+    max_gpu_memory: str | None = "7GiB"
+    max_cpu_memory: str | None = "48GiB"
     trust_remote_code: bool = False
 
 
@@ -65,7 +65,9 @@ class IRuleServer:
         else:
             kwargs["torch_dtype"] = torch.float16 if torch.cuda.is_available() else torch.float32
             kwargs["device_map"] = "auto" if torch.cuda.is_available() else None
-        if quant_mode in {"4bit", "8bit"} and (self.args.max_gpu_memory or self.args.max_cpu_memory):
+        if quant_mode in {"4bit", "8bit"} and (
+            self.args.max_gpu_memory or self.args.max_cpu_memory
+        ):
             device_id = torch.cuda.current_device()
             max_memory = {}
             if self.args.max_gpu_memory:

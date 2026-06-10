@@ -5,12 +5,12 @@ Creates and manages the knowledge.db schema.
 Provides insert/update helpers for both F5 and RFC document records.
 """
 
-import sqlite3
 import hashlib
+import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
-from loguru import logger
 
+from loguru import logger
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS documents (
@@ -62,7 +62,7 @@ def upsert_document(
     title: str | None = None,
     url: str | None = None,
     section: str | None = None,
-    keywords: str | None = None,   # JSON string
+    keywords: str | None = None,  # JSON string
     content: str | bytes | None = None,
     local_path: str | None = None,
 ) -> None:
@@ -99,9 +99,18 @@ def upsert_document(
                    SET source=?, title=?, url=?, section=?, keywords=?,
                        content_hash=?, content=?, local_path=?, last_fetched=?
                    WHERE doc_id=?""",
-                (source, title, url, section, keywords,
-                 content_hash, fts_content,
-                 local_path, now, doc_id),
+                (
+                    source,
+                    title,
+                    url,
+                    section,
+                    keywords,
+                    content_hash,
+                    fts_content,
+                    local_path,
+                    now,
+                    doc_id,
+                ),
             )
             conn.execute(
                 """INSERT INTO docs_fts(rowid, title, keywords, content)
@@ -115,9 +124,19 @@ def upsert_document(
                    (source, doc_id, title, url, section, keywords,
                     content_hash, content, local_path, last_fetched, created_at)
                    VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
-                (source, doc_id, title, url, section, keywords,
-                 content_hash, fts_content,
-                 local_path, now, now),
+                (
+                    source,
+                    doc_id,
+                    title,
+                    url,
+                    section,
+                    keywords,
+                    content_hash,
+                    fts_content,
+                    local_path,
+                    now,
+                    now,
+                ),
             )
             conn.execute(
                 """INSERT INTO docs_fts(rowid, title, keywords, content)

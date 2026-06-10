@@ -16,11 +16,11 @@ memory-bounded on the 20+ MB XML payloads found in real qkviews.
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field, asdict
-from typing import IO, Callable, Iterable, Optional
+from collections.abc import Callable, Iterable
+from dataclasses import asdict, dataclass, field
+from typing import IO
 
 from lxml import etree  # type: ignore
-
 
 # Bundle-index suffix: TMOS explodes each ca-bundle.crt file into one
 # `certificate_summary` record per trusted CA, named `.../<bundle>.crt.NNN`.
@@ -36,6 +36,7 @@ _BUNDLE_INDEX_RE = re.compile(r"\.crt\.\d+$")
 @dataclass
 class StatRecord:
     """Generic key/value stat record extracted from an <object> block."""
+
     category: str
     fields: dict[str, str] = field(default_factory=dict)
 
@@ -45,50 +46,78 @@ class StatRecord:
 # averaged-ratio fields, etc.) is kept from the first-seen replica because
 # it's either an identifier or already aggregated by TMOS.
 _VS_COUNTER_KEYS: tuple[str, ...] = (
-    "clientside.cur_conns", "clientside.tot_conns", "clientside.max_conns",
-    "clientside.pkts_in", "clientside.pkts_out",
-    "clientside.bytes_in", "clientside.bytes_out",
-    "serverside.cur_conns", "serverside.tot_conns", "serverside.max_conns",
-    "serverside.pkts_in", "serverside.pkts_out",
-    "serverside.bytes_in", "serverside.bytes_out",
+    "clientside.cur_conns",
+    "clientside.tot_conns",
+    "clientside.max_conns",
+    "clientside.pkts_in",
+    "clientside.pkts_out",
+    "clientside.bytes_in",
+    "clientside.bytes_out",
+    "serverside.cur_conns",
+    "serverside.tot_conns",
+    "serverside.max_conns",
+    "serverside.pkts_in",
+    "serverside.pkts_out",
+    "serverside.bytes_in",
+    "serverside.bytes_out",
     "no_nodes_errors",
 )
 
 _POOL_COUNTER_KEYS: tuple[str, ...] = (
-    "serverside.cur_conns", "serverside.tot_conns", "serverside.max_conns",
-    "serverside.pkts_in", "serverside.pkts_out",
-    "serverside.bytes_in", "serverside.bytes_out",
-    "cur_sessions", "tot_requests",
+    "serverside.cur_conns",
+    "serverside.tot_conns",
+    "serverside.max_conns",
+    "serverside.pkts_in",
+    "serverside.pkts_out",
+    "serverside.bytes_in",
+    "serverside.bytes_out",
+    "cur_sessions",
+    "tot_requests",
 )
 
 _MEMBER_COUNTER_KEYS: tuple[str, ...] = (
-    "serverside.cur_conns", "serverside.tot_conns", "serverside.max_conns",
-    "serverside.pkts_in", "serverside.pkts_out",
-    "serverside.bytes_in", "serverside.bytes_out",
-    "cur_sessions", "tot_requests",
+    "serverside.cur_conns",
+    "serverside.tot_conns",
+    "serverside.max_conns",
+    "serverside.pkts_in",
+    "serverside.pkts_out",
+    "serverside.bytes_in",
+    "serverside.bytes_out",
+    "cur_sessions",
+    "tot_requests",
 )
 
 _TMM_COUNTER_KEYS: tuple[str, ...] = (
-    "client_side_traffic.pkts_in", "client_side_traffic.pkts_out",
-    "client_side_traffic.bytes_in", "client_side_traffic.bytes_out",
-    "client_side_traffic.tot_conns", "client_side_traffic.cur_conns",
+    "client_side_traffic.pkts_in",
+    "client_side_traffic.pkts_out",
+    "client_side_traffic.bytes_in",
+    "client_side_traffic.bytes_out",
+    "client_side_traffic.tot_conns",
+    "client_side_traffic.cur_conns",
     "client_side_traffic.max_conns",
-    "server_side_traffic.pkts_in", "server_side_traffic.pkts_out",
-    "server_side_traffic.bytes_in", "server_side_traffic.bytes_out",
-    "server_side_traffic.tot_conns", "server_side_traffic.cur_conns",
+    "server_side_traffic.pkts_in",
+    "server_side_traffic.pkts_out",
+    "server_side_traffic.bytes_in",
+    "server_side_traffic.bytes_out",
+    "server_side_traffic.tot_conns",
+    "server_side_traffic.cur_conns",
     "server_side_traffic.max_conns",
 )
 
 _INTERFACE_COUNTER_KEYS: tuple[str, ...] = (
-    "counters.pkts_in", "counters.pkts_out",
-    "counters.bytes_in", "counters.bytes_out",
-    "counters.errors_in", "counters.errors_out",
-    "counters.drops_in", "counters.drops_out",
+    "counters.pkts_in",
+    "counters.pkts_out",
+    "counters.bytes_in",
+    "counters.bytes_out",
+    "counters.errors_in",
+    "counters.errors_out",
+    "counters.drops_in",
+    "counters.drops_out",
     "counters.collisions",
 )
 
 
-def _safe_int(v: Optional[str]) -> int:
+def _safe_int(v: str | None) -> int:
     try:
         return int(v or 0)
     except (TypeError, ValueError):
@@ -97,7 +126,7 @@ def _safe_int(v: Optional[str]) -> int:
 
 def _aggregate_by_key(
     records: Iterable[StatRecord],
-    key_fn: Callable[[StatRecord], Optional[object]],
+    key_fn: Callable[[StatRecord], object | None],
     counter_keys: tuple[str, ...],
 ) -> list[StatRecord]:
     """Collapse replica rows that share a dedupe key.
@@ -129,7 +158,7 @@ def _aggregate_by_key(
     return [groups[k] for k in order]
 
 
-def _partitioned_name(r: StatRecord) -> Optional[str]:
+def _partitioned_name(r: StatRecord) -> str | None:
     """Return `fields['name']` iff it names a user-visible partitioned
     resource (starts with `/`). Internal TMOS constructs like `_kmd_pool`,
     `_tmm_*`, `snat_automap[0]` and unnamed aggregate/wildcard rows return
@@ -139,7 +168,7 @@ def _partitioned_name(r: StatRecord) -> Optional[str]:
     return name if name.startswith("/") else None
 
 
-def _non_empty_name(r: StatRecord) -> Optional[str]:
+def _non_empty_name(r: StatRecord) -> str | None:
     """Return `fields['name']` if non-empty. Used for resources whose names
     aren't partitioned paths — TMM rows (`row0`..`rowN`), interfaces
     (`1.1`, `mgmt`). Empty-name aggregate / wildcard rows are filtered out.
@@ -148,7 +177,7 @@ def _non_empty_name(r: StatRecord) -> Optional[str]:
     return name or None
 
 
-def _cpu_key(r: StatRecord) -> Optional[tuple[str, str, str]]:
+def _cpu_key(r: StatRecord) -> tuple[str, str, str] | None:
     """Dedupe CPU rows by `(plane_name, cpu_id, slot_id)`.
 
     `cpu_info_stat` (TMM planes) and `system_cpu_info_stat` (control plane)
@@ -168,6 +197,7 @@ def _cpu_key(r: StatRecord) -> Optional[tuple[str, str, str]]:
 @dataclass
 class XmlStats:
     """Collected runtime stats from a TMOS qkview."""
+
     virtual_servers: list[StatRecord] = field(default_factory=list)
     pools: list[StatRecord] = field(default_factory=list)
     pool_members: list[StatRecord] = field(default_factory=list)
@@ -200,11 +230,12 @@ class XmlStats:
     def deduped_pool_members(self) -> list[StatRecord]:
         # Members are keyed by (parent pool, addr, port): the same backend
         # node can legitimately appear under two pools as distinct members.
-        def _key(r: StatRecord) -> Optional[tuple[str, str, str]]:
+        def _key(r: StatRecord) -> tuple[str, str, str] | None:
             name = _partitioned_name(r)
             if name is None:
                 return None
             return (name, r.fields.get("addr") or "", r.fields.get("port") or "")
+
         return _aggregate_by_key(self.pool_members, _key, _MEMBER_COUNTER_KEYS)
 
     def deduped_tmms(self) -> list[StatRecord]:
@@ -234,21 +265,26 @@ class XmlStats:
         Any name ending in `.crt.<digits>` is a bundle index. First-class
         user-imported certs are named without the numeric tail.
         """
-        return [r for r in self.certificates
-                if not _BUNDLE_INDEX_RE.search(r.fields.get("name") or "")]
+        return [
+            r for r in self.certificates if not _BUNDLE_INDEX_RE.search(r.fields.get("name") or "")
+        ]
 
     # ── top-N tables ───────────────────────────────────────────────────
 
     def top_virtual_servers(self, n: int = 20) -> list[StatRecord]:
         """Return the N busiest virtual servers by current connection count."""
+
         def _key(r: StatRecord) -> int:
             return _safe_int(r.fields.get("clientside.cur_conns"))
+
         return sorted(self.deduped_virtual_servers(), key=_key, reverse=True)[:n]
 
     def top_pools(self, n: int = 20) -> list[StatRecord]:
         """Return the N busiest pools by total connection count."""
+
         def _key(r: StatRecord) -> int:
             return _safe_int(r.fields.get("serverside.tot_conns"))
+
         return sorted(self.deduped_pools(), key=_key, reverse=True)[:n]
 
     def top_pool_members(self, n: int = 30) -> list[StatRecord]:
@@ -258,17 +294,21 @@ class XmlStats:
         in the TMOS config's monitor rules. Traffic volume is the best
         operational-health proxy available from XML stats alone.
         """
+
         def _key(r: StatRecord) -> int:
             return _safe_int(r.fields.get("serverside.tot_conns"))
+
         return sorted(self.deduped_pool_members(), key=_key, reverse=True)[:n]
 
     def interfaces_with_errors(self) -> list[StatRecord]:
         """Return interfaces carrying any non-zero error/drop/collision counter."""
+
         def _has_errors(r: StatRecord) -> bool:
             for key in ("errors_in", "errors_out", "drops_in", "drops_out", "collisions"):
                 if _safe_int(r.fields.get(f"counters.{key}")) > 0:
                     return True
             return False
+
         return [r for r in self.deduped_interfaces() if _has_errors(r)]
 
     def top_expiring_certificates(self, n: int = 50) -> list[StatRecord]:
@@ -279,12 +319,14 @@ class XmlStats:
         records with unparseable / missing dates sort last so valid
         certs always rank first.
         """
+
         def _key(r: StatRecord) -> int:
             raw = r.fields.get("expiration_date", "")
             try:
                 return int(raw) if raw else 2**63 - 1
             except ValueError:
                 return 2**63 - 1
+
         return sorted(self.user_certificates(), key=_key)[:n]
 
     def summary(self) -> dict[str, int]:
@@ -295,15 +337,15 @@ class XmlStats:
         """
         return {
             "virtual_servers": len(self.deduped_virtual_servers()),
-            "pools":           len(self.deduped_pools()),
-            "pool_members":    len(self.deduped_pool_members()),
-            "tmms":            len(self.deduped_tmms()),
-            "interfaces":      len(self.deduped_interfaces()),
-            "cpus":            len(self.deduped_cpus()),
-            "db_variables":    len(self.db_variables),
-            "certificates":    len(self.user_certificates()),
-            "active_modules":  len(self.active_modules),
-            "asm_policies":    len(self.asm_policies),
+            "pools": len(self.deduped_pools()),
+            "pool_members": len(self.deduped_pool_members()),
+            "tmms": len(self.deduped_tmms()),
+            "interfaces": len(self.deduped_interfaces()),
+            "cpus": len(self.deduped_cpus()),
+            "db_variables": len(self.db_variables),
+            "certificates": len(self.user_certificates()),
+            "active_modules": len(self.active_modules),
+            "asm_policies": len(self.asm_policies),
         }
 
 
@@ -410,7 +452,7 @@ def parse_module_xml(stream: IO[bytes], stats: XmlStats) -> None:
 
     for _, elem in context:
         tag = elem.tag
-        category: Optional[str] = None
+        category: str | None = None
 
         if tag == "object":
             parent = elem.getparent()
@@ -450,7 +492,7 @@ def parse_xml_modules(files: Iterable[tuple[str, IO[bytes]]]) -> XmlStats:
     return stats
 
 
-def parse_xml_modules_from_tar(tar, filenames: Optional[list[str]] = None) -> XmlStats:
+def parse_xml_modules_from_tar(tar, filenames: list[str] | None = None) -> XmlStats:
     """Convenience wrapper: pull the named *_module.xml members out of an open
     tarfile and stream-parse them all into a single XmlStats.
 
