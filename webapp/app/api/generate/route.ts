@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { ollamaChat, OllamaError, isOllamaConnectionError, DEFAULT_TIMEOUT_MS } from '@/lib/ollama';
 
 export const maxDuration = 300;
-
-const OLLAMA_URL = process.env.OLLAMA_URL || 'http://127.0.0.1:11434';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'llama3.2:latest';
 
 const VALID_TMOS_VERSIONS = new Set(['14.x', '15.x', '16.x', '17.x']);
 const VALID_PROTOCOLS = new Set([
@@ -42,35 +40,22 @@ The user has built an iRule skeleton using a GUI builder. Your task is to:
 Protocol context: ${safeProtocol}
 ${safeDeps ? `Dependencies/notes: ${safeDeps}` : ''}`;
 
-        const ollamaRes = await fetch(`${OLLAMA_URL}/api/chat`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                model: OLLAMA_MODEL,
-                messages: [
-                    { role: 'system', content: systemPrompt },
-                    { role: 'user', content: skeleton.slice(0, 32_768) }
-                ],
-                stream: false,
-                options: {
-                    num_ctx: 4096,
-                    temperature: 0.3,
-                    top_k: 40,
-                    top_p: 0.9
-                }
-            })
+        // Shared client: non-streaming, 180s timeout, aborts if the client
+        // disconnects (req.signal) so abandoned generations stop on the GPU.
+        const fullText = await ollamaChat({
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: skeleton.slice(0, 32_768) }
+            ],
+            options: {
+                num_ctx: 4096,
+                temperature: 0.3,
+                top_k: 40,
+                top_p: 0.9
+            },
+            signal: req.signal,
+            timeoutMs: DEFAULT_TIMEOUT_MS,
         });
-
-        if (!ollamaRes.ok) {
-            return NextResponse.json({
-                error: ollamaRes.status >= 500 || ollamaRes.status === 0
-                    ? 'Cannot connect to Ollama. Ensure "ollama serve" is running.'
-                    : `Local LLM error: ${ollamaRes.statusText}`
-            }, { status: 503 });
-        }
-
-        const ollamaJson = await ollamaRes.json();
-        const fullText: string = ollamaJson?.message?.content ?? '';
 
         // Strip any accidental markdown code fences the model might add
         const code = fullText
@@ -82,10 +67,17 @@ ${safeDeps ? `Dependencies/notes: ${safeDeps}` : ''}`;
 
     } catch (error) {
         console.error('Generate route error:', error);
+        if (error instanceof OllamaError) {
+            return NextResponse.json({ error: error.message }, { status: 503 });
+        }
+        if (error instanceof Error && (error.name === 'TimeoutError' || error.name === 'AbortError')) {
+            return NextResponse.json({
+                error: `Generation timed out after ${Math.round(DEFAULT_TIMEOUT_MS / 1000)}s or was cancelled.`
+            }, { status: 503 });
+        }
         const msg = error instanceof Error ? error.message : 'Unknown error';
-        const isConn = msg.includes('fetch failed') || msg.includes('ECONNREFUSED');
         return NextResponse.json({
-            error: isConn
+            error: isOllamaConnectionError(error)
                 ? 'Cannot connect to Ollama. Ensure "ollama serve" is running.'
                 : `Local LLM issue: ${msg}`
         }, { status: 503 });

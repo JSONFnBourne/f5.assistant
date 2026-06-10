@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { searchDocuments } from '@/lib/db';
 import { classifyQuery, type QueryMode } from '@/lib/knowledgeClassifier';
+import { streamOllamaChat, OllamaError, isOllamaConnectionError } from '@/lib/ollama';
 
 export const maxDuration = 300;
-
-const OLLAMA_URL = process.env.OLLAMA_URL || 'http://127.0.0.1:11434';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'llama3.2:latest';
 
 // ── Mode-aware system prompts ─────────────────────────────────────────────
 
@@ -65,12 +63,22 @@ export async function POST(req: NextRequest) {
         const mode = classifyQuery(message);
         const sources = MODE_SOURCES[mode];
 
-        const resultLimit = mode === 'general' ? 8 : 5;
-        const results = await searchDocuments(message, resultLimit, sources);
-
-        const finalResults = results.length > 0
-            ? results
-            : await searchDocuments(message, 5);
+        // Retrieval layer — failures here are NOT Ollama problems and must
+        // not be reported as such.
+        let finalResults;
+        try {
+            const resultLimit = mode === 'general' ? 8 : 5;
+            const results = await searchDocuments(message, resultLimit, sources);
+            finalResults = results.length > 0
+                ? results
+                : await searchDocuments(message, 5);
+        } catch (err) {
+            console.error('Knowledge retrieval error:', err);
+            const msg = err instanceof Error ? err.message : 'Unknown retrieval error';
+            return NextResponse.json({
+                error: `Knowledge retrieval failed (not an LLM issue): ${msg}`
+            }, { status: 500 });
+        }
 
         const context = finalResults
             .map((r) => `[Source: ${r.title}] (${r.url})\n${r.content.substring(0, 1000)}...`)
@@ -86,71 +94,46 @@ export async function POST(req: NextRequest) {
             systemPrompt = `AUTHORITY NOTE: The user explicitly referenced ${kList}. If this document is present in the Context below, base your answer primarily on its content and cite it as the principal source. Do not draw from other context sources unless the cited document is silent on the specific point asked.\n\n` + systemPrompt;
         }
 
-        const ollamaRes = await fetch(`${OLLAMA_URL}/api/chat`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                model: OLLAMA_MODEL,
-                messages: [
-                    { role: 'system', content: systemPrompt },
-                    { role: 'user', content: message }
-                ],
-                stream: true,
-                options: {
-                    num_ctx: 8192,
-                    temperature: 0.3,
-                    top_k: 40,
-                    top_p: 0.9
-                }
-            })
+        // LLM layer — shared client handles NDJSON framing, chunk-boundary
+        // buffering, timeout, and abort-on-disconnect (req.signal).
+        const llmStream = await streamOllamaChat({
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: message }
+            ],
+            options: {
+                num_ctx: 8192,
+                temperature: 0.3,
+                top_k: 40,
+                top_p: 0.9
+            },
+            signal: req.signal,
         });
 
-        if (!ollamaRes.ok) {
-            const isConnectionError = ollamaRes.status === 0 || ollamaRes.status >= 500;
-            return NextResponse.json({
-                error: isConnectionError
-                    ? 'Cannot connect to Ollama. Ensure "ollama serve" is running.'
-                    : `Local LLM error: ${ollamaRes.statusText}`
-            }, { status: 503 });
-        }
-
-        if (!ollamaRes.body) {
-            return NextResponse.json({ error: 'No response body from Ollama.' }, { status: 503 });
-        }
-
         const enc = new TextEncoder();
+        const upstream = llmStream.getReader();
 
         // Stream protocol:
         //   Line 1: JSON metadata  {"__meta":true,"mode":"f5","sources":[...]}
         //   Lines 2+: raw LLM text chunks (no framing)
-        const stream = new ReadableStream({
-            async start(controller) {
+        const stream = new ReadableStream<Uint8Array>({
+            start(controller) {
                 const meta = { __meta: true, mode, sources: finalResults.map(r => ({ title: r.title, url: r.url })) };
                 controller.enqueue(enc.encode(JSON.stringify(meta) + '\n'));
-
-                const reader = ollamaRes.body!.getReader();
-                const decoder = new TextDecoder();
-                try {
-                    while (true) {
-                        const { done, value } = await reader.read();
-                        if (done) break;
-                        const chunk = decoder.decode(value, { stream: true });
-                        for (const line of chunk.split('\n')) {
-                            if (!line.trim()) continue;
-                            try {
-                                const parsed = JSON.parse(line);
-                                if (parsed.message?.content) {
-                                    controller.enqueue(enc.encode(parsed.message.content));
-                                }
-                            } catch { /* partial JSON line — skip */ }
-                        }
-                    }
-                } catch (e) {
-                    console.error('Knowledge stream error:', e);
-                } finally {
+            },
+            async pull(controller) {
+                const { done, value } = await upstream.read();
+                if (done) {
                     controller.close();
+                } else {
+                    controller.enqueue(value);
                 }
-            }
+            },
+            // Client disconnected — cancel the Ollama stream so generation
+            // stops burning GPU on an abandoned question.
+            cancel(reason) {
+                upstream.cancel(reason).catch(() => { /* upstream already gone */ });
+            },
         });
 
         return new Response(stream, {
@@ -162,12 +145,15 @@ export async function POST(req: NextRequest) {
 
     } catch (error) {
         console.error('Knowledge route error:', error);
+        if (error instanceof OllamaError) {
+            return NextResponse.json({ error: error.message }, { status: 503 });
+        }
         const msg = error instanceof Error ? error.message : 'Unknown error';
-        const isConnErr = msg.includes('fetch failed') || msg.includes('ECONNREFUSED');
-        return NextResponse.json({
-            error: isConnErr
-                ? 'Cannot connect to Ollama. Ensure "ollama serve" is running in a terminal.'
-                : `Local LLM issue: ${msg}`
-        }, { status: 503 });
+        if (isOllamaConnectionError(error)) {
+            return NextResponse.json({
+                error: 'Cannot connect to Ollama. Ensure "ollama serve" is running.'
+            }, { status: 503 });
+        }
+        return NextResponse.json({ error: `Local LLM issue: ${msg}` }, { status: 503 });
     }
 }

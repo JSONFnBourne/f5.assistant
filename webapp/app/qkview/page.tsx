@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useMemo } from 'react';
 import { UploadCloud, File, CheckCircle, AlertTriangle, Bug, Terminal, Network, Cpu, Activity, Folder, ShieldCheck, X, Loader2, ChevronRight, ChevronDown, Copy, Check, Server, Calendar, Settings } from 'lucide-react';
+import LogSearchPanel from './components/LogSearchPanel';
 
 type AppSummary = {
     name: string;
@@ -386,6 +387,10 @@ export default function QKViewPage() {
     const [showRawStanzas, setShowRawStanzas] = useState(false);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
+    // Path of the most recent app-details request — stale responses from
+    // earlier clicks compare against this and are dropped instead of
+    // overwriting the currently selected app's panel.
+    const appDetailsReqRef = useRef<string | null>(null);
 
     const rawProduct: string = analysisResult?.device_info?.product || '';
     const isF5OS = rawProduct.startsWith('F5OS');
@@ -434,11 +439,14 @@ export default function QKViewPage() {
             return;
         }
         if (selectedAppPath === fullPath) {
+            appDetailsReqRef.current = null;
             setSelectedAppPath(null);
             setAppDetails(null);
             setAppDetailsError(null);
+            setAppDetailsLoading(false);
             return;
         }
+        appDetailsReqRef.current = fullPath;
         setSelectedAppPath(fullPath);
         setAppDetails(null);
         setAppDetailsError(null);
@@ -449,11 +457,13 @@ export default function QKViewPage() {
             const res = await fetch(`/api/qkview/${analysisId}/apps/${encoded}`);
             if (!res.ok) throw new Error(`Backend returned ${res.status}`);
             const data = await res.json();
+            if (appDetailsReqRef.current !== fullPath) return; // stale response — a newer click won
             setAppDetails(data.app ?? null);
         } catch (err: any) {
+            if (appDetailsReqRef.current !== fullPath) return; // stale failure — ignore
             setAppDetailsError(err.message || 'Failed to load app details.');
         } finally {
-            setAppDetailsLoading(false);
+            if (appDetailsReqRef.current === fullPath) setAppDetailsLoading(false);
         }
     };
 
@@ -1399,6 +1409,9 @@ export default function QKViewPage() {
                             )}
                         </div>
                     </div>
+
+                    {/* Full-text search over the persisted per-analysis log index */}
+                    {analysisId != null && <LogSearchPanel analysisId={analysisId} />}
                 </div>
             )}
         </div>

@@ -18,9 +18,24 @@ function resolveDbPath(): string {
   return resolved;
 }
 
-const DB_PATH = resolveDbPath();
+// Single shared readonly connection, opened lazily on first query so a
+// missing db file surfaces as a clear runtime error on the request path
+// instead of throwing at module import time.
+let _db: Database.Database | null = null;
 
-const db = new Database(DB_PATH, { readonly: true, fileMustExist: true });
+function getDb(): Database.Database {
+  if (_db) return _db;
+  const dbPath = resolveDbPath();
+  try {
+    _db = new Database(dbPath, { readonly: true, fileMustExist: true });
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    throw new Error(
+      `Knowledge database unavailable at "${dbPath}" — run the knowledge ingest scripts or set KSI_DB_PATH. (${detail})`
+    );
+  }
+  return _db;
+}
 
 // Prepared-statement cache keyed by SQL string. better-sqlite3 statements are
 // reusable and compiled once; reusing them avoids re-parsing on every query.
@@ -28,7 +43,7 @@ const stmtCache = new Map<string, Database.Statement>();
 function prep(sql: string): Database.Statement {
   let stmt = stmtCache.get(sql);
   if (!stmt) {
-    stmt = db.prepare(sql);
+    stmt = getDb().prepare(sql);
     stmtCache.set(sql, stmt);
   }
   return stmt;
@@ -101,6 +116,10 @@ export async function searchDocuments(
   limit: number = 5,
   sources?: string[]
 ): Promise<SearchResult[]> {
+  // Open (or fail loudly) up front — the per-query catch blocks below are for
+  // individual statement errors and must not mask a missing database file.
+  getDb();
+
   const results: SearchResult[] = [];
   const seenIds = new Set<number>();
 
@@ -318,5 +337,3 @@ export async function searchDocuments(
 
   return deduped;
 }
-
-export default db;

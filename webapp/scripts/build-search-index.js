@@ -92,6 +92,15 @@ function buildIndex() {
         walkDir(fullDir, allFiles);
     }
 
+    if (allFiles.length === 0) {
+        console.error(
+            `build-search-index: no source files (${EXTENSIONS.join(', ')}) found under ${ROOT_DIR} ` +
+            `in any of: ${DIRECTORIES_TO_INDEX.join(', ')}.\n` +
+            'Refusing to write an empty search index — check that the knowledge/ tree exists next to webapp/.'
+        );
+        process.exit(1);
+    }
+
     const documents = [];
     let docId = 1;
 

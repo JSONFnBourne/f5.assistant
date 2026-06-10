@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Send, MessageSquare, Bot, User } from 'lucide-react'
+import { ArrowLeft, Send, MessageSquare, Bot, User, Loader2 } from 'lucide-react'
 
 export type Message = {
     role: 'user' | 'assistant';
@@ -11,6 +11,8 @@ export type Message = {
 
 export default function DiscussionPage() {
     const [input, setInput] = useState('')
+    // In-flight guard: blocks a second send while a response is streaming.
+    const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState<Message[]>([
         { role: 'assistant', content: 'Hello! I am your F5 Assistant. Paste an iRule, syslog, or ask me a question about syntax, architectures, or security.', timestamp: Date.now() }
     ])
@@ -26,12 +28,15 @@ export default function DiscussionPage() {
 
     const handleSend = async (e: React.FormEvent) => {
         e.preventDefault()
-        if (!input.trim()) return
+        if (!input.trim() || loading) return
 
         const userMsg: Message = { role: 'user', content: input, timestamp: Date.now() }
         const newMessages = [...messages, userMsg]
         setMessages(newMessages)
         setInput('')
+        setLoading(true)
+
+        let streamStarted = false
 
         try {
             const res = await fetch('/api/chat', {
@@ -41,16 +46,25 @@ export default function DiscussionPage() {
             })
 
             if (!res.ok) {
-                const errJson = await res.json().catch(() => ({}));
+                // The chat route returns errors as plain text (503) — and
+                // sometimes JSON ({error}) for validation failures. Read the
+                // body as text first, then try to extract a JSON error field.
+                const errText = await res.text().catch(() => '')
+                let detail = errText
+                try {
+                    const parsed = JSON.parse(errText)
+                    if (parsed?.error) detail = parsed.error
+                } catch { /* plain text body — use as-is */ }
                 setMessages(prev => [...prev, {
                     role: 'assistant',
-                    content: `Error: ${errJson.error || 'Network error communicating with the local search service.'}`,
+                    content: `Error: ${detail || 'Network error communicating with the local assistant service.'}`,
                     timestamp: Date.now()
                 }])
                 return
             }
 
             // Create a placeholder message for the assistant stream
+            streamStarted = true
             setMessages(prev => [...prev, { role: 'assistant', content: '', timestamp: Date.now() }])
 
             // Read the real-time stream
@@ -65,10 +79,12 @@ export default function DiscussionPage() {
 
                     aiText += decoder.decode(value, { stream: true })
 
-                    // Update the last message (the placeholder) with the newly appended text chunk
+                    // Update the placeholder with the accumulated text —
+                    // always with a NEW object, never in-place mutation.
                     setMessages(prev => {
                         const newMsgs = [...prev]
-                        newMsgs[newMsgs.length - 1].content = aiText
+                        const last = newMsgs[newMsgs.length - 1]
+                        newMsgs[newMsgs.length - 1] = { ...last, content: aiText }
                         return newMsgs
                     })
                 }
@@ -76,16 +92,18 @@ export default function DiscussionPage() {
         } catch (error) {
             console.error('Failed to parse AI stream:', error)
             setMessages(prev => {
-                // Determine if we crash mid-stream or before starting
-                const newMsgs = [...prev];
-                const lastMsg = newMsgs[newMsgs.length - 1];
-                if (lastMsg.role === 'assistant' && lastMsg.content === '') {
-                    lastMsg.content = 'Network error streaming from Assistant.'
-                } else if (lastMsg.role !== 'assistant') {
+                // Determine if we crashed mid-stream or before starting
+                const newMsgs = [...prev]
+                const lastMsg = newMsgs[newMsgs.length - 1]
+                if (streamStarted && lastMsg?.role === 'assistant' && lastMsg.content === '') {
+                    newMsgs[newMsgs.length - 1] = { ...lastMsg, content: 'Network error streaming from Assistant.' }
+                } else if (lastMsg?.role !== 'assistant') {
                     newMsgs.push({ role: 'assistant', content: 'Network stream failed.', timestamp: Date.now() })
                 }
-                return newMsgs;
-            });
+                return newMsgs
+            })
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -120,7 +138,11 @@ export default function DiscussionPage() {
                                 ? 'bg-indigo-600 text-white rounded-br-none'
                                 : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border dark:border-slate-700 rounded-bl-none'
                                 }`}>
-                                {msg.content.split('```').map((part, i) => {
+                                {loading && idx === messages.length - 1 && msg.role === 'assistant' && msg.content === '' ? (
+                                    <span className="inline-flex items-center gap-1.5 text-slate-400 dark:text-slate-500 text-xs">
+                                        <Loader2 className="animate-spin h-3.5 w-3.5" /> thinking…
+                                    </span>
+                                ) : msg.content.split('```').map((part, i) => {
                                     if (i % 2 === 1) {
                                         // Code block
                                         const lines = part.trim().split('\n')
@@ -154,6 +176,17 @@ export default function DiscussionPage() {
                             )}
                         </div>
                     ))}
+                    {loading && messages[messages.length - 1]?.role === 'user' && (
+                        <div className="flex gap-3 justify-start">
+                            <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center flex-shrink-0">
+                                <Bot className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                            </div>
+                            <div className="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-2xl rounded-bl-none p-4 flex items-center gap-2">
+                                <Loader2 className="animate-spin h-4 w-4 text-indigo-500" />
+                                <span className="text-sm text-slate-500 dark:text-slate-400">thinking…</span>
+                            </div>
+                        </div>
+                    )}
                     <div ref={messagesEndRef} />
                 </div>
 
@@ -162,10 +195,11 @@ export default function DiscussionPage() {
                         <textarea
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
+                            disabled={loading}
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter' && !e.shiftKey) {
                                     e.preventDefault()
-                                    if (input.trim()) {
+                                    if (input.trim() && !loading) {
                                         const formEvent = new Event('submit', { cancelable: true, bubbles: true })
                                         e.currentTarget.form?.dispatchEvent(formEvent)
                                     }
@@ -177,7 +211,7 @@ export default function DiscussionPage() {
                         />
                         <button
                             type="submit"
-                            disabled={!input.trim()}
+                            disabled={loading || !input.trim()}
                             className="absolute right-2 top-2 p-1.5 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         >
                             <Send className="h-5 w-5" />

@@ -15,14 +15,7 @@ const CSP = isProd
 
 const nextConfig = {
     reactStrictMode: true,
-    output: 'standalone',
     poweredByHeader: false,
-    experimental: {
-        serverActions: {
-            bodySizeLimit: '2000mb'
-        },
-        proxyClientMaxBodySize: '2000mb'
-    },
     async headers() {
         return [
             {
@@ -33,12 +26,10 @@ const nextConfig = {
                         value: 'on'
                     },
                     {
-                        key: 'Strict-Transport-Security',
-                        value: 'max-age=63072000; includeSubDomains; preload'
-                    },
-                    {
+                        // Explicitly disable the legacy XSS auditor — '1; mode=block'
+                        // is deprecated and can itself introduce vulnerabilities.
                         key: 'X-XSS-Protection',
-                        value: '1; mode=block'
+                        value: '0'
                     },
                     {
                         key: 'X-Frame-Options',

@@ -3,11 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import MiniSearch from 'minisearch';
 import { searchDocuments } from '@/lib/db';
+import { streamOllamaChat, OllamaError } from '@/lib/ollama';
 
 export const maxDuration = 300;
-
-const OLLAMA_URL = process.env.OLLAMA_URL || 'http://127.0.0.1:11434';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'llama3.2:latest';
 
 let searchIndex: MiniSearch | null = null;
 
@@ -91,7 +89,15 @@ export async function POST(req: Request) {
             if (looseResults.length > 0) results.push(...looseResults);
         }
 
-        const dbResults = await searchDocuments(query, 5);
+        // Retrieval is an optional augment for this route — a knowledge.db
+        // failure must not kill the chat (and must not be reported as an
+        // Ollama problem). Degrade to minisearch-only context.
+        let dbResults: Awaited<ReturnType<typeof searchDocuments>> = [];
+        try {
+            dbResults = await searchDocuments(query, 5);
+        } catch (dbErr) {
+            console.warn('chat route: knowledge.db retrieval failed, continuing without it:', dbErr);
+        }
 
         const topResults = results.slice(0, 3);
         let contextText = '';
@@ -125,58 +131,17 @@ export async function POST(req: Request) {
         });
 
         try {
-            const ollamaRes = await fetch(`${OLLAMA_URL}/api/chat`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    model: OLLAMA_MODEL,
-                    messages: ollamaMessages,
-                    stream: true,
-                    options: {
-                        num_ctx: 4096,
-                        temperature: 0.7,
-                        top_k: 40,
-                        top_p: 0.9
-                    }
-                })
-            });
-
-            if (!ollamaRes.ok) {
-                let errMsg = "Local LLM (Ollama) returned an error.";
-                try {
-                    const errData = await ollamaRes.json();
-                    if (errData.error) errMsg = `Ollama Error: ${errData.error}`;
-                } catch (e) { }
-                throw new Error(errMsg);
-            }
-
-            if (!ollamaRes.body) throw new Error("No response body from Ollama.");
-
-            const stream = new ReadableStream({
-                async start(controller) {
-                    const reader = ollamaRes.body!.getReader();
-                    const decoder = new TextDecoder();
-                    try {
-                        while (true) {
-                            const { done, value } = await reader.read();
-                            if (done) break;
-                            const chunk = decoder.decode(value, { stream: true });
-                            const lines = chunk.split('\n').filter(l => l.trim() !== '');
-                            for (const line of lines) {
-                                try {
-                                    const parsed = JSON.parse(line);
-                                    if (parsed.message?.content) {
-                                        controller.enqueue(new TextEncoder().encode(parsed.message.content));
-                                    }
-                                } catch (e) { }
-                            }
-                        }
-                    } catch (e) {
-                        console.error("Stream reading error:", e);
-                    } finally {
-                        controller.close();
-                    }
-                }
+            // Shared client: NDJSON framing, chunk-boundary buffering, timeout,
+            // and abort-on-disconnect (req.signal + the stream's cancel()).
+            const stream = await streamOllamaChat({
+                messages: ollamaMessages,
+                options: {
+                    num_ctx: 4096,
+                    temperature: 0.7,
+                    top_k: 40,
+                    top_p: 0.9
+                },
+                signal: req.signal,
             });
 
             return new Response(stream, {
@@ -186,16 +151,18 @@ export async function POST(req: Request) {
                 }
             });
 
-        } catch (ollamaErr: any) {
-            console.error("Failed to reach Ollama:", ollamaErr);
-            return new Response(
-                `Error communicating with local Ollama. Ensure Ollama is installed and running on localhost.`,
-                { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } }
-            );
+        } catch (ollamaErr: unknown) {
+            console.error('Failed to reach Ollama:', ollamaErr);
+            const detail = ollamaErr instanceof OllamaError
+                ? ollamaErr.message
+                : 'Error communicating with local Ollama. Ensure Ollama is installed and running on localhost.';
+            return new Response(detail, {
+                status: 503,
+                headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+            });
         }
 
-    } catch (error: any) {
-        console.error(error);
+    } catch (error: unknown) {
         console.error('chat route unhandled error:', error);
         return new Response('Internal server error.', { status: 500, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }

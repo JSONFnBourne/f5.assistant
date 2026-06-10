@@ -11,11 +11,18 @@ interface Source {
 }
 
 interface Message {
+  /** Stable identity for stream targeting — never address messages by array index. */
+  id?: string;
   role: 'user' | 'bot';
   text: string;
   sources?: Source[];
   mode?: QueryMode;
   streaming?: boolean;
+}
+
+let msgIdCounter = 0;
+function nextMsgId(): string {
+  return `msg-${Date.now()}-${++msgIdCounter}`;
 }
 
 const MODE_LABELS: Record<QueryMode, string> = {
@@ -35,7 +42,13 @@ export default function KnowledgePage() {
     { role: 'bot', text: 'Ask me anything about F5 BIG-IP — TMSH, iRules, LTM, DNS, AFM, APM, ASM, SSLO, VELOS, or rSeries. I answer strictly from F5 documentation with source citations.' }
   ]);
   const [input, setInput] = useState('');
+  // loading = retrieval phase ("Searching knowledge base…" indicator).
+  // inFlight = whole request lifecycle, submit → stream complete. The submit
+  // guard and input disable key off inFlight so a second question can't be
+  // sent while a stream is still appending (which used to corrupt the
+  // transcript via last-index targeting).
   const [loading, setLoading] = useState(false);
+  const [inFlight, setInFlight] = useState(false);
   const [mounted, setMounted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -57,12 +70,24 @@ export default function KnowledgePage() {
 
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (!input.trim() || loading) return;
+    if (!input.trim() || inFlight) return;
 
     const userMessage = input;
     setInput('');
     setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
+    setInFlight(true);
     setLoading(true);
+
+    // Identity of the bot placeholder — captured once, so every stream write
+    // targets THIS message even if the array changes underneath.
+    const botId = nextMsgId();
+    const updateBot = (patch: Partial<Message> | ((m: Message) => Message)) => {
+      setMessages(prev => prev.map(m =>
+        m.id === botId
+          ? (typeof patch === 'function' ? patch(m) : { ...m, ...patch })
+          : m
+      ));
+    };
 
     try {
       const resp = await fetch('/api/knowledge', {
@@ -85,8 +110,8 @@ export default function KnowledgePage() {
         return;
       }
 
-      // Add a placeholder streaming message
-      setMessages(prev => [...prev, { role: 'bot', text: '', streaming: true }]);
+      // Add a placeholder streaming message with a stable id
+      setMessages(prev => [...prev, { id: botId, role: 'bot', text: '', streaming: true }]);
 
       const reader = resp.body.getReader();
       const decoder = new TextDecoder();
@@ -96,13 +121,7 @@ export default function KnowledgePage() {
       let streamedSources: Source[] | undefined;
 
       const appendText = (chunk: string) => {
-        setMessages(prev => {
-          const msgs = [...prev];
-          const last = { ...msgs[msgs.length - 1] };
-          last.text += chunk;
-          msgs[msgs.length - 1] = last;
-          return msgs;
-        });
+        updateBot(m => ({ ...m, text: m.text + chunk }));
       };
 
       while (true) {
@@ -123,17 +142,13 @@ export default function KnowledgePage() {
                 streamedMode = meta.mode as QueryMode;
                 streamedSources = meta.sources as Source[];
                 // Apply metadata to the placeholder message
-                setMessages(prev => {
-                  const msgs = [...prev];
-                  msgs[msgs.length - 1] = {
-                    role: 'bot',
-                    text: rest,
-                    streaming: true,
-                    mode: streamedMode,
-                    sources: streamedSources,
-                  };
-                  return msgs;
-                });
+                updateBot(m => ({
+                  ...m,
+                  text: rest,
+                  streaming: true,
+                  mode: streamedMode,
+                  sources: streamedSources,
+                }));
                 setLoading(false);
                 metaParsed = true;
                 lineBuffer = '';
@@ -158,32 +173,28 @@ export default function KnowledgePage() {
       }
 
       // Mark streaming complete — sources are already set; finalize message
-      setMessages(prev => {
-        const msgs = [...prev];
-        const last = { ...msgs[msgs.length - 1] };
-        last.streaming = false;
+      updateBot(m => ({
+        ...m,
+        streaming: false,
         // Ensure mode/sources are set if they arrived
-        if (streamedMode) last.mode = streamedMode;
-        if (streamedSources) last.sources = streamedSources;
-        msgs[msgs.length - 1] = last;
-        return msgs;
-      });
+        ...(streamedMode ? { mode: streamedMode } : {}),
+        ...(streamedSources ? { sources: streamedSources } : {}),
+      }));
 
-    } catch (error) {
-      setLoading(false);
+    } catch {
       setMessages(prev => {
-        const msgs = [...prev];
-        const last = msgs[msgs.length - 1];
-        if (last?.role === 'bot' && last.streaming) {
+        const placeholder = prev.find(m => m.id === botId);
+        if (placeholder?.streaming) {
           // Replace mid-stream placeholder with error
-          msgs[msgs.length - 1] = { role: 'bot', text: 'Stream interrupted. Check that Ollama is running.' };
-        } else {
-          msgs.push({ role: 'bot', text: 'Network error. Check that Ollama is running.' });
+          return prev.map(m => m.id === botId
+            ? { id: botId, role: 'bot' as const, text: 'Stream interrupted. Check that Ollama is running.' }
+            : m);
         }
-        return msgs;
+        return [...prev, { role: 'bot' as const, text: 'Network error. Check that Ollama is running.' }];
       });
     } finally {
       setLoading(false);
+      setInFlight(false);
     }
   };
 
@@ -279,13 +290,13 @@ export default function KnowledgePage() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            disabled={loading}
+            disabled={inFlight}
             rows={1}
             className="w-full pl-4 pr-12 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-amber-500 dark:focus:border-amber-400 focus:ring-2 focus:ring-amber-100 dark:focus:ring-amber-900 outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 resize-none min-h-[50px] max-h-[200px]"
           />
           <button
             type="submit"
-            disabled={loading || !input.trim()}
+            disabled={inFlight || !input.trim()}
             className="absolute right-2 top-2 p-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <Send className="h-5 w-5" />
