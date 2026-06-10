@@ -1,4 +1,13 @@
 # ============================================================
+# Secrets-adjacent guardrails
+# ============================================================
+# HAR captures can embed session cookies / bearer tokens — never commit
+*.har
+# SQLite sidecars outside db/ (e.g. backend/f5_assistant.db-wal)
+*.db-wal
+*.db-shm
+
+# ============================================================
 # Python
 # ============================================================
 __pycache__/

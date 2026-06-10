@@ -1,19 +1,7 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "f5-assistant"
-version = "0.7.0"
-description = "Self-contained, locally-hosted F5 BIG-IP intelligence platform"
-authors = [{ name = "F5 Assistant Maintainers" }]
-requires-python = ">=3.10"
-readme = "README.md"
-license = { file = "LICENSE" }
-dependencies = []
-
-[tool.setuptools.packages.find]
-where = ["src"]
+# Tool-config only — this repo is not a installable Python package.
+# The backend runs from backend/ via uvicorn; the pipeline packages live in
+# pipeline/ (own pyproject + venv). A previous [project]/setuptools section
+# here pointed at a nonexistent root src/ and was removed (2026-06-09 audit).
 
 [tool.black]
 line-length = 100
