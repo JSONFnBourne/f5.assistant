@@ -84,6 +84,39 @@ def build_system_prompt(mode: str, context: str, question: str) -> str:
     return prompt
 
 
+# ── staleness guard ──────────────────────────────────────────────────────────
+# eval/_gen/*.js are tsc-compiled copies of webapp/lib/*.ts. If a source .ts is
+# newer than its compiled .js, the harness would silently eval a stale retriever.
+_GEN_PAIRS = [
+    (os.path.join(WEBAPP, "lib", "db.ts"), os.path.join(EVAL_DIR, "_gen", "db.js")),
+    (
+        os.path.join(WEBAPP, "lib", "knowledgeClassifier.ts"),
+        os.path.join(EVAL_DIR, "_gen", "knowledgeClassifier.js"),
+    ),
+]
+
+TSC_CMD = """cd webapp && node_modules/.bin/tsc lib/db.ts lib/knowledgeClassifier.ts \\
+  --outDir ../eval/_gen --rootDir lib --module commonjs --target es2020 \\
+  --esModuleInterop --skipLibCheck --moduleResolution node"""
+
+
+def check_gen_freshness() -> None:
+    stale = []
+    for src, gen in _GEN_PAIRS:
+        if not os.path.exists(gen):
+            stale.append(f"  MISSING: {gen}")
+        elif os.path.getmtime(src) > os.path.getmtime(gen):
+            stale.append(f"  STALE:   {gen} (source {src} is newer)")
+    if stale:
+        sys.exit(
+            "[eval/_gen is stale — the compiled retriever no longer matches webapp/lib]\n"
+            + "\n".join(stale)
+            + "\n\nRe-transpile from the repo root, then re-run:\n\n"
+            + TSC_CMD
+            + "\n"
+        )
+
+
 # ── retrieval (delegates to the real retriever) ──────────────────────────────
 def retrieve_all() -> dict[str, dict]:
     env = dict(os.environ, NODE_PATH=os.path.join(WEBAPP, "node_modules"))
@@ -132,6 +165,7 @@ def metrics_for(ranked_ids: list[str], expected: list[str]) -> dict:
 
 
 def main() -> None:
+    check_gen_freshness()
     questions = [json.loads(l) for l in open(QUESTIONS, encoding="utf-8") if l.strip()]
     retrieval = retrieve_all()
 
@@ -167,7 +201,7 @@ def main() -> None:
             "id": q["id"],
             "question": q["question"],
             "query_type": q.get("query_type"),
-            "expected_doc_ids": q["expected_doc_ids"],
+            "expected_doc_ids": q.get("expected_doc_ids", []),
             "mode": mode,
             "scored": scored,
             "retrieved_doc_ids_ranked": ranked_ids,
@@ -182,7 +216,25 @@ def main() -> None:
     n = len(per_q)
     scored_q = [p for p in per_q if p["scored"]]
     ns = len(scored_q)
+
+    # Per-query_type breakout. Identifier-derived types (k-number, rfc, irule)
+    # hit direct-lookup branches and are near-tautological — the blended headline
+    # overstates retrieval quality, so report each type separately.
+    by_type: dict[str, list[dict]] = {}
+    for p in scored_q:
+        by_type.setdefault(p["query_type"] or "unknown", []).append(p)
+    per_type = {
+        qt: {
+            "n_scored": len(rows),
+            "hit_rate_at_5": round(sum(r["hit_at_5"] for r in rows) / len(rows), 4),
+            "hit_rate_at_10": round(sum(r["hit_at_10"] for r in rows) / len(rows), 4),
+            "mrr": round(sum(r["reciprocal_rank"] for r in rows) / len(rows), 4),
+        }
+        for qt, rows in sorted(by_type.items())
+    }
+
     agg = {
+        "per_query_type": per_type,
         "n_questions": n,
         "n_scored": ns,
         "n_unscored": n - ns,
@@ -201,8 +253,16 @@ def main() -> None:
     with open(out_path, "w", encoding="utf-8") as fh:
         json.dump({"generated_at": ts, "aggregate": agg, "questions": per_q}, fh, indent=2)
 
-    print("===== AGGREGATE RETRIEVAL METRICS =====")
-    print(json.dumps(agg, indent=2))
+    print("===== PER-QUERY-TYPE RETRIEVAL METRICS (primary) =====")
+    print(f"  {'query_type':<12} {'n':>3} {'hit@5':>7} {'hit@10':>7} {'mrr':>7}")
+    for qt, m in per_type.items():
+        print(f"  {qt:<12} {m['n_scored']:>3} {m['hit_rate_at_5']:>7.3f} "
+              f"{m['hit_rate_at_10']:>7.3f} {m['mrr']:>7.3f}")
+    print("  (identifier-derived types — k-number/rfc/irule — exercise direct-lookup")
+    print("   branches and are near-tautological; weight the concept rows most.)")
+
+    print("\n===== BLENDED AGGREGATE (inflated by identifier types) =====")
+    print(json.dumps({k: v for k, v in agg.items() if k != "per_query_type"}, indent=2))
     print("\n===== PER-QUESTION (scored only) =====")
     for p in per_q:
         if not p["scored"]:

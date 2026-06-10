@@ -79,15 +79,34 @@ def upsert_document(
             "SELECT id, created_at FROM documents WHERE doc_id = ?", (doc_id,)
         ).fetchone()
 
+        fts_content = content if isinstance(content, str) else None
+
         if existing:
+            row_id = existing[0]
+            # FTS5 external-content tables can't be updated in place: the old
+            # tokens must be removed via the special 'delete' command, which
+            # requires the OLD column values for this rowid.
+            old = conn.execute(
+                "SELECT title, keywords, content FROM documents WHERE id = ?", (row_id,)
+            ).fetchone()
+            conn.execute(
+                """INSERT INTO docs_fts(docs_fts, rowid, title, keywords, content)
+                   VALUES ('delete', ?, ?, ?, ?)""",
+                (row_id, old[0], old[1], old[2]),
+            )
             conn.execute(
                 """UPDATE documents
                    SET source=?, title=?, url=?, section=?, keywords=?,
                        content_hash=?, content=?, local_path=?, last_fetched=?
                    WHERE doc_id=?""",
                 (source, title, url, section, keywords,
-                 content_hash, content if isinstance(content, str) else None, 
+                 content_hash, fts_content,
                  local_path, now, doc_id),
+            )
+            conn.execute(
+                """INSERT INTO docs_fts(rowid, title, keywords, content)
+                   VALUES (?, ?, ?, ?)""",
+                (row_id, title, keywords, fts_content),
             )
             logger.debug(f"[DB UPDATE] {doc_id}")
         else:
@@ -97,15 +116,14 @@ def upsert_document(
                     content_hash, content, local_path, last_fetched, created_at)
                    VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
                 (source, doc_id, title, url, section, keywords,
-                 content_hash, content if isinstance(content, str) else None,
+                 content_hash, fts_content,
                  local_path, now, now),
+            )
+            conn.execute(
+                """INSERT INTO docs_fts(rowid, title, keywords, content)
+                   VALUES (last_insert_rowid(), ?, ?, ?)""",
+                (title, keywords, fts_content),
             )
             logger.debug(f"[DB INSERT] {doc_id}")
 
-        # Keep FTS index in sync
-        conn.execute(
-            """INSERT OR REPLACE INTO docs_fts(rowid, title, keywords, content)
-               VALUES (last_insert_rowid(), ?, ?, ?)""",
-            (title, keywords, content if isinstance(content, str) else None),
-        )
         conn.commit()

@@ -420,7 +420,9 @@ def run_generate(args: GenerateArgs) -> None:
                 device_pref=args.device,
             )
             qa_items = extract_json_block(completion)
-            if not isinstance(qa_items, list):
+            # extract_json_block always returns a list ([] on failure), so test
+            # emptiness, not type — otherwise the retry/failure paths never fire.
+            if not qa_items:
                 LOGGER.debug("Initial generation failed to yield JSON; retrying deterministically.")
                 retry_prompt = (
                     prompt
@@ -436,7 +438,7 @@ def run_generate(args: GenerateArgs) -> None:
                     device_pref=args.device,
                 )
                 qa_items = extract_json_block(completion)
-            if not isinstance(qa_items, list):
+            if not qa_items:
                 json.dump(
                     {
                         "url": chunk["url"],

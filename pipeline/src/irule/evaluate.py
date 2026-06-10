@@ -403,14 +403,13 @@ def run_evaluate(args: EvaluateArgs) -> None:
                 do_sample=False,
                 pad_token_id=judge_tokenizer.pad_token_id,
             )
-        # Compute per-row input lengths from attention_mask
-        attn = inputs.get("attention_mask")
-        lens = attn.sum(dim=1).tolist() if attn is not None else [inputs["input_ids"].shape[1]] * outputs.shape[0]
-        texts = []
-        for row, L in zip(outputs, lens):
-            judge_tokens = row[int(L):]
-            texts.append(judge_tokenizer.decode(judge_tokens, skip_special_tokens=True))
-        return texts
+        # The judge tokenizer left-pads, so every row's generation starts at the
+        # uniform padded prompt length — slice there (mirrors the generation
+        # phase above), not at the per-row unpadded length.
+        input_len = inputs["input_ids"].shape[1]
+        return judge_tokenizer.batch_decode(
+            outputs[:, input_len:], skip_special_tokens=True
+        )
 
     for i in range(0, len(generations), jbs):
         batch = generations[i : i + jbs]

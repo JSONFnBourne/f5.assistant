@@ -32,7 +32,8 @@ def run_validate(args: ValidateArgs) -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
     if not args.graded_path.exists():
         LOGGER.error("Graded dataset %s not found.", args.graded_path)
-        return
+        raise SystemExit(1)
+    failed = False
     totals = 0
     overall_scores = []
     missing_keys = set()

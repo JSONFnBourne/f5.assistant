@@ -145,12 +145,10 @@ def bulk_insert(conn: sqlite3.Connection, rows: list[tuple]) -> None:
 def rebuild_fts(conn: sqlite3.Connection) -> None:
     """Rebuild the FTS index from the documents table content."""
     print("  Rebuilding FTS index…", end=" ", flush=True)
-    # Delete all FTS entries and repopulate from documents table
-    conn.execute("DELETE FROM docs_fts")
-    conn.execute("""
-        INSERT INTO docs_fts(rowid, title, keywords, content)
-        SELECT id, title, keywords, content FROM documents
-    """)
+    # docs_fts is an external-content FTS5 table: plain DELETE derives the
+    # delete-tokens from the *current* content and cannot clean up drift.
+    # The supported full-reindex idiom is the special 'rebuild' command.
+    conn.execute("INSERT INTO docs_fts(docs_fts) VALUES('rebuild')")
     print("done.")
 
 
@@ -172,11 +170,12 @@ def main() -> None:
     conn.execute("PRAGMA synchronous=NORMAL")
     conn.execute("PRAGMA cache_size=-64000")   # 64 MB page cache
 
-    # Pre-load existing doc_ids to support incremental ingest
-    existing = set()
+    # Pre-load existing doc_id → content_hash to support incremental ingest.
+    # Skipping is hash-based, not presence-based, so edited KB articles re-ingest.
+    existing: dict[str, str | None] = {}
     if not args.force:
-        rows = conn.execute("SELECT doc_id FROM documents").fetchall()
-        existing = {r[0] for r in rows}
+        rows = conn.execute("SELECT doc_id, content_hash FROM documents").fetchall()
+        existing = {r[0]: r[1] for r in rows}
         print(f"Existing documents in DB: {len(existing):,}")
 
     total_inserted = 0
@@ -206,13 +205,15 @@ def main() -> None:
                           f"(+{inserted} new, {skipped} skipped, {errors} errors)")
 
                 doc_id = path.stem
-                if doc_id in existing and not args.force:
-                    skipped += 1
-                    continue
 
                 article = parse_article(path, base_kw)
                 if article is None:
                     errors += 1
+                    continue
+
+                # Skip only if present AND unchanged (content_hash match).
+                if not args.force and existing.get(doc_id) == article["content_hash"]:
+                    skipped += 1
                     continue
 
                 batch.append((
