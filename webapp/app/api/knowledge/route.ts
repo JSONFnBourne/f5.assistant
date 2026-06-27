@@ -42,7 +42,7 @@ ${context}`;
 // ── Sources per mode ──────────────────────────────────────────────────────
 
 const MODE_SOURCES: Record<QueryMode, string[] | undefined> = {
-    f5:      ['irules', 'clouddocs', 'f5_kb', 'f5_security', 'xc_techdocs', 'techdocs', 'community'],
+    f5:      ['irules', 'clouddocs', 'f5_kb', 'f5_security', 'xc_techdocs', 'techdocs', 'community', 'f5os_api'],
     rfc:     ['rfc'],
     general: undefined,   // no filter — search all sources
 };
