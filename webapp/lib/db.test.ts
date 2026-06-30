@@ -53,6 +53,9 @@ build.exec(`INSERT INTO docs_fts(docs_fts) VALUES('rebuild')`);
 build.close();
 
 process.env.KSI_DB_PATH = FIXTURE;
+// Disable the dense index here so these tests exercise the BM25 ladder in
+// isolation (no 145 MB index load, no Ollama). Hybrid is tested in embeddings.test.ts.
+process.env.KSI_VEC_PATH = `${FIXTURE}.no_such_index`;
 const { searchDocuments } = await import('./db');
 
 afterAll(rmFixture);

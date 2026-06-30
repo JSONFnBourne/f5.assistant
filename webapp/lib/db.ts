@@ -1,5 +1,6 @@
 import Database from 'better-sqlite3';
 import path from 'path';
+import { denseAvailable, denseSearch, embedQuery, rrf } from './embeddings';
 
 // Canonical path to the unified knowledge database.
 // If KSI_DB_PATH is set, validate it stays within the expected db/ directory.
@@ -58,6 +59,23 @@ export interface SearchResult {
   section: string;
   content: string;
   snippet: string;
+}
+
+// Fetch a single document row by doc_id (used to resolve dense-retrieval hits
+// that the BM25 pass didn't surface). Respects the mode source filter.
+function fetchByDocId(docId: string, sources?: string[]): SearchResult | null {
+  let sql = `SELECT id, source, doc_id, title, url, section, content, '' as snippet
+             FROM documents WHERE doc_id = ?`;
+  const params: unknown[] = [docId];
+  if (sources && sources.length > 0) {
+    sql += ` AND source IN (${sources.map(() => '?').join(',')})`;
+    params.push(...sources);
+  }
+  try {
+    return (prep(sql).get(...params) as SearchResult) ?? null;
+  } catch {
+    return null;
+  }
 }
 
 // Common English stop words that carry no retrieval signal.
@@ -253,87 +271,99 @@ export async function searchDocuments(
   // ── 2. FTS term-based search ─────────────────────────────────────────────
   // Use stop-word-filtered terms with FTS5 implicit AND matching.
   // This avoids phrase-matching the entire conversational query verbatim.
+  // ── 2. Hybrid retrieval: BM25 FTS + dense (semantic), RRF-fused ───────────
+  // Direct-lookup hits above are PINNED (kept ahead of fusion). The remaining
+  // slots are filled by fusing BM25-FTS with dense results via Reciprocal Rank
+  // Fusion (eval/recall/REPORT.md: concept hit@5 0.55→0.69, identifiers kept at
+  // 1.0). Dense is best-effort — with no embedding index or Ollama, this
+  // degrades to BM25-only, identical to the prior behavior.
+  const need = Math.max(limit - results.length, 1);
   const ftsTerms = extractFtsTerms(query);
-  if (!ftsTerms) return results;
+  const prefetch = need * 3;
 
-  let sql = `
-    SELECT
-      d.id, d.source, d.doc_id, d.title, d.url, d.section, d.content,
-      snippet(docs_fts, 2, '<b>', '</b>', '...', 64) as snippet
-    FROM docs_fts f
-    JOIN documents d ON f.rowid = d.id
-    WHERE docs_fts MATCH ?
-  `;
-
-  const params: any[] = [ftsTerms];
-
-  if (sources && sources.length > 0) {
-    const placeholders = sources.map(() => '?').join(',');
-    sql += ` AND d.source IN (${placeholders})`;
-    params.push(...sources);
-  }
-
-  // Exclude already-found docs from direct lookup
-  if (seenIds.size > 0) {
-    const excl = Array.from(seenIds).map(() => '?').join(',');
-    sql += ` AND d.id NOT IN (${excl})`;
-    params.push(...Array.from(seenIds));
-  }
-
-  // bm25 column weights: title=10, keywords=5, content=1
-  // Heavily favors documents where the query terms appear in the title
-  // (e.g. "Overview of the Client SSL profile") over body-only matches.
-  // Fetch 3× the requested limit to leave headroom for title deduplication
-  // (e.g. 3,300+ docs all titled "K4918: Overview of the F5 critical issue
-  // hotfix policy" would otherwise flood the top slots).
-  sql += ` ORDER BY bm25(docs_fts, 10.0, 5.0, 1.0) LIMIT ?`;
-  params.push((limit - results.length) * 3);
-
-  // First try: AND matching — all terms must appear in each document.
-  try {
-    const ftsRows = prep(sql).all(...params) as SearchResult[];
-    for (const row of ftsRows) {
-      if (!seenIds.has(row.id)) {
-        seenIds.add(row.id);
-        results.push(row);
-      }
+  // 2a. BM25-FTS candidate rows (AND, then OR fallback), source/seen filtered.
+  // bm25 weights: title=10, keywords=5, content=1. 3× headroom for fusion + dedupe.
+  const ftsRows: SearchResult[] = [];
+  if (ftsTerms) {
+    let sql = `
+      SELECT
+        d.id, d.source, d.doc_id, d.title, d.url, d.section, d.content,
+        snippet(docs_fts, 2, '<b>', '</b>', '...', 64) as snippet
+      FROM docs_fts f
+      JOIN documents d ON f.rowid = d.id
+      WHERE docs_fts MATCH ?
+    `;
+    const params: unknown[] = [ftsTerms];
+    if (sources && sources.length > 0) {
+      sql += ` AND d.source IN (${sources.map(() => '?').join(',')})`;
+      params.push(...sources);
     }
-  } catch (error) {
-    console.error('FTS AND search error:', error);
-  }
-
-  // Second try: OR matching — fires only if AND returned nothing.
-  // Handles queries like "Which RFC governs IPsec?" where "governs" is rare
-  // in RFC text, causing AND to miss documents that clearly match on "ipsec".
-  if (results.length === 0 && ftsTerms.includes(' ')) {
-    const orExpr = ftsTerms.split(' ').join(' OR ');
-    const orParams = [orExpr, ...params.slice(1)];  // swap only the MATCH expression
-    // Note: params already uses 3× limit from the AND pass above
+    if (seenIds.size > 0) {
+      sql += ` AND d.id NOT IN (${Array.from(seenIds).map(() => '?').join(',')})`;
+      params.push(...Array.from(seenIds));
+    }
+    sql += ` ORDER BY bm25(docs_fts, 10.0, 5.0, 1.0) LIMIT ?`;
+    params.push(prefetch);
     try {
-      const orRows = prep(sql).all(...orParams) as SearchResult[];
-      for (const row of orRows) {
-        if (!seenIds.has(row.id)) {
-          seenIds.add(row.id);
-          results.push(row);
-        }
+      let rows = prep(sql).all(...params) as SearchResult[];
+      // OR fallback when AND matched nothing (rare-term queries like "governs ipsec").
+      if (rows.length === 0 && ftsTerms.includes(' ')) {
+        const orExpr = ftsTerms.split(' ').join(' OR ');
+        rows = prep(sql).all(orExpr, ...params.slice(1)) as SearchResult[];
       }
+      ftsRows.push(...rows);
     } catch (error) {
-      console.error('FTS OR search error:', error);
+      console.error('FTS search error:', error);
     }
   }
 
-  // Deduplicate by normalized title — prevents documents sharing an identical
-  // title (e.g. thousands of K4918-titled bug articles) from consuming multiple
-  // result slots. The first occurrence (highest BM25 score) wins.
-  const seenTitles = new Set<string>();
-  const deduped: SearchResult[] = [];
-  for (const r of results) {
+  // 2b. Dense candidate rows (best-effort semantic retrieval over the embedding index).
+  const denseRows: SearchResult[] = [];
+  if (denseAvailable()) {
+    const qvec = await embedQuery(query);
+    if (qvec) {
+      // Dense contributes its top-`need` (not 3×) — matching the offline
+      // experiment. Over-fetching here injects semantically-near-but-wrong docs
+      // that RRF can rank above a BM25-strong gold (regressed f5os hit@5).
+      const haveDocIds = new Set(ftsRows.map((r) => r.doc_id));
+      for (const did of denseSearch(qvec, sources, need)) {
+        if (haveDocIds.has(did)) continue; // row already fetched via FTS
+        const row = fetchByDocId(did, sources);
+        if (row && !seenIds.has(row.id)) denseRows.push(row);
+      }
+    }
+  }
+
+  // 2c. Fuse the two ranked lists (RRF) and resolve doc_id → row.
+  const rowByDocId = new Map<string, SearchResult>();
+  for (const r of ftsRows) rowByDocId.set(r.doc_id, r);
+  for (const r of denseRows) if (!rowByDocId.has(r.doc_id)) rowByDocId.set(r.doc_id, r);
+  // Title-dedup the BM25 list BEFORE fusion: title-drift clusters (thousands of
+  // docs sharing one title) must not consume ranks ahead of the gold, or RRF
+  // under-weights it. This restores the clean BM25 ranking the experiment fused.
+  const ftsSeen = new Set<string>();
+  const ftsRankedIds: string[] = [];
+  for (const r of ftsRows) {
     const key = r.title.trim().toLowerCase();
+    if (ftsSeen.has(key)) continue;
+    ftsSeen.add(key);
+    ftsRankedIds.push(r.doc_id);
+  }
+  const fusedIds = rrf([ftsRankedIds, denseRows.map((r) => r.doc_id)]);
+
+  // 2d. Fill remaining slots after the pinned direct hits, deduping by title.
+  // (e.g. thousands of K4918-titled bug articles must not flood the slots.)
+  const seenTitles = new Set(results.map((r) => r.title.trim().toLowerCase()));
+  for (const did of fusedIds) {
+    if (results.length >= limit) break;
+    const row = rowByDocId.get(did);
+    if (!row || seenIds.has(row.id)) continue;
+    const key = row.title.trim().toLowerCase();
     if (seenTitles.has(key)) continue;
     seenTitles.add(key);
-    deduped.push(r);
-    if (deduped.length >= limit) break;
+    seenIds.add(row.id);
+    results.push(row);
   }
 
-  return deduped;
+  return results.slice(0, limit);
 }
