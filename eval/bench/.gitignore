@@ -1,0 +1,6 @@
+# Derived intermediates — regenerate from answers via make_packets*.py + the split step.
+# (Kept out of git; the durable record is the harness, benchmark set, answers, scores, report.)
+packets.jsonl
+packets_quant.jsonl
+batches/
+batches_q/

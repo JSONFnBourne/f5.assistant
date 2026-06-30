@@ -1,0 +1,80 @@
+{
+  "qwen2.5:14b": {
+    "total": 14.48,
+    "rag": 15.12,
+    "cb": 13.84,
+    "corr": 3.52,
+    "grnd": 3.46,
+    "cmpl": 3.52,
+    "conc": 3.98,
+    "wins": 35,
+    "sec": 4.41,
+    "tok": 267,
+    "flags": {
+      "hallucination": 16,
+      "wrong": 5,
+      "fabricated-citation": 3,
+      "good-refusal": 8,
+      "incomplete": 2
+    }
+  },
+  "qwen3:14b": {
+    "total": 14.73,
+    "rag": 15.94,
+    "cb": 13.52,
+    "corr": 3.56,
+    "grnd": 3.45,
+    "cmpl": 3.8,
+    "conc": 3.92,
+    "wins": 44,
+    "sec": 12.8,
+    "tok": 843,
+    "flags": {
+      "incomplete": 3,
+      "hallucination": 15,
+      "wrong": 10,
+      "good-refusal": 8,
+      "verbose": 3,
+      "fabricated-citation": 3
+    }
+  },
+  "phi4": {
+    "total": 13.69,
+    "rag": 15.58,
+    "cb": 11.8,
+    "corr": 3.25,
+    "grnd": 3.29,
+    "cmpl": 3.43,
+    "conc": 3.72,
+    "wins": 21,
+    "sec": 5.23,
+    "tok": 306,
+    "flags": {
+      "hallucination": 22,
+      "wrong": 14,
+      "good-refusal": 13,
+      "fabricated-citation": 1,
+      "verbose": 1,
+      "incomplete": 2
+    }
+  },
+  "phi4-reasoning": {
+    "total": 8.51,
+    "rag": 9.24,
+    "cb": 7.78,
+    "corr": 2.78,
+    "grnd": 2.49,
+    "cmpl": 3.06,
+    "conc": 0.18,
+    "wins": 0,
+    "sec": 46.08,
+    "tok": 2524,
+    "flags": {
+      "verbose": 99,
+      "off-topic": 2,
+      "hallucination": 30,
+      "wrong": 8,
+      "good-refusal": 4
+    }
+  }
+}

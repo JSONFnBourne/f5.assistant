@@ -1,0 +1,602 @@
+{
+  "q002|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "s001|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "phi4"
+  },
+  "s002|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "phi4"
+  },
+  "s003|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s004|rag": {
+    "A": "phi4-reasoning",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "qwen2.5:14b"
+  },
+  "s005|rag": {
+    "A": "qwen3:14b",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "s006|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen3:14b"
+  },
+  "s007|rag": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "s008|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4-reasoning",
+    "C": "qwen3:14b",
+    "D": "phi4"
+  },
+  "s009|rag": {
+    "A": "phi4",
+    "B": "qwen2.5:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "s010|rag": {
+    "A": "phi4",
+    "B": "phi4-reasoning",
+    "C": "qwen2.5:14b",
+    "D": "qwen3:14b"
+  },
+  "s011|rag": {
+    "A": "phi4",
+    "B": "qwen2.5:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "s012|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s014|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "s015|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "s016|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "qwen2.5:14b",
+    "D": "phi4"
+  },
+  "s017|rag": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "qwen3:14b",
+    "D": "phi4"
+  },
+  "s018|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s019|rag": {
+    "A": "phi4-reasoning",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s020|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s021|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "phi4"
+  },
+  "s022|rag": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "s023|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s030|rag": {
+    "A": "phi4",
+    "B": "qwen2.5:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "s031|rag": {
+    "A": "phi4",
+    "B": "qwen2.5:14b",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "s032|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "s033|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s034|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "s035|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "q003|rag": {
+    "A": "phi4",
+    "B": "qwen2.5:14b",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "i012|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "i013|rag": {
+    "A": "qwen3:14b",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "i014|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4",
+    "C": "phi4-reasoning",
+    "D": "qwen2.5:14b"
+  },
+  "s013|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "s028|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "phi4"
+  },
+  "s029|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen3:14b"
+  },
+  "q005|rag": {
+    "A": "phi4",
+    "B": "phi4-reasoning",
+    "C": "qwen2.5:14b",
+    "D": "qwen3:14b"
+  },
+  "s024|rag": {
+    "A": "phi4",
+    "B": "phi4-reasoning",
+    "C": "qwen2.5:14b",
+    "D": "qwen3:14b"
+  },
+  "s025|rag": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen2.5:14b"
+  },
+  "s026|rag": {
+    "A": "phi4-reasoning",
+    "B": "phi4",
+    "C": "qwen2.5:14b",
+    "D": "qwen3:14b"
+  },
+  "s027|rag": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "qwen3:14b"
+  },
+  "q001|rag": {
+    "A": "phi4",
+    "B": "phi4-reasoning",
+    "C": "qwen2.5:14b",
+    "D": "qwen3:14b"
+  },
+  "i001|rag": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "i002|rag": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "qwen3:14b",
+    "D": "phi4"
+  },
+  "b001|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "b002|rag": {
+    "A": "phi4",
+    "B": "qwen2.5:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "b003|rag": {
+    "A": "phi4-reasoning",
+    "B": "qwen3:14b",
+    "C": "qwen2.5:14b",
+    "D": "phi4"
+  },
+  "i009|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "phi4"
+  },
+  "i010|rag": {
+    "A": "qwen3:14b",
+    "B": "phi4",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "q004|rag": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "qwen3:14b"
+  },
+  "q002|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "s001|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "qwen3:14b"
+  },
+  "s002|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen3:14b",
+    "C": "qwen2.5:14b",
+    "D": "phi4"
+  },
+  "s003|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "s004|cb": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "s005|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4-reasoning",
+    "C": "qwen3:14b",
+    "D": "phi4"
+  },
+  "s006|cb": {
+    "A": "phi4",
+    "B": "phi4-reasoning",
+    "C": "qwen3:14b",
+    "D": "qwen2.5:14b"
+  },
+  "s007|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "s008|cb": {
+    "A": "qwen3:14b",
+    "B": "phi4",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "s009|cb": {
+    "A": "qwen3:14b",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "s010|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "phi4"
+  },
+  "s011|cb": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s012|cb": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s014|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4-reasoning",
+    "C": "qwen3:14b",
+    "D": "phi4"
+  },
+  "s015|cb": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen2.5:14b"
+  },
+  "s016|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "qwen3:14b",
+    "D": "phi4"
+  },
+  "s017|cb": {
+    "A": "qwen3:14b",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "s018|cb": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen2.5:14b"
+  },
+  "s019|cb": {
+    "A": "phi4-reasoning",
+    "B": "phi4",
+    "C": "qwen2.5:14b",
+    "D": "qwen3:14b"
+  },
+  "s020|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "qwen3:14b"
+  },
+  "s021|cb": {
+    "A": "phi4-reasoning",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "qwen2.5:14b"
+  },
+  "s022|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "s023|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "phi4-reasoning",
+    "D": "qwen3:14b"
+  },
+  "s030|cb": {
+    "A": "phi4",
+    "B": "phi4-reasoning",
+    "C": "qwen2.5:14b",
+    "D": "qwen3:14b"
+  },
+  "s031|cb": {
+    "A": "qwen3:14b",
+    "B": "phi4-reasoning",
+    "C": "qwen2.5:14b",
+    "D": "phi4"
+  },
+  "s032|cb": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "s033|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "s034|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "s035|cb": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen2.5:14b"
+  },
+  "q003|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "i012|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "qwen3:14b",
+    "D": "phi4"
+  },
+  "i013|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "i014|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "s013|cb": {
+    "A": "qwen3:14b",
+    "B": "phi4",
+    "C": "phi4-reasoning",
+    "D": "qwen2.5:14b"
+  },
+  "s028|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "s029|cb": {
+    "A": "phi4",
+    "B": "phi4-reasoning",
+    "C": "qwen3:14b",
+    "D": "qwen2.5:14b"
+  },
+  "q005|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "qwen3:14b"
+  },
+  "s024|cb": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "s025|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4",
+    "C": "qwen3:14b",
+    "D": "phi4-reasoning"
+  },
+  "s026|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "s027|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "qwen3:14b"
+  },
+  "q001|cb": {
+    "A": "phi4-reasoning",
+    "B": "qwen3:14b",
+    "C": "phi4",
+    "D": "qwen2.5:14b"
+  },
+  "i001|cb": {
+    "A": "qwen3:14b",
+    "B": "phi4",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "i002|cb": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen2.5:14b"
+  },
+  "b001|cb": {
+    "A": "phi4",
+    "B": "phi4-reasoning",
+    "C": "qwen3:14b",
+    "D": "qwen2.5:14b"
+  },
+  "b002|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "phi4"
+  },
+  "b003|cb": {
+    "A": "qwen3:14b",
+    "B": "phi4",
+    "C": "qwen2.5:14b",
+    "D": "phi4-reasoning"
+  },
+  "i009|cb": {
+    "A": "qwen3:14b",
+    "B": "qwen2.5:14b",
+    "C": "phi4",
+    "D": "phi4-reasoning"
+  },
+  "i010|cb": {
+    "A": "qwen2.5:14b",
+    "B": "phi4-reasoning",
+    "C": "qwen3:14b",
+    "D": "phi4"
+  },
+  "q004|cb": {
+    "A": "phi4",
+    "B": "qwen3:14b",
+    "C": "phi4-reasoning",
+    "D": "qwen2.5:14b"
+  }
+}

@@ -1,0 +1,502 @@
+{
+  "q002|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s001|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s002|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s003|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s004|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s005|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s006|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s007|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s008|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s009|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s010|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s011|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s012|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "s014|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s015|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s016|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "s017|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s018|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s019|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s020|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s021|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s022|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s023|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "s030|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s031|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s032|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s033|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s034|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s035|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "q003|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "i012|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "i013|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "i014|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s013|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s028|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s029|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "q005|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s024|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "s025|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s026|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s027|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "q001|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "i001|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "i002|rag": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "b001|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "b002|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "b003|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "i009|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "i010|rag": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "q004|rag": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "q002|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s001|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s002|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s003|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "s004|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s005|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s006|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s007|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s008|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s009|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s010|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s011|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s012|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s014|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s015|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s016|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s017|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s018|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s019|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s020|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s021|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s022|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s023|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s030|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s031|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s032|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s033|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "s034|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s035|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "q003|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "i012|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "i013|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "i014|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s013|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "s028|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s029|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "q005|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "s024|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "s025|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "s026|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "s027|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "q001|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b"
+  },
+  "i001|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "i002|cb": {
+    "A": "qwen2.5:14b-instruct-q6_K",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q5_K_M"
+  },
+  "b001|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b-instruct-q6_K",
+    "C": "qwen2.5:14b"
+  },
+  "b002|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "b003|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "i009|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "i010|cb": {
+    "A": "qwen2.5:14b-instruct-q5_K_M",
+    "B": "qwen2.5:14b",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  },
+  "q004|cb": {
+    "A": "qwen2.5:14b",
+    "B": "qwen2.5:14b-instruct-q5_K_M",
+    "C": "qwen2.5:14b-instruct-q6_K"
+  }
+}
