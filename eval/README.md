@@ -17,11 +17,13 @@ is no auto-judge** (the 3B judge is untrusted).
 | `id` | string | stable id, e.g. `q001` |
 | `question` | string | the user query, fed verbatim to the retriever + model |
 | `expected_doc_ids` | string[] | `documents.doc_id` values that SHOULD be retrieved to answer correctly (the gold set). For F5 KB/security these are K-numbers (`K000092981`); for RFCs `rfcNNNN`; for iRules/clouddocs the page URL; for techdocs `techdocs:...` |
-| `query_type` | enum | `k-number` \| `concept` \| `irule` \| `rfc` \| `f5os` — exercises a distinct branch of the retrieval ladder |
+| `query_type` | enum | `k-number` \| `concept` \| `irule` \| `rfc` \| `f5os` \| `f5os_api` \| `cve` \| `bug-id` — exercises a distinct branch of the retrieval ladder |
 | `notes` | string | free-text rationale (why these docs are relevant) |
 
-`expected_doc_ids` are real `doc_id`s pulled from the live DB. Expand this file;
-the 5 shipped rows are a smoke set, one per `query_type`.
+`expected_doc_ids` are real `doc_id`s pulled from the live DB. **66 questions** as of
+2026-06-30 (concept 29, k-number 9, irule 7, f5os 5, **f5os_api 5**, bug-id 5, rfc 3, cve 3).
+The `f5os_api` slice tracks retrieval over the 260 F5OS Swagger/OpenAPI module docs
+(gold = `f5os_api` doc_ids; baseline hit@5 0.60 / hit@10 0.80).
 
 ## Metrics
 

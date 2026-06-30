@@ -79,3 +79,32 @@ Index build is now **content-hash incremental** (`scripts/build_embeddings.py` �
 unchanged doc's chunk vectors, re-embeds only new/changed docs: full ~20 min, no-op refresh
 ~1.7 s) and the embedded-source ingesters call it after a run so the index stays fresh.
 Result: `eval/results/20260630T085800Z-retrieval-chunked.json`.
+
+### What did NOT help the remaining 5 misses (2026-06-30)
+
+Chased q002/s001/s009/s023/s030 three ways; **none ships.** Diagnosis first: dense-only
+already ranks s023's gold #4 and s030's #7 — they're **fusion-buried**, not unfound; q002's
+gold are <1 KB tangential docs (the retrieved K8246/idle-timeout-overview are arguably better
+answers — likely **bad gold**); s001 is a genuine semantic gap; only s009 responds to keyword
+expansion.
+
+1. **RRF dense-weight re-sweep on the chunked index** (0.5→1.6). Raising the weight to 1.0
+   recovers s023 (#8) and s030 (#10) and lifts concept hit@10 0.83→0.86, but **costs** concept
+   hit@5 0.69→0.66, irule hit@10 1.00→0.86, f5os hit@5 0.80→0.60; ≥1.3 craters identifiers
+   (rfc/bug-id MRR collapse). **No clean win → keep dense weight 0.5.**
+2. **HyDE / keyword query expansion** (14b generates a hypothetical answer / keyword set,
+   embed that). Mixed and inconsistent — HyDE helped s030 (dense #7→#3) but hurt s009; keyword
+   expansion helped s009 (#19→#10) but not others; q002/s001 unmoved. Plus a per-query LLM call
+   (~1-3 s latency) on every search. **Not worth the latency for ~1 row → not shipped.**
+3. **Stronger embedder: mxbai-embed-large (1024-d) vs nomic (768-d), single-variable dense-only
+   A/B** (same chunking/corpus/max-pool). **Lateral, not better:** mxbai wins irule (dense
+   0.43→1.00 hit@10) and f5os_api (0.80→1.00) and the buried misses (s023 #4→#2, s030 #7→#5),
+   but **regresses concept hit@10 0.90→0.79 and f5os 0.80→0.60** — and concept hit@10 is exactly
+   what nomic's dense feeds the hybrid. ALL dense hit@10 0.59→0.61 (wash). For a 1024-d cost
+   (+33% query compute/storage) and a full corpus re-embed, the trade isn't justified.
+   **Keep nomic.** (bge not built: mxbai is the stronger of the two on MTEB retrieval and came
+   out lateral.)
+
+**Genuinely open** (logged in TODO): q002 gold review (likely replace), s001 semantic gap, and
+a *rank-gated* dense floor for pure-dense top-3 finds (s023/s030) that wouldn't globally
+up-weight dense — deferred as risky tuning against a well-balanced aggregate.
