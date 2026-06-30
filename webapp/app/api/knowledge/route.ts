@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { searchDocuments } from '@/lib/db';
-import { classifyQuery, type QueryMode } from '@/lib/knowledgeClassifier';
+import { classifyQuery, sourcesForQuery, type QueryMode } from '@/lib/knowledgeClassifier';
 import { streamOllamaChat, OllamaError, isOllamaConnectionError } from '@/lib/ollama';
 
 export const maxDuration = 300;
@@ -39,13 +39,8 @@ Context:
 ${context}`;
 }
 
-// ── Sources per mode ──────────────────────────────────────────────────────
-
-const MODE_SOURCES: Record<QueryMode, string[] | undefined> = {
-    f5:      ['irules', 'clouddocs', 'f5_kb', 'f5_security', 'xc_techdocs', 'techdocs', 'community', 'f5os_api', 'bugtracker'],
-    rfc:     ['rfc'],
-    general: undefined,   // no filter — search all sources
-};
+// Source resolution (incl. bug-intent routing for `bugtracker`) lives in
+// lib/knowledgeClassifier.ts so it stays in sync with eval/retrieve.cjs.
 
 // ── Route handler ─────────────────────────────────────────────────────────
 
@@ -61,7 +56,7 @@ export async function POST(req: NextRequest) {
         }
 
         const mode = classifyQuery(message);
-        const sources = MODE_SOURCES[mode];
+        const sources = sourcesForQuery(message, mode);
 
         // Retrieval layer — failures here are NOT Ollama problems and must
         // not be reported as such.

@@ -104,3 +104,35 @@ export function classifyQuery(query: string): QueryMode {
     if (rfcScore > f5Score) return 'rfc';
     return 'general';
 }
+
+// ── Source resolution (single source of truth for route.ts + eval/retrieve.cjs) ──
+
+// Base sources per mode. `bugtracker` (18k+ bug reports) is intentionally NOT
+// here for f5 mode — it is added only for bug-intent queries (see sourcesForQuery)
+// so bug reports don't crowd general how-to results. New sources go here.
+export const MODE_SOURCES: Record<QueryMode, string[] | undefined> = {
+    f5:      ['irules', 'clouddocs', 'f5_kb', 'f5_security', 'xc_techdocs', 'techdocs', 'community', 'f5os_api'],
+    rfc:     ['rfc'],
+    general: undefined,   // no filter — search all sources (incl. bugtracker)
+};
+
+// Bug-intent: a bug-tracker ID (ID######), or a standalone "bug"/"defect" word.
+// `\bID\d{4,}` only fires when "ID" starts a word, so "valid 1234"/"RAID" don't match;
+// `\bbug\b` won't match "debug" (no word boundary before "bug" there).
+const BUG_ID_RE = /\bID\s?\d{4,}\b/i;
+const BUG_WORD_RE = /\b(bugs?|defects?)\b/i;
+
+export function isBugIntent(query: string): boolean {
+    return BUG_ID_RE.test(query) || BUG_WORD_RE.test(query);
+}
+
+// Resolve the source filter for a query: the mode's base sources, plus
+// `bugtracker` only when the query is bug-intent. In `general` mode (no filter)
+// bugtracker is already searched, so no change is needed there.
+export function sourcesForQuery(query: string, mode: QueryMode): string[] | undefined {
+    const base = MODE_SOURCES[mode];
+    if (mode === 'f5' && isBugIntent(query)) {
+        return [...(base as string[]), 'bugtracker'];
+    }
+    return base;
+}

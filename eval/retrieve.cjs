@@ -17,15 +17,9 @@
 
 const fs = require("fs");
 const { searchDocuments } = require("./_gen/db.js");
-const { classifyQuery } = require("./_gen/knowledgeClassifier.js");
-
-// Faithful copy of MODE_SOURCES in webapp/app/api/knowledge/route.ts.
-// Keep in sync with the route if it changes.
-const MODE_SOURCES = {
-  f5: ["irules", "clouddocs", "f5_kb", "f5_security", "xc_techdocs", "techdocs", "community", "f5os_api", "bugtracker"],
-  rfc: ["rfc"],
-  general: undefined, // no source filter
-};
+const { classifyQuery, sourcesForQuery } = require("./_gen/knowledgeClassifier.js");
+// Source resolution (incl. bug-intent routing) is the SAME function the route
+// uses — imported from the compiled lib, so eval and production never drift.
 
 // Request top-10 so the harness can compute hit@5 / hit@10 / MRR.
 // (Production /knowledge requests 5, or 8 for general mode.)
@@ -42,7 +36,7 @@ async function main() {
   for (const line of lines) {
     const q = JSON.parse(line);
     const mode = classifyQuery(q.question);
-    const sources = MODE_SOURCES[mode];
+    const sources = sourcesForQuery(q.question, mode);
     let results = await searchDocuments(q.question, TOP_K, sources);
     if (!results || results.length === 0) {
       // mirror the route's fallback (unfiltered), at TOP_K
