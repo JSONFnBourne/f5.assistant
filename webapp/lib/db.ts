@@ -2,6 +2,12 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import { denseAvailable, denseSearch, embedQuery, rrf } from './embeddings';
 
+// Dense-list weight in the hybrid RRF fusion (the BM25 list is weighted 1.0).
+// < 1 keeps BM25-strong results stable (fixes the f5os hit@5 dip) while still
+// surfacing dense-only recovered misses. Tuned via the eval sweep (eval/recall);
+// overridable for experiments via HYBRID_DENSE_WEIGHT.
+const DENSE_WEIGHT = Number(process.env.HYBRID_DENSE_WEIGHT ?? '0.5');
+
 // Canonical path to the unified knowledge database.
 // If KSI_DB_PATH is set, validate it stays within the expected db/ directory.
 const _defaultDbPath = path.join(process.cwd(), '..', 'db', 'knowledge.db');
@@ -349,7 +355,7 @@ export async function searchDocuments(
     ftsSeen.add(key);
     ftsRankedIds.push(r.doc_id);
   }
-  const fusedIds = rrf([ftsRankedIds, denseRows.map((r) => r.doc_id)]);
+  const fusedIds = rrf([ftsRankedIds, denseRows.map((r) => r.doc_id)], [1.0, DENSE_WEIGHT]);
 
   // 2d. Fill remaining slots after the pinned direct hits, deduping by title.
   // (e.g. thousands of K4918-titled bug articles must not flood the slots.)

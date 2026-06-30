@@ -21,6 +21,13 @@ describe('rrf (reciprocal rank fusion)', () => {
   it('handles an empty list (degrades to the other ranking)', () => {
     expect(rrf([['a', 'b', 'c'], []])).toEqual(['a', 'b', 'c']);
   });
+
+  it('weights scale each list contribution', () => {
+    // 'bm' is rank-1 in list A only; 'dn' is rank-1 in list B only.
+    // Down-weighting a list lets the other list's top win the tie.
+    expect(rrf([['bm'], ['dn']], [1.0, 0.5])[0]).toBe('bm');
+    expect(rrf([['bm'], ['dn']], [0.5, 1.0])[0]).toBe('dn');
+  });
 });
 
 // ── query embedding (mocked Ollama) ──────────────────────────────────────────

@@ -98,13 +98,19 @@ export function denseSearch(qvec: Float32Array, sources: string[] | undefined, k
   return scored.slice(0, k).map((x) => docIds[x.i]);
 }
 
-/** Reciprocal Rank Fusion of several ranked doc_id lists. */
-export function rrf(rankLists: string[][], k = 60): string[] {
+/**
+ * (Weighted) Reciprocal Rank Fusion of several ranked doc_id lists.
+ * `weights` scales each list's contribution (default 1 each). Down-weighting the
+ * dense list keeps BM25-strong results stable while still letting dense lift docs
+ * BM25 ranks nowhere (recovered misses) into the results.
+ */
+export function rrf(rankLists: string[][], weights?: number[], k = 60): string[] {
+  const w = weights ?? rankLists.map(() => 1);
   const score = new Map<string, number>();
-  for (const list of rankLists) {
+  rankLists.forEach((list, li) => {
     for (let r = 0; r < list.length; r++) {
-      score.set(list[r], (score.get(list[r]) ?? 0) + 1 / (k + r + 1));
+      score.set(list[r], (score.get(list[r]) ?? 0) + (w[li] ?? 1) / (k + r + 1));
     }
-  }
+  });
   return [...score.entries()].sort((a, b) => b[1] - a[1]).map(([d]) => d);
 }
