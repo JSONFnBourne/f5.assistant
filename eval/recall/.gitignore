@@ -1,0 +1,3 @@
+# regenerable: 145MB embeddings + intermediates (rebuild via embed_corpus.py / retrieve.cjs)
+corpus_emb.npz
+bm25.json
