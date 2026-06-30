@@ -1,0 +1,4 @@
+# Dev/test dependencies for the pipeline venv (pipeline/.venv, Python 3.12).
+#   pip install -r requirements-dev.txt
+# Run tests:  cd pipeline && .venv/bin/pytest    (pytest.ini puts src/ on the path)
+pytest==9.1.1

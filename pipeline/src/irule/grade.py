@@ -8,9 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
-import torch
 import tyro
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 from .rulebook import (
     DEFAULT_OPERATORS,
@@ -19,6 +17,12 @@ from .rulebook import (
     extract_command_tokens,
     load_rulebook,
 )
+
+# torch / transformers are imported lazily inside the judge-model functions
+# (setup_judge / generate_judge_output / run_grade) so the pure helpers in this
+# module — parse_grade_output, validate_result, make_prompt — can be imported
+# (and unit-tested) without loading the ML stack.
+
 
 LOGGER = logging.getLogger("irule.grade")
 
@@ -145,7 +149,8 @@ def validate_result(result: dict) -> dict | None:
 
 def make_prompt(question: str, answer: str, context: str) -> str:
     return (
-        "You are irule-judge, responsible for validating training pairs for an F5 expert assistant.\n"
+        "You are irule-judge, responsible for validating training pairs "
+        "for an F5 expert assistant.\n"
         "Evaluate the proposed answer using the provided context.\n"
         "Respond with a SINGLE JSON object only. No code fences, no extra text.\n"
         "Return ONLY JSON with: \n"
@@ -194,6 +199,9 @@ class GradeArgs:
 
 
 def setup_judge(args: GradeArgs):
+    import torch
+    from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+
     kwargs = {"trust_remote_code": args.trust_remote_code, "low_cpu_mem_usage": True}
     use_cuda = args.device == "cuda" and torch.cuda.is_available()
     target_device = "cuda:0" if use_cuda else "cpu"
@@ -265,6 +273,8 @@ def generate_judge_output(
     temperature: float = 0.0,
     top_p: float = 0.9,
 ) -> str:
+    import torch
+
     device = (
         model.device
         if hasattr(model, "device")
@@ -299,6 +309,8 @@ def run_grade(args: GradeArgs) -> None:
             return
         args.output_path.unlink()
     model, tokenizer = setup_judge(args)
+    import torch
+
     torch.manual_seed(0)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(0)
@@ -389,8 +401,8 @@ def run_grade(args: GradeArgs) -> None:
             parsed = parse_grade_output(completion)
             if not parsed:
                 retry_prompt = (
-                    prompt
-                    + "\n\nReminder: respond with a single JSON object exactly matching the specified schema."
+                    prompt + "\n\nReminder: respond with a single JSON object exactly "
+                    "matching the specified schema."
                 )
                 completion = generate_judge_output(
                     model,
