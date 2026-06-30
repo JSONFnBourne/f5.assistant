@@ -162,3 +162,5 @@ f5-corkscrew-main/
 .scratch/
 scratch/
 tmp/
+cu128-venv/
+pipeline/cu128-venv/
