@@ -19,10 +19,11 @@ A Next.js 16 app that is the front door to everything. Six tools:
   failures, licensing issues, memory pressure, certificate problems. The rule
   engine is YAML-driven so new known-issues can be added without touching code.
 
-- **Knowledge Base** — Chat interface backed by a 46,931-document SQLite
+- **Knowledge Base** — Chat interface backed by a 65,452-document SQLite
   database of F5 documentation. Questions are classified, relevant docs are
-  fetched via multi-pass FTS5 retrieval, and a local LLM generates answers
-  strictly grounded in the retrieved context — no hallucinated facts.
+  fetched via hybrid retrieval (BM25 keyword search fused with dense semantic
+  search), and a local LLM generates answers strictly grounded in the retrieved
+  context — no hallucinated facts.
 
 - **iRule Reference** — Alphabetical, searchable index of every iRule command,
   event, and operator. An offline copy of the F5 iRules API reference.
@@ -88,27 +89,33 @@ product module: `tmos/`, `ltm/`, `dns/`, `apm/`, `asm/`, `sslo/`, `swg/`,
 F5OS-A 1.8.3 and F5OS-C 1.8.1.
 
 The `/db` directory holds the primary SQLite knowledge database (`knowledge.db`,
-FTS5-indexed, 46,931 documents). The session/analysis state database is
+FTS5-indexed, 65,452 documents). The session/analysis state database is
 `backend/f5_assistant.db` (populated at runtime) — **not** in `/db`.
 
 ### Knowledge Database Breakdown
 
 | Source         | Documents | Content                                      |
 |----------------|-----------|----------------------------------------------|
-| `f5_kb`        | 29,445    | F5 K-articles (my.f5.com)                   |
+| `f5_kb`        | 29,445    | F5 K-articles (my.f5.com)                    |
+| `bugtracker`   | 18,261    | F5 bug tracker reports (cdn.f5.com)          |
 | `rfc`          |  9,657    | IETF RFC standards                           |
 | `f5_security`  |  4,711    | F5 security advisories (CVE-tagged)          |
 | `irules`       |  1,574    | iRules API reference (clouddocs)             |
-| `techdocs`     |    717    | F5 TechDocs (APM, BIG-IP manuals)           |
-| `xc_techdocs`  |    708    | F5 Distributed Cloud TechDocs               |
-| `clouddocs`    |    116    | AS3/DO schema, F5OS API                     |
+| `techdocs`     |    717    | F5 TechDocs (APM, BIG-IP manuals)            |
+| `xc_techdocs`  |    708    | F5 Distributed Cloud TechDocs                |
+| `f5os_api`     |    260    | F5OS-A/C Swagger/OpenAPI module specs        |
+| `clouddocs`    |    116    | AS3/DO schema, F5OS API                      |
 | `community`    |      3    | F5 community articles                        |
-| **Total**      | **46,931**|                                              |
+| **Total**      | **65,452**|                                              |
 
-Retrieval is multi-pass: K-number exact match → CVE exact match → iRules
-`Namespace::command` match → FTS5 BM25 search (title weighted 10×, keywords 5×,
-content 1×) → fallback OR search. A 3× prefetch + title deduplication step
-prevents any single document title from flooding the result slots.
+Retrieval is a hybrid ladder: pinned direct lookups (K-number exact match → CVE
+exact match → iRules `Namespace::command` match), then weighted Reciprocal Rank
+Fusion of FTS5 BM25 keyword search (title weighted 10×, keywords 5×, content 1×)
+with dense cosine-similarity search over a chunked `nomic-embed-text` embedding
+index. A 3× prefetch + title deduplication step prevents any single document
+title from flooding the result slots; bug tracker reports are included only for
+bug-intent queries. If the embedding index or Ollama is unavailable, retrieval
+degrades gracefully to BM25-only.
 
 ---
 
@@ -118,8 +125,9 @@ prevents any single document title from flooding the result slots.
 |---------------|-------------------------------------------------------------|
 | Frontend      | Next.js 16, TypeScript, Tailwind CSS                        |
 | Backend       | FastAPI, Python 3.12, Uvicorn                               |
-| Local LLM     | Ollama — `qwen2.5:14b` (Q4_K_M, 14B params, 9.0 GB)        |
-| Other models  | `llama3.1:8b`, `qwen2.5:7b`, `llama3.2:latest` (code fallback) installed |
+| Local LLM     | Ollama — `qwen2.5:14b-instruct-q5_K_M` (14B params, Q5_K_M, 10.5 GB) |
+| Embeddings    | Ollama — `nomic-embed-text` (768-dim, dense retrieval)     |
+| Other models  | `qwen3:14b`, `qwen2.5:14b` (Q4/Q6), `llama3.1:8b`, `qwen2.5:7b`, `llama3.2:latest` installed |
 | Fine-tuning   | PyTorch 2.5, HuggingFace TRL, PEFT, BitsAndBytes (4-bit QLoRA) |
 | Storage       | SQLite (FTS5), JSONL                                        |
 | Hardware      | RTX 4080 SUPER (16 GB VRAM), Ryzen 7 5800X3D, 30 GiB RAM   |
@@ -137,14 +145,14 @@ prevents any single document title from flooding the result slots.
 ### Knowledge Question
 1. Engineer types a question in `/knowledge`
 2. Classifier routes to F5, RFC, or general context
-3. `/api/knowledge` runs multi-pass retrieval against `knowledge.db`
-4. The local LLM (qwen2.5:14b) answers strictly from retrieved context at temperature 0.3
+3. `/api/knowledge` runs hybrid retrieval against `knowledge.db`
+4. The local LLM (qwen2.5:14b-instruct-q5_K_M) answers strictly from retrieved context at temperature 0.3
 5. Streamed markdown response with source citations
 
 ### iRule Generation
 1. Engineer selects protocol and desired traffic events in `/generator`
 2. Builder constructs a Tcl skeleton
-3. `/api/generate` sends skeleton + protocol to qwen2.5:14b via Ollama
+3. `/api/generate` sends skeleton + protocol to qwen2.5:14b-instruct-q5_K_M via Ollama
 4. Model returns completed, hardened iRule code
 
 ---
@@ -152,7 +160,7 @@ prevents any single document title from flooding the result slots.
 ## Bottom Line
 
 A private, air-gapped F5 expert system that can diagnose broken BIG-IP devices,
-answer deep F5 technical questions from 46,931 authoritative source documents,
+answer deep F5 technical questions from 65,452 authoritative source documents,
 help engineers write and validate iRules, and continuously train domain-specific
 language models — all on a single desktop machine, with no external API
 dependencies, no cloud costs, and full data ownership.
