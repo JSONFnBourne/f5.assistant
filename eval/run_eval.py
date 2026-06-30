@@ -34,8 +34,8 @@ RESULTS_DIR = os.path.join(EVAL_DIR, "results")
 
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
 MODEL = os.environ.get(
-    "EVAL_MODEL", "qwen2.5:7b"
-)  # /knowledge stock model; override via EVAL_MODEL
+    "EVAL_MODEL", "qwen2.5:14b-instruct-q5_K_M"
+)  # the live /knowledge model (.env.local, post 2026-06-27 bake-off); override via EVAL_MODEL
 
 # ── grounding prompt: faithful copy of webapp/app/api/knowledge/route.ts ──────
 SHARED_RULES = """

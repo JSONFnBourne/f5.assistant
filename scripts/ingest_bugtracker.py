@@ -182,6 +182,8 @@ def main():
         conn.commit()
         n = conn.execute("SELECT COUNT(*) FROM documents WHERE source='bugtracker'").fetchone()[0]
     print(f"ingested; documents WHERE source='bugtracker' = {n}; FTS rebuilt")
+    # No dense-index refresh here: source `bugtracker` is BM25 direct-lookup only
+    # and is excluded from the embedding index (see scripts/build_embeddings.py).
 
 
 if __name__ == "__main__":

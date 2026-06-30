@@ -35,8 +35,31 @@ function loadIndex(): VecIndex | null {
     const meta = JSON.parse(fs.readFileSync(`${base}.json`, 'utf-8'));
     const buf = fs.readFileSync(`${base}.f32`);
     const vectors = new Float32Array(buf.buffer, buf.byteOffset, buf.byteLength / 4);
-    if (vectors.length !== meta.count * meta.dim) throw new Error('index size mismatch');
-    _index = { docIds: meta.doc_ids, sources: meta.sources, dim: meta.dim, count: meta.count, vectors };
+    let docIds: string[];
+    let sources: string[];
+    let count: number;
+    if (meta.docs) {
+      // Chunked format: one row per chunk, laid out doc-by-doc. Expand the
+      // doc-level manifest into a per-row doc_id/source map; denseSearch then
+      // collapses chunk hits back to their parent doc (max-pool).
+      docIds = [];
+      sources = [];
+      for (const d of meta.docs) {
+        for (let i = 0; i < d.n; i++) {
+          docIds.push(d.d);
+          sources.push(d.s);
+        }
+      }
+      count = docIds.length;
+      if (meta.n_chunks != null && count !== meta.n_chunks) throw new Error('chunk count mismatch');
+    } else {
+      // Legacy flat format: one row per doc.
+      docIds = meta.doc_ids;
+      sources = meta.sources;
+      count = meta.count;
+    }
+    if (vectors.length !== count * meta.dim) throw new Error('index size mismatch');
+    _index = { docIds, sources, dim: meta.dim, count, vectors };
   } catch (err) {
     console.error('Dense index unavailable (hybrid disabled):', err instanceof Error ? err.message : err);
     _index = null;
@@ -80,22 +103,31 @@ export async function embedQuery(text: string): Promise<Float32Array | null> {
   }
 }
 
-/** Cosine KNN over the index (vectors normalized → dot product), filtered to `sources`. */
+/**
+ * Cosine KNN over the index (vectors normalized → dot product), filtered to
+ * `sources`. The index is chunked (multiple rows per doc), so chunk scores are
+ * max-pooled back to their parent doc_id — a doc's rank is its best chunk's
+ * similarity. Returns the top-`k` doc_ids (deduped).
+ */
 export function denseSearch(qvec: Float32Array, sources: string[] | undefined, k: number): string[] {
   const idx = loadIndex();
   if (!idx) return [];
   const allow = sources ? new Set(sources) : null;
   const { vectors, docIds, sources: src, dim, count } = idx;
-  const scored: { i: number; s: number }[] = [];
+  const best = new Map<string, number>();
   for (let i = 0; i < count; i++) {
     if (allow && !allow.has(src[i])) continue;
     const off = i * dim;
     let dot = 0;
     for (let j = 0; j < dim; j++) dot += vectors[off + j] * qvec[j];
-    scored.push({ i, s: dot });
+    const d = docIds[i];
+    const prev = best.get(d);
+    if (prev === undefined || dot > prev) best.set(d, dot);
   }
-  scored.sort((a, b) => b.s - a.s);
-  return scored.slice(0, k).map((x) => docIds[x.i]);
+  return [...best.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, k)
+    .map((e) => e[0]);
 }
 
 /**

@@ -107,4 +107,36 @@ describe('denseSearch + denseAvailable', () => {
     expect(denseAvailable()).toBe(false);
     expect(denseSearch(Float32Array.from([1, 0, 0]), undefined, 5)).toEqual([]);
   });
+
+  // ── chunked index: multiple rows per doc, max-pooled back to the doc_id ──────
+  function writeChunkedIndex(dim: number, docs: { doc_id: string; source: string; chunks: number[][] }[]) {
+    const rows = docs.flatMap((d) => d.chunks);
+    fs.writeFileSync(`${base}.json`, JSON.stringify({
+      model: 'test', dim, chunked: true, n_chunks: rows.length,
+      docs: docs.map((d) => ({ d: d.doc_id, s: d.source, h: 'h', n: d.chunks.length })),
+    }));
+    const arr = new Float32Array(rows.length * dim);
+    rows.forEach((vec, i) => vec.forEach((v, j) => (arr[i * dim + j] = v)));
+    fs.writeFileSync(`${base}.f32`, Buffer.from(arr.buffer));
+    _resetIndexCache();
+  }
+
+  it('collapses chunk hits to their parent doc via max-pool (best chunk wins)', () => {
+    // d1 has a weak + a strong chunk; d2 has one middling chunk. The query
+    // matches d1's SECOND chunk best, so d1 must rank above d2 and appear once.
+    writeChunkedIndex(3, [
+      { doc_id: 'd1', source: 'f5_kb', chunks: [[0, 1, 0], [1, 0, 0]] },
+      { doc_id: 'd2', source: 'f5_kb', chunks: [[0.8, 0.6, 0]] },
+    ]);
+    const hits = denseSearch(Float32Array.from([1, 0, 0]), ['f5_kb'], 5);
+    expect(hits).toEqual(['d1', 'd2']); // deduped: d1 once, ranked by its best chunk
+  });
+
+  it('honours the source filter on a chunked index', () => {
+    writeChunkedIndex(3, [
+      { doc_id: 'd1', source: 'rfc', chunks: [[1, 0, 0], [1, 0, 0]] }, // best match, wrong source
+      { doc_id: 'd2', source: 'f5_kb', chunks: [[0.6, 0.8, 0]] },
+    ]);
+    expect(denseSearch(Float32Array.from([1, 0, 0]), ['f5_kb'], 5)).toEqual(['d2']);
+  });
 });

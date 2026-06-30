@@ -50,3 +50,32 @@ This justifies the P3 "embeddings index alongside knowledge.db" item with data �
 
 Artifacts (`eval/recall/`): `embed_corpus.py`, `compare_recall.py`, `results.json`. The 145 MB
 `corpus_emb.npz` is gitignored (regenerate via `embed_corpus.py`).
+
+---
+
+## Follow-up: chunked embeddings (2026-06-30)
+
+The flat index embedded only `title + first 6 KB` of each doc, so 7 concept golds whose
+answer sits deeper went unrecovered. Re-built the index **chunked** — each non-bugtracker
+doc split into ≤8 overlapping 3 KB windows (`size=3000, overlap=300, cap=8`), 47,191 docs →
+**143,547 chunks** (441 MB). `denseSearch` max-pools chunk scores back to the parent `doc_id`,
+so the retriever contract (returns doc_ids) is unchanged. Same-harness A/B (`eval/retrieve.cjs`,
+weighted RRF, dense weight 0.5) on the 61-question set:
+
+| query_type | n | FLAT 6 KB (h5/h10/mrr) | **CHUNKED (h5/h10/mrr)** | Δh10 |
+|---|--:|---|---|--:|
+| concept | 29 | 0.62 / 0.72 / 0.43 | **0.69 / 0.83 / 0.45** | +0.10 |
+| irule | 7 | 0.86 / 1.00 / 0.77 | 0.86 / 1.00 / 0.77 | — |
+| f5os | 5 | 0.80 / 1.00 / 0.57 | 0.80 / 1.00 / 0.57 | — |
+| rfc/k-number/cve/bug-id | 20 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | — |
+| **ALL** | 61 | 0.79 / 0.87 / 0.67 | **0.82 / 0.92 / 0.68** | +0.05 |
+
+**Net: concept hit@10 0.72 → 0.83, ALL hit@10 0.87 → 0.92, zero regressions, all identifier
+classes preserved at 1.0.** Recovered 3 concept rows at hit@10 (s007, s014, s020); none lost.
+Still missed (q002, s001, s009, s023, s030) — **not** truncation: q002's golds are <1 KB docs
+(semantic mismatch), the rest need query expansion or a stronger embedder, not deeper chunking.
+
+Index build is now **content-hash incremental** (`scripts/build_embeddings.py` — reuses an
+unchanged doc's chunk vectors, re-embeds only new/changed docs: full ~20 min, no-op refresh
+~1.7 s) and the embedded-source ingesters call it after a run so the index stays fresh.
+Result: `eval/results/20260630T085800Z-retrieval-chunked.json`.

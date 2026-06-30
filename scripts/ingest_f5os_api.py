@@ -176,6 +176,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="preview, no DB writes")
     ap.add_argument("--samples", type=int, default=3)
+    ap.add_argument("--no-reembed", action="store_true", help="skip the dense-index refresh")
     args = ap.parse_args()
 
     records = [build_record(*t) for t in iter_specs()]
@@ -209,6 +210,11 @@ def main():
         conn.commit()
         n = conn.execute("SELECT COUNT(*) FROM documents WHERE source='f5os_api'").fetchone()[0]
     print(f"ingested; documents WHERE source='f5os_api' = {n}; FTS rebuilt")
+
+    if not args.no_reembed:
+        from build_embeddings import refresh_index_quiet
+
+        refresh_index_quiet()
 
 
 if __name__ == "__main__":

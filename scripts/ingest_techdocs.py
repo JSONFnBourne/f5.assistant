@@ -368,6 +368,7 @@ def main() -> None:
     parser.add_argument(
         "--delay", type=float, default=DELAY_S, help=f"Seconds between requests (default {DELAY_S})"
     )
+    parser.add_argument("--no-reembed", action="store_true", help="skip the dense-index refresh")
     args = parser.parse_args()
 
     session = requests.Session()
@@ -454,6 +455,11 @@ def main() -> None:
 
     if conn:
         conn.close()
+
+    if conn and (inserted + updated) > 0 and not args.no_reembed:
+        from build_embeddings import refresh_index_quiet
+
+        refresh_index_quiet()
 
     if args.dry_run:
         print("(dry-run — no changes written)")

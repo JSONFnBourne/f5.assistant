@@ -159,6 +159,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Bulk ingest F5 Support KB into knowledge.db")
     parser.add_argument("--dry-run", action="store_true", help="Parse only, no DB writes")
     parser.add_argument("--force", action="store_true", help="Re-index already-present articles")
+    parser.add_argument("--no-reembed", action="store_true", help="skip the dense-index refresh")
     args = parser.parse_args()
 
     if not DB_PATH.exists():
@@ -269,6 +270,11 @@ def main() -> None:
 
     finally:
         conn.close()
+
+    if not args.dry_run and total_inserted > 0 and not args.no_reembed:
+        from build_embeddings import refresh_index_quiet
+
+        refresh_index_quiet()
 
 
 if __name__ == "__main__":
