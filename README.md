@@ -79,6 +79,21 @@ no human-written data. A judge LLM auto-generates and scores every QA pair.
 Active crawl sources: 3 iRules API pages (Operators, Events, Commands) and 3
 TMSH reference sections (general, commands, modules).
 
+**Fine-tuning vs. RAG — division of labor.** Fine-tuning here is *not* the
+platform's F5 knowledge store. Broad, factual F5 Q&A is served by **retrieval**
+(the Knowledge Layer below: 65,452 docs + hybrid retrieval + a stock
+`qwen2.5:14b-instruct-q5_K_M`) — RAG stays current as new K-articles are ingested,
+whereas facts baked into weights go stale the moment F5 publishes. The serving
+model is *never* fine-tuned; it does in-context work. Fine-tuning instead
+specializes **behavior and format** on narrow, syntactically-constrained tasks —
+which is why the base models are deliberately small and domain-scoped, not
+scaled up to match the 14B serving model. `irule` is the clearest beneficiary:
+generating valid Tcl/iRule code is a *behavioral* skill (bounded command/event/
+operator grammar, enforced by the `rulebook` stage) that retrieval alone doesn't
+reliably provide, and a 3B specialist fine-tuned against that guardrail is the
+right tool. `f5nse` (8B) is the broader tier; its value is task/style
+specialization, layered on top of — not a replacement for — the RAG path.
+
 ---
 
 ## The Knowledge Layer
